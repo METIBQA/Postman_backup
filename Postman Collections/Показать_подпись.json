@@ -1,0 +1,92 @@
+{
+	"info": {
+		"_postman_id": "278aa590-bd2f-49bf-8cd7-e6fb3cfb9aa8",
+		"name": "Показать подпись",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Отдельные запросы",
+			"item": [
+				{
+					"name": "Авторизация",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"id": "f6dd25f5-da7f-4bad-a92a-c85f0898a113"
+							}
+						}
+					],
+					"id": "b8c76702-a75e-4929-bf0c-c24a8fb9663d",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": {
+								"username": "{{login}}",
+								"password": "{{password}}"
+							}
+						},
+						"method": "POST",
+						"header": [],
+						"url": "{{host}}/rest/stateful/corp/login"
+					},
+					"response": []
+				},
+				{
+					"name": "signature/metinv?doc_id=",
+					"id": "2ec48715-6fff-4b94-b94b-45c09e901b5e",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/rest/stateful/corp/document/signature/metinv?doc_id=2632425",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"rest",
+								"stateful",
+								"corp",
+								"document",
+								"signature",
+								"metinv"
+							],
+							"query": [
+								{
+									"key": "doc_id",
+									"value": "2293328",
+									"description": "Рублевый платеж (Радиатор)",
+									"disabled": true
+								},
+								{
+									"key": "doc_id",
+									"value": "2299669",
+									"description": "токен (Радиатор)",
+									"disabled": true
+								},
+								{
+									"key": "doc_id",
+									"value": "2632425",
+									"description": "СВО (Радиатор)"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"id": "2daeb987-48ad-47ca-a82c-ee22a2104e7b"
+		}
+	]
+}
