@@ -1,0 +1,1780 @@
+{
+	"info": {
+		"_postman_id": "09ecf13d-d0ef-434b-a5cc-cdd195099024",
+		"name": "Отдельные запросы",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Контрагенты",
+			"item": [
+				{
+					"name": "Контрагенты",
+					"item": [
+						{
+							"name": "Создание контрагентов всех типов",
+							"item": [
+								{
+									"name": "Авторизация",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													""
+												],
+												"type": "text/javascript",
+												"id": "02dc9171-3282-4af0-a5a6-d8b4f15b2e77"
+											}
+										}
+									],
+									"id": "4b198cdf-3eda-4a30-95c1-e46156f6959f",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"auth": {
+											"type": "basic",
+											"basic": {
+												"password": "{{password}}",
+												"username": "{{login}}"
+											}
+										},
+										"method": "POST",
+										"header": [],
+										"url": "{{host}}/rest/stateful/corp/login"
+									},
+									"response": []
+								},
+								{
+									"name": "Создание контрагента ЮЛ",
+									"id": "aa63d76f-fc2c-4847-b761-ee221e7f0d47",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n        \"fullname\": \"Контрагент ЮЛ для проверки строки поиска\",\n        \"inn\": 1234567890,\n        \"kpp\": 123456789,\n        \"accList\": [\n            {\n                \"accNumber\": \"00000000000000000000\",\n                \"bankBik\": \"044030001\"\n            }\n        ],\n        \"corrType\": \"UL\"\n    }",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": "{{host}}/rest/stateful/corp/dic/corr/v2"
+									},
+									"response": []
+								},
+								{
+									"name": "Создание контрагента ФЛ с ИНН",
+									"id": "d25d47c2-1171-402c-aa80-d79e7c16ab35",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n        \"fullname\": \"Контрагент ФЛ с ИНН для проверки строки поиска\",\n        \"inn\": 311512568299,\n        \"accList\": [\n            {\n                \"accNumber\": \"00000000000000000000\",\n                \"bankBik\": \"044030001\"\n            }\n        ],\n        \"corrType\": \"FL\"\n    }",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": "{{host}}/rest/stateful/corp/dic/corr/v2"
+									},
+									"response": []
+								},
+								{
+									"name": "Создание контрагента ФЛ без ИНН",
+									"id": "c55a2f8c-48ae-4cf4-9e28-8378252ab9d6",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n        \"fullname\": \"Контрагент ФЛ без ИНН для проверки строки поиска\",\n        \"accList\": [\n            {\n                \"accNumber\": \"00000000000000000000\",\n                \"bankBik\": \"044030001\"\n            }\n        ],\n        \"corrType\": \"FL\"\n    }",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": "{{host}}/rest/stateful/corp/dic/corr/v2"
+									},
+									"response": []
+								},
+								{
+									"name": "Создание контрагента ИП",
+									"id": "41cc7046-3b1a-4bed-9a65-6bf86c8cf14a",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n        \"fullname\": \"Контрагент ИП для проверки строки поиска\",\n        \"inn\": 366312562690,\n        \"accList\": [\n            {\n                \"accNumber\": \"00000000000000000000\",\n                \"bankBik\": \"044030001\"\n            }\n        ],\n        \"corrType\": \"IP\"\n    }",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": "{{host}}/rest/stateful/corp/dic/corr/v2"
+									},
+									"response": []
+								},
+								{
+									"name": "Создание контрагента ТАМОЖ",
+									"id": "3f3cd4f1-4b52-4e13-9cd6-d382157c5271",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"fullname\": \"Контрагент ТАМОЖ для проверки строки поиска\",\n    \"inn\": 7730176699,\n    \"kpp\": 123456789,\n    \"accList\": [\n        {\n            \"accNumber\": \"00000000000000000000\",\n            \"bankBik\": \"044030001\"\n        }\n    ],\n    \"corrType\": \"TAMOZH\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": "{{host}}/rest/stateful/corp/dic/corr/v2"
+									},
+									"response": []
+								},
+								{
+									"name": "Создание контрагента НАЛОГ",
+									"id": "c3e483ce-20a1-4c5a-8ee8-af006d063ec0",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"fullname\": \"Контрагент НАЛОГ для проверки строки поиска\",\n    \"inn\": 5024002155,\n    \"kpp\": 123456789,\n    \"accList\": [\n        {\n            \"accNumber\": \"00000000000000000000\",\n            \"bankBik\": \"044030001\"\n        }\n    ],\n    \"corrType\": \"NALOG\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": "{{host}}/rest/stateful/corp/dic/corr/v2"
+									},
+									"response": []
+								}
+							],
+							"id": "2ecffbd2-771d-4187-9efe-d422afec6734",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"type": "text/javascript",
+										"exec": [
+											""
+										],
+										"id": "eaccbe2f-4862-4f5b-b94a-453ecae28d12"
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"type": "text/javascript",
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});"
+										],
+										"id": "aea5aa4e-481c-4b28-b63c-b2274f54dd8d"
+									}
+								}
+							]
+						}
+					],
+					"id": "59120ebd-3782-46c0-a4e2-0acc74bea282"
+				},
+				{
+					"name": "Бефенециары",
+					"item": [
+						{
+							"name": "Создание бенефициара",
+							"item": [
+								{
+									"name": "Авторизация",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													""
+												],
+												"type": "text/javascript",
+												"id": "affe16e6-a040-4432-8b4c-c08a1e2337e1"
+											}
+										}
+									],
+									"id": "d3eb466b-46c5-4348-8f99-1f0011464620",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"auth": {
+											"type": "basic",
+											"basic": {
+												"password": "{{password}}",
+												"username": "{{login}}"
+											}
+										},
+										"method": "POST",
+										"header": [],
+										"url": "{{host}}/rest/stateful/corp/login"
+									},
+									"response": []
+								},
+								{
+									"name": "Создание бенефициара",
+									"id": "d935d9d3-9b2c-40e5-a72d-41056787c3e0",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"fullname\": \"Create beneficiaries\",\n    \"countryCode\": \"616\",\n    \"place\": \"home sweet home\",\n    \"address\": \"Baklanostan 69-256\",\n    \"bankSwift\": \"UGEBGE22XXX\",\n    \"bankName\": \"JSC 'VTB BANK GEORGIA'\",\n    \"bankPlace\": \", TBILISI\",\n    \"bankAddress\": \", HEAD OFFICE BUILDING, FLOOR 3, 14 CHANTURIA\",\n    \"iban\": \"AT331910000040781000\",\n    \"description\": \"Field \\\"payment purpose\\\"\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": "{{host}}/rest/stateful/corp/dic/beneficiary"
+									},
+									"response": []
+								}
+							],
+							"id": "62d34c43-4767-453a-a687-71ec0c90d197"
+						}
+					],
+					"id": "16e51a52-c023-44ac-9c40-994ced241582"
+				}
+			],
+			"id": "def975aa-6c72-477a-9300-13cf93f50c0d"
+		},
+		{
+			"name": "asvkb-gate",
+			"item": [
+				{
+					"name": "Описание - смотри раздел \"Test\"",
+					"id": "d7b743f9-4db0-4d80-bdf6-7888d96d9191",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "VBK_DOWNLOAD",
+					"id": "de7db86c-271f-43bb-b73c-478d3a283ace",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"request\": {\r\n        \"exportvbkcontract\": {\r\n            \"xmlapi\": {\r\n                \"format\": \"4\",\r\n                \"parameters\": {\r\n                    \"contractstatus\": \"ALL\",\r\n                    \"sections\": \"ALL\",\r\n                    \"includeactoutofdate\": 0,\r\n                    \"includeattachments\": 1,\r\n                    \"contractregistrationnumber\": \"22060215/2440/0000/2/1\"\r\n                }\r\n            }\r\n        },\r\n        \"date\": \"2023-09-27T10:20:02.956+03:00\",\r\n        \"app\": \"Система ДБО iSimpleBank 2.0\",\r\n        \"ver\": \"2.0\",\r\n        \"outputmethod\": \"ALL\",\r\n        \"guid\": \"{{$guid}}\",\r\n        \"documenttype\": \"VBK_CONTRACT\",\r\n        \"type\": \"EXPORT\",\r\n        \"CHECKMODE\": 0,\r\n        \"banknumber\": \"2440/0000\"\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://10.112.4.138:9085/vbk/download"
+					},
+					"response": []
+				},
+				{
+					"name": "ATTACH_DOWNLOAD",
+					"id": "be7b7687-7919-4061-a931-9e08add7b831",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"path\": \"\\\\\\\\tsclient\\\\S\\\\BCCAS\\\\Контракты для__DCEI\\\\2019\\\\Июль_2019\\\\31.07.2019\\\\Доп. соглаш. №1 от 01.04.19.pdf\",\r\n  \"code\": \"UTF-8\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://10.112.4.138:9085/attachments/download"
+					},
+					"response": []
+				},
+				{
+					"name": "Выгрузка файла",
+					"id": "1cdd06b8-1167-43e0-ad0f-47e00e031829",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"path\": \"S:\\\\BCCAS\\\\Контракты для__DCEI\\\\2022\\\\Сентябрь\\\\20.09.2022\\\\Контракт 080922 от 08.09.2022.pdf\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://10.112.4.138:9085/attachments/download/file"
+					},
+					"response": []
+				},
+				{
+					"name": "DT_DOWNLOAD",
+					"id": "dd95c28a-04c4-41ce-9f0e-143f74257029",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"bankNumber\": \"2440/0000\",\r\n    \"contractRegistrationNumber\": \"22060215/2440/0000/2/1\",\r\n    \"dtDirectionMovement\": \"null\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://10.112.4.138:9085/dt/download"
+					},
+					"response": []
+				},
+				{
+					"name": "Health",
+					"id": "4c196aef-e85a-4868-b618-5c710920712c",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://10.112.4.138:9085/health"
+					},
+					"response": []
+				}
+			],
+			"id": "766129d4-a228-4edc-9c2e-2e80804940cc"
+		},
+		{
+			"name": "Надежный бизнес",
+			"item": [
+				{
+					"name": "1. Подключение (без пролонгации)",
+					"item": [
+						{
+							"name": "ООО \"ДАЙМОНД ЮВЕЛИР ГРУПП\"",
+							"item": [
+								{
+									"name": "1. Подключить \"17 показателей\"",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.environment.set(\"docIds\", pm.response.json());"
+												],
+												"type": "text/javascript",
+												"id": "8ed0fbdc-7f21-4e9d-ab80-62feed0bc4fb"
+											}
+										}
+									],
+									"id": "dd0d1f74-32f4-4b39-b0c1-85c67864747f",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"auth": {
+											"type": "noauth"
+										},
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n   \r\n    \"operationBool\":1,\r\n    \"accNumber\":40702810300990001873,\r\n    \"prolongation\":1\r\n    \r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": "{{host}}/rest/stateful/corp/white_business/subscription"
+									},
+									"response": []
+								},
+								{
+									"name": "2. Подключить \"17 показателей\"",
+									"id": "27bebdd8-896c-4bcf-9abf-bedf8e119e46",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n  \"certId\": \"1170958\",\r\n  \"libId\": 90342,\r\n  \"inputCode\": \"\",\r\n  \"docModule\": \"ibankul\",\r\n  \"docType\": \"aml_subscription\",\r\n  \"docIds\": [\r\n    \"{{docIds}}\"\r\n  ]\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{host}}/rest/stateful/corp/document/sign/v2",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"rest",
+												"stateful",
+												"corp",
+												"document",
+												"sign",
+												"v2"
+											],
+											"query": [
+												{
+													"key": "ЗАМЕНИТЬ \"docIds\"",
+													"value": "",
+													"disabled": true
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "3. Подключить \"17 показателей\" Copy",
+									"id": "ff4a3336-9025-4128-bd4f-ae39f8b11f8d",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n  \"certId\": \"1170958\",\r\n  \"libId\": 90342,\r\n  \"inputCode\": \"00\",\r\n  \"docModule\": \"ibankul\",\r\n  \"docType\": \"aml_subscription\",\r\n  \"docIds\": [\r\n    \"{{docIds}}\"\r\n  ]\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{host}}/rest/stateful/corp/document/sign/v2",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"rest",
+												"stateful",
+												"corp",
+												"document",
+												"sign",
+												"v2"
+											],
+											"query": [
+												{
+													"key": "ЗАМЕНИТЬ \"docIds\"",
+													"value": "",
+													"disabled": true
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "4. Подключить \"17 показателей\"",
+									"id": "58612497-df80-4343-9675-0da894c11218",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "PUT",
+										"header": [],
+										"url": {
+											"raw": "{{host}}/rest/stateful/corp/document/send?doc_module=ibankul&doc_type=aml_subscription&doc_ids={{docIds}}",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"rest",
+												"stateful",
+												"corp",
+												"document",
+												"send"
+											],
+											"query": [
+												{
+													"key": "doc_module",
+													"value": "ibankul"
+												},
+												{
+													"key": "doc_type",
+													"value": "aml_subscription"
+												},
+												{
+													"key": "doc_ids",
+													"value": "{{docIds}}"
+												}
+											]
+										}
+									},
+									"response": []
+								}
+							],
+							"id": "c457ab16-181f-4674-9e99-6bfa9a6d9222"
+						},
+						{
+							"name": "ООО \"АГРОИНТЕРНЕШНЛ\"",
+							"item": [
+								{
+									"name": "1. Подключить \"17 показателей\"",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.environment.set(\"docIds\", pm.response.json());"
+												],
+												"type": "text/javascript",
+												"id": "42c83f2d-b449-429c-a430-4986f8bae671"
+											}
+										}
+									],
+									"id": "152e2e53-daea-419e-8820-8c9ce6e65105",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"auth": {
+											"type": "noauth"
+										},
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n   \r\n    \"operationBool\":1,\r\n    \"accNumber\":40702810000990002907,\r\n    \"prolongation\":0\r\n    \r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": "{{host}}/rest/stateful/corp/white_business/subscription"
+									},
+									"response": []
+								},
+								{
+									"name": "2. Подключить \"17 показателей\"",
+									"id": "3aca97ff-2105-4edd-bb54-71aef4126007",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n  \"certId\": \"1170958\",\r\n  \"libId\": 90342,\r\n  \"inputCode\": \"\",\r\n  \"docModule\": \"ibankul\",\r\n  \"docType\": \"aml_subscription\",\r\n  \"docIds\": [\r\n    \"{{docIds}}\"\r\n  ]\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{host}}/rest/stateful/corp/document/sign/v2",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"rest",
+												"stateful",
+												"corp",
+												"document",
+												"sign",
+												"v2"
+											],
+											"query": [
+												{
+													"key": "ЗАМЕНИТЬ \"docIds\"",
+													"value": "",
+													"disabled": true
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "3. Подключить \"17 показателей\" Copy",
+									"id": "01435bf5-8b1f-4584-a1b8-bc4393804fc2",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n  \"certId\": \"1170958\",\r\n  \"libId\": 90342,\r\n  \"inputCode\": \"00\",\r\n  \"docModule\": \"ibankul\",\r\n  \"docType\": \"aml_subscription\",\r\n  \"docIds\": [\r\n    \"{{docIds}}\"\r\n  ]\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{host}}/rest/stateful/corp/document/sign/v2",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"rest",
+												"stateful",
+												"corp",
+												"document",
+												"sign",
+												"v2"
+											],
+											"query": [
+												{
+													"key": "ЗАМЕНИТЬ \"docIds\"",
+													"value": "",
+													"disabled": true
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "4. Подключить \"17 показателей\"",
+									"id": "00458e5c-1459-4d21-9f1d-4a899a7598ca",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "PUT",
+										"header": [],
+										"url": {
+											"raw": "{{host}}/rest/stateful/corp/document/send?doc_module=ibankul&doc_type=aml_subscription&doc_ids={{docIds}}",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"rest",
+												"stateful",
+												"corp",
+												"document",
+												"send"
+											],
+											"query": [
+												{
+													"key": "doc_module",
+													"value": "ibankul"
+												},
+												{
+													"key": "doc_type",
+													"value": "aml_subscription"
+												},
+												{
+													"key": "doc_ids",
+													"value": "{{docIds}}"
+												}
+											]
+										}
+									},
+									"response": []
+								}
+							],
+							"id": "c934e4b7-8a12-4d85-b3ee-5134823bf748"
+						}
+					],
+					"id": "27b0cc40-063e-446b-b9b1-694214e915c4"
+				},
+				{
+					"name": "2. Отключение",
+					"item": [
+						{
+							"name": "1. Отключение \"17 показателей\"",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.environment.set(\"docIds\", pm.response.json());"
+										],
+										"type": "text/javascript",
+										"id": "5a526d94-8abb-4f80-a0b5-389533b3abc8"
+									}
+								}
+							],
+							"id": "0d2cfd6b-7b82-4504-9e50-182ff413d838",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"operationBool\": false\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{host}}/rest/stateful/corp/white_business/subscription"
+							},
+							"response": []
+						},
+						{
+							"name": "2. Отключение \"17 показателей\"",
+							"id": "4b1f65de-884d-4e3a-8c74-eec9657b813f",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"certId\": \"1170958\",\r\n  \"libId\": 90342,\r\n  \"inputCode\": \"\",\r\n  \"docModule\": \"ibankul\",\r\n  \"docType\": \"aml_subscription\",\r\n  \"docIds\": [\r\n    \"{{docIds}}\"\r\n  ]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}/rest/stateful/corp/document/sign/v2",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"rest",
+										"stateful",
+										"corp",
+										"document",
+										"sign",
+										"v2"
+									],
+									"query": [
+										{
+											"key": "ЗАМЕНИТЬ \"docIds\"",
+											"value": "",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "3. Отключение \"17 показателей\"",
+							"id": "aaa99316-9a12-483f-9991-dfaff102e73e",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"certId\": \"1170958\",\r\n  \"libId\": 90342,\r\n  \"inputCode\": \"00\",\r\n  \"docModule\": \"ibankul\",\r\n  \"docType\": \"aml_subscription\",\r\n  \"docIds\": [\r\n    \"{{docIds}}\"\r\n  ]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}/rest/stateful/corp/document/sign/v2",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"rest",
+										"stateful",
+										"corp",
+										"document",
+										"sign",
+										"v2"
+									],
+									"query": [
+										{
+											"key": "ЗАМЕНИТЬ \"docIds\"",
+											"value": "",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "4. Отключение \"17 показателей\"",
+							"id": "a41caf60-926a-4ebc-86af-1621df53e948",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"url": {
+									"raw": "{{host}}/rest/stateful/corp/document/send?doc_module=ibankul&doc_type=aml_subscription&doc_ids={{docIds}}",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"rest",
+										"stateful",
+										"corp",
+										"document",
+										"send"
+									],
+									"query": [
+										{
+											"key": "doc_module",
+											"value": "ibankul"
+										},
+										{
+											"key": "doc_type",
+											"value": "aml_subscription"
+										},
+										{
+											"key": "doc_ids",
+											"value": "{{docIds}}"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"id": "e96827c5-e537-4a2a-946c-5e645527c290"
+				},
+				{
+					"name": "Авторизация",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"response code=200\", () => {",
+									"  pm.response.to.have.status(200);",
+									"   });",
+									"",
+									"pm.test(\"Cookie JSESSIONID is present\", () => {",
+									"  pm.expect(pm.cookies.has('JSESSIONID')).to.be.true;",
+									"});",
+									"",
+									"pm.test(\"Header JSON\", () => ",
+									"{",
+									"  pm.request.addHeader('Accept: application/json');",
+									"});",
+									"",
+									""
+								],
+								"type": "text/javascript",
+								"id": "d4f892aa-a8e2-47d7-ad3e-f1c015032d00"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"id": "71f657f2-4471-4366-b123-8cb32786ea40"
+							}
+						}
+					],
+					"id": "5a02d61f-234d-4060-84f0-a0a8d2ebc6ef",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": {
+								"password": "{{password}}",
+								"username": "{{login}}"
+							}
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "xml"
+								}
+							}
+						},
+						"url": "{{host}}/rest/stateful/corp/login"
+					},
+					"response": []
+				},
+				{
+					"name": "Смена клиента",
+					"id": "a0bb8a0a-a133-4cae-9c7d-b4cb88f3b062",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/rest/stateful/corp/company/change_active/1199108",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"rest",
+								"stateful",
+								"corp",
+								"company",
+								"change_active",
+								"1199108"
+							],
+							"query": [
+								{
+									"key": null,
+									"value": "441868",
+									"description": "ВМЗ (Тест)",
+									"disabled": true
+								},
+								{
+									"key": null,
+									"value": "6905198",
+									"description": "ВМЗ (ПРЕПРОД)",
+									"disabled": true
+								},
+								{
+									"key": "",
+									"value": "1121492",
+									"description": "ООО \"ДАЙМОНД ЮВЕЛИР ГРУПП\"",
+									"disabled": true
+								},
+								{
+									"key": null,
+									"value": "1121491",
+									"description": "ООО \"КОВЕНС\"",
+									"disabled": true
+								},
+								{
+									"key": null,
+									"value": "1035778",
+									"description": "ООО \"МОК-производство\"",
+									"disabled": true
+								},
+								{
+									"key": null,
+									"value": "1121527",
+									"description": "ООО \"АГРОИНТЕРНЕШНЛ\"",
+									"disabled": true
+								},
+								{
+									"key": null,
+									"value": "1332542",
+									"description": "Захарова",
+									"disabled": true
+								},
+								{
+									"key": null,
+									"value": "747036",
+									"description": "ООО \"АВМ СПОРТ-ТУР\"",
+									"disabled": true
+								},
+								{
+									"key": null,
+									"value": "232828",
+									"description": "ООО \"СпецКонтрактСервис\"",
+									"disabled": true
+								},
+								{
+									"key": null,
+									"value": "1177388",
+									"description": "ООО \"КАЙРОС\"",
+									"disabled": true
+								},
+								{
+									"key": "",
+									"value": "1185380",
+									"description": "ООО \"СОФОРА\" {1}",
+									"disabled": true
+								},
+								{
+									"key": null,
+									"value": "1185711",
+									"description": "ООО \"ЭЛЕКТРОННЫЕ СИСТЕМЫ\"",
+									"disabled": true
+								},
+								{
+									"key": null,
+									"value": "1177447",
+									"description": "ОТА",
+									"disabled": true
+								},
+								{
+									"key": null,
+									"value": "1182700",
+									"description": "ООО \"СК-ПРОФИЛЬ\"",
+									"disabled": true
+								},
+								{
+									"key": null,
+									"value": "1185714",
+									"description": "ООО \"МПТП - С\"",
+									"disabled": true
+								},
+								{
+									"key": null,
+									"value": "1185717",
+									"description": "ООО \"БЛКОР\"",
+									"disabled": true
+								},
+								{
+									"key": null,
+									"value": "1185720",
+									"description": "ООО \"Энергомеханика {1}\"",
+									"disabled": true
+								},
+								{
+									"key": null,
+									"value": "1185723",
+									"description": "ПРОММАШ ООО {1}",
+									"disabled": true
+								},
+								{
+									"key": null,
+									"value": "1185728",
+									"description": "ООО \"ЭНИТРАНС\"",
+									"disabled": true
+								},
+								{
+									"key": null,
+									"value": "1182694",
+									"description": "АО \"ВОСЕМЬ ВЕРШИН\"",
+									"disabled": true
+								},
+								{
+									"key": null,
+									"value": "1182696",
+									"description": "ООО \"ОДИССЕЙ\"",
+									"disabled": true
+								},
+								{
+									"key": null,
+									"value": "1182698",
+									"description": "ООО \"СТРОЙМИГ КОННЕКТ\"",
+									"disabled": true
+								},
+								{
+									"key": null,
+									"value": "1185723",
+									"description": "ООО \"ПРОММАШ\"",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Какой клиент выбран?",
+					"id": "cf436689-6d67-4879-b04b-51a68ff5bd01",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "{{host}}/rest/stateful/corp/metinv/client_info/organization"
+					},
+					"response": []
+				},
+				{
+					"name": "Инфо \"17 показателей\"",
+					"id": "102af40b-dc3d-4a6d-a7e4-cdc23298e474",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"operationBool\":1,\"accNumber\":40702810300990001873,\"prolongation\":0}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{host}}/rest/stateful/corp/white_business/info"
+					},
+					"response": []
+				},
+				{
+					"name": "Статус \"17 показателей\"",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"id": "54c80fe2-a172-4481-b15b-701e6a82dc02"
+							}
+						}
+					],
+					"id": "3d2df0c3-5001-4288-9923-fdde75f4e180",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {},
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": "{{host}}/rest/stateful/corp/white_business/subscription/status"
+					},
+					"response": []
+				},
+				{
+					"name": "График за неделю",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"pm.test(\"Забираем дату dateFinish\", function() {",
+									"const moment = require('moment');",
+									"pm.environment.set(\"History_dateFinish\", moment().format(\"YYYY-DD-MM\"));",
+									"});",
+									"",
+									"",
+									"pm.test(\"Забираем дату DateStart\", function() {",
+									"const moment = require('moment');",
+									"pm.environment.set(\"History_DateStart\", moment().subtract(7, 'day').format(\"YYYY-DD-MM\"))",
+									"});"
+								],
+								"type": "text/javascript",
+								"id": "2b1db5b7-8529-408c-80e4-5dab687c1143"
+							}
+						}
+					],
+					"id": "2336d32c-d796-45ee-88e1-cf76551dd463",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/rest/stateful/corp/white_business/history?dateStart={{History_DateStart}}&dateFinish={{History_dateFinish}}",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"rest",
+								"stateful",
+								"corp",
+								"white_business",
+								"history"
+							],
+							"query": [
+								{
+									"key": "dateStart",
+									"value": "{{History_DateStart}}"
+								},
+								{
+									"key": "dateFinish",
+									"value": "{{History_dateFinish}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Стоимость услуги",
+					"id": "16fb87b0-321b-4c66-ac23-6cbe791a7ef7",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "{{host}}/rest/stateful/corp/white_business/subscription/price"
+					},
+					"response": []
+				},
+				{
+					"name": "[Draft]Данные на сегодняшний день",
+					"id": "099d288d-560f-41c2-b92e-0eca508149a0",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "request body \r\n{\r\n   \"inn\" : \"540540669204\"\r\n  ,\"date\" : \"2022-02-17\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/fbrapi/metib/whitebusiness/get?tnx=VeHH8kxh2Wp8PPxsVXXOWP6vzocXuG",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"fbrapi",
+								"metib",
+								"whitebusiness",
+								"get"
+							],
+							"query": [
+								{
+									"key": "tnx",
+									"value": "VeHH8kxh2Wp8PPxsVXXOWP6vzocXuG"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "(local) Рест АМЛ",
+					"id": "02b677cc-1b38-4a2b-9e6a-e8cbaf6877a0",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n   \"inn\" : \"7743851477\",\n   \"date\" : {{History_dateFinish}}\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://192.168.204.151:81/fbrapi/metib/whitebusiness/get?tnx=VeHH8kxh2Wp8PPxsVXXOWP6vzocXuG",
+							"protocol": "http",
+							"host": [
+								"192",
+								"168",
+								"204",
+								"151"
+							],
+							"port": "81",
+							"path": [
+								"fbrapi",
+								"metib",
+								"whitebusiness",
+								"get"
+							],
+							"query": [
+								{
+									"key": "tnx",
+									"value": "VeHH8kxh2Wp8PPxsVXXOWP6vzocXuG"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "(local) Микросервис",
+					"id": "232ca8ff-b070-4c9c-8bd4-91f0d566ef09",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n   \"inn\" : \"9718025424\",\r\n   \"date\" : \"2022-21-09\"\r\n}\r\n"
+						},
+						"url": "http://10.112.4.115:8080/get"
+					},
+					"response": []
+				},
+				{
+					"name": "last_documents",
+					"id": "86841abc-1080-4999-ae1f-798edb978552",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/rest/stateful/corp/last_documents_full?number_of_entries=1",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"rest",
+								"stateful",
+								"corp",
+								"last_documents_full"
+							],
+							"query": [
+								{
+									"key": "number_of_entries",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getCurrentTariff",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var url;",
+									"url.endWith('pdf');"
+								],
+								"type": "text/javascript",
+								"id": "f77568c0-f608-4980-ac45-e2024f32e1e6"
+							}
+						}
+					],
+					"id": "63cfa0dd-6872-4897-a59b-ce214a790c92",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "{{host}}/rest/stateful/corp/dic/tariffs_client_ul_metinv/getCurrentTariff"
+					},
+					"response": []
+				}
+			],
+			"id": "9abe9313-7946-4f0d-b151-141347412654"
+		},
+		{
+			"name": "Показать подпись",
+			"item": [
+				{
+					"name": "Авторизация",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"id": "f6dd25f5-da7f-4bad-a92a-c85f0898a113"
+							}
+						}
+					],
+					"id": "b8c76702-a75e-4929-bf0c-c24a8fb9663d",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": {
+								"username": "{{login}}",
+								"password": "{{password}}"
+							}
+						},
+						"method": "POST",
+						"header": [],
+						"url": "{{host}}/rest/stateful/corp/login"
+					},
+					"response": []
+				},
+				{
+					"name": "signature/metinv?doc_id=",
+					"id": "2ec48715-6fff-4b94-b94b-45c09e901b5e",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/rest/stateful/corp/document/signature/metinv?doc_id=2632425",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"rest",
+								"stateful",
+								"corp",
+								"document",
+								"signature",
+								"metinv"
+							],
+							"query": [
+								{
+									"key": "doc_id",
+									"value": "2293328",
+									"description": "Рублевый платеж (Радиатор)",
+									"disabled": true
+								},
+								{
+									"key": "doc_id",
+									"value": "2299669",
+									"description": "токен (Радиатор)",
+									"disabled": true
+								},
+								{
+									"key": "doc_id",
+									"value": "2632425",
+									"description": "СВО (Радиатор)"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"id": "2daeb987-48ad-47ca-a82c-ee22a2104e7b"
+		},
+		{
+			"name": "Рублевый платеж с СВО",
+			"item": [
+				{
+					"name": "Создание рублевого платежа с СВО",
+					"item": [
+						{
+							"name": "0. Авторизация",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript",
+										"id": "9c925916-75a5-40db-aa94-b59efd6997b5"
+									}
+								}
+							],
+							"id": "60c9cf29-0ba9-4097-bcc5-dd95066692d2",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": {
+										"username": "{{login}}",
+										"password": "{{password}}"
+									}
+								},
+								"method": "POST",
+								"header": [],
+								"url": "{{host}}/rest/stateful/corp/login"
+							},
+							"response": []
+						},
+						{
+							"name": "1. Смена клиента на ООО \"Радиатор\"",
+							"id": "763ee70d-4c0c-4630-99c1-79469c3215f3",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"url": {
+									"raw": "{{host}}rest/stateful/corp/company/change_active/7970250",
+									"host": [
+										"{{host}}rest"
+									],
+									"path": [
+										"stateful",
+										"corp",
+										"company",
+										"change_active",
+										"7970250"
+									],
+									"query": [
+										{
+											"key": "2037480",
+											"value": "Тест",
+											"disabled": true
+										},
+										{
+											"key": "7970250",
+											"value": "Препрод",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "2. Prefill",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"const response = pm.response.json();",
+											"",
+											"pm.environment.set(\"docNumberRub\",response.docNumber);",
+											"pm.environment.set(\"accId\",response.accId);",
+											"",
+											"console.log('docNumberRub= ',pm.environment.get(\"docNumberRub\"))",
+											"console.log('accId= ',pm.environment.get(\"accId\"))"
+										],
+										"type": "text/javascript",
+										"id": "caf64f11-0970-400b-bf7b-20b6b1dc5cf6"
+									}
+								}
+							],
+							"id": "9c462b33-724d-49a0-86b5-6e7d78dde05c",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{host}}/rest/stateful/corp/document_bp/create/metinv/prefill"
+							},
+							"response": []
+						},
+						{
+							"name": "3. Создание рублевой платежки",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											"const moment = require('moment');",
+											"",
+											"//Дата для использования в теле запроса - действует только для данного запроса",
+											"pm.variables.set(\"dataToday\", moment().subtract(0, 'day').format(\"YYYY-MM-DD\"))",
+											"",
+											"console.log(pm.variables.get(\"dataToday\"))"
+										],
+										"type": "text/javascript",
+										"id": "657b0dd6-1deb-4ec9-a4c3-d670d241d9bd"
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"const response = pm.response.json();",
+											"",
+											"pm.environment.set(\"idRub\",response.id);"
+										],
+										"type": "text/javascript",
+										"id": "1f8e6283-4b8a-4f29-a560-2587acf05b9c"
+									}
+								}
+							],
+							"id": "e6b68344-30a1-491c-99b2-ff941d10cd9d",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"corrFullname\": \"Запросы из Postman (Рудник Д.А) - {{dataToday}}\",\n    \"corrInn\": \"7705148464\",\n    \"corrKpp\": \"770201001\",\n    \"corrBankBik\": \"044525767\",\n    \"corrAccNumber\": \"30111810400010009964\",\n    \"bankName\": \"АО \\\"МОСКОМБАНК\\\"\",\n    \"accId\": {{accId}}, \n    \"fullname\": \"Общество с ограниченной ответственностью \\\"Радиатор\\\" //РФ,143405,Московская обл,,Красногорск г,,Ильинское ш,1А,,,ЭТ/ПОМ/ОФ 9/9АВ/№18//\",\n    \"inn\": \"7720540387\",\n    \"kpp\": \"502401001\",\n    \"amount\": \"505\",\n    \"ndsTypeId\": \"653\",\n    \"commission\": \"Согласно тарифам банка\",\n    \"description\": \"{VO23110} поле \\\\\\\"Назначение платежа\\\\\\\"\",\n    \"employeeFio\": \"Фиона Дефолтова\",\n    \"employeePhone\": \"+79999999999\",\n    \"urgenttype\": \"5\",\n    \"docNumber\": {{docNumberRub}},\n    \"docDate\": \"{{dataToday}}\",\n    \"corrType\": \"UL\",\n    \"payControlPsNumberCaption\": \"160500021405000011\",\n    \"currCode\": \"840\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{host}}/rest/stateful/corp/document_bp/create/metinv"
+							},
+							"response": []
+						},
+						{
+							"name": "4. Получение номера СВО",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"const response = pm.response.json();",
+											"",
+											"pm.environment.set(\"docNumberSVO\",response.docNumber);",
+											"console.log('docNumberSVO= ',pm.environment.get(\"docNumberSVO\"))"
+										],
+										"type": "text/javascript",
+										"id": "d9b824e0-ae41-428a-8753-92ea2f7de95b"
+									}
+								}
+							],
+							"id": "e5265233-b805-4118-9330-320d247562d5",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{host}}/rest/stateful/corp/document/number/next?doc_module=ibankul_curr&doc_type=inq_curr_181",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"rest",
+										"stateful",
+										"corp",
+										"document",
+										"number",
+										"next"
+									],
+									"query": [
+										{
+											"key": "doc_module",
+											"value": "ibankul_curr"
+										},
+										{
+											"key": "doc_type",
+											"value": "inq_curr_181"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "5. Создание документа СВО",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"const response = pm.response.json();",
+											"",
+											"pm.test(`Поле \"complexType\" приходит правильно`, function() {",
+											"  pm.expect(response).to.have.property(\"complexType\", \"РП без П\");",
+											"});"
+										],
+										"type": "text/javascript",
+										"id": "ff27aa00-8521-49c2-a61e-f5afc5365383"
+									}
+								}
+							],
+							"id": "dcbbe3ba-943a-4a6b-8f78-ed56af023208",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"accId\": {{accId}},\n    \"deal\": [\n        {\n            \"docPlatporCurrId\": {{idRub}},\n            \"numberLine\": \"1\",\n            \"payDirection\": \"2\",\n            \"dealMode\": \"1\",\n            \"operCode\": \"23110\",\n            \"remark\": \"\",\n            \"docNumber\": {{docNumberRub}},\n            \"amount\": \"505\",\n            \"payCurrCode\": \"810\",\n            \"transDate\": \"2023-08-15\",\n            \"operDate\": \"2023-08-15\",\n            \"dateRefundPrepayment\": \"2023-08-16\",\n            \"expectDate\": \"2023-08-16\",\n            \"noteOperation\": \"Поле \\\"Характер операции\\\"\",\n            \"psNumber\": \"160500021405000011\"\n        }\n    ],\n    \"employee\": \"Фиона Дефолтова\",\n    \"phone\": \"+79999999999\",\n    \"docPlatporCurrId\": {{idRub}},\n    \"docNumber\": {{docNumberSVO}},\n    \"complexType\": \"РП без П\",\n    \"payControlPsNumberCaption\": \"160500021405000011\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{host}}/rest/stateful/corp/curr/inquiry_181/metinv"
+							},
+							"response": []
+						}
+					],
+					"id": "298e5ddc-23a3-42f7-8272-5889f41d24b6"
+				}
+			],
+			"id": "2216ef3f-5c3d-4a4c-9dea-afcfb600c8f7"
+		}
+	]
+}
