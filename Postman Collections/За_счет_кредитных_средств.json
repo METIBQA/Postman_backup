@@ -100,6 +100,30 @@
 				}
 			],
 			"id": "2601baf0-3d8d-489a-83e7-1556bf59b8b9"
+		},
+		{
+			"name": "TestIntegration",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "a5d189ab-32e3-4b10-99de-5a3f4453214c",
+						"exec": [
+							"мой тест интеграции"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"id": "d0afef75-2910-4834-b078-39fdc7589d49",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
 		}
 	],
 	"event": [
