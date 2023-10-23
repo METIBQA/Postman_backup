@@ -1775,6 +1775,87 @@
 				}
 			],
 			"id": "2216ef3f-5c3d-4a4c-9dea-afcfb600c8f7"
+		},
+		{
+			"name": "Главная",
+			"item": [
+				{
+					"name": "Операции по рублевым счетам",
+					"item": [
+						{
+							"name": "Авторизация",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript",
+										"id": "333e0c0b-9457-4342-9d00-994ee4a0befb"
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											"const moment = require('moment');",
+											"",
+											"//Дата для использования в теле запроса - действует только для данного запроса",
+											"pm.environment.set(\"dateToday\", moment().subtract(0, 'day').format(\"YYYY-MM-DD\"))",
+											"",
+											"console.log(\"Сегодняшняя дата - \" + pm.variables.get(\"dateToday\"))"
+										],
+										"type": "text/javascript",
+										"id": "1b9de58f-d087-486a-b7dd-1c52749d3a22"
+									}
+								}
+							],
+							"id": "b7490517-a502-47d5-b1f0-4c2394c0bf01",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": {
+										"username": "{{login}}",
+										"password": "{{password}}"
+									}
+								},
+								"method": "POST",
+								"header": [],
+								"url": "{{host}}/rest/stateful/corp/login"
+							},
+							"response": []
+						},
+						{
+							"name": "New Request",
+							"id": "45faa459-d706-4f26-87a6-39d2c29ff0c0",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"accounts\": [\n        \"40702810500000000470\",\n        \"40702810014000003918\",\n        \"40702810715000000003\",\n        \"45812810614001000470\",\n        \"40702810800000000001\",\n        \"40702810200000004006\"\n    ],\n    \"beginDate\": \"2023-01-01\",\n    \"endDate\": \"2023-10-23\",\n    \"maxNumber\": \"20\",\n    \"fromAmount\": \"null\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{host}}/rest/stateful/corp/metall-invest/statement/operation/last"
+							},
+							"response": []
+						}
+					],
+					"id": "b339182b-9919-48f0-8401-7e306687a62f"
+				}
+			],
+			"id": "2313a367-0802-4f90-aba7-2f788fa29db9"
 		}
 	]
 }
