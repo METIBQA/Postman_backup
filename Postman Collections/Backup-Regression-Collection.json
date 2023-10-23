@@ -11291,7 +11291,7 @@
 													"const response = pm.response.json();",
 													"",
 													"pm.test(\"На подпись - фильтр \\\"Рублевый с СВО\\\"\", function () {",
-													"    pm.expect(response.filter).to.have.property(\"additional\", \"(requestCode <> '' and responseReceived <> true)\")",
+													"    pm.expect(response.filter.additional).to.eql(\"(requestCode <> '' and responseReceived <> true)\")",
 													"});"
 												],
 												"type": "text/javascript"
@@ -11324,25 +11324,25 @@
 										{
 											"listen": "prerequest",
 											"script": {
+												"id": "c24459ef-9fe0-49b2-8536-93d368fa72d7",
 												"exec": [
 													""
 												],
-												"type": "text/javascript",
-												"id": "c24459ef-9fe0-49b2-8536-93d368fa72d7"
+												"type": "text/javascript"
 											}
 										},
 										{
 											"listen": "test",
 											"script": {
+												"id": "c86676cf-6067-483d-ae8a-92a1935d5e48",
 												"exec": [
 													"const response = pm.response.json();",
 													"",
 													"pm.test(\"Планируемые - фильтр \\\"Рублевый с СВО\\\"\", function () {",
-													"    pm.expect(response.filter).to.have.property(\"additional\", \"status in ('deffered', 'draft', 'for_send', 'imported', 'new', 'post_for_send', 'pre_end', 'send', 'send_to_aml')\")",
+													"    pm.expect(response.filter.additional).to.eql(\"status in ('deffered', 'draft', 'for_send', 'imported', 'new', 'post_for_send', 'pre_end', 'send', 'send_to_aml')\")",
 													"});"
 												],
-												"type": "text/javascript",
-												"id": "c86676cf-6067-483d-ae8a-92a1935d5e48"
+												"type": "text/javascript"
 											}
 										}
 									],
@@ -11372,15 +11372,15 @@
 										{
 											"listen": "test",
 											"script": {
+												"id": "008da198-e1e4-41fa-bd0c-bafea0443880",
 												"exec": [
 													"const response = pm.response.json();",
 													"",
 													"pm.test(\"Отказанные - фильтр \\\"Рублевый с СВО\\\"\", function () {",
-													"    pm.expect(response.filter).to.have.property(\"additional\", \"status in ('cancel', 'decline')\")",
+													"    pm.expect(response.filter.additional).to.eql(\"status in ('cancel', 'decline')\")",
 													"});"
 												],
-												"type": "text/javascript",
-												"id": "008da198-e1e4-41fa-bd0c-bafea0443880"
+												"type": "text/javascript"
 											}
 										}
 									],
