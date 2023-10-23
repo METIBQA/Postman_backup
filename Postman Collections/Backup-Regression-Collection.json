@@ -11243,6 +11243,44 @@
 									"response": []
 								},
 								{
+									"name": "Смена клиента на ООО \"Радиатор\"",
+									"id": "c319273c-de0c-4902-9b5c-a439e031e1b3",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "PUT",
+										"header": [],
+										"url": {
+											"raw": "{{host}}/rest/stateful/corp/company/change_active/7970250",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"rest",
+												"stateful",
+												"corp",
+												"company",
+												"change_active",
+												"7970250"
+											],
+											"query": [
+												{
+													"key": "2037480",
+													"value": "Тест",
+													"disabled": true
+												},
+												{
+													"key": "7970250",
+													"value": "Препрод",
+													"disabled": true
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
 									"name": "На подпись - \"Рублевый с СВО\"",
 									"event": [
 										{
