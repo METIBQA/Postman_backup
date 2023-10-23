@@ -1831,6 +1831,18 @@
 						},
 						{
 							"name": "Рест last",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "5539daa4-e876-4f00-b8af-849e9b0c90dd",
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
 							"id": "45faa459-d706-4f26-87a6-39d2c29ff0c0",
 							"protocolProfileBehavior": {
 								"disableBodyPruning": true
