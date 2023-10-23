@@ -1801,6 +1801,24 @@
 						}
 					],
 					"id": "7583fe92-fab3-4ec9-b2a7-9f256418bf11"
+				},
+				{
+					"name": "New Folder",
+					"item": [
+						{
+							"name": "New Request",
+							"id": "5414fcd0-1e1c-4e0f-ab3c-c72911709323",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": []
+							},
+							"response": []
+						}
+					],
+					"id": "236a0b27-225d-45fd-864d-1dfb5144a3fd"
 				}
 			],
 			"id": "cec69ded-fb17-4d50-b13f-8f843d74bfdd"
