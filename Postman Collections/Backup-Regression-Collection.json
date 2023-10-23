@@ -11185,6 +11185,195 @@
 				}
 			],
 			"id": "d0549f29-bc28-4972-9cc2-01dbc6f3a232"
+		},
+		{
+			"name": "Главная",
+			"item": [
+				{
+					"name": "Операции по рублевым счетам",
+					"item": [
+						{
+							"name": "#4554. Проверка фильтрации документов \"Рублевый с СВО\"",
+							"item": [
+								{
+									"name": "Авторизация",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													""
+												],
+												"type": "text/javascript",
+												"id": "333e0c0b-9457-4342-9d00-994ee4a0befb"
+											}
+										},
+										{
+											"listen": "prerequest",
+											"script": {
+												"exec": [
+													"const moment = require('moment');",
+													"",
+													"//Дата для использования в теле запроса - действует только для данного запроса",
+													"pm.environment.set(\"dateToday\", moment().subtract(0, 'day').format(\"YYYY-MM-DD\"))",
+													"",
+													"console.log(\"Сегодняшняя дата - \" + pm.variables.get(\"dateToday\"))"
+												],
+												"type": "text/javascript",
+												"id": "1b9de58f-d087-486a-b7dd-1c52749d3a22"
+											}
+										}
+									],
+									"id": "6cd179ea-b178-41e7-b18e-8866008fc09a",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"auth": {
+											"type": "basic",
+											"basic": {
+												"username": "{{login}}",
+												"password": "{{password}}"
+											}
+										},
+										"method": "POST",
+										"header": [],
+										"url": "{{host}}/rest/stateful/corp/login"
+									},
+									"response": []
+								},
+								{
+									"name": "На подпись - \"Рублевый с СВО\"",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "72a42a4a-269a-4ace-a131-c7812f3638af",
+												"exec": [
+													"const response = pm.response.json();",
+													"",
+													"pm.test(\"На подпись - фильтр \\\"Рублевый с СВО\\\"\", function () {",
+													"    pm.expect(response.filter).to.have.property(\"additional\", \"(requestCode <> '' and responseReceived <> true)\")",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"id": "4dea766c-ea66-4b21-ab6b-8e8cb23f5eb2",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"docModule\": \"ibankul\",\n    \"docType\": \"mail2client\",\n    \"filter\": {\n        \"dateFrom\": \"2023-01-01\",\n        \"dateTo\": \"{{dateToday}}\",\n        \"additional\": \"requestCode <> '' and responseReceived <> true\"\n    }\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": "{{host}}/rest/stateful/corp/pageable/document/page"
+									},
+									"response": []
+								},
+								{
+									"name": "Планируемые -  \"Рублевый с СВО\"",
+									"event": [
+										{
+											"listen": "prerequest",
+											"script": {
+												"exec": [
+													""
+												],
+												"type": "text/javascript",
+												"id": "c24459ef-9fe0-49b2-8536-93d368fa72d7"
+											}
+										},
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"const response = pm.response.json();",
+													"",
+													"pm.test(\"Планируемые - фильтр \\\"Рублевый с СВО\\\"\", function () {",
+													"    pm.expect(response.filter).to.have.property(\"additional\", \"status in ('deffered', 'draft', 'for_send', 'imported', 'new', 'post_for_send', 'pre_end', 'send', 'send_to_aml')\")",
+													"});"
+												],
+												"type": "text/javascript",
+												"id": "c86676cf-6067-483d-ae8a-92a1935d5e48"
+											}
+										}
+									],
+									"id": "8d8bd2af-b5d7-4430-b0eb-4fd0d7fab2b6",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"docModule\": \"ibankul\",\n    \"docType\": \"doc_platpor_bp\",\n    \"filter\": {\n        \"additional\": \"(status in ('for_send', 'send','draft','imported','new','deffered','post_for_send','send_to_aml','pre_end'))\",\n        \"dateFrom\": \"2023-01-01\",\n        \"dateTo\": \"{{dateToday}}\"\n    },\n    \"page\": {\n        \"number\": 0,\n        \"size\": 20\n    },\n    \"sorting\": [\n        {\n            \"field\": \"id\",\n            \"order\": \"DESC\"\n        }\n    ],\n    \"onlyFields\": [\n        \"id\",\n        \"accId\",\n        \"accCurr\",\n        \"accNumber\",\n        \"docNumber\",\n        \"docDate\",\n        \"amount\",\n        \"statusCaption\",\n        \"status\",\n        \"signStatus\",\n        \"signStatusCaption\",\n        \"registerStamp\",\n        \"corrFullname\",\n        \"description\",\n        \"declineInfo\",\n        \"sendtype\",\n        \"loanAgreementNumber\",\n        \"inq181\"\n    ]\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": "{{host}}/rest/stateful/corp/pageable/document/visual/page"
+									},
+									"response": []
+								},
+								{
+									"name": "Отказанные - \"Рублевый с СВО\"",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"const response = pm.response.json();",
+													"",
+													"pm.test(\"Отказанные - фильтр \\\"Рублевый с СВО\\\"\", function () {",
+													"    pm.expect(response.filter).to.have.property(\"additional\", \"status in ('cancel', 'decline')\")",
+													"});"
+												],
+												"type": "text/javascript",
+												"id": "008da198-e1e4-41fa-bd0c-bafea0443880"
+											}
+										}
+									],
+									"id": "ffc3a216-155f-4ee0-ae23-4b69fe19c6ca",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"docModule\": \"ibankul\",\n    \"docType\": \"doc_platpor_bp\",\n    \"filter\": {\n        \"additional\": \"(status in ('cancel','decline'))\",\n        \"dateFrom\": \"2023-01-01\",\n        \"dateTo\": \"{{dateToday}}\"\n    },\n    \"page\": {\n        \"number\": 0,\n        \"size\": 20\n    },\n    \"sorting\": [\n        {\n            \"field\": \"id\",\n            \"order\": \"DESC\"\n        }\n    ],\n    \"onlyFields\": [\n        \"id\",\n        \"accId\",\n        \"accCurr\",\n        \"accNumber\",\n        \"docNumber\",\n        \"docDate\",\n        \"amount\",\n        \"statusCaption\",\n        \"status\",\n        \"signStatus\",\n        \"signStatusCaption\",\n        \"registerStamp\",\n        \"corrFullname\",\n        \"description\",\n        \"declineInfo\",\n        \"sendtype\",\n        \"loanAgreementNumber\",\n        \"inq181\"\n    ]\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": "{{host}}/rest/stateful/corp/pageable/document/visual/page"
+									},
+									"response": []
+								}
+							],
+							"id": "fde42528-ffba-4fa4-ae66-1847bdf69781"
+						}
+					],
+					"id": "453616eb-3d7a-48fc-b050-7d7d28e442c6"
+				}
+			],
+			"id": "d30b961e-9fc3-4cea-86ed-c049a6ed1831"
 		}
 	],
 	"event": [
