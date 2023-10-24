@@ -10521,6 +10521,7 @@
 								{
 									"listen": "test",
 									"script": {
+										"id": "4fe4f334-e134-4b18-9085-88ace571bec1",
 										"exec": [
 											"/* Пояснение:",
 											"undefined - эти парамерты не должны приходить в ресте",
@@ -10573,9 +10574,9 @@
 											"        \"subtype\": \"0\",",
 											"        \"array\": \"deposits\",",
 											"        \"visible\": \"true\",",
-											"        \"number\": \"42103156800000000004\",",
+											"        \"number\": \"42103810100000000707\",",
 											"        \"status\": \"new\",",
-											"        \"info\": \"Депозитный счет **0004\",",
+											"        \"info\": \"Депозитный счет **0707\",",
 											"        \"typeCaption\": \"Депозитный счет\"",
 											"    },",
 											"    {",
@@ -11072,13 +11073,13 @@
 											"    }",
 											"}"
 										],
-										"type": "text/javascript",
-										"id": "4fe4f334-e134-4b18-9085-88ace571bec1"
+										"type": "text/javascript"
 									}
 								},
 								{
 									"listen": "prerequest",
 									"script": {
+										"id": "8dd0207b-b523-41a4-907e-ec3b0d4c0852",
 										"exec": [
 											"// ПОЛУЧАЮ ТЕКУЩУЮ ДАТУ И ВРЕМЯ",
 											"let currentDate = new Date();",
@@ -11114,8 +11115,7 @@
 											"",
 											"pm.variables.set(\"actualDate\", actualDate);"
 										],
-										"type": "text/javascript",
-										"id": "8dd0207b-b523-41a4-907e-ec3b0d4c0852"
+										"type": "text/javascript"
 									}
 								}
 							],
