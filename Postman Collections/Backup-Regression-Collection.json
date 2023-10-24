@@ -11162,23 +11162,21 @@
 						{
 							"listen": "prerequest",
 							"script": {
+								"id": "e1c3c017-d5bc-49d8-8b98-42a5c7421551",
 								"type": "text/javascript",
 								"exec": [
 									""
-								],
-								"id": "d35a1d94-633f-4338-9a06-7f1080ca20ec"
+								]
 							}
 						},
 						{
 							"listen": "test",
 							"script": {
+								"id": "c38213dd-afb7-4736-9efd-dd8969f0ef97",
 								"type": "text/javascript",
 								"exec": [
-									"pm.test(\"Status code is 200\", function () {",
-									"    pm.response.to.have.status(200);",
-									"});"
-								],
-								"id": "94395ace-dee8-42e1-8508-3ee3429d2f45"
+									""
+								]
 							}
 						}
 					]
