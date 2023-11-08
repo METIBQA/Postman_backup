@@ -1757,9 +1757,12 @@
 											"const moment = require('moment');",
 											"",
 											"//Дата для использования в теле запроса - действует только для данного запроса",
-											"pm.variables.set(\"dataToday\", moment().subtract(-1, 'day').format(\"YYYY-MM-DD\"))",
+											"pm.variables.set(\"dataToday+1\", moment().subtract(-1, 'day').format(\"YYYY-MM-DD\"))",
+											"pm.variables.set(\"dataToday\", moment().subtract(0, 'day').format(\"YYYY-MM-DD\"))",
 											"",
-											"//console.log(pm.variables.get(\"dataToday\"))"
+											"",
+											"console.log('Сегодняшняя дата:', pm.variables.get(\"dataToday\"))",
+											"console.log('Завтрашняя дата:', pm.variables.get(\"dataToday+1\"))"
 										],
 										"type": "text/javascript"
 									}
@@ -1774,7 +1777,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"accId\": {{accId}},\n    \"deal\": [\n        {\n            \"docPlatporCurrId\": {{idRub}},\n            \"numberLine\": \"1\",\n            \"payDirection\": \"2\",\n            \"dealMode\": \"1\",\n            \"operCode\": \"23110\",\n            \"remark\": \"\",\n            \"docNumber\": {{docNumberRub}},\n            \"amount\": \"505\",\n            \"payCurrCode\": \"810\",\n            \"transDate\": \"{{dataToday}}\",\n            \"operDate\": \"{{dataToday}}\",\n            \"dateRefundPrepayment\": \"2023-08-16\",\n            \"expectDate\": \"2023-08-16\",\n            \"noteOperation\": \"Поле \\\"Характер операции\\\"\",\n            \"psNumber\": \"160500031405000011\"\n        }\n    ],\n    \"employee\": \"Фиона Дефолтова\",\n    \"phone\": \"+79999999999\",\n    \"docPlatporCurrId\": {{idRub}},\n    \"docNumber\": {{docNumberSVO}},\n    \"complexType\": \"РП без П\",\n    \"payControlPsNumberCaption\": \"160500021405000011\"\n}",
+									"raw": "{\n    \"accId\": {{accId}},\n    \"deal\": [\n        {\n            \"docPlatporCurrId\": {{idRub}},\n            \"numberLine\": \"1\",\n            \"payDirection\": \"2\",\n            \"dealMode\": \"1\",\n            \"operCode\": \"23110\",\n            \"remark\": \"\",\n            \"docNumber\": {{docNumberRub}},\n            \"amount\": \"505\",\n            \"payCurrCode\": \"810\",\n            \"transDate\": \"{{dataToday}}\",\n            \"operDate\": \"{{dataToday}}\",\n            \"dateRefundPrepayment\": \"{{dataToday+1}}\",\n            \"expectDate\": \"{{dataToday+1}}\",\n            \"noteOperation\": \"Поле \\\"Характер операции\\\"\",\n            \"psNumber\": \"160500031405000011\"\n        }\n    ],\n    \"employee\": \"Фиона Дефолтова\",\n    \"phone\": \"+79999999999\",\n    \"docPlatporCurrId\": {{idRub}},\n    \"docNumber\": {{docNumberSVO}},\n    \"complexType\": \"РП без П\",\n    \"payControlPsNumberCaption\": \"160500021405000011\"\n}",
 									"options": {
 										"raw": {
 											"language": "json"
