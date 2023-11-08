@@ -1738,6 +1738,7 @@
 								{
 									"listen": "test",
 									"script": {
+										"id": "ff27aa00-8521-49c2-a61e-f5afc5365383",
 										"exec": [
 											"const response = pm.response.json();",
 											"",
@@ -1745,8 +1746,22 @@
 											"  pm.expect(response).to.have.property(\"complexType\", \"РП без П\");",
 											"});"
 										],
-										"type": "text/javascript",
-										"id": "ff27aa00-8521-49c2-a61e-f5afc5365383"
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "a138bc54-20dd-4c9a-93cb-822700706f87",
+										"exec": [
+											"const moment = require('moment');",
+											"",
+											"//Дата для использования в теле запроса - действует только для данного запроса",
+											"pm.variables.set(\"dataToday\", moment().subtract(-1, 'day').format(\"YYYY-MM-DD\"))",
+											"",
+											"//console.log(pm.variables.get(\"dataToday\"))"
+										],
+										"type": "text/javascript"
 									}
 								}
 							],
@@ -1759,7 +1774,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"accId\": {{accId}},\n    \"deal\": [\n        {\n            \"docPlatporCurrId\": {{idRub}},\n            \"numberLine\": \"1\",\n            \"payDirection\": \"2\",\n            \"dealMode\": \"1\",\n            \"operCode\": \"23110\",\n            \"remark\": \"\",\n            \"docNumber\": {{docNumberRub}},\n            \"amount\": \"505\",\n            \"payCurrCode\": \"810\",\n            \"transDate\": \"2023-08-15\",\n            \"operDate\": \"2023-08-15\",\n            \"dateRefundPrepayment\": \"2023-08-16\",\n            \"expectDate\": \"2023-08-16\",\n            \"noteOperation\": \"Поле \\\"Характер операции\\\"\",\n            \"psNumber\": \"160500021405000011\"\n        }\n    ],\n    \"employee\": \"Фиона Дефолтова\",\n    \"phone\": \"+79999999999\",\n    \"docPlatporCurrId\": {{idRub}},\n    \"docNumber\": {{docNumberSVO}},\n    \"complexType\": \"РП без П\",\n    \"payControlPsNumberCaption\": \"160500021405000011\"\n}",
+									"raw": "{\n    \"accId\": {{accId}},\n    \"deal\": [\n        {\n            \"docPlatporCurrId\": {{idRub}},\n            \"numberLine\": \"1\",\n            \"payDirection\": \"2\",\n            \"dealMode\": \"1\",\n            \"operCode\": \"23110\",\n            \"remark\": \"\",\n            \"docNumber\": {{docNumberRub}},\n            \"amount\": \"505\",\n            \"payCurrCode\": \"810\",\n            \"transDate\": \"{{dataToday}}\",\n            \"operDate\": \"{{dataToday}}\",\n            \"dateRefundPrepayment\": \"2023-08-16\",\n            \"expectDate\": \"2023-08-16\",\n            \"noteOperation\": \"Поле \\\"Характер операции\\\"\",\n            \"psNumber\": \"160500031405000011\"\n        }\n    ],\n    \"employee\": \"Фиона Дефолтова\",\n    \"phone\": \"+79999999999\",\n    \"docPlatporCurrId\": {{idRub}},\n    \"docNumber\": {{docNumberSVO}},\n    \"complexType\": \"РП без П\",\n    \"payControlPsNumberCaption\": \"160500021405000011\"\n}",
 									"options": {
 										"raw": {
 											"language": "json"
