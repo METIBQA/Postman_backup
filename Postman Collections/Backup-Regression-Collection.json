@@ -10562,6 +10562,7 @@
 										{
 											"listen": "test",
 											"script": {
+												"id": "7811dc59-c4f6-49c1-89b4-437c947b23d3",
 												"exec": [
 													"/* Пояснение:",
 													"undefined - эти парамерты не должны приходить в ресте",
@@ -10680,7 +10681,7 @@
 													"        \"info\": \"Транзитный счет **1252\",",
 													"        \"typeCaption\": \"Транзитный валютный счет\"",
 													"    },",
-													"        {",
+													"    {",
 													"        \"type\": \"6\",",
 													"        \"subtype\": \"88\",",
 													"        \"array\": \"accounts\",",
@@ -10805,9 +10806,9 @@
 													"        \"subtype\": \"0\",",
 													"        \"array\": \"accounts\",",
 													"        \"visible\": \"true\",",
-													"        \"number\": \"40702810715000000061\",",
+													"        \"number\": \"40702810014000003837\",",
 													"        \"status\": \"new\",",
-													"        \"info\": \"Счет ТП Финанс **0061\",",
+													"        \"info\": \"Счет ТП Финанс **3837\",",
 													"        \"typeCaption\": \"Расчетный счет\"",
 													"    },",
 													"    {",
@@ -11113,13 +11114,13 @@
 													"    }",
 													"}"
 												],
-												"type": "text/javascript",
-												"id": "7811dc59-c4f6-49c1-89b4-437c947b23d3"
+												"type": "text/javascript"
 											}
 										},
 										{
 											"listen": "prerequest",
 											"script": {
+												"id": "ecc479c9-ee2f-486a-8974-4f25f327eac6",
 												"exec": [
 													"// ПОЛУЧАЮ ТЕКУЩУЮ ДАТУ И ВРЕМЯ",
 													"let currentDate = new Date();",
@@ -11155,8 +11156,7 @@
 													"",
 													"pm.variables.set(\"actualDate\", actualDate);"
 												],
-												"type": "text/javascript",
-												"id": "ecc479c9-ee2f-486a-8974-4f25f327eac6"
+												"type": "text/javascript"
 											}
 										}
 									],
