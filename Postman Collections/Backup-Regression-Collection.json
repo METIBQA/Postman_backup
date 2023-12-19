@@ -11448,6 +11448,145 @@
 								}
 							],
 							"id": "fde42528-ffba-4fa4-ae66-1847bdf69781"
+						},
+						{
+							"name": "4782. multi_types_page_v2 - Проверка типов документов",
+							"item": [
+								{
+									"name": "Авторизация",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													""
+												],
+												"type": "text/javascript",
+												"id": "333e0c0b-9457-4342-9d00-994ee4a0befb"
+											}
+										},
+										{
+											"listen": "prerequest",
+											"script": {
+												"exec": [
+													"const moment = require('moment');",
+													"",
+													"//Дата для использования в теле запроса - действует только для данного запроса",
+													"pm.environment.set(\"dateToday\", moment().subtract(0, 'day').format(\"YYYY-MM-DD\"))",
+													"",
+													"console.log(\"Сегодняшняя дата - \" + pm.variables.get(\"dateToday\"))"
+												],
+												"type": "text/javascript",
+												"id": "1b9de58f-d087-486a-b7dd-1c52749d3a22"
+											}
+										}
+									],
+									"id": "37a1c3a2-7766-4628-a544-7c161eb85e87",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"auth": {
+											"type": "basic",
+											"basic": {
+												"username": "{{login}}",
+												"password": "{{password}}"
+											}
+										},
+										"method": "POST",
+										"header": [],
+										"url": "{{host}}/rest/stateful/corp/login"
+									},
+									"response": []
+								},
+								{
+									"name": "Смена клиента на ООО \"Радиатор\"",
+									"id": "0c887751-5da0-444e-9940-63f320502e40",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "PUT",
+										"header": [],
+										"url": {
+											"raw": "{{host}}/rest/stateful/corp/company/change_active/7970250",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"rest",
+												"stateful",
+												"corp",
+												"company",
+												"change_active",
+												"7970250"
+											],
+											"query": [
+												{
+													"key": "2037480",
+													"value": "Тест",
+													"disabled": true
+												},
+												{
+													"key": "7970250",
+													"value": "Препрод",
+													"disabled": true
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Запрос документов",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "97df3a5a-d4ea-432e-ab5c-c34051c29c39",
+												"exec": [
+													"// Парсим JSON-ответ",
+													"var jsonData = pm.response.json();",
+													"",
+													"// Проверяем наличие записей с нужными docType",
+													"pm.test(\"Проверка наличия записей с docType: doc_platpor_bp\", function () {",
+													"    pm.expect(jsonData.documents.some(doc => doc.docType === \"doc_platpor_bp\")).to.be.true;",
+													"});",
+													"",
+													"pm.test(\"Проверка наличия записей с docType: doc_platpor\", function () {",
+													"    pm.expect(jsonData.documents.some(doc => doc.docType === \"doc_platpor\")).to.be.true;",
+													"});",
+													"",
+													"pm.test(\"Проверка наличия записей с docType: transfer_rests\", function () {",
+													"    pm.expect(jsonData.documents.some(doc => doc.docType === \"transfer_rests\")).to.be.true;",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"id": "386b58d3-49fb-4c2c-bb4b-787d878d70a0",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"visual\": true,\n    \"page\": {\n        \"number\": 0,\n        \"size\": 20\n    },\n    \"listOfStatuses\": \"for_send, send, draft, imported, new, deffered, post_for_send, send_to_aml, pre_end\",\n    \"lastDocumentFilter\": {\n        \"docTypes\": [\n            {\n                \"docModule\": \"ibankul\",\n                \"docType\": \"doc_platpor\"\n            },\n            {\n                \"docModule\": \"ibankul\",\n                \"docType\": \"doc_platpor_bp\"\n            },\n            {\n                \"docModule\": \"ibankul\",\n                \"docType\": \"transfer_rests\"\n            }\n        ],\n        \"dateFrom\": \"20221219\",\n        \"dateTo\": \"20231219\",\n        \"onlyThisJsonFields\": \"id, accId, accCurr, accNumber, docNumber, docDate, amount, statusCaption, status, signStatus, signStatusCaption, registerStamp, corrFullname, description, declineInfo, sendtype, loanAgreementNumber, inq181, bankName\"\n    }\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": "{{host}}/rest/stateful/corp/metinv/pageable/document/multi_types_page_v2"
+									},
+									"response": []
+								}
+							],
+							"id": "df0a3dd8-ba69-4d69-b139-605275b05125"
 						}
 					],
 					"id": "453616eb-3d7a-48fc-b050-7d7d28e442c6"
