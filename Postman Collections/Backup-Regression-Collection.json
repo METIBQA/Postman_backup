@@ -11593,6 +11593,134 @@
 				}
 			],
 			"id": "d30b961e-9fc3-4cea-86ed-c049a6ed1831"
+		},
+		{
+			"name": "Перевод остатков",
+			"item": [
+				{
+					"name": "Авторизация Copy",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"id": "333e0c0b-9457-4342-9d00-994ee4a0befb"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"const moment = require('moment');",
+									"",
+									"//Дата для использования в теле запроса - действует только для данного запроса",
+									"pm.environment.set(\"dateToday\", moment().subtract(0, 'day').format(\"YYYY-MM-DD\"))",
+									"",
+									"console.log(\"Сегодняшняя дата - \" + pm.variables.get(\"dateToday\"))"
+								],
+								"type": "text/javascript",
+								"id": "1b9de58f-d087-486a-b7dd-1c52749d3a22"
+							}
+						}
+					],
+					"id": "b6c7420c-64a1-46e0-a2c0-b4468abeb23b",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": {
+								"username": "{{login}}",
+								"password": "{{password}}"
+							}
+						},
+						"method": "POST",
+						"header": [],
+						"url": "{{host}}/rest/stateful/corp/login"
+					},
+					"response": []
+				},
+				{
+					"name": "Проверка настроек даты платежки",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "568746d2-48ef-40f4-a6f4-0c610d741134",
+								"exec": [
+									"const response = pm.response.json();",
+									"",
+									"",
+									"let searchName1 = \"DOC_DATE_BETWEEN/AFTER_DAYS\"",
+									"let searchValue1 = \"0\"",
+									"",
+									"let searchName2 = \"DOC_DATE_BETWEEN/AFTER_DAYS\"",
+									"let searchValue2 = \"0\"",
+									"",
+									"let searchName3 = \"CORR_ACCOUNT/ACCOUNT_TYPES\"",
+									"let searchValue3 = \"405, 406, 407, 40807, 40802\"",
+									"",
+									"let searchName4 = \"SELF_ACCOUNT/ACCOUNT_FILTER_EXPRESSION\"",
+									"let searchValue4 = \"ACCOUNT_TYPE='72' and (ACC_SUBTYPE='1002' OR ACC_SUBTYPE='2002') and STATUS!='close'\"",
+									"",
+									"let searchName5 = \"CORR_ACCOUNT/ACCOUNT_FILTER_EXPRESSION\"",
+									"let searchValue5 = \"ACCOUNT_TYPE='1' AND ACC_SUBTYPE!='116' AND ACC_SUBTYPE!='102' AND STATUS!='close' AND ACCOUNT_TYPE!='13' AND ACCOUNT_TYPE!='7' AND ACC_SUBTYPE!='1002' AND ACC_SUBTYPE!='2002'\"",
+									"",
+									"//Ищу номер массива, в котором содержится настройка",
+									"let element1 = response.docSettings.findIndex(x => x.name === searchName1);",
+									"let element2 = response.docSettings.findIndex(x => x.name === searchName2);",
+									"let element3 = response.docSettings.findIndex(x => x.name === searchName3);",
+									"let element4 = response.docSettings.findIndex(x => x.name === searchName4);",
+									"let element5 = response.docSettings.findIndex(x => x.name === searchName5);",
+									"",
+									"pm.test(\"Допустимое количество дней до текущей даты\", function () {",
+									"    pm.expect(response.docSettings[element1]).to.have.property(\"value\", searchValue1);",
+									"});",
+									"pm.test(\"Допустимое количество дней после текущей даты\", function () {",
+									"    pm.expect(response.docSettings[element2]).to.have.property(\"value\", searchValue2);",
+									"});",
+									"pm.test(\"Счет списания. Дополнительный фильтр допустимых счетов\", function () {",
+									"    pm.expect(response.docSettings[element3]).to.have.property(\"value\", searchValue3);",
+									"});",
+									"pm.test(\"Счет зачисления. Список допустимых конто счета\", function () {",
+									"    pm.expect(response.docSettings[element4]).to.have.property(\"value\", searchValue4);",
+									"});",
+									"pm.test(\"Счет зачисления. Дополнительный фильтр допустимых счетов\", function () {",
+									"    pm.expect(response.docSettings[element5]).to.have.property(\"value\", searchValue5);",
+									"});",
+									"",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"id": "af16be03-e414-42f0-ad90-e531ab88e15a",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{host}}/rest/stateful/corp/document_transfer_rests/create"
+					},
+					"response": []
+				}
+			],
+			"id": "0e8f863a-bb07-4b29-9d55-7681a91c9fcc"
 		}
 	],
 	"event": [
