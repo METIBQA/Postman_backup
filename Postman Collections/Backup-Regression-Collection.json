@@ -11930,6 +11930,42 @@
 						},
 						{
 							"name": "Прямой//ИП//255 символов//дата = сегодня",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "8ea1115c-cee4-40d0-bff6-6ca78d7d5c75",
+										"exec": [
+											"const moment = require('moment');\r",
+											"\r",
+											"//Дата для использования в теле запроса - действует только для данного запроса\r",
+											"pm.variables.set(\"dateBody\", moment().subtract(0, 'day').format(\"YYYY-MM-DD\"))\r",
+											"console.log('Сегодняшняя дата', pm.variables.get(\"dateBody\"))\r",
+											"\r",
+											"\r",
+											"//Дата для использования в теле запроса - действует только для данного запроса\r",
+											"pm.variables.set(\"dateDocument\", moment().subtract(-1, 'day').format(\"YYYY-MM-DD\"))\r",
+											"\r",
+											"console.log('Завтрашняя дата', pm.variables.get(\"dateDocument\"))"
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"id": "23fbbfdf-0f63-4cf6-ac4d-22243ea35bc6",
+										"exec": [
+											"const response = pm.response.json();\r",
+											"\r",
+											"pm.test(`Поле \"complexType\" приходит правильно`, function() {\r",
+											"  pm.expect(response).to.have.property(\"id\");\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
 							"id": "9bf5c7f2-cbb1-494e-8522-d7f24381452a",
 							"protocolProfileBehavior": {
 								"disableBodyPruning": true
