@@ -11724,7 +11724,439 @@
 		},
 		{
 			"name": "Получение наличных",
-			"item": [],
+			"item": [
+				{
+					"name": "Получатели///Контроли ФИО",
+					"item": [
+						{
+							"name": "Авторизация",
+							"id": "d67266cd-8493-4c79-97f1-dd86c6e6121a",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": {
+										"password": "{{password}}",
+										"username": "{{login}}"
+									}
+								},
+								"method": "POST",
+								"header": [],
+								"url": "{{host}}/rest/stateful/corp/login"
+							},
+							"response": []
+						},
+						{
+							"name": "Одно слово",
+							"id": "62090c64-fdc4-4c87-9174-2e183e6528a1",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"firstName\": \"Ян\",\r\n    \"secondName\": \"Янович\",\r\n    \"lastName\": \"Янов\",\r\n    \"citizenship\": \"Российское\",\r\n    \"birthDate\": \"2000-11-11\",\r\n    \"position\": \"Получатель\",\r\n    \"phone\": \"\",\r\n    \"phoneForSms\": \"\",\r\n    \"employeeDocs\": [\r\n        {\r\n            \"typeDocument\": \"21\",\r\n            \"docSerial\": \"1111\",\r\n            \"docNumber\": \"111111\",\r\n            \"docOrg\": \"1\",\r\n            \"docOrgCode\": \"111-111\",\r\n            \"dateOfIssue\": \"2014-11-11\"\r\n        }\r\n    ]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{host}}/rest/stateful/corp/other_employee/create"
+							},
+							"response": []
+						},
+						{
+							"name": "Два слова",
+							"id": "8b32d169-cc25-4dd5-bb49-a36f0932d63b",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"firstName\": \"Ян Ян\",\r\n    \"secondName\": \"Янович Янович\",\r\n    \"lastName\": \"Янов Янов\",\r\n    \"citizenship\": \"Российское\",\r\n    \"birthDate\": \"2000-11-11\",\r\n    \"position\": \"Получатель\",\r\n    \"phone\": \"\",\r\n    \"phoneForSms\": \"\",\r\n    \"employeeDocs\": [\r\n        {\r\n            \"typeDocument\": \"21\",\r\n            \"docSerial\": \"1111\",\r\n            \"docNumber\": \"111111\",\r\n            \"docOrg\": \"1\",\r\n            \"docOrgCode\": \"111-111\",\r\n            \"dateOfIssue\": \"2014-11-11\"\r\n        }\r\n    ]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{host}}/rest/stateful/corp/other_employee/create"
+							},
+							"response": []
+						},
+						{
+							"name": "Через дефис",
+							"id": "268eec40-405f-4818-84ab-62627b08e024",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"firstName\": \"Ян-Ян\",\r\n    \"secondName\": \"Янович-Янович\",\r\n    \"lastName\": \"Янов-Янов\",\r\n    \"citizenship\": \"Российское\",\r\n    \"birthDate\": \"2000-11-11\",\r\n    \"position\": \"Получатель\",\r\n    \"phone\": \"\",\r\n    \"phoneForSms\": \"\",\r\n    \"employeeDocs\": [\r\n        {\r\n            \"typeDocument\": \"21\",\r\n            \"docSerial\": \"1111\",\r\n            \"docNumber\": \"111111\",\r\n            \"docOrg\": \"1\",\r\n            \"docOrgCode\": \"111-111\",\r\n            \"dateOfIssue\": \"2014-11-11\"\r\n        }\r\n    ]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{host}}/rest/stateful/corp/other_employee/create"
+							},
+							"response": []
+						},
+						{
+							"name": "Только дефис в отчестве",
+							"id": "6ae5ca9d-8143-4e9a-8782-01c2f4711a04",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"firstName\": \"Ян\",\r\n    \"secondName\": \"-\",\r\n    \"lastName\": \"Янов\",\r\n    \"citizenship\": \"Российское\",\r\n    \"birthDate\": \"2000-11-11\",\r\n    \"position\": \"Получатель\",\r\n    \"phone\": \"\",\r\n    \"phoneForSms\": \"\",\r\n    \"employeeDocs\": [\r\n        {\r\n            \"typeDocument\": \"21\",\r\n            \"docSerial\": \"1111\",\r\n            \"docNumber\": \"111111\",\r\n            \"docOrg\": \"1\",\r\n            \"docOrgCode\": \"111-111\",\r\n            \"dateOfIssue\": \"2014-11-11\"\r\n        }\r\n    ]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{host}}/rest/stateful/corp/other_employee/create"
+							},
+							"response": []
+						},
+						{
+							"name": "Два слова через дефис",
+							"id": "4e720c21-241a-4d92-87b2-bd9829ca3d2c",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"firstName\": \"Ян-Ян Ян-Ян\",\r\n    \"secondName\": \"Янович-Янович Янович-Янович\",\r\n    \"lastName\": \"Янов-Янов Янов-Янов\",\r\n    \"citizenship\": \"Российское\",\r\n    \"birthDate\": \"2000-11-11\",\r\n    \"position\": \"Получатель\",\r\n    \"phone\": \"\",\r\n    \"phoneForSms\": \"\",\r\n    \"employeeDocs\": [\r\n        {\r\n            \"typeDocument\": \"21\",\r\n            \"docSerial\": \"1111\",\r\n            \"docNumber\": \"111111\",\r\n            \"docOrg\": \"1\",\r\n            \"docOrgCode\": \"111-111\",\r\n            \"dateOfIssue\": \"2014-11-11\"\r\n        }\r\n    ]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{host}}/rest/stateful/corp/other_employee/create"
+							},
+							"response": []
+						},
+						{
+							"name": "Три слова",
+							"id": "94ffb5d5-c36b-425b-81fa-6ff514abef52",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"firstName\": \"Ян Ян Ян\",\r\n    \"secondName\": \"Янович Янович Янович\",\r\n    \"lastName\": \"Янов Янов Янов\",\r\n    \"citizenship\": \"Российское\",\r\n    \"birthDate\": \"2000-11-11\",\r\n    \"position\": \"Получатель\",\r\n    \"phone\": \"\",\r\n    \"phoneForSms\": \"\",\r\n    \"employeeDocs\": [\r\n        {\r\n            \"typeDocument\": \"21\",\r\n            \"docSerial\": \"1111\",\r\n            \"docNumber\": \"111111\",\r\n            \"docOrg\": \"1\",\r\n            \"docOrgCode\": \"111-111\",\r\n            \"dateOfIssue\": \"2014-11-11\"\r\n        }\r\n    ]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{host}}/rest/stateful/corp/other_employee/create"
+							},
+							"response": []
+						},
+						{
+							"name": "Пустые поля",
+							"id": "299f9f6c-1a2f-44ae-ad4e-5c5fdeee1977",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"firstName\": \"\",\r\n    \"secondName\": \"\",\r\n    \"lastName\": \"\",\r\n    \"citizenship\": \"Российское\",\r\n    \"birthDate\": \"2000-11-11\",\r\n    \"position\": \"Получатель\",\r\n    \"phone\": \"\",\r\n    \"phoneForSms\": \"\",\r\n    \"employeeDocs\": [\r\n        {\r\n            \"typeDocument\": \"21\",\r\n            \"docSerial\": \"1111\",\r\n            \"docNumber\": \"111111\",\r\n            \"docOrg\": \"1\",\r\n            \"docOrgCode\": \"111-111\",\r\n            \"dateOfIssue\": \"2014-11-11\"\r\n        }\r\n    ]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{host}}/rest/stateful/corp/other_employee/create"
+							},
+							"response": []
+						}
+					],
+					"id": "330c25bd-87e5-4b84-82e6-f47a4d0b0ca0"
+				},
+				{
+					"name": "Новая заявка///Контроли",
+					"item": [
+						{
+							"name": "Авторизация",
+							"id": "a0b6d532-05b5-4a6e-a546-67d0604f23e3",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": {
+										"password": "{{password}}",
+										"username": "{{login}}"
+									}
+								},
+								"method": "POST",
+								"header": [],
+								"url": "{{host}}/rest/stateful/corp/login"
+							},
+							"response": []
+						},
+						{
+							"name": "Прямой//ИП//255 символов//дата = сегодня",
+							"id": "9bf5c7f2-cbb1-494e-8522-d7f24381452a",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"draft\": false,\r\n    \"docModule\": \"ibankul\",\r\n    \"docType\": \"request_receive_cash\",\r\n    \"docNumber\": \"ЗН 0000201\",\r\n    \"docDate\": \"2024-01-19\",\r\n    \"accNumber\": \"40802810200990000023\",\r\n    \"totalAmount\": \"100.00\",\r\n    \"currCode\": \"810\",\r\n    \"requiredBanknoteSelection\": \"false\",\r\n    \"sourcesOfIncome\": [\r\n        {\r\n            \"symbol\": \"58\",\r\n            \"sourcesIncome\": \"EEEssEEEssEEEssEEEssEEEssEEEssEEEssEEEssEEEssEEEssEEEssEEEssEEEssEEEssEEEssEEEssEEEssEEEssEEEssEEEssEEEssEEEssEEEssEEEssEEEssEEEssEEEssE\",\r\n            \"amount\": \"100.00\"\r\n        }\r\n    ],\r\n    \"receiverEmployeeId\": \"3476531\",\r\n    \"branchCode\": \"10035703694\",\r\n    \"receiveDate\": \"2024-01-19\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "https://front-dbo-ul-746.apps.do.okd.hq.metib.ru/rest/stateful/corp/receive/cash/create"
+							},
+							"response": []
+						},
+						{
+							"name": "Прямой//ЮЛ//255 символов//дата = сегодня",
+							"id": "95db4a6c-f594-414e-9429-fdd72d071770",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"draft\": false,\r\n    \"docModule\": \"ibankul\",\r\n    \"docType\": \"request_receive_cash\",\r\n    \"docNumber\": \"ЗН 0000026\",\r\n    \"docDate\": \"2024-01-19\",\r\n    \"accNumber\": \"40702810900990008182\",\r\n    \"totalAmount\": \"100.00\",\r\n    \"currCode\": \"810\",\r\n    \"requiredBanknoteSelection\": \"false\",\r\n    \"sourcesOfIncome\": [\r\n        {\r\n            \"symbol\": \"40\",\r\n            \"sourcesIncome\": \"EEEssEEEssEEEssEEEssEEEssEEEssEEEssEEEssEEEssEEEssEEEssEEEssEEEssEEEssEEEssEEEssEEEssEEEssEEEssEEEssEEEssEEEssEEEssEEEssEEEssEEEssEEEssEEEssEEEssEEEss\",\r\n            \"amount\": \"100.00\"\r\n        }\r\n    ],\r\n    \"receiverEmployeeId\": \"3480506\",\r\n    \"branchCode\": \"10035703694\",\r\n    \"receiveDate\": \"2024-01-19\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "https://front-dbo-ul-746.apps.do.okd.hq.metib.ru/rest/stateful/corp/receive/cash/create"
+							},
+							"response": []
+						},
+						{
+							"name": "Межфил//ИП//255 символов//дата = +10 раб.дней от текущей",
+							"id": "b6b470c7-6d0b-42df-9d7b-11e87fdc4a31",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"draft\": false,\r\n    \"docModule\": \"ibankul\",\r\n    \"docType\": \"request_receive_cash\",\r\n    \"docNumber\": \"ЗН 0000202\",\r\n    \"docDate\": \"2024-01-19\",\r\n    \"accNumber\": \"40802810200990000023\",\r\n    \"totalAmount\": \"100.00\",\r\n    \"currCode\": \"810\",\r\n    \"requiredBanknoteSelection\": \"false\",\r\n    \"sourcesOfIncome\": [\r\n        {\r\n            \"symbol\": \"58\",\r\n            \"sourcesIncome\": \"EEEssEEEssEEEssEEEssEEEssEEEssEEEssEEEssEEEssEEEssEEEssEEEssEEEssEEEssEEEssEEEssEEEssEEEssEEEssEEEssEEE\",\r\n            \"amount\": \"100.00\"\r\n        }\r\n    ],\r\n    \"receiverEmployeeId\": \"3476531\",\r\n    \"branchCode\": \"10010629672\",\r\n    \"receiveDate\": \"2024-02-02\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "https://front-dbo-ul-746.apps.do.okd.hq.metib.ru/rest/stateful/corp/receive/cash/create"
+							},
+							"response": []
+						},
+						{
+							"name": "Межфил//ЮЛ//255 символов//2 цели//дата = +10 раб.дней от текущей",
+							"id": "ada8ee7a-5227-457a-ab32-99b620adef84",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"draft\": false,\r\n    \"docModule\": \"ibankul\",\r\n    \"docType\": \"request_receive_cash\",\r\n    \"docNumber\": \"ЗН 0000027\",\r\n    \"docDate\": \"2024-01-19\",\r\n    \"accNumber\": \"40702810900990008182\",\r\n    \"totalAmount\": \"100.00\",\r\n    \"currCode\": \"810\",\r\n    \"requiredBanknoteSelection\": \"false\",\r\n    \"sourcesOfIncome\": [\r\n        {\r\n            \"symbol\": \"41\",\r\n            \"sourcesIncome\": \"EEEssEEEssEEEssEEEssEEEssEEEssEEEssEEEssEEEssEEEssEEEssEEEssEEEssEEEssEEEssEEEssEEEssEEEssEEEssEEEssEEEssEEEssEEEssEE\",\r\n            \"amount\": \"100.00\"\r\n        }\r\n    ],\r\n    \"receiverEmployeeId\": \"3480506\",\r\n    \"branchCode\": \"10010629672\",\r\n    \"receiveDate\": \"2024-02-02\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "https://front-dbo-ul-746.apps.do.okd.hq.metib.ru/rest/stateful/corp/receive/cash/create"
+							},
+							"response": []
+						},
+						{
+							"name": "Прямой//ИП//256 символов",
+							"id": "0182ed30-a863-465a-b8cf-89db8d036e33",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"draft\": false,\r\n    \"docModule\": \"ibankul\",\r\n    \"docType\": \"request_receive_cash\",\r\n    \"docNumber\": \"ЗН 0000201\",\r\n    \"docDate\": \"2024-01-19\",\r\n    \"accNumber\": \"40802810200990000023\",\r\n    \"totalAmount\": \"100.00\",\r\n    \"currCode\": \"810\",\r\n    \"requiredBanknoteSelection\": \"false\",\r\n    \"sourcesOfIncome\": [\r\n        {\r\n            \"symbol\": \"58\",\r\n            \"sourcesIncome\": \"EEEssEEEssEEEssEEEssEEEssEEEssEEEssEEEssEEEssEEEssEEEssEEEssEEEssEEEssEEEssEEEssEEEssEEEssEEEssEEEssEEEssEEEssEEEssEEEssEEEssEEEssEEEssE1\",\r\n            \"amount\": \"100.00\"\r\n        }\r\n    ],\r\n    \"receiverEmployeeId\": \"3476531\",\r\n    \"branchCode\": \"10035703694\",\r\n    \"receiveDate\": \"2024-01-19\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "https://front-dbo-ul-746.apps.do.okd.hq.metib.ru/rest/stateful/corp/receive/cash/create"
+							},
+							"response": []
+						},
+						{
+							"name": "Прямой//ЮЛ//256 символов",
+							"id": "52b33218-415d-418e-b6fa-a99d278b0327",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"draft\": false,\r\n    \"docModule\": \"ibankul\",\r\n    \"docType\": \"request_receive_cash\",\r\n    \"docNumber\": \"ЗН 0000026\",\r\n    \"docDate\": \"2024-01-19\",\r\n    \"accNumber\": \"40702810900990008182\",\r\n    \"totalAmount\": \"100.00\",\r\n    \"currCode\": \"810\",\r\n    \"requiredBanknoteSelection\": \"false\",\r\n    \"sourcesOfIncome\": [\r\n        {\r\n            \"symbol\": \"40\",\r\n            \"sourcesIncome\": \"EEEssEEEssEEEssEEEssEEEssEEEssEEEssEEEssEEEssEEEssEEEssEEEssEEEssEEEssEEEssEEEssEEEssEEEssEEEssEEEssEEEssEEEssEEEssEEEssEEEssEEEssEEEssEEEssEEEssEEEss1\",\r\n            \"amount\": \"100.00\"\r\n        }\r\n    ],\r\n    \"receiverEmployeeId\": \"3480506\",\r\n    \"branchCode\": \"10035703694\",\r\n    \"receiveDate\": \"2024-01-19\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "https://front-dbo-ul-746.apps.do.okd.hq.metib.ru/rest/stateful/corp/receive/cash/create"
+							},
+							"response": []
+						},
+						{
+							"name": "Межфил//ИП//256 символов",
+							"id": "5ff7be44-dba4-4ec8-bc3a-948d22c3f1af",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"draft\": false,\r\n    \"docModule\": \"ibankul\",\r\n    \"docType\": \"request_receive_cash\",\r\n    \"docNumber\": \"ЗН 0000202\",\r\n    \"docDate\": \"2024-01-19\",\r\n    \"accNumber\": \"40802810200990000023\",\r\n    \"totalAmount\": \"100.00\",\r\n    \"currCode\": \"810\",\r\n    \"requiredBanknoteSelection\": \"false\",\r\n    \"sourcesOfIncome\": [\r\n        {\r\n            \"symbol\": \"58\",\r\n            \"sourcesIncome\": \"EEEssEEEssEEEssEEEssEEEssEEEssEEEssEEEssEEEssEEEssEEEssEEEssEEEssEEEssEEEssEEEssEEEssEEEssEEEssEEEssEEE1\",\r\n            \"amount\": \"100.00\"\r\n        }\r\n    ],\r\n    \"receiverEmployeeId\": \"3476531\",\r\n    \"branchCode\": \"10010629672\",\r\n    \"receiveDate\": \"2024-01-22\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "https://front-dbo-ul-746.apps.do.okd.hq.metib.ru/rest/stateful/corp/receive/cash/create"
+							},
+							"response": []
+						},
+						{
+							"name": "Межфил//ЮЛ//256 символов",
+							"id": "5268f579-7670-4673-99fc-dceab7acad29",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"draft\": false,\r\n    \"docModule\": \"ibankul\",\r\n    \"docType\": \"request_receive_cash\",\r\n    \"docNumber\": \"ЗН 0000027\",\r\n    \"docDate\": \"2024-01-19\",\r\n    \"accNumber\": \"40702810900990008182\",\r\n    \"totalAmount\": \"100.00\",\r\n    \"currCode\": \"810\",\r\n    \"requiredBanknoteSelection\": \"false\",\r\n    \"sourcesOfIncome\": [\r\n        {\r\n            \"symbol\": \"41\",\r\n            \"sourcesIncome\": \"EEEssEEEssEEEssEEEssEEEssEEEssEEEssEEEssEEEssEEEssEEEssEEEssEEEssEEEssEEEssEEEssEEEssEEEssEEEssEEEssEEEssEEEssEEEssEE1\",\r\n            \"amount\": \"100.00\"\r\n        }\r\n    ],\r\n    \"receiverEmployeeId\": \"3480506\",\r\n    \"branchCode\": \"10010629672\",\r\n    \"receiveDate\": \"2024-01-22\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "https://front-dbo-ul-746.apps.do.okd.hq.metib.ru/rest/stateful/corp/receive/cash/create"
+							},
+							"response": []
+						},
+						{
+							"name": "Дата = +11 раб.дней от текущей",
+							"id": "7c82eab3-8f5a-46b5-aa61-cb856f1a9b38",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"draft\": false,\r\n    \"docModule\": \"ibankul\",\r\n    \"docType\": \"request_receive_cash\",\r\n    \"docNumber\": \"ЗН 0000028\",\r\n    \"docDate\": \"2024-01-19\",\r\n    \"accNumber\": \"40702810900990008182\",\r\n    \"totalAmount\": \"100.00\",\r\n    \"currCode\": \"810\",\r\n    \"requiredBanknoteSelection\": \"false\",\r\n    \"sourcesOfIncome\": [\r\n        {\r\n            \"symbol\": \"41\",\r\n            \"sourcesIncome\": \"EEEssEEEssEEEssEEEssEEEssEEEssEEEssEEEssEEEssEEEssEEEssEEEssEEEssE\",\r\n            \"amount\": \"100.00\"\r\n        }\r\n    ],\r\n    \"receiverEmployeeId\": \"3480506\",\r\n    \"branchCode\": \"10010629672\",\r\n    \"receiveDate\": \"2024-02-05\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "https://front-dbo-ul-746.apps.do.okd.hq.metib.ru/rest/stateful/corp/receive/cash/create"
+							},
+							"response": []
+						}
+					],
+					"id": "a88d5757-0306-4c0a-9509-22fa8a7a4a8f"
+				}
+			],
 			"id": "246c8918-8ed6-4e1a-9c7c-ce591bb5e8f8"
 		}
 	],
