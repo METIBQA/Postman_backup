@@ -1793,13 +1793,41 @@
 				},
 				{
 					"name": "Проверка времени работы",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "7eef612b-07a6-4321-a629-9def6de10c5d",
+								"exec": [
+									"const response = pm.response.json();",
+									"",
+									"console.log(response.accIdProducts.accounts.bankingInformationMetinv.workTime)",
+									"",
+									"pm.test(`Поле \"complexType\" приходит правильно`, function() {",
+									"  pm.expect(response).to.have.property(\"complexType\", \"РП без П\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
 					"id": "663d0cfc-d9d8-4fbb-b15d-bf4459a04181",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
 					"request": {
-						"method": "GET",
-						"header": []
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{host}}/rest/stateful/corp/document_bp/create/metinv"
 					},
 					"response": []
 				}
