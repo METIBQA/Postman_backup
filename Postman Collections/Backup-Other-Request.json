@@ -1790,48 +1790,6 @@
 						}
 					],
 					"id": "298e5ddc-23a3-42f7-8272-5889f41d24b6"
-				},
-				{
-					"name": "Проверка времени работы",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"id": "7eef612b-07a6-4321-a629-9def6de10c5d",
-								"exec": [
-									"const response = pm.response.json();",
-									"",
-									"console.log(response.accIdProducts.accounts[0].bankingInformationMetinv.workTime)",
-									"",
-									"pm.test(`Время работы`, function() {",
-									"  pm.expect(response.accIdProducts.accounts[0].bankingInformationMetinv.workTime).to.eq(\"Платежи отправленные в Банк (ПН-ЧТ после 16:00, ПТ после 15:00 МСК) будут обработаны следующим операционным днем. В пятницу, предпраздничные рабочие дни - продолжительность операционного дня сокращается на 1 час относительно установленного времени\");",
-									"});",
-									"",
-									""
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"id": "663d0cfc-d9d8-4fbb-b15d-bf4459a04181",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": "{{host}}/rest/stateful/corp/document_bp/create/metinv"
-					},
-					"response": []
 				}
 			],
 			"id": "2216ef3f-5c3d-4a4c-9dea-afcfb600c8f7"
