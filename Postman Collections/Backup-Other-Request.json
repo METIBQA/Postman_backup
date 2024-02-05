@@ -1790,6 +1790,18 @@
 						}
 					],
 					"id": "298e5ddc-23a3-42f7-8272-5889f41d24b6"
+				},
+				{
+					"name": "Проверка времени работы",
+					"id": "663d0cfc-d9d8-4fbb-b15d-bf4459a04181",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
 				}
 			],
 			"id": "2216ef3f-5c3d-4a4c-9dea-afcfb600c8f7"
