@@ -1801,11 +1801,13 @@
 								"exec": [
 									"const response = pm.response.json();",
 									"",
-									"console.log(response.accIdProducts.accounts.bankingInformationMetinv.workTime)",
+									"console.log(response.accIdProducts.accounts[0].bankingInformationMetinv.workTime)",
 									"",
-									"pm.test(`Поле \"complexType\" приходит правильно`, function() {",
-									"  pm.expect(response).to.have.property(\"complexType\", \"РП без П\");",
-									"});"
+									"pm.test(`Время работы`, function() {",
+									"  pm.expect(response.accIdProducts.accounts[0].bankingInformationMetinv.workTime).to.eq(\"Платежи отправленные в Банк (ПН-ЧТ после 16:00, ПТ после 15:00 МСК) будут обработаны следующим операционным днем. В пятницу, предпраздничные рабочие дни - продолжительность операционного дня сокращается на 1 час относительно установленного времени\");",
+									"});",
+									"",
+									""
 								],
 								"type": "text/javascript"
 							}
