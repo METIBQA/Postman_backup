@@ -1527,11 +1527,14 @@
 								{
 									"listen": "test",
 									"script": {
+										"id": "6f80f614-db36-4afd-9f27-d9b49ba2f1c3",
 										"exec": [
-											""
+											"// const response = pm.response.json();",
+											"",
+											"",
+											"// console.log(response)"
 										],
-										"type": "text/javascript",
-										"id": "9c925916-75a5-40db-aa94-b59efd6997b5"
+										"type": "text/javascript"
 									}
 								}
 							],
