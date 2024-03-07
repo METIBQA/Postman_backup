@@ -11672,7 +11672,7 @@
 									"let searchValue2 = \"0\"",
 									"",
 									"let searchName3 = \"CORR_ACCOUNT/ACCOUNT_TYPES\"",
-									"let searchValue3 = \"405, 406, 407, 40807, 40802\"",
+									"let searchValue3 = \"405, 406, 407, 40807,40802\"",
 									"",
 									"let searchName4 = \"SELF_ACCOUNT/ACCOUNT_FILTER_EXPRESSION\"",
 									"let searchValue4 = \"ACCOUNT_TYPE='72' and (ACC_SUBTYPE='1002' OR ACC_SUBTYPE='2002') and STATUS!='close'\"",
