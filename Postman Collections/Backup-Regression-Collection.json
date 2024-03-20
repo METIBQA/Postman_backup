@@ -10198,6 +10198,84 @@
 								"url": "{{host}}/rest/stateful/corp/document/sign/v2"
 							},
 							"response": []
+						},
+						{
+							"name": "Отправка рублевого платежа в банк",
+							"id": "8f2371ae-e8e8-4f46-a56a-d7427e67cb84",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"url": {
+									"raw": "{{host}}/rest/stateful/corp/document/send?doc_module=ibankul&doc_type=doc_platpor_bp&doc_ids={{docPlatporCurrId}}",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"rest",
+										"stateful",
+										"corp",
+										"document",
+										"send"
+									],
+									"query": [
+										{
+											"key": "doc_module",
+											"value": "ibankul"
+										},
+										{
+											"key": "doc_type",
+											"value": "doc_platpor_bp"
+										},
+										{
+											"key": "doc_ids",
+											"value": "{{docPlatporCurrId}}"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Отправка СВО в банк",
+							"id": "39a4c28a-0649-4604-ad84-6f34f367dce0",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"url": {
+									"raw": "{{host}}/rest/stateful/corp/document/send?doc_module=ibankul_curr&doc_type=inq_curr_181&doc_ids={{idSVO}}",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"rest",
+										"stateful",
+										"corp",
+										"document",
+										"send"
+									],
+									"query": [
+										{
+											"key": "doc_module",
+											"value": "ibankul_curr"
+										},
+										{
+											"key": "doc_type",
+											"value": "inq_curr_181"
+										},
+										{
+											"key": "doc_ids",
+											"value": "{{idSVO}}"
+										}
+									]
+								}
+							},
+							"response": []
 						}
 					],
 					"id": "9995de02-68df-43e4-a524-f0899810a689"
