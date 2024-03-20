@@ -10029,7 +10029,7 @@
 											"});",
 											"",
 											"pm.environment.set(\"docPlatporCurrId\",response.deal.docPlatporCurrId);",
-											"pm.environment.set(\"id\",response.id);"
+											"pm.environment.set(\"idSVO\",response.id);"
 										],
 										"type": "text/javascript",
 										"packages": {}
@@ -10076,13 +10076,22 @@
 							"response": []
 						},
 						{
-							"name": "Подписать платежку",
+							"name": "Задержка при подписании платежки",
 							"event": [
 								{
 									"listen": "prerequest",
 									"script": {
 										"id": "6e6cea39-6138-49d6-a414-7ac08f287f07",
 										"exec": [
+											"// Установка задержки в 3 секунды",
+											"setTimeout(function() {",
+											"    // Продолжение выполнения запроса",
+											"    pm.sendRequest(pm.request, function(err, res) {",
+											"        // Обработка ответа, если необходимо",
+											"    });",
+											"}, 2000);",
+											"",
+											"",
 											""
 										],
 										"type": "text/javascript",
@@ -10130,7 +10139,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"certId\": \"723307\",\n    \"docModule\": \"ibankul_curr\",\n    \"docType\": \"doc_platpor_bp\",\n    \"docIds\": [\n        {{docPlatporCurrId}},\n        {{id}}\n    ]\n}",
+									"raw": "{\n    \"certId\": \"723307\",\n    \"docModule\": \"ibankul_curr\",\n    \"docType\": \"doc_platpor_bp\",\n    \"docIds\": [\n        {{docPlatporCurrId}},\n        {{idSVO}}\n    ]\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -10143,6 +10152,20 @@
 						},
 						{
 							"name": "Второй рест v2",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "65c4c15d-a817-41e1-95f4-9d9b63c7c9d9",
+										"exec": [
+											"setTimeout(function() {",
+											"    }, 2000);"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
 							"id": "e2256a24-40bd-46d3-8abb-369824be4d3f",
 							"protocolProfileBehavior": {
 								"disableBodyPruning": true
@@ -10152,7 +10175,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"certId\": \"723307\",\n    \"libId\": 90342,\n    \"inputCode\": \"00\",\n    \"docModule\": \"ibankul_curr\",\n    \"docType\": \"doc_platpor_bp\",\n    \"docIds\": [\n        {{docPlatporCurrId}},\n        {{id}}\n    ]\n}",
+									"raw": "{\n    \"certId\": \"723307\",\n    \"libId\": 90342,\n    \"inputCode\": \"00\",\n    \"docModule\": \"ibankul_curr\",\n    \"docType\": \"doc_platpor_bp\",\n    \"docIds\": [\n        {{docPlatporCurrId}},\n        {{idSVO}}\n    ]\n}",
 									"options": {
 										"raw": {
 											"language": "json"
