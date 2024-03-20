@@ -9919,7 +9919,7 @@
 											"const response = pm.response.json();",
 											"",
 											"pm.environment.set(\"idRub\",response.id);",
-											"console.log(`id созданного документа ${pm.environment.get(\"idRub\")}`)",
+											"console.log(`id созданного документа idRub=${pm.environment.get(\"idRub\")}`)",
 											"",
 											"",
 											"pm.test(\"Проверка поля errorCode\", function() {",
@@ -10023,20 +10023,21 @@
 									"script": {
 										"id": "ff27aa00-8521-49c2-a61e-f5afc5365383",
 										"exec": [
-											"// const response = pm.response.json();",
+											"const response = pm.response.json();",
 											"",
-											"// pm.test(`Поле \"complexType\" приходит правильно`, function() {",
-											"//   pm.expect(response).to.have.property(\"complexType\", \"РП без П\");",
-											"// });",
+											"pm.test(`Поле \"complexType\" приходит правильно`, function() {",
+											"  pm.expect(response).to.have.property(\"complexType\", \"РП без П\");",
+											"});",
 											"",
-											"// pm.environment.set(\"docPlatporCurrId\",response.deal.docPlatporCurrId);",
-											"// pm.environment.set(\"idSVO\",response.id);",
+											"pm.environment.set(\"docPlatporCurrId\",response.deal.docPlatporCurrId);",
+											"pm.environment.set(\"idSVO\",response.id);",
 											"",
-											"// console.log('docPlatporCurrId= ',pm.environment.get(\"docPlatporCurrId\"))",
-											"// console.log('idSVO= ',pm.environment.get(\"idSVO\"))",
+											"console.log('docPlatporCurrId= ',pm.environment.get(\"docPlatporCurrId\"))",
+											"console.log('idSVO= ',pm.environment.get(\"idSVO\"))",
 											"",
-											"// setTimeout(function () {",
-											"// }, 5000);"
+											"//Таймер ожидания",
+											"setTimeout(function () {",
+											"}, 1000);"
 										],
 										"type": "text/javascript",
 										"packages": {}
@@ -10092,7 +10093,7 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{host}}/rest/stateful/corp/sign_requirements/doc?ids={{docPlatporCurrId}},{{idSVO}}",
+									"raw": "{{host}}/rest/stateful/corp/sign_requirements/doc?ids={{idRub}},{{idSVO}}",
 									"host": [
 										"{{host}}"
 									],
@@ -10106,7 +10107,7 @@
 									"query": [
 										{
 											"key": "ids",
-											"value": "{{docPlatporCurrId}},{{idSVO}}"
+											"value": "{{idRub}},{{idSVO}}"
 										}
 									]
 								}
