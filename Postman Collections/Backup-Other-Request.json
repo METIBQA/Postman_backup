@@ -177,6 +177,28 @@
 										"url": "{{host}}/rest/stateful/corp/dic/corr/v2"
 									},
 									"response": []
+								},
+								{
+									"name": "Контрагент для рублевого БП",
+									"id": "fcade61a-2f62-41e7-ab8c-cf0211834c6d",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"fullname\": \"Рублевый с СВО\",\n    \"inn\": 7705148464,\n    \"kpp\": 770000000,\n    \"accList\": [\n        {\n            \"accNumber\": \"30111810400010009964\",\n            \"bankBik\": \"044525767\"\n        }\n    ],\n    \"corrType\": \"UL\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": "{{host}}/rest/stateful/corp/dic/corr/v2"
+									},
+									"response": []
 								}
 							],
 							"id": "2ecffbd2-771d-4187-9efe-d422afec6734",
