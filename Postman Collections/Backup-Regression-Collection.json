@@ -9919,6 +9919,7 @@
 											"const response = pm.response.json();",
 											"",
 											"pm.environment.set(\"idRub\",response.id);",
+											"console.log(`id созданного документа ${pm.globals.get(\"idRub\")}`)",
 											"",
 											"",
 											"pm.test(\"Проверка поля errorCode\", function() {",
@@ -10029,7 +10030,13 @@
 											"});",
 											"",
 											"pm.environment.set(\"docPlatporCurrId\",response.deal.docPlatporCurrId);",
-											"pm.environment.set(\"idSVO\",response.id);"
+											"pm.environment.set(\"idSVO\",response.id);",
+											"",
+											"console.log('docPlatporCurrId= ',pm.environment.get(\"docPlatporCurrId\"))",
+											"console.log('idSVO= ',pm.environment.get(\"idSVO\"))",
+											"",
+											"setTimeout(function () {",
+											"}, 5000);"
 										],
 										"type": "text/javascript",
 										"packages": {}
@@ -10085,7 +10092,7 @@
 										"exec": [
 											"//Задержка при подписании документа. Сделана специально, чтобы документ СВО успел создаться и были подписаны сразу оба документа Рублевый платеж и СВО!",
 											"setTimeout(function () {",
-											"}, 2000);"
+											"}, 5000);"
 										],
 										"type": "text/javascript",
 										"packages": {}
@@ -10122,7 +10129,7 @@
 										"exec": [
 											"//Задержка при подписании документа. Сделана специально, чтобы документ СВО успел создаться и были подписаны сразу оба документа Рублевый платеж и СВО!",
 											"setTimeout(function () {",
-											"}, 2000);"
+											"}, 5000);"
 										],
 										"type": "text/javascript",
 										"packages": {}
