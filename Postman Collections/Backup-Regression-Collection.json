@@ -9913,7 +9913,24 @@
 									"script": {
 										"id": "bde3ef85-cd44-4298-8a02-8154b03da0e9",
 										"exec": [
-											""
+											"const response = pm.response.json();",
+											"",
+											"",
+											"pm.test(\"Проверка поля errorCode\", function() {",
+											"  pm.expect(response).to.have.property(\"docModule\", \"ibankul\");",
+											"});",
+											"",
+											"pm.test(\"Проверка поля errorText\", function() {",
+											"  pm.expect(response).to.have.property(\"docType\", \"doc_platpor_bp\");",
+											"});",
+											"",
+											"pm.test(\"Проверка поля errorCode\", function() {",
+											"  pm.expect(response).to.have.property(\"errorText\", \"\");",
+											"});",
+											"",
+											"pm.test(\"Проверка поля errorText\", function() {",
+											"  pm.expect(response).to.have.property(\"infoText\", \"\");",
+											"});"
 										],
 										"type": "text/javascript",
 										"packages": {}
@@ -9929,7 +9946,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"corrFullname\": \"Регресс. Запросы из Postman (Рудник Д.А) - {{dataToday}}\",\n    \"corrInn\": \"7705148464\",\n    \"corrKpp\": \"770201001\",\n    \"corrBankBik\": \"044525767\",\n    \"corrAccNumber\": \"30115810600010009964\",\n    \"bankName\": \"АО \\\"МОСКОМБАНК\\\"\",\n    \"accId\": {{accId}}, \n    \"fullname\": \"Общество с ограниченной ответственностью \\\"Радиатор\\\" //РФ,143405,Московская обл,,Красногорск г,,Ильинское ш,1А,,,ЭТ/ПОМ/ОФ 9/9АВ/№18//\",\n    \"inn\": \"7720540387\",\n    \"kpp\": \"502401001\",\n    \"amount\": \"505\",\n    \"ndsTypeId\": \"653\",\n    \"commission\": \"Согласно тарифам банка\",\n    \"description\": \"{VO23110} Автотест Рублевый платеж с СВО - ИСПОЛНЕННЫЕ\", //Этот текст нужен для автоматического перевода платежки в статус \"Ожидание исполнения СВО\"\n    \"employeeFio\": \"Фиона Дефолтова\",\n    \"employeePhone\": \"+79999999999\",\n    \"urgenttype\": \"5\",\n    \"docNumber\": {{docNumberRub}},\n    \"docDate\": \"{{dataToday}}\",\n    \"corrType\": \"UL\",\n    \"payControlPsNumberCaption\": \"160500021405000011\",\n    \"currCode\": \"840\"\n}",
+									"raw": "{\n    \"corrFullname\": \"Регресс. Запросы из Postman (Рудник Д.А) - {{dataToday}}\",\n    \"corrInn\": \"7705148464\",\n    \"corrKpp\": \"770201001\",\n    \"corrBankBik\": \"044525767\",\n    \"corrAccNumber\": \"30111810400010009964\",\n    \"bankName\": \"АО \\\"МОСКОМБАНК\\\"\",\n    \"accId\": {{accId}}, \n    \"fullname\": \"Общество с ограниченной ответственностью \\\"Радиатор\\\" //РФ,143405,Московская обл,,Красногорск г,,Ильинское ш,1А,,,ЭТ/ПОМ/ОФ 9/9АВ/№18//\",\n    \"inn\": \"7720540387\",\n    \"kpp\": \"502401001\",\n    \"amount\": \"505\",\n    \"ndsTypeId\": \"653\",\n    \"commission\": \"Согласно тарифам банка\",\n    \"description\": \"{VO23110} Автотест Рублевый платеж с СВО - ИСПОЛНЕННЫЕ\", //Этот текст нужен для автоматического перевода платежки в статус \"Ожидание исполнения СВО\"\n    \"employeeFio\": \"Фиона Дефолтова\",\n    \"employeePhone\": \"+79999999999\",\n    \"urgenttype\": \"5\",\n    \"docNumber\": {{docNumberRub}},\n    \"docDate\": \"{{dataToday}}\",\n    \"corrType\": \"UL\",\n    \"payControlPsNumberCaption\": \"160500021405000011\",\n    \"currCode\": \"840\"\n}",
 									"options": {
 										"raw": {
 											"language": "json"
