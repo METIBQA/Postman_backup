@@ -9778,7 +9778,7 @@
 					"id": "70145b3c-c408-4bbf-bbb4-2b0628af15e1"
 				},
 				{
-					"name": "Создание рублевого платежа с СВО Copy",
+					"name": "4260. Создание+ подписание платежки",
 					"item": [
 						{
 							"name": "0. Авторизация",
@@ -10076,60 +10076,22 @@
 							"response": []
 						},
 						{
-							"name": "Задержка при подписании платежки",
+							"name": "v2",
 							"event": [
 								{
 									"listen": "prerequest",
 									"script": {
-										"id": "6e6cea39-6138-49d6-a414-7ac08f287f07",
+										"id": "fb695c18-37dc-4bee-a3a0-daac0fd023ff",
 										"exec": [
-											"// Установка задержки в 3 секунды",
-											"setTimeout(function() {",
-											"    // Продолжение выполнения запроса",
-											"    pm.sendRequest(pm.request, function(err, res) {",
-											"        // Обработка ответа, если необходимо",
-											"    });",
-											"}, 2000);",
-											"",
-											"",
-											""
+											"//Задержка при подписании документа. Сделана специально, чтобы документ СВО успел создаться и были подписаны сразу оба документа Рублевый платеж и СВО!",
+											"setTimeout(function () {",
+											"}, 2000);"
 										],
 										"type": "text/javascript",
 										"packages": {}
 									}
 								}
 							],
-							"id": "d1d0f8c5-3cd3-4ba2-9908-4ec7e894af8a",
-							"protocolProfileBehavior": {
-								"disableBodyPruning": true
-							},
-							"request": {
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "{{host}}/rest/stateful/corp/sign_requirements/doc?ids={{idRub}}",
-									"host": [
-										"{{host}}"
-									],
-									"path": [
-										"rest",
-										"stateful",
-										"corp",
-										"sign_requirements",
-										"doc"
-									],
-									"query": [
-										{
-											"key": "ids",
-											"value": "{{idRub}}"
-										}
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "v2",
 							"id": "b0cec00b-feb4-44c1-8663-267a5a886b13",
 							"protocolProfileBehavior": {
 								"disableBodyPruning": true
@@ -10158,8 +10120,9 @@
 									"script": {
 										"id": "65c4c15d-a817-41e1-95f4-9d9b63c7c9d9",
 										"exec": [
-											"setTimeout(function() {",
-											"    }, 2000);"
+											"//Задержка при подписании документа. Сделана специально, чтобы документ СВО успел создаться и были подписаны сразу оба документа Рублевый платеж и СВО!",
+											"setTimeout(function () {",
+											"}, 2000);"
 										],
 										"type": "text/javascript",
 										"packages": {}
