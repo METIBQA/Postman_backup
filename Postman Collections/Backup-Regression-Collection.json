@@ -9778,7 +9778,7 @@
 					"id": "70145b3c-c408-4bbf-bbb4-2b0628af15e1"
 				},
 				{
-					"name": "4260. Создание платежки",
+					"name": "Дописать 4260. Создание платежки",
 					"item": [
 						{
 							"name": "Авторизация",
@@ -9863,7 +9863,7 @@
 											"pm.environment.set(\"docNumberRub\",response.docNumber);",
 											"pm.environment.set(\"accId\",response.accId);",
 											"",
-											"console.log(`Номер созданного документа pm.environment.get(\"docNumberRub\")`)"
+											"console.log(`Номер созданного документа ${pm.environment.get(\"docNumberRub\")}`)"
 										],
 										"type": "text/javascript",
 										"packages": {}
@@ -9934,7 +9934,7 @@
 											"});",
 											"",
 											"pm.globals.set(\"id\", response.id)",
-											"console.log(`id созданного документа pm.globals.get(\"id\")`)"
+											"console.log(`id созданного документа ${pm.globals.get(\"id\")}`)"
 										],
 										"type": "text/javascript",
 										"packages": {}
@@ -9962,6 +9962,113 @@
 							"response": []
 						},
 						{
+							"name": "4. Получение номера СВО Copy",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"const response = pm.response.json();",
+											"",
+											"pm.environment.set(\"docNumberSVO\",response.docNumber);",
+											"console.log('docNumberSVO= ',pm.environment.get(\"docNumberSVO\"))"
+										],
+										"type": "text/javascript",
+										"id": "d9b824e0-ae41-428a-8753-92ea2f7de95b"
+									}
+								}
+							],
+							"id": "354b644e-9973-430c-8947-4a17a80d5994",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{host}}/rest/stateful/corp/document/number/next?doc_module=ibankul_curr&doc_type=inq_curr_181",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"rest",
+										"stateful",
+										"corp",
+										"document",
+										"number",
+										"next"
+									],
+									"query": [
+										{
+											"key": "doc_module",
+											"value": "ibankul_curr"
+										},
+										{
+											"key": "doc_type",
+											"value": "inq_curr_181"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "5. Создание документа СВО Copy",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "ff27aa00-8521-49c2-a61e-f5afc5365383",
+										"exec": [
+											"const response = pm.response.json();",
+											"",
+											"pm.test(`Поле \"complexType\" приходит правильно`, function() {",
+											"  pm.expect(response).to.have.property(\"complexType\", \"РП без П\");",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "a138bc54-20dd-4c9a-93cb-822700706f87",
+										"exec": [
+											"const moment = require('moment');",
+											"",
+											"//Дата для использования в теле запроса - действует только для данного запроса",
+											"pm.variables.set(\"dataToday+1\", moment().subtract(-1, 'day').format(\"YYYY-MM-DD\"))",
+											"pm.variables.set(\"dataToday\", moment().subtract(0, 'day').format(\"YYYY-MM-DD\"))",
+											"",
+											"",
+											"console.log('Сегодняшняя дата:', pm.variables.get(\"dataToday\"))",
+											"console.log('Завтрашняя дата:', pm.variables.get(\"dataToday+1\"))"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"id": "46db0a60-eaf6-4279-9c6c-e8aeae6e867e",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"accId\": {{accId}},\n    \"deal\": [\n        {\n            \"docPlatporCurrId\": {{idRub}},\n            \"numberLine\": \"1\",\n            \"payDirection\": \"2\",\n            \"dealMode\": \"1\",\n            \"operCode\": \"23110\",\n            \"remark\": \"\",\n            \"docNumber\": {{docNumberRub}},\n            \"amount\": \"505\",\n            \"payCurrCode\": \"810\",\n            \"transDate\": \"{{dataToday}}\",\n            \"operDate\": \"{{dataToday}}\",\n            \"dateRefundPrepayment\": \"{{dataToday+1}}\",\n            \"expectDate\": \"{{dataToday+1}}\",\n            \"noteOperation\": \"Поле \\\"Характер операции\\\"\",\n            \"psNumber\": \"160500031405000011\"\n        }\n    ],\n    \"employee\": \"Фиона Дефолтова\",\n    \"phone\": \"+79999999999\",\n    \"docPlatporCurrId\": {{idRub}},\n    \"docNumber\": {{docNumberSVO}},\n    \"complexType\": \"РП без П\",\n    \"payControlPsNumberCaption\": \"160500021405000011\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{host}}/rest/stateful/corp/curr/inquiry_181/metinv"
+							},
+							"response": []
+						},
+						{
 							"name": "Подписать платежку",
 							"event": [
 								{
@@ -9983,7 +10090,25 @@
 							"request": {
 								"method": "GET",
 								"header": [],
-								"url": "{{host}}/rest/stateful/corp/company/change_active/{{id}}"
+								"url": {
+									"raw": "{{host}}/rest/stateful/corp/sign_requirements/doc?ids={{id}}",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"rest",
+										"stateful",
+										"corp",
+										"sign_requirements",
+										"doc"
+									],
+									"query": [
+										{
+											"key": "ids",
+											"value": "{{id}}"
+										}
+									]
+								}
 							},
 							"response": []
 						}
