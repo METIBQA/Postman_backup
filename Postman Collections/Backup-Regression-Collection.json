@@ -9856,16 +9856,17 @@
 								{
 									"listen": "test",
 									"script": {
+										"id": "f38c9fb5-2290-4f3f-b6a9-266a3a308f36",
 										"exec": [
 											"const response = pm.response.json();",
 											"",
 											"pm.environment.set(\"docNumberRub\",response.docNumber);",
 											"pm.environment.set(\"accId\",response.accId);",
 											"",
-											"console.log(pm.environment.get(\"docNumberRub\"))"
+											"console.log(`Номер созданного документа pm.environment.get(\"docNumberRub\")`)"
 										],
 										"type": "text/javascript",
-										"id": "f38c9fb5-2290-4f3f-b6a9-266a3a308f36"
+										"packages": {}
 									}
 								}
 							],
@@ -9932,8 +9933,8 @@
 											"  pm.expect(response).to.have.property(\"infoText\", \"\");",
 											"});",
 											"",
-											"pm.variables.set(\"id\", response.id)",
-											"console.log(pm.variables.get(id))"
+											"pm.globals.set(\"id\", response.id)",
+											"console.log(`id созданного документа pm.globals.get(\"id\")`)"
 										],
 										"type": "text/javascript",
 										"packages": {}
@@ -9957,6 +9958,32 @@
 									}
 								},
 								"url": "{{host}}/rest/stateful/corp/document_bp/create/metinv"
+							},
+							"response": []
+						},
+						{
+							"name": "Подписать платежку",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "6e6cea39-6138-49d6-a414-7ac08f287f07",
+										"exec": [
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"id": "d1d0f8c5-3cd3-4ba2-9908-4ec7e894af8a",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": "{{host}}/rest/stateful/corp/company/change_active/{{id}}"
 							},
 							"response": []
 						}
