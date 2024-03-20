@@ -9930,7 +9930,10 @@
 											"",
 											"pm.test(\"Проверка поля errorText\", function() {",
 											"  pm.expect(response).to.have.property(\"infoText\", \"\");",
-											"});"
+											"});",
+											"",
+											"pm.variables.set(\"id\", response.id)",
+											"console.log(pm.variables.get(id))"
 										],
 										"type": "text/javascript",
 										"packages": {}
