@@ -9778,6 +9778,284 @@
 					"id": "70145b3c-c408-4bbf-bbb4-2b0628af15e1"
 				},
 				{
+					"name": "Создание рублевого платежа с СВО Copy",
+					"item": [
+						{
+							"name": "0. Авторизация",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "6f80f614-db36-4afd-9f27-d9b49ba2f1c3",
+										"exec": [
+											"// const response = pm.response.json();",
+											"",
+											"",
+											"// console.log(response)"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"id": "cfd67d1a-7554-439b-8352-2b9ace540b86",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": {
+										"username": "{{login}}",
+										"password": "{{password}}"
+									}
+								},
+								"method": "POST",
+								"header": [],
+								"url": "{{host}}/rest/stateful/corp/login"
+							},
+							"response": []
+						},
+						{
+							"name": "1. Смена клиента на ООО \"Радиатор\"",
+							"id": "30acba94-20c1-47a7-ad8e-f6a92c548ccc",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"url": {
+									"raw": "{{host}}rest/stateful/corp/company/change_active/7970250",
+									"host": [
+										"{{host}}rest"
+									],
+									"path": [
+										"stateful",
+										"corp",
+										"company",
+										"change_active",
+										"7970250"
+									],
+									"query": [
+										{
+											"key": "2037480",
+											"value": "Тест",
+											"disabled": true
+										},
+										{
+											"key": "7970250",
+											"value": "Препрод",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "2. Prefill",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"const response = pm.response.json();",
+											"",
+											"pm.environment.set(\"docNumberRub\",response.docNumber);",
+											"pm.environment.set(\"accId\",response.accId);",
+											"",
+											"console.log('docNumberRub= ',pm.environment.get(\"docNumberRub\"))",
+											"console.log('accId= ',pm.environment.get(\"accId\"))"
+										],
+										"type": "text/javascript",
+										"id": "caf64f11-0970-400b-bf7b-20b6b1dc5cf6"
+									}
+								}
+							],
+							"id": "312901a3-9fe8-4e22-94fc-27cd0a9ce5f9",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{host}}/rest/stateful/corp/document_bp/create/metinv/prefill"
+							},
+							"response": []
+						},
+						{
+							"name": "3. Создание рублевой платежки",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "657b0dd6-1deb-4ec9-a4c3-d670d241d9bd",
+										"exec": [
+											"const moment = require('moment');",
+											"",
+											"//Дата для использования в теле запроса - действует только для данного запроса",
+											"pm.variables.set(\"dataToday\", moment().subtract(0, 'day').format(\"YYYY-MM-DD\"))",
+											"",
+											"console.log(pm.variables.get(\"dataToday\"))"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"id": "1f8e6283-4b8a-4f29-a560-2587acf05b9c",
+										"exec": [
+											"const response = pm.response.json();",
+											"",
+											"pm.environment.set(\"idRub\",response.id);"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"id": "5ad9584d-428f-4e2d-b99c-38581e97efc2",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"corrFullname\": \"Регресс. Запросы из Postman (Рудник Д.А) - {{dataToday}}\",\n    \"corrInn\": \"7705148464\",\n    \"corrKpp\": \"770201001\",\n    \"corrBankBik\": \"044525767\",\n    \"corrAccNumber\": \"30111810400010009964\",\n    \"bankName\": \"АО \\\"МОСКОМБАНК\\\"\",\n    \"accId\": {{accId}}, \n    \"fullname\": \"Общество с ограниченной ответственностью \\\"Радиатор\\\" //РФ,143405,Московская обл,,Красногорск г,,Ильинское ш,1А,,,ЭТ/ПОМ/ОФ 9/9АВ/№18//\",\n    \"inn\": \"7720540387\",\n    \"kpp\": \"502401001\",\n    \"amount\": {{docNumberRub}},\n    \"ndsTypeId\": \"653\",\n    \"commission\": \"Согласно тарифам банка\",\n    \"description\": \"{VO23110} Автотест Рублевый платеж с СВО - ИСПОЛНЕННЫЕ\", //Этот текст нужен для автоматического перевода платежки в статус \"Ожидание исполнения СВО\"\n    \"employeeFio\": \"Фиона Дефолтова\",\n    \"employeePhone\": \"+79999999999\",\n    \"urgenttype\": \"5\",\n    \"docNumber\": {{docNumberRub}},\n    \"docDate\": \"{{dataToday}}\",\n    \"corrType\": \"UL\",\n    \"payControlPsNumberCaption\": \"160500021405000011\",\n    \"currCode\": \"840\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{host}}/rest/stateful/corp/document_bp/create/metinv"
+							},
+							"response": []
+						},
+						{
+							"name": "4. Получение номера СВО",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"const response = pm.response.json();",
+											"",
+											"pm.environment.set(\"docNumberSVO\",response.docNumber);",
+											"console.log('docNumberSVO= ',pm.environment.get(\"docNumberSVO\"))"
+										],
+										"type": "text/javascript",
+										"id": "d9b824e0-ae41-428a-8753-92ea2f7de95b"
+									}
+								}
+							],
+							"id": "c04f4d07-e565-4338-bc30-b4a84ff672fb",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{host}}/rest/stateful/corp/document/number/next?doc_module=ibankul_curr&doc_type=inq_curr_181",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"rest",
+										"stateful",
+										"corp",
+										"document",
+										"number",
+										"next"
+									],
+									"query": [
+										{
+											"key": "doc_module",
+											"value": "ibankul_curr"
+										},
+										{
+											"key": "doc_type",
+											"value": "inq_curr_181"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "5. Создание документа СВО",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "ff27aa00-8521-49c2-a61e-f5afc5365383",
+										"exec": [
+											"const response = pm.response.json();",
+											"",
+											"pm.test(`Поле \"complexType\" приходит правильно`, function() {",
+											"  pm.expect(response).to.have.property(\"complexType\", \"РП без П\");",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "a138bc54-20dd-4c9a-93cb-822700706f87",
+										"exec": [
+											"const moment = require('moment');",
+											"",
+											"//Дата для использования в теле запроса - действует только для данного запроса",
+											"pm.variables.set(\"dataToday+1\", moment().subtract(-1, 'day').format(\"YYYY-MM-DD\"))",
+											"pm.variables.set(\"dataToday\", moment().subtract(0, 'day').format(\"YYYY-MM-DD\"))",
+											"",
+											"",
+											"console.log('Сегодняшняя дата:', pm.variables.get(\"dataToday\"))",
+											"console.log('Завтрашняя дата:', pm.variables.get(\"dataToday+1\"))"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"id": "6877830e-c07f-405e-bda2-626b19b417bc",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"accId\": {{accId}},\n    \"deal\": [\n        {\n            \"docPlatporCurrId\": {{idRub}},\n            \"numberLine\": \"1\",\n            \"payDirection\": \"2\",\n            \"dealMode\": \"1\",\n            \"operCode\": \"23110\",\n            \"remark\": \"\",\n            \"docNumber\": {{docNumberRub}},\n            \"amount\": \"505\",\n            \"payCurrCode\": \"810\",\n            \"transDate\": \"{{dataToday}}\",\n            \"operDate\": \"{{dataToday}}\",\n            \"dateRefundPrepayment\": \"{{dataToday+1}}\",\n            \"expectDate\": \"{{dataToday+1}}\",\n            \"noteOperation\": \"Поле \\\"Характер операции\\\"\",\n            \"psNumber\": \"160500031405000011\"\n        }\n    ],\n    \"employee\": \"Фиона Дефолтова\",\n    \"phone\": \"+79999999999\",\n    \"docPlatporCurrId\": {{idRub}},\n    \"docNumber\": {{docNumberSVO}},\n    \"complexType\": \"РП без П\",\n    \"payControlPsNumberCaption\": \"160500021405000011\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{host}}/rest/stateful/corp/curr/inquiry_181/metinv"
+							},
+							"response": []
+						}
+					],
+					"id": "9995de02-68df-43e4-a524-f0899810a689"
+				},
+				{
 					"name": "Дописать 4260. Создание платежки",
 					"item": [
 						{
@@ -9958,113 +10236,6 @@
 									}
 								},
 								"url": "{{host}}/rest/stateful/corp/document_bp/create/metinv"
-							},
-							"response": []
-						},
-						{
-							"name": "4. Получение номера СВО Copy",
-							"event": [
-								{
-									"listen": "test",
-									"script": {
-										"exec": [
-											"const response = pm.response.json();",
-											"",
-											"pm.environment.set(\"docNumberSVO\",response.docNumber);",
-											"console.log('docNumberSVO= ',pm.environment.get(\"docNumberSVO\"))"
-										],
-										"type": "text/javascript",
-										"id": "d9b824e0-ae41-428a-8753-92ea2f7de95b"
-									}
-								}
-							],
-							"id": "354b644e-9973-430c-8947-4a17a80d5994",
-							"protocolProfileBehavior": {
-								"disableBodyPruning": true
-							},
-							"request": {
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "{{host}}/rest/stateful/corp/document/number/next?doc_module=ibankul_curr&doc_type=inq_curr_181",
-									"host": [
-										"{{host}}"
-									],
-									"path": [
-										"rest",
-										"stateful",
-										"corp",
-										"document",
-										"number",
-										"next"
-									],
-									"query": [
-										{
-											"key": "doc_module",
-											"value": "ibankul_curr"
-										},
-										{
-											"key": "doc_type",
-											"value": "inq_curr_181"
-										}
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "5. Создание документа СВО Copy",
-							"event": [
-								{
-									"listen": "test",
-									"script": {
-										"id": "ff27aa00-8521-49c2-a61e-f5afc5365383",
-										"exec": [
-											"const response = pm.response.json();",
-											"",
-											"pm.test(`Поле \"complexType\" приходит правильно`, function() {",
-											"  pm.expect(response).to.have.property(\"complexType\", \"РП без П\");",
-											"});"
-										],
-										"type": "text/javascript"
-									}
-								},
-								{
-									"listen": "prerequest",
-									"script": {
-										"id": "a138bc54-20dd-4c9a-93cb-822700706f87",
-										"exec": [
-											"const moment = require('moment');",
-											"",
-											"//Дата для использования в теле запроса - действует только для данного запроса",
-											"pm.variables.set(\"dataToday+1\", moment().subtract(-1, 'day').format(\"YYYY-MM-DD\"))",
-											"pm.variables.set(\"dataToday\", moment().subtract(0, 'day').format(\"YYYY-MM-DD\"))",
-											"",
-											"",
-											"console.log('Сегодняшняя дата:', pm.variables.get(\"dataToday\"))",
-											"console.log('Завтрашняя дата:', pm.variables.get(\"dataToday+1\"))"
-										],
-										"type": "text/javascript"
-									}
-								}
-							],
-							"id": "46db0a60-eaf6-4279-9c6c-e8aeae6e867e",
-							"protocolProfileBehavior": {
-								"disableBodyPruning": true
-							},
-							"request": {
-								"method": "POST",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "{\n    \"accId\": {{accId}},\n    \"deal\": [\n        {\n            \"docPlatporCurrId\": {{idRub}},\n            \"numberLine\": \"1\",\n            \"payDirection\": \"2\",\n            \"dealMode\": \"1\",\n            \"operCode\": \"23110\",\n            \"remark\": \"\",\n            \"docNumber\": {{docNumberRub}},\n            \"amount\": \"505\",\n            \"payCurrCode\": \"810\",\n            \"transDate\": \"{{dataToday}}\",\n            \"operDate\": \"{{dataToday}}\",\n            \"dateRefundPrepayment\": \"{{dataToday+1}}\",\n            \"expectDate\": \"{{dataToday+1}}\",\n            \"noteOperation\": \"Поле \\\"Характер операции\\\"\",\n            \"psNumber\": \"160500031405000011\"\n        }\n    ],\n    \"employee\": \"Фиона Дефолтова\",\n    \"phone\": \"+79999999999\",\n    \"docPlatporCurrId\": {{idRub}},\n    \"docNumber\": {{docNumberSVO}},\n    \"complexType\": \"РП без П\",\n    \"payControlPsNumberCaption\": \"160500021405000011\"\n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": "{{host}}/rest/stateful/corp/curr/inquiry_181/metinv"
 							},
 							"response": []
 						},
