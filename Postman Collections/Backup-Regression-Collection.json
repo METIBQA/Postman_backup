@@ -10026,7 +10026,10 @@
 											"",
 											"pm.test(`Поле \"complexType\" приходит правильно`, function() {",
 											"  pm.expect(response).to.have.property(\"complexType\", \"РП без П\");",
-											"});"
+											"});",
+											"",
+											"pm.environment.set(\"docPlatporCurrId\",response.deal.docPlatporCurrId);",
+											"pm.environment.set(\"id\",response.id);"
 										],
 										"type": "text/javascript",
 										"packages": {}
@@ -10123,8 +10126,40 @@
 								"disableBodyPruning": true
 							},
 							"request": {
-								"method": "GET",
-								"header": []
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"certId\": \"723307\",\n    \"docModule\": \"ibankul_curr\",\n    \"docType\": \"doc_platpor_bp\",\n    \"docIds\": [\n        {{docPlatporCurrId}},\n        {{id}}\n    ]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{host}}/rest/stateful/corp/document/sign/v2"
+							},
+							"response": []
+						},
+						{
+							"name": "Второй рест v2",
+							"id": "e2256a24-40bd-46d3-8abb-369824be4d3f",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"certId\": \"723307\",\n    \"libId\": 90342,\n    \"inputCode\": \"00\",\n    \"docModule\": \"ibankul_curr\",\n    \"docType\": \"doc_platpor_bp\",\n    \"docIds\": [\n        {{docPlatporCurrId}},\n        {{id}}\n    ]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{host}}/rest/stateful/corp/document/sign/v2"
 							},
 							"response": []
 						}
