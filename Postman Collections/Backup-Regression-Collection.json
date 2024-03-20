@@ -9918,7 +9918,25 @@
 										"exec": [
 											"const response = pm.response.json();",
 											"",
-											"pm.environment.set(\"idRub\",response.id);"
+											"pm.environment.set(\"idRub\",response.id);",
+											"",
+											"",
+											"pm.test(\"Проверка поля errorCode\", function() {",
+											"  pm.expect(response).to.have.property(\"docModule\", \"ibankul\");",
+											"});",
+											"",
+											"pm.test(\"Проверка поля errorText\", function() {",
+											"  pm.expect(response).to.have.property(\"docType\", \"doc_platpor_bp\");",
+											"});",
+											"",
+											"pm.test(\"Проверка поля errorCode\", function() {",
+											"  pm.expect(response).to.have.property(\"errorText\", \"\");",
+											"});",
+											"",
+											"pm.test(\"Проверка поля errorText\", function() {",
+											"  pm.expect(response).to.have.property(\"infoText\", \"\");",
+											"});",
+											""
 										],
 										"type": "text/javascript",
 										"packages": {}
@@ -9934,7 +9952,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"corrFullname\": \"Регресс. Запросы из Postman (Рудник Д.А) - {{dataToday}}\",\n    \"corrInn\": \"7705148464\",\n    \"corrKpp\": \"770201001\",\n    \"corrBankBik\": \"044525767\",\n    \"corrAccNumber\": \"30111810400010009964\",\n    \"bankName\": \"АО \\\"МОСКОМБАНК\\\"\",\n    \"accId\": {{accId}}, \n    \"fullname\": \"Общество с ограниченной ответственностью \\\"Радиатор\\\" //РФ,143405,Московская обл,,Красногорск г,,Ильинское ш,1А,,,ЭТ/ПОМ/ОФ 9/9АВ/№18//\",\n    \"inn\": \"7720540387\",\n    \"kpp\": \"502401001\",\n    \"amount\": {{docNumberRub}},\n    \"ndsTypeId\": \"653\",\n    \"commission\": \"Согласно тарифам банка\",\n    \"description\": \"{VO23110} Автотест Рублевый платеж с СВО - ИСПОЛНЕННЫЕ\", //Этот текст нужен для автоматического перевода платежки в статус \"Ожидание исполнения СВО\"\n    \"employeeFio\": \"Фиона Дефолтова\",\n    \"employeePhone\": \"+79999999999\",\n    \"urgenttype\": \"5\",\n    \"docNumber\": {{docNumberRub}},\n    \"docDate\": \"{{dataToday}}\",\n    \"corrType\": \"UL\",\n    \"payControlPsNumberCaption\": \"160500021405000011\",\n    \"currCode\": \"840\"\n}",
+									"raw": "{\n    \"corrFullname\": \"Регресс. Запросы из Postman (Рудник Д.А) - {{dataToday}}\",\n    \"corrInn\": \"7705148464\",\n    \"corrKpp\": \"770201001\",\n    \"corrBankBik\": \"044525767\",\n    \"corrAccNumber\": \"30111810400010009964\",\n    \"bankName\": \"АО \\\"МОСКОМБАНК\\\"\",\n    \"accId\": {{accId}}, \n    \"fullname\": \"Общество с ограниченной ответственностью \\\"Радиатор\\\" //РФ,143405,Московская обл,,Красногорск г,,Ильинское ш,1А,,,ЭТ/ПОМ/ОФ 9/9АВ/№18//\",\n    \"inn\": \"7720540387\",\n    \"kpp\": \"502401001\",\n    \"amount\": {{docNumberRub}}, //Это поле сумма. Сделал так, чтобы каждая платежка отличалась по сумме, поэтому тут номер документа используется))))\n    \"ndsTypeId\": \"653\",\n    \"commission\": \"Согласно тарифам банка\",\n    \"description\": \"{VO23110} Автотест Рублевый платеж с СВО - ИСПОЛНЕННЫЕ\", //Этот текст нужен для автоматического перевода платежки в статус \"Ожидание исполнения СВО\"\n    \"employeeFio\": \"Фиона Дефолтова\",\n    \"employeePhone\": \"+79999999999\",\n    \"urgenttype\": \"5\",\n    \"docNumber\": {{docNumberRub}},\n    \"docDate\": \"{{dataToday}}\",\n    \"corrType\": \"UL\",\n    \"payControlPsNumberCaption\": \"160500021405000011\",\n    \"currCode\": \"840\"\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -10010,7 +10028,8 @@
 											"  pm.expect(response).to.have.property(\"complexType\", \"РП без П\");",
 											"});"
 										],
-										"type": "text/javascript"
+										"type": "text/javascript",
+										"packages": {}
 									}
 								},
 								{
@@ -10028,7 +10047,8 @@
 											"console.log('Сегодняшняя дата:', pm.variables.get(\"dataToday\"))",
 											"console.log('Завтрашняя дата:', pm.variables.get(\"dataToday+1\"))"
 										],
-										"type": "text/javascript"
+										"type": "text/javascript",
+										"packages": {}
 									}
 								}
 							],
@@ -10049,6 +10069,62 @@
 									}
 								},
 								"url": "{{host}}/rest/stateful/corp/curr/inquiry_181/metinv"
+							},
+							"response": []
+						},
+						{
+							"name": "Подписать платежку",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "6e6cea39-6138-49d6-a414-7ac08f287f07",
+										"exec": [
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"id": "d1d0f8c5-3cd3-4ba2-9908-4ec7e894af8a",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{host}}/rest/stateful/corp/sign_requirements/doc?ids={{idRub}}",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"rest",
+										"stateful",
+										"corp",
+										"sign_requirements",
+										"doc"
+									],
+									"query": [
+										{
+											"key": "ids",
+											"value": "{{idRub}}"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "v2",
+							"id": "b0cec00b-feb4-44c1-8663-267a5a886b13",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": []
 							},
 							"response": []
 						}
@@ -10236,50 +10312,6 @@
 									}
 								},
 								"url": "{{host}}/rest/stateful/corp/document_bp/create/metinv"
-							},
-							"response": []
-						},
-						{
-							"name": "Подписать платежку",
-							"event": [
-								{
-									"listen": "prerequest",
-									"script": {
-										"id": "6e6cea39-6138-49d6-a414-7ac08f287f07",
-										"exec": [
-											""
-										],
-										"type": "text/javascript",
-										"packages": {}
-									}
-								}
-							],
-							"id": "d1d0f8c5-3cd3-4ba2-9908-4ec7e894af8a",
-							"protocolProfileBehavior": {
-								"disableBodyPruning": true
-							},
-							"request": {
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "{{host}}/rest/stateful/corp/sign_requirements/doc?ids={{id}}",
-									"host": [
-										"{{host}}"
-									],
-									"path": [
-										"rest",
-										"stateful",
-										"corp",
-										"sign_requirements",
-										"doc"
-									],
-									"query": [
-										{
-											"key": "ids",
-											"value": "{{id}}"
-										}
-									]
-								}
 							},
 							"response": []
 						}
