@@ -9778,7 +9778,7 @@
 					"id": "70145b3c-c408-4bbf-bbb4-2b0628af15e1"
 				},
 				{
-					"name": "4260. Создание+ подписание платежки",
+					"name": "4260. Создание+подписание платежки",
 					"item": [
 						{
 							"name": "0. Авторизация",
@@ -10023,20 +10023,21 @@
 									"script": {
 										"id": "ff27aa00-8521-49c2-a61e-f5afc5365383",
 										"exec": [
-											"// const response = pm.response.json();",
+											"const response = pm.response.json();",
 											"",
-											"// pm.test(`Поле \"complexType\" приходит правильно`, function() {",
-											"//   pm.expect(response).to.have.property(\"complexType\", \"РП без П\");",
-											"// });",
+											"pm.test(`Поле \"complexType\" приходит правильно`, function() {",
+											"  pm.expect(response).to.have.property(\"complexType\", \"РП без П\");",
+											"});",
 											"",
-											"// pm.environment.set(\"docPlatporCurrId\",response.deal.docPlatporCurrId);",
-											"// pm.environment.set(\"idSVO\",response.id);",
+											"pm.environment.set(\"docPlatporCurrId\",response.deal.docPlatporCurrId);",
+											"pm.environment.set(\"idSVO\",response.id);",
 											"",
-											"// console.log('docPlatporCurrId= ',pm.environment.get(\"docPlatporCurrId\"))",
-											"// console.log('idSVO= ',pm.environment.get(\"idSVO\"))",
+											"console.log('docPlatporCurrId= ',pm.environment.get(\"docPlatporCurrId\"))",
+											"console.log('idSVO= ',pm.environment.get(\"idSVO\"))",
 											"",
-											"// setTimeout(function () {",
-											"// }, 5000);"
+											"//Таймер ожидания",
+											"setTimeout(function () {",
+											"}, 1000);"
 										],
 										"type": "text/javascript",
 										"packages": {}
@@ -10083,7 +10084,7 @@
 							"response": []
 						},
 						{
-							"name": "sign_requirements/doc?ids",
+							"name": "6. sign_requirements/doc?ids",
 							"id": "0ae4c238-6233-4d16-9c12-c78e0ebad157",
 							"protocolProfileBehavior": {
 								"disableBodyPruning": true
@@ -10092,7 +10093,7 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{host}}/rest/stateful/corp/sign_requirements/doc?ids={{docPlatporCurrId}},{{idSVO}}",
+									"raw": "{{host}}/rest/stateful/corp/sign_requirements/doc?ids={{idRub}},{{idSVO}}",
 									"host": [
 										"{{host}}"
 									],
@@ -10106,7 +10107,7 @@
 									"query": [
 										{
 											"key": "ids",
-											"value": "{{docPlatporCurrId}},{{idSVO}}"
+											"value": "{{idRub}},{{idSVO}}"
 										}
 									]
 								}
@@ -10114,7 +10115,7 @@
 							"response": []
 						},
 						{
-							"name": "v2",
+							"name": "7. v2",
 							"event": [
 								{
 									"listen": "prerequest",
@@ -10162,7 +10163,7 @@
 							"response": []
 						},
 						{
-							"name": "Второй рест v2",
+							"name": "8. Второй рест v2",
 							"event": [
 								{
 									"listen": "prerequest",
@@ -10195,6 +10196,84 @@
 									}
 								},
 								"url": "{{host}}/rest/stateful/corp/document/sign/v2"
+							},
+							"response": []
+						},
+						{
+							"name": "9. Отправка рублевого платежа в банк",
+							"id": "8f2371ae-e8e8-4f46-a56a-d7427e67cb84",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"url": {
+									"raw": "{{host}}/rest/stateful/corp/document/send?doc_module=ibankul&doc_type=doc_platpor_bp&doc_ids={{docPlatporCurrId}}",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"rest",
+										"stateful",
+										"corp",
+										"document",
+										"send"
+									],
+									"query": [
+										{
+											"key": "doc_module",
+											"value": "ibankul"
+										},
+										{
+											"key": "doc_type",
+											"value": "doc_platpor_bp"
+										},
+										{
+											"key": "doc_ids",
+											"value": "{{docPlatporCurrId}}"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "10. Отправка СВО в банк",
+							"id": "39a4c28a-0649-4604-ad84-6f34f367dce0",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"url": {
+									"raw": "{{host}}/rest/stateful/corp/document/send?doc_module=ibankul_curr&doc_type=inq_curr_181&doc_ids={{idSVO}}",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"rest",
+										"stateful",
+										"corp",
+										"document",
+										"send"
+									],
+									"query": [
+										{
+											"key": "doc_module",
+											"value": "ibankul_curr"
+										},
+										{
+											"key": "doc_type",
+											"value": "inq_curr_181"
+										},
+										{
+											"key": "doc_ids",
+											"value": "{{idSVO}}"
+										}
+									]
+								}
 							},
 							"response": []
 						}
