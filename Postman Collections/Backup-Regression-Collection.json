@@ -9859,11 +9859,12 @@
 								{
 									"listen": "test",
 									"script": {
+										"id": "201a6e6f-01d5-49bb-97ab-87ae44144c74",
 										"exec": [
 											""
 										],
 										"type": "text/javascript",
-										"id": "201a6e6f-01d5-49bb-97ab-87ae44144c74"
+										"packages": {}
 									}
 								}
 							],
@@ -9875,8 +9876,8 @@
 								"auth": {
 									"type": "basic",
 									"basic": {
-										"password": "{{password}}",
-										"username": "{{login}}"
+										"password": "{{password_test1}}",
+										"username": "{{login_test1}}"
 									}
 								},
 								"method": "POST",
@@ -9886,7 +9887,7 @@
 							"response": []
 						},
 						{
-							"name": "Смена клиента - ООО \"Радиатор\"",
+							"name": "Смена клиента - ООО \"ЛАТЕКС\"",
 							"id": "58770793-8b3a-4917-a725-628b0cf1d402",
 							"protocolProfileBehavior": {
 								"disableBodyPruning": true
@@ -9894,160 +9895,7 @@
 							"request": {
 								"method": "PUT",
 								"header": [],
-								"url": {
-									"raw": "{{host}}/rest/stateful/corp/company/change_active/6905198",
-									"host": [
-										"{{host}}"
-									],
-									"path": [
-										"rest",
-										"stateful",
-										"corp",
-										"company",
-										"change_active",
-										"6905198"
-									],
-									"query": [
-										{
-											"key": null,
-											"value": "441868",
-											"description": "ВМЗ (Тест)",
-											"disabled": true
-										},
-										{
-											"key": null,
-											"value": "6905198",
-											"description": "ВМЗ (ПРЕПРОД)",
-											"disabled": true
-										},
-										{
-											"key": "",
-											"value": "1121492",
-											"description": "ООО \"ДАЙМОНД ЮВЕЛИР ГРУПП\"",
-											"disabled": true
-										},
-										{
-											"key": null,
-											"value": "1121491",
-											"description": "ООО \"КОВЕНС\"",
-											"disabled": true
-										},
-										{
-											"key": null,
-											"value": "1035778",
-											"description": "ООО \"МОК-производство\"",
-											"disabled": true
-										},
-										{
-											"key": null,
-											"value": "1121527",
-											"description": "ООО \"АГРОИНТЕРНЕШНЛ\"",
-											"disabled": true
-										},
-										{
-											"key": null,
-											"value": "1332542",
-											"description": "Захарова",
-											"disabled": true
-										},
-										{
-											"key": null,
-											"value": "747036",
-											"description": "ООО \"АВМ СПОРТ-ТУР\"",
-											"disabled": true
-										},
-										{
-											"key": null,
-											"value": "232828",
-											"description": "ООО \"СпецКонтрактСервис\"",
-											"disabled": true
-										},
-										{
-											"key": null,
-											"value": "1177388",
-											"description": "ООО \"КАЙРОС\"",
-											"disabled": true
-										},
-										{
-											"key": "",
-											"value": "1185380",
-											"description": "ООО \"СОФОРА\" {1}",
-											"disabled": true
-										},
-										{
-											"key": null,
-											"value": "1185711",
-											"description": "ООО \"ЭЛЕКТРОННЫЕ СИСТЕМЫ\"",
-											"disabled": true
-										},
-										{
-											"key": null,
-											"value": "1177447",
-											"description": "ОТА",
-											"disabled": true
-										},
-										{
-											"key": null,
-											"value": "1182700",
-											"description": "ООО \"СК-ПРОФИЛЬ\"",
-											"disabled": true
-										},
-										{
-											"key": null,
-											"value": "1185714",
-											"description": "ООО \"МПТП - С\"",
-											"disabled": true
-										},
-										{
-											"key": null,
-											"value": "1185717",
-											"description": "ООО \"БЛКОР\"",
-											"disabled": true
-										},
-										{
-											"key": null,
-											"value": "1185720",
-											"description": "ООО \"Энергомеханика {1}\"",
-											"disabled": true
-										},
-										{
-											"key": null,
-											"value": "1185723",
-											"description": "ПРОММАШ ООО {1}",
-											"disabled": true
-										},
-										{
-											"key": null,
-											"value": "1185728",
-											"description": "ООО \"ЭНИТРАНС\"",
-											"disabled": true
-										},
-										{
-											"key": null,
-											"value": "1182694",
-											"description": "АО \"ВОСЕМЬ ВЕРШИН\"",
-											"disabled": true
-										},
-										{
-											"key": null,
-											"value": "1182696",
-											"description": "ООО \"ОДИССЕЙ\"",
-											"disabled": true
-										},
-										{
-											"key": null,
-											"value": "1182698",
-											"description": "ООО \"СТРОЙМИГ КОННЕКТ\"",
-											"disabled": true
-										},
-										{
-											"key": null,
-											"value": "1185723",
-											"description": "ООО \"ПРОММАШ\"",
-											"disabled": true
-										}
-									]
-								}
+								"url": "{{host}}/rest/stateful/corp/company/change_active/7980135"
 							},
 							"response": []
 						},
@@ -10062,7 +9910,7 @@
 											"const response = pm.response.json();",
 											"",
 											"pm.test(\"Разрешенный сервис SIGNER_INFORMATION\", function () {",
-											"    pm.expect(response).to.have.property(\"SIGNER_INFORMATION\", 1);",
+											"    pm.expect(response).to.have.property(\"SIGNER_INFORMATION\", 0);",
 											"});"
 										],
 										"type": "text/javascript",
@@ -10778,6 +10626,36 @@
 										}
 									]
 								}
+							},
+							"response": []
+						},
+						{
+							"name": "11. Удаление переменных из окружения",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "9196ebfd-c2ad-41e4-b897-4961ea6980c3",
+										"exec": [
+											"postman.clearEnvironmentVariable(\"idRub\")",
+											"postman.clearEnvironmentVariable(\"docNumberSVO\")",
+											"postman.clearEnvironmentVariable(\"docPlatporCurrId\")",
+											"postman.clearEnvironmentVariable(\"idSVO\")",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"id": "5aa5b24a-dea9-407f-89b3-6179376af079",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": "{{host}}"
 							},
 							"response": []
 						}
