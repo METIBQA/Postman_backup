@@ -10487,8 +10487,7 @@
 											"postman.clearEnvironmentVariable(\"idRub\")",
 											"postman.clearEnvironmentVariable(\"docNumberSVO\")",
 											"postman.clearEnvironmentVariable(\"docPlatporCurrId\")",
-											"postman.clearEnvironmentVariable(\"idSVO\")",
-											""
+											"postman.clearEnvironmentVariable(\"idSVO\")"
 										],
 										"type": "text/javascript",
 										"packages": {}
