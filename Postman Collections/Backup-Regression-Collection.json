@@ -8109,7 +8109,7 @@
 			"name": "Открытие счетов",
 			"item": [
 				{
-					"name": "#3878. Допустимые валюты",
+					"name": "3878. Допустимые валюты",
 					"item": [
 						{
 							"name": "Авторизация",
@@ -8804,7 +8804,7 @@
 					"id": "72ec464d-85bc-4bdd-a5f4-2e4f3a0b00f5"
 				},
 				{
-					"name": "#4026. Проверка соответствия типа создаваемого счета и валюты",
+					"name": "4026. Проверка соответствия типа создаваемого счета и валюты",
 					"item": [
 						{
 							"name": "Описание - Смотри раздел \"Tests\"",
@@ -9602,7 +9602,7 @@
 					"name": "5860. Проверка настроек. Разрешенный сервис включен",
 					"item": [
 						{
-							"name": "Авторизация Copy",
+							"name": "Авторизация",
 							"event": [
 								{
 									"listen": "test",
@@ -9801,13 +9801,49 @@
 						},
 						{
 							"name": "Проверка настроек",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "c1d78a91-7533-407f-bddf-f04b46cace10",
+										"exec": [
+											"const response = pm.response.json();",
+											"",
+											"pm.test(\"Разрешенный сервис SIGNER_INFORMATION\", function () {",
+											"    pm.expect(response).to.have.property(\"SIGNER_INFORMATION\", 1);",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
 							"id": "8ec2d37d-6a6d-4371-abff-297abd6c0ce7",
 							"protocolProfileBehavior": {
 								"disableBodyPruning": true
 							},
 							"request": {
 								"method": "GET",
-								"header": []
+								"header": [],
+								"url": {
+									"raw": "{{host}}/rest/stateful/corp/system/property?resource=SERVICES/COMMON",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"rest",
+										"stateful",
+										"corp",
+										"system",
+										"property"
+									],
+									"query": [
+										{
+											"key": "resource",
+											"value": "SERVICES/COMMON"
+										}
+									]
+								}
 							},
 							"response": []
 						}
