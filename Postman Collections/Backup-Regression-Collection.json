@@ -9634,7 +9634,7 @@
 							"response": []
 						},
 						{
-							"name": "Смена клиента - АО \"ВМЗ\" Copy",
+							"name": "Смена клиента - ООО \"Радиатор\"",
 							"id": "deeb6b90-6044-4cb4-bbad-27146b96a0eb",
 							"protocolProfileBehavior": {
 								"disableBodyPruning": true
@@ -9796,6 +9796,18 @@
 										}
 									]
 								}
+							},
+							"response": []
+						},
+						{
+							"name": "Проверка настроек",
+							"id": "8ec2d37d-6a6d-4371-abff-297abd6c0ce7",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": []
 							},
 							"response": []
 						}
