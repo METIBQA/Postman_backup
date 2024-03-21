@@ -9849,6 +9849,258 @@
 						}
 					],
 					"id": "abc0305b-2006-4d05-9667-5713e453526a"
+				},
+				{
+					"name": "5861. Проверка настроек. Разрешенный сервис выключен",
+					"item": [
+						{
+							"name": "Авторизация",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript",
+										"id": "201a6e6f-01d5-49bb-97ab-87ae44144c74"
+									}
+								}
+							],
+							"id": "5b82dfc7-63db-4fe5-8405-2d47454d782c",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": {
+										"password": "{{password}}",
+										"username": "{{login}}"
+									}
+								},
+								"method": "POST",
+								"header": [],
+								"url": "{{host}}/rest/stateful/corp/login"
+							},
+							"response": []
+						},
+						{
+							"name": "Смена клиента - ООО \"Радиатор\"",
+							"id": "58770793-8b3a-4917-a725-628b0cf1d402",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"url": {
+									"raw": "{{host}}/rest/stateful/corp/company/change_active/6905198",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"rest",
+										"stateful",
+										"corp",
+										"company",
+										"change_active",
+										"6905198"
+									],
+									"query": [
+										{
+											"key": null,
+											"value": "441868",
+											"description": "ВМЗ (Тест)",
+											"disabled": true
+										},
+										{
+											"key": null,
+											"value": "6905198",
+											"description": "ВМЗ (ПРЕПРОД)",
+											"disabled": true
+										},
+										{
+											"key": "",
+											"value": "1121492",
+											"description": "ООО \"ДАЙМОНД ЮВЕЛИР ГРУПП\"",
+											"disabled": true
+										},
+										{
+											"key": null,
+											"value": "1121491",
+											"description": "ООО \"КОВЕНС\"",
+											"disabled": true
+										},
+										{
+											"key": null,
+											"value": "1035778",
+											"description": "ООО \"МОК-производство\"",
+											"disabled": true
+										},
+										{
+											"key": null,
+											"value": "1121527",
+											"description": "ООО \"АГРОИНТЕРНЕШНЛ\"",
+											"disabled": true
+										},
+										{
+											"key": null,
+											"value": "1332542",
+											"description": "Захарова",
+											"disabled": true
+										},
+										{
+											"key": null,
+											"value": "747036",
+											"description": "ООО \"АВМ СПОРТ-ТУР\"",
+											"disabled": true
+										},
+										{
+											"key": null,
+											"value": "232828",
+											"description": "ООО \"СпецКонтрактСервис\"",
+											"disabled": true
+										},
+										{
+											"key": null,
+											"value": "1177388",
+											"description": "ООО \"КАЙРОС\"",
+											"disabled": true
+										},
+										{
+											"key": "",
+											"value": "1185380",
+											"description": "ООО \"СОФОРА\" {1}",
+											"disabled": true
+										},
+										{
+											"key": null,
+											"value": "1185711",
+											"description": "ООО \"ЭЛЕКТРОННЫЕ СИСТЕМЫ\"",
+											"disabled": true
+										},
+										{
+											"key": null,
+											"value": "1177447",
+											"description": "ОТА",
+											"disabled": true
+										},
+										{
+											"key": null,
+											"value": "1182700",
+											"description": "ООО \"СК-ПРОФИЛЬ\"",
+											"disabled": true
+										},
+										{
+											"key": null,
+											"value": "1185714",
+											"description": "ООО \"МПТП - С\"",
+											"disabled": true
+										},
+										{
+											"key": null,
+											"value": "1185717",
+											"description": "ООО \"БЛКОР\"",
+											"disabled": true
+										},
+										{
+											"key": null,
+											"value": "1185720",
+											"description": "ООО \"Энергомеханика {1}\"",
+											"disabled": true
+										},
+										{
+											"key": null,
+											"value": "1185723",
+											"description": "ПРОММАШ ООО {1}",
+											"disabled": true
+										},
+										{
+											"key": null,
+											"value": "1185728",
+											"description": "ООО \"ЭНИТРАНС\"",
+											"disabled": true
+										},
+										{
+											"key": null,
+											"value": "1182694",
+											"description": "АО \"ВОСЕМЬ ВЕРШИН\"",
+											"disabled": true
+										},
+										{
+											"key": null,
+											"value": "1182696",
+											"description": "ООО \"ОДИССЕЙ\"",
+											"disabled": true
+										},
+										{
+											"key": null,
+											"value": "1182698",
+											"description": "ООО \"СТРОЙМИГ КОННЕКТ\"",
+											"disabled": true
+										},
+										{
+											"key": null,
+											"value": "1185723",
+											"description": "ООО \"ПРОММАШ\"",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Проверка настроек",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "c1d78a91-7533-407f-bddf-f04b46cace10",
+										"exec": [
+											"const response = pm.response.json();",
+											"",
+											"pm.test(\"Разрешенный сервис SIGNER_INFORMATION\", function () {",
+											"    pm.expect(response).to.have.property(\"SIGNER_INFORMATION\", 1);",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"id": "1f19d56f-a813-4c4b-974d-6cbbbece9539",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{host}}/rest/stateful/corp/system/property?resource=SERVICES/COMMON",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"rest",
+										"stateful",
+										"corp",
+										"system",
+										"property"
+									],
+									"query": [
+										{
+											"key": "resource",
+											"value": "SERVICES/COMMON"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"id": "f5859a7d-ffff-4f6e-8317-3d62621a6aa5"
 				}
 			],
 			"id": "e549a53b-c2a7-4a2e-86a6-65f0cba0b4e7"
