@@ -11659,7 +11659,7 @@
 										{
 											"listen": "test",
 											"script": {
-												"id": "7811dc59-c4f6-49c1-89b4-437c947b23d3",
+												"id": "fee98c82-3608-492a-a91d-55ee4af320c5",
 												"exec": [
 													"/* Пояснение:",
 													"undefined - эти парамерты не должны приходить в ресте",
@@ -12060,9 +12060,11 @@
 													"        let targetValue = Type[i].number //Номер счета в тестовых данных",
 													"        let targetValueType = Type[i].type //Значение subtype в тестовых данных",
 													"        let targetValueSubtype = Type[i].subtype //Значение subtype в тестовых данных",
+													"        let targetValueArray = Type[i].array //Значение subtype в тестовых данных",
 													"        console.log('Номер счета, который я ищу в тестовых данных - ', targetValue)",
 													"        console.log('Тип счета, который я ищу в тестовых данных - ', targetValueType)",
 													"        console.log('Подтип счета, который я ищу в тестовых данных - ', targetValueSubtype)",
+													"        console.log('Название массива, в тестовых данных - ', targetValueArray)",
 													"",
 													"",
 													"",
@@ -12081,7 +12083,7 @@
 													"",
 													"                // Ищу название массива в ресте product. Проверяем каждый JSON-объект в текущем массиве",
 													"                for (let i = 0; i < currentArray.length; i++) {",
-													"                    console.log('ищем элемент в массиве ', arrayName)",
+													"                    // console.log('ищем элемент в массиве ', arrayName)",
 													"",
 													"                    // Проверяем значение параметра",
 													"                    if ((currentArray[i].number === targetValue) && (currentArray[i].type === targetValueType) && (currentArray[i].subtype === targetValueSubtype)) {",
@@ -12102,9 +12104,9 @@
 													"                }",
 													"            }",
 													"",
-													"            if (isFound) {",
-													"                break;",
-													"            }",
+													"            // if (isFound) {",
+													"            //     break;",
+													"            // }",
 													"        }",
 													"",
 													"        // Выводим результат",
@@ -12115,8 +12117,6 @@
 													"            console.log(`Значение ${targetValue} не найдено в массивах.`);",
 													"        }",
 													"        //ПОИСК ПО МАССИВУ ЗАКОНЧЕН",
-													"",
-													"",
 													"",
 													"",
 													"        //Проверяю рест product.____ (accounds/credits/deposits/card) является ли массивом",
@@ -12231,7 +12231,7 @@
 										{
 											"listen": "prerequest",
 											"script": {
-												"id": "ecc479c9-ee2f-486a-8974-4f25f327eac6",
+												"id": "60050abd-c063-49c9-9f85-ede297ba8936",
 												"exec": [
 													"// ПОЛУЧАЮ ТЕКУЩУЮ ДАТУ И ВРЕМЯ",
 													"let currentDate = new Date();",
