@@ -167,7 +167,7 @@
 										"header": [],
 										"body": {
 											"mode": "raw",
-											"raw": "{\n    \"fullname\": \"Контрагент НАЛОГ для проверки строки поиска\",\n    \"inn\": 5024002155,\n    \"kpp\": 123456789,\n    \"accList\": [\n        {\n            \"accNumber\": \"00000000000000000000\",\n            \"bankBik\": \"044030001\"\n        }\n    ],\n    \"corrType\": \"NALOG\"\n}",
+											"raw": "{\n    \"fullname\": \"Контрагент НАЛОГ для проверки строки поиска\",\n    \"inn\": 7727406020,\n    \"kpp\": 770801001,\n    \"accList\": [\n        {\n            \"accNumber\": \"00000000000000000000\",\n            \"bankBik\": \"044030001\"\n        }\n    ],\n    \"corrType\": \"NALOG\"\n}",
 											"options": {
 												"raw": {
 													"language": "json"
