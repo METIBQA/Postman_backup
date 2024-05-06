@@ -1965,6 +1965,28 @@
 						"url": "{{host}}/rest/stateful/corp/login"
 					},
 					"response": []
+				},
+				{
+					"name": "Прочтение уведомления",
+					"id": "1bdfd581-04d6-4a27-b762-19ac1866e088",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "[7974948]",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{host}}/rest/stateful/corp/notification/read"
+					},
+					"response": []
 				}
 			],
 			"id": "be7b51e0-592d-433c-94fd-5f5debf99da6"
