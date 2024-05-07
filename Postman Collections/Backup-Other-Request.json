@@ -1980,7 +1980,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "[105900138] //",
+							"raw": "[10360676] //ID уведомления (PARENT_ID)",
 							"options": {
 								"raw": {
 									"language": "json"
