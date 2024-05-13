@@ -12406,6 +12406,44 @@
 					"response": []
 				},
 				{
+					"name": "Смена клиента на ООО \"Радиатор\"",
+					"id": "bca1b131-7237-4113-a3fc-8d85044470d2",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/rest/stateful/corp/company/change_active/7970250",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"rest",
+								"stateful",
+								"corp",
+								"company",
+								"change_active",
+								"7970250"
+							],
+							"query": [
+								{
+									"key": "2037480",
+									"value": "Тест",
+									"disabled": true
+								},
+								{
+									"key": "7970250",
+									"value": "Препрод",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "4920. Проверка настроек даты платежки",
 					"event": [
 						{
