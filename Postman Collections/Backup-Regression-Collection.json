@@ -10170,6 +10170,486 @@
 			"name": "Рублевый платеж с СВО",
 			"item": [
 				{
+					"name": "4353. Дата платежа ±10 дней",
+					"item": [
+						{
+							"name": "Авторизация",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript",
+										"id": "360ca1cb-d18d-4ab6-8a31-aa390ad835b5"
+									}
+								}
+							],
+							"id": "bd08b258-66e4-49fb-9ae0-ebf8bbfbbac2",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": {
+										"username": "{{login}}",
+										"password": "{{password}}"
+									}
+								},
+								"method": "POST",
+								"header": [],
+								"url": "{{host}}/rest/stateful/corp/login"
+							},
+							"response": []
+						},
+						{
+							"name": "Смена клиента на ООО \"Радиатор\"",
+							"id": "0716062c-7e6f-418a-ba72-da4a368f6d12",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"url": {
+									"raw": "{{host}}/rest/stateful/corp/company/change_active/7970250",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"rest",
+										"stateful",
+										"corp",
+										"company",
+										"change_active",
+										"7970250"
+									],
+									"query": [
+										{
+											"key": "2037480",
+											"value": "Тест",
+											"disabled": true
+										},
+										{
+											"key": "7970250",
+											"value": "Препрод",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Prefill",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"const response = pm.response.json();",
+											"",
+											"pm.environment.set(\"docNumberRub\",response.docNumber);",
+											"pm.environment.set(\"accId\",response.accId);",
+											"",
+											"console.log(pm.environment.get(\"docNumberRub\"))"
+										],
+										"type": "text/javascript",
+										"id": "3c526385-3988-4821-bccd-6a4da8378344"
+									}
+								}
+							],
+							"id": "fcd1fe00-0157-4953-834f-4f6e381601a8",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{host}}/rest/stateful/corp/document_bp/create/metinv/prefill"
+							},
+							"response": []
+						},
+						{
+							"name": "Дата платежки -11 дней от текущей",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											"const moment = require('moment');",
+											"",
+											"//Дата для использования в теле запроса - действует только для данного запроса",
+											"pm.variables.set(\"dataToday\", moment().subtract(0, 'day').format(\"YYYY-MM-DD\"))",
+											"pm.variables.set(\"dataRequest\", moment().subtract(11, 'day').format(\"YYYY-MM-DD\"))",
+											"",
+											"// //Смена компании на ОО \"Радиатор\"",
+											"// pm.sendRequest({",
+											"//     url: 'https://test-ul.metib.online/rest/stateful/corp/company/change_active/2037480',",
+											"//     method: 'PUT',",
+											"// })",
+											"",
+											"//Дата для проверки текста ошибки",
+											"pm.variables.set(\"dataErrorStart\", moment().subtract(10, 'day').format(\"DD.MM.YYYY\"))",
+											"pm.variables.set(\"dataErrorEnd\", moment().add(10, 'day').format(\"DD.MM.YYYY\"))",
+											"",
+											"",
+											"console.log('Сегодняшняя дата ', pm.variables.get(\"dataToday\"))",
+											"console.log('Дата запроса ', pm.variables.get(\"dataRequest\"))"
+										],
+										"type": "text/javascript",
+										"id": "c04387f4-83a6-4f6a-a4a4-6776cd04747f"
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"const response = pm.response.json();",
+											"const moment = require('moment');",
+											"",
+											"pm.test(\"Дата документа меньше текущей на 11 дней\", function () {",
+											"    pm.expect(response).to.have.property(\"errorText\", `Дата документа \"${(moment().subtract(11, 'day').format(\"DD.MM.YYYY\"))}\" не принадлежит периоду с \"${pm.variables.get(\"dataErrorStart\")}\" по \"${pm.variables.get(\"dataErrorEnd\")}\"!`)",
+											"});"
+										],
+										"type": "text/javascript",
+										"id": "52bf5bbe-eb3a-43a1-ba07-5c7803fac04d"
+									}
+								}
+							],
+							"id": "858eaadc-e496-4f3e-a89a-777d3d84f025",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"corrFullname\": \"Запросы из Postman (Рудник Д.А) - {{dataToday}}\",\n    \"corrInn\": \"7705148464\",\n    \"corrKpp\": \"770201001\",\n    \"corrBankBik\": \"044525767\",\n    \"corrAccNumber\": \"30111810400010009964\",\n    \"bankName\": \"АО \\\"МОСКОМБАНК\\\"\",\n    \"accId\": {{accId}},\n    \"fullname\": \"Общество с ограниченной ответственностью \\\"Радиатор\\\" //РФ,143405,Московская обл,,Красногорск г,,Ильинское ш,1А,,,ЭТ/ПОМ/ОФ 9/9АВ/№18//\",\n    \"inn\": \"7720540387\",\n    \"kpp\": \"502401001\",\n    \"amount\": \"500\",\n    \"ndsTypeId\": \"653\",\n    \"commission\": \"Согласно тарифам банка\",\n    \"description\": \"{VO23110} поле \\\"Назначение платежа\\\"\",\n    \"employeeFio\": \"Фиона Дефолтова\",\n    \"employeePhone\": \"+79999999999\",\n    \"urgenttype\": \"5\",\n    \"docNumber\": {{docNumberRub}},\n    \"docDate\": \"{{dataRequest}}\",\n    \"corrType\": \"UL\",\n    \"payControlPsNumberCaption\": \"160500021405000011\",\n    \"currCode\": \"840\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{host}}/rest/stateful/corp/document_bp/create/metinv"
+							},
+							"response": []
+						},
+						{
+							"name": "Дата платежки +11 дней от текущей",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											"const moment = require('moment');",
+											"",
+											"//Дата для использования в теле запроса - действует только для данного запроса",
+											"pm.variables.set(\"dataToday\", moment().subtract(0, 'day').format(\"YYYY-MM-DD\"))",
+											"pm.variables.set(\"dataRequest\", moment().subtract(11, 'day').format(\"YYYY-MM-DD\"))",
+											"",
+											"// //Смена компании на ОО \"Радиатор\"",
+											"// pm.sendRequest({",
+											"//     url: 'https://test-ul.metib.online/rest/stateful/corp/company/change_active/2037480',",
+											"//     method: 'PUT',",
+											"// })",
+											"",
+											"//Дата для проверки текста ошибки",
+											"pm.variables.set(\"dataErrorStart\", moment().subtract(10, 'day').format(\"DD.MM.YYYY\"))",
+											"pm.variables.set(\"dataErrorEnd\", moment().add(10, 'day').format(\"DD.MM.YYYY\"))",
+											"",
+											"",
+											"console.log('Сегодняшняя дата ', pm.variables.get(\"dataToday\"))",
+											"console.log('Дата запроса ', pm.variables.get(\"dataRequest\"))"
+										],
+										"type": "text/javascript",
+										"id": "c04387f4-83a6-4f6a-a4a4-6776cd04747f"
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"const response = pm.response.json();",
+											"const moment = require('moment');",
+											"",
+											"pm.test(\"Дата документа меньше текущей на 11 дней\", function () {",
+											"    pm.expect(response).to.have.property(\"errorText\", `Дата документа \"${(moment().subtract(11, 'day').format(\"DD.MM.YYYY\"))}\" не принадлежит периоду с \"${pm.variables.get(\"dataErrorStart\")}\" по \"${pm.variables.get(\"dataErrorEnd\")}\"!`)",
+											"});"
+										],
+										"type": "text/javascript",
+										"id": "52bf5bbe-eb3a-43a1-ba07-5c7803fac04d"
+									}
+								}
+							],
+							"id": "0aa66cde-9210-4166-934a-6e49ad579fc3",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"corrFullname\": \"Запросы из Postman (Рудник Д.А) - {{dataToday}}\",\n    \"corrInn\": \"7705148464\",\n    \"corrKpp\": \"770201001\",\n    \"corrBankBik\": \"044525767\",\n    \"corrAccNumber\": \"30111810400010009964\",\n    \"bankName\": \"АО \\\"МОСКОМБАНК\\\"\",\n    \"accId\": {{accId}},\n    \"fullname\": \"Общество с ограниченной ответственностью \\\"Радиатор\\\" //РФ,143405,Московская обл,,Красногорск г,,Ильинское ш,1А,,,ЭТ/ПОМ/ОФ 9/9АВ/№18//\",\n    \"inn\": \"7720540387\",\n    \"kpp\": \"502401001\",\n    \"amount\": \"500\",\n    \"ndsTypeId\": \"653\",\n    \"commission\": \"Согласно тарифам банка\",\n    \"description\": \"{VO23110} поле \\\"Назначение платежа\\\"\",\n    \"employeeFio\": \"Фиона Дефолтова\",\n    \"employeePhone\": \"+79999999999\",\n    \"urgenttype\": \"5\",\n    \"docNumber\": {{docNumberRub}},\n    \"docDate\": \"{{dataRequest}}\",\n    \"corrType\": \"UL\",\n    \"payControlPsNumberCaption\": \"160500021405000011\",\n    \"currCode\": \"840\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{host}}/rest/stateful/corp/document_bp/create/metinv"
+							},
+							"response": []
+						}
+					],
+					"id": "b8b29d50-5de3-48dc-a788-a0e7eeaae87b"
+				},
+				{
+					"name": "4372. Валидация поля corrAccNumber",
+					"item": [
+						{
+							"name": "Авторизация",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript",
+										"id": "ae545ac9-17de-470b-8d96-ad0c68cbca6e"
+									}
+								}
+							],
+							"id": "b064f213-9a6e-42ba-b502-6e81d78822f6",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": {
+										"username": "{{login}}",
+										"password": "{{password}}"
+									}
+								},
+								"method": "POST",
+								"header": [],
+								"url": "{{host}}/rest/stateful/corp/login"
+							},
+							"response": []
+						},
+						{
+							"name": "Смена клиента на ООО \"Радиатор\"",
+							"id": "b8cfa374-a78f-4a01-bb82-d1ee7344553c",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"url": {
+									"raw": "{{host}}/rest/stateful/corp/company/change_active/7970250",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"rest",
+										"stateful",
+										"corp",
+										"company",
+										"change_active",
+										"7970250"
+									],
+									"query": [
+										{
+											"key": "2037480",
+											"value": "Тест",
+											"disabled": true
+										},
+										{
+											"key": "7970250",
+											"value": "Препрод",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Prefill",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"const response = pm.response.json();",
+											"",
+											"pm.environment.set(\"docNumberRub\",response.docNumber);",
+											"pm.environment.set(\"accId\",response.accId);",
+											"",
+											"console.log(pm.environment.get(\"docNumberRub\"))"
+										],
+										"type": "text/javascript",
+										"id": "9fdcff23-76e4-455e-9fbd-9ed8e90fca29"
+									}
+								}
+							],
+							"id": "b0cb574c-9fc5-47fa-865b-287a9f140c68",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{host}}/rest/stateful/corp/document_bp/create/metinv/prefill"
+							},
+							"response": []
+						},
+						{
+							"name": "Поле corrAccNumber некорректное",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											"const moment = require('moment');",
+											"",
+											"//Дата для использования в теле запроса - действует только для данного запроса",
+											"pm.variables.set(\"dataToday\", moment().subtract(0, 'day').format(\"YYYY-MM-DD\"))",
+											"",
+											"console.log(pm.variables.get(\"dataToday\"))"
+										],
+										"type": "text/javascript",
+										"id": "b2f1c7e1-856f-4a9f-abad-84d11b11f3ed"
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"const response = pm.response.json();",
+											"",
+											"",
+											"pm.test(\"Проверка поля errorCode\", function () {",
+											"    pm.expect(response).to.have.property(\"errorCode\", 3019);",
+											"});",
+											"",
+											"pm.test(\"Проверка поля errorText\", function () {",
+											"    pm.expect(response).to.have.property(\"errorText\", \"Некорректное значение \\\"30111\\\" банковского счета в поле \\\"Номер счета контрагента\\\"\");",
+											"});"
+										],
+										"type": "text/javascript",
+										"id": "3ff3fe88-5f5e-4be2-8f95-1bec43e4a08f"
+									}
+								}
+							],
+							"id": "84b6c91d-8570-449d-8cb3-7282fb98d001",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"corrFullname\": \"Запросы из Postman (Рудник Д.А) - {{dataToday}}\",\n    \"corrInn\": \"7705148464\",\n    \"corrKpp\": \"770201001\",\n    \"corrBankBik\": \"044525767\",\n    \"corrAccNumber\": \"30111\",\n    \"bankName\": \"АО \\\"МОСКОМБАНК\\\"\",\n    \"accId\": {{accId}},\n    \"fullname\": \"Общество с ограниченной ответственностью \\\"Радиатор\\\" //РФ,143405,Московская обл,,Красногорск г,,Ильинское ш,1А,,,ЭТ/ПОМ/ОФ 9/9АВ/№18//\",\n    \"inn\": \"7720540387\",\n    \"kpp\": \"502401001\",\n    \"amount\": \"500\",\n    \"ndsTypeId\": \"653\",\n    \"commission\": \"Согласно тарифам банка\",\n    \"description\": \"{VO23110} поле \\\"Назначение платежа\\\"\",\n    \"employeeFio\": \"Фиона Дефолтова\",\n    \"employeePhone\": \"+79999999999\",\n    \"urgenttype\": \"5\",\n    \"docNumber\": {{docNumberRub}},\n    \"docDate\": \"{{dataToday}}\",\n    \"corrType\": \"UL\",\n    \"payControlPsNumberCaption\": \"160500021405000011\",\n    \"currCode\": \"840\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{host}}/rest/stateful/corp/document_bp/create/metinv"
+							},
+							"response": []
+						},
+						{
+							"name": "Поле corrAccNumber пустое",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											"const moment = require('moment');",
+											"",
+											"//Дата для использования в теле запроса - действует только для данного запроса",
+											"pm.variables.set(\"dataToday\", moment().subtract(0, 'day').format(\"YYYY-MM-DD\"))",
+											"",
+											"console.log(pm.variables.get(\"dataToday\"))"
+										],
+										"type": "text/javascript",
+										"id": "c648d9c2-5685-44a0-87c2-16e8beb356f1"
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"const response = pm.response.json();",
+											"",
+											"",
+											"pm.test(\"Проверка поля errorCode\", function() {",
+											"  pm.expect(response).to.have.property(\"errorCode\", \"3011\");",
+											"});",
+											"",
+											"pm.test(\"Проверка поля errorText\", function() {",
+											"  pm.expect(response).to.have.property(\"errorText\", \"Не указан счет получателя, что допустимо в случае, если получатель - кредитная организация или в платежном поручении на общую сумму с реестром. Документ не был сохранен. Для сохранения документа нажмите кнопку подтвердить сохранение документа\");",
+											"});"
+										],
+										"type": "text/javascript",
+										"id": "1431a4e8-ff51-4159-82cd-1e747d014f5e"
+									}
+								}
+							],
+							"id": "fdaf9210-822f-4e30-ab91-3060bf84b28c",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"corrFullname\": \"Запросы из Postman (Рудник Д.А) - {{dataToday}}\",\n    \"corrInn\": \"7705148464\",\n    \"corrKpp\": \"770201001\",\n    \"corrBankBik\": \"044525767\",\n    \"corrAccNumber\": \"\",\n    \"bankName\": \"АО \\\"МОСКОМБАНК\\\"\",\n    \"accId\": {{accId}},\n    \"fullname\": \"Общество с ограниченной ответственностью \\\"Радиатор\\\" //РФ,143405,Московская обл,,Красногорск г,,Ильинское ш,1А,,,ЭТ/ПОМ/ОФ 9/9АВ/№18//\",\n    \"inn\": \"7720540387\",\n    \"kpp\": \"502401001\",\n    \"amount\": \"500\",\n    \"ndsTypeId\": \"653\",\n    \"commission\": \"Согласно тарифам банка\",\n    \"description\": \"{VO23110} поле \\\"Назначение платежа\\\"\",\n    \"employeeFio\": \"Фиона Дефолтова\",\n    \"employeePhone\": \"+79999999999\",\n    \"urgenttype\": \"5\",\n    \"docNumber\": {{docNumberRub}},\n    \"docDate\": \"{{dataToday}}\",\n    \"corrType\": \"UL\",\n    \"payControlPsNumberCaption\": \"160500021405000011\",\n    \"currCode\": \"840\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{host}}/rest/stateful/corp/document_bp/create/metinv"
+							},
+							"response": []
+						}
+					],
+					"id": "5937e4ab-be62-4fb8-994f-0696308f75b8"
+				},
+				{
 					"name": "4507. Проверка конто поля \"Счет получателя\"",
 					"item": [
 						{
@@ -10873,486 +11353,6 @@
 						}
 					],
 					"id": "9995de02-68df-43e4-a524-f0899810a689"
-				},
-				{
-					"name": "4353. Дата платежа ±10 дней",
-					"item": [
-						{
-							"name": "Авторизация",
-							"event": [
-								{
-									"listen": "test",
-									"script": {
-										"exec": [
-											""
-										],
-										"type": "text/javascript",
-										"id": "360ca1cb-d18d-4ab6-8a31-aa390ad835b5"
-									}
-								}
-							],
-							"id": "bd08b258-66e4-49fb-9ae0-ebf8bbfbbac2",
-							"protocolProfileBehavior": {
-								"disableBodyPruning": true
-							},
-							"request": {
-								"auth": {
-									"type": "basic",
-									"basic": {
-										"username": "{{login}}",
-										"password": "{{password}}"
-									}
-								},
-								"method": "POST",
-								"header": [],
-								"url": "{{host}}/rest/stateful/corp/login"
-							},
-							"response": []
-						},
-						{
-							"name": "Смена клиента на ООО \"Радиатор\"",
-							"id": "0716062c-7e6f-418a-ba72-da4a368f6d12",
-							"protocolProfileBehavior": {
-								"disableBodyPruning": true
-							},
-							"request": {
-								"method": "PUT",
-								"header": [],
-								"url": {
-									"raw": "{{host}}/rest/stateful/corp/company/change_active/7970250",
-									"host": [
-										"{{host}}"
-									],
-									"path": [
-										"rest",
-										"stateful",
-										"corp",
-										"company",
-										"change_active",
-										"7970250"
-									],
-									"query": [
-										{
-											"key": "2037480",
-											"value": "Тест",
-											"disabled": true
-										},
-										{
-											"key": "7970250",
-											"value": "Препрод",
-											"disabled": true
-										}
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Prefill",
-							"event": [
-								{
-									"listen": "test",
-									"script": {
-										"exec": [
-											"const response = pm.response.json();",
-											"",
-											"pm.environment.set(\"docNumberRub\",response.docNumber);",
-											"pm.environment.set(\"accId\",response.accId);",
-											"",
-											"console.log(pm.environment.get(\"docNumberRub\"))"
-										],
-										"type": "text/javascript",
-										"id": "3c526385-3988-4821-bccd-6a4da8378344"
-									}
-								}
-							],
-							"id": "fcd1fe00-0157-4953-834f-4f6e381601a8",
-							"protocolProfileBehavior": {
-								"disableBodyPruning": true
-							},
-							"request": {
-								"method": "POST",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "{}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": "{{host}}/rest/stateful/corp/document_bp/create/metinv/prefill"
-							},
-							"response": []
-						},
-						{
-							"name": "Дата платежки -11 дней от текущей",
-							"event": [
-								{
-									"listen": "prerequest",
-									"script": {
-										"exec": [
-											"const moment = require('moment');",
-											"",
-											"//Дата для использования в теле запроса - действует только для данного запроса",
-											"pm.variables.set(\"dataToday\", moment().subtract(0, 'day').format(\"YYYY-MM-DD\"))",
-											"pm.variables.set(\"dataRequest\", moment().subtract(11, 'day').format(\"YYYY-MM-DD\"))",
-											"",
-											"// //Смена компании на ОО \"Радиатор\"",
-											"// pm.sendRequest({",
-											"//     url: 'https://test-ul.metib.online/rest/stateful/corp/company/change_active/2037480',",
-											"//     method: 'PUT',",
-											"// })",
-											"",
-											"//Дата для проверки текста ошибки",
-											"pm.variables.set(\"dataErrorStart\", moment().subtract(10, 'day').format(\"DD.MM.YYYY\"))",
-											"pm.variables.set(\"dataErrorEnd\", moment().add(10, 'day').format(\"DD.MM.YYYY\"))",
-											"",
-											"",
-											"console.log('Сегодняшняя дата ', pm.variables.get(\"dataToday\"))",
-											"console.log('Дата запроса ', pm.variables.get(\"dataRequest\"))"
-										],
-										"type": "text/javascript",
-										"id": "c04387f4-83a6-4f6a-a4a4-6776cd04747f"
-									}
-								},
-								{
-									"listen": "test",
-									"script": {
-										"exec": [
-											"const response = pm.response.json();",
-											"const moment = require('moment');",
-											"",
-											"pm.test(\"Дата документа меньше текущей на 11 дней\", function () {",
-											"    pm.expect(response).to.have.property(\"errorText\", `Дата документа \"${(moment().subtract(11, 'day').format(\"DD.MM.YYYY\"))}\" не принадлежит периоду с \"${pm.variables.get(\"dataErrorStart\")}\" по \"${pm.variables.get(\"dataErrorEnd\")}\"!`)",
-											"});"
-										],
-										"type": "text/javascript",
-										"id": "52bf5bbe-eb3a-43a1-ba07-5c7803fac04d"
-									}
-								}
-							],
-							"id": "858eaadc-e496-4f3e-a89a-777d3d84f025",
-							"protocolProfileBehavior": {
-								"disableBodyPruning": true
-							},
-							"request": {
-								"method": "POST",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "{\n    \"corrFullname\": \"Запросы из Postman (Рудник Д.А) - {{dataToday}}\",\n    \"corrInn\": \"7705148464\",\n    \"corrKpp\": \"770201001\",\n    \"corrBankBik\": \"044525767\",\n    \"corrAccNumber\": \"30111810400010009964\",\n    \"bankName\": \"АО \\\"МОСКОМБАНК\\\"\",\n    \"accId\": {{accId}},\n    \"fullname\": \"Общество с ограниченной ответственностью \\\"Радиатор\\\" //РФ,143405,Московская обл,,Красногорск г,,Ильинское ш,1А,,,ЭТ/ПОМ/ОФ 9/9АВ/№18//\",\n    \"inn\": \"7720540387\",\n    \"kpp\": \"502401001\",\n    \"amount\": \"500\",\n    \"ndsTypeId\": \"653\",\n    \"commission\": \"Согласно тарифам банка\",\n    \"description\": \"{VO23110} поле \\\"Назначение платежа\\\"\",\n    \"employeeFio\": \"Фиона Дефолтова\",\n    \"employeePhone\": \"+79999999999\",\n    \"urgenttype\": \"5\",\n    \"docNumber\": {{docNumberRub}},\n    \"docDate\": \"{{dataRequest}}\",\n    \"corrType\": \"UL\",\n    \"payControlPsNumberCaption\": \"160500021405000011\",\n    \"currCode\": \"840\"\n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": "{{host}}/rest/stateful/corp/document_bp/create/metinv"
-							},
-							"response": []
-						},
-						{
-							"name": "Дата платежки +11 дней от текущей",
-							"event": [
-								{
-									"listen": "prerequest",
-									"script": {
-										"exec": [
-											"const moment = require('moment');",
-											"",
-											"//Дата для использования в теле запроса - действует только для данного запроса",
-											"pm.variables.set(\"dataToday\", moment().subtract(0, 'day').format(\"YYYY-MM-DD\"))",
-											"pm.variables.set(\"dataRequest\", moment().subtract(11, 'day').format(\"YYYY-MM-DD\"))",
-											"",
-											"// //Смена компании на ОО \"Радиатор\"",
-											"// pm.sendRequest({",
-											"//     url: 'https://test-ul.metib.online/rest/stateful/corp/company/change_active/2037480',",
-											"//     method: 'PUT',",
-											"// })",
-											"",
-											"//Дата для проверки текста ошибки",
-											"pm.variables.set(\"dataErrorStart\", moment().subtract(10, 'day').format(\"DD.MM.YYYY\"))",
-											"pm.variables.set(\"dataErrorEnd\", moment().add(10, 'day').format(\"DD.MM.YYYY\"))",
-											"",
-											"",
-											"console.log('Сегодняшняя дата ', pm.variables.get(\"dataToday\"))",
-											"console.log('Дата запроса ', pm.variables.get(\"dataRequest\"))"
-										],
-										"type": "text/javascript",
-										"id": "c04387f4-83a6-4f6a-a4a4-6776cd04747f"
-									}
-								},
-								{
-									"listen": "test",
-									"script": {
-										"exec": [
-											"const response = pm.response.json();",
-											"const moment = require('moment');",
-											"",
-											"pm.test(\"Дата документа меньше текущей на 11 дней\", function () {",
-											"    pm.expect(response).to.have.property(\"errorText\", `Дата документа \"${(moment().subtract(11, 'day').format(\"DD.MM.YYYY\"))}\" не принадлежит периоду с \"${pm.variables.get(\"dataErrorStart\")}\" по \"${pm.variables.get(\"dataErrorEnd\")}\"!`)",
-											"});"
-										],
-										"type": "text/javascript",
-										"id": "52bf5bbe-eb3a-43a1-ba07-5c7803fac04d"
-									}
-								}
-							],
-							"id": "0aa66cde-9210-4166-934a-6e49ad579fc3",
-							"protocolProfileBehavior": {
-								"disableBodyPruning": true
-							},
-							"request": {
-								"method": "POST",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "{\n    \"corrFullname\": \"Запросы из Postman (Рудник Д.А) - {{dataToday}}\",\n    \"corrInn\": \"7705148464\",\n    \"corrKpp\": \"770201001\",\n    \"corrBankBik\": \"044525767\",\n    \"corrAccNumber\": \"30111810400010009964\",\n    \"bankName\": \"АО \\\"МОСКОМБАНК\\\"\",\n    \"accId\": {{accId}},\n    \"fullname\": \"Общество с ограниченной ответственностью \\\"Радиатор\\\" //РФ,143405,Московская обл,,Красногорск г,,Ильинское ш,1А,,,ЭТ/ПОМ/ОФ 9/9АВ/№18//\",\n    \"inn\": \"7720540387\",\n    \"kpp\": \"502401001\",\n    \"amount\": \"500\",\n    \"ndsTypeId\": \"653\",\n    \"commission\": \"Согласно тарифам банка\",\n    \"description\": \"{VO23110} поле \\\"Назначение платежа\\\"\",\n    \"employeeFio\": \"Фиона Дефолтова\",\n    \"employeePhone\": \"+79999999999\",\n    \"urgenttype\": \"5\",\n    \"docNumber\": {{docNumberRub}},\n    \"docDate\": \"{{dataRequest}}\",\n    \"corrType\": \"UL\",\n    \"payControlPsNumberCaption\": \"160500021405000011\",\n    \"currCode\": \"840\"\n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": "{{host}}/rest/stateful/corp/document_bp/create/metinv"
-							},
-							"response": []
-						}
-					],
-					"id": "b8b29d50-5de3-48dc-a788-a0e7eeaae87b"
-				},
-				{
-					"name": "4372. Валидация поля corrAccNumber",
-					"item": [
-						{
-							"name": "Авторизация",
-							"event": [
-								{
-									"listen": "test",
-									"script": {
-										"exec": [
-											""
-										],
-										"type": "text/javascript",
-										"id": "ae545ac9-17de-470b-8d96-ad0c68cbca6e"
-									}
-								}
-							],
-							"id": "b064f213-9a6e-42ba-b502-6e81d78822f6",
-							"protocolProfileBehavior": {
-								"disableBodyPruning": true
-							},
-							"request": {
-								"auth": {
-									"type": "basic",
-									"basic": {
-										"username": "{{login}}",
-										"password": "{{password}}"
-									}
-								},
-								"method": "POST",
-								"header": [],
-								"url": "{{host}}/rest/stateful/corp/login"
-							},
-							"response": []
-						},
-						{
-							"name": "Смена клиента на ООО \"Радиатор\"",
-							"id": "b8cfa374-a78f-4a01-bb82-d1ee7344553c",
-							"protocolProfileBehavior": {
-								"disableBodyPruning": true
-							},
-							"request": {
-								"method": "PUT",
-								"header": [],
-								"url": {
-									"raw": "{{host}}/rest/stateful/corp/company/change_active/7970250",
-									"host": [
-										"{{host}}"
-									],
-									"path": [
-										"rest",
-										"stateful",
-										"corp",
-										"company",
-										"change_active",
-										"7970250"
-									],
-									"query": [
-										{
-											"key": "2037480",
-											"value": "Тест",
-											"disabled": true
-										},
-										{
-											"key": "7970250",
-											"value": "Препрод",
-											"disabled": true
-										}
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Prefill",
-							"event": [
-								{
-									"listen": "test",
-									"script": {
-										"exec": [
-											"const response = pm.response.json();",
-											"",
-											"pm.environment.set(\"docNumberRub\",response.docNumber);",
-											"pm.environment.set(\"accId\",response.accId);",
-											"",
-											"console.log(pm.environment.get(\"docNumberRub\"))"
-										],
-										"type": "text/javascript",
-										"id": "9fdcff23-76e4-455e-9fbd-9ed8e90fca29"
-									}
-								}
-							],
-							"id": "b0cb574c-9fc5-47fa-865b-287a9f140c68",
-							"protocolProfileBehavior": {
-								"disableBodyPruning": true
-							},
-							"request": {
-								"method": "POST",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "{}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": "{{host}}/rest/stateful/corp/document_bp/create/metinv/prefill"
-							},
-							"response": []
-						},
-						{
-							"name": "Поле corrAccNumber некорректное",
-							"event": [
-								{
-									"listen": "prerequest",
-									"script": {
-										"exec": [
-											"const moment = require('moment');",
-											"",
-											"//Дата для использования в теле запроса - действует только для данного запроса",
-											"pm.variables.set(\"dataToday\", moment().subtract(0, 'day').format(\"YYYY-MM-DD\"))",
-											"",
-											"console.log(pm.variables.get(\"dataToday\"))"
-										],
-										"type": "text/javascript",
-										"id": "b2f1c7e1-856f-4a9f-abad-84d11b11f3ed"
-									}
-								},
-								{
-									"listen": "test",
-									"script": {
-										"exec": [
-											"const response = pm.response.json();",
-											"",
-											"",
-											"pm.test(\"Проверка поля errorCode\", function () {",
-											"    pm.expect(response).to.have.property(\"errorCode\", 3019);",
-											"});",
-											"",
-											"pm.test(\"Проверка поля errorText\", function () {",
-											"    pm.expect(response).to.have.property(\"errorText\", \"Некорректное значение \\\"30111\\\" банковского счета в поле \\\"Номер счета контрагента\\\"\");",
-											"});"
-										],
-										"type": "text/javascript",
-										"id": "3ff3fe88-5f5e-4be2-8f95-1bec43e4a08f"
-									}
-								}
-							],
-							"id": "84b6c91d-8570-449d-8cb3-7282fb98d001",
-							"protocolProfileBehavior": {
-								"disableBodyPruning": true
-							},
-							"request": {
-								"method": "POST",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "{\n    \"corrFullname\": \"Запросы из Postman (Рудник Д.А) - {{dataToday}}\",\n    \"corrInn\": \"7705148464\",\n    \"corrKpp\": \"770201001\",\n    \"corrBankBik\": \"044525767\",\n    \"corrAccNumber\": \"30111\",\n    \"bankName\": \"АО \\\"МОСКОМБАНК\\\"\",\n    \"accId\": {{accId}},\n    \"fullname\": \"Общество с ограниченной ответственностью \\\"Радиатор\\\" //РФ,143405,Московская обл,,Красногорск г,,Ильинское ш,1А,,,ЭТ/ПОМ/ОФ 9/9АВ/№18//\",\n    \"inn\": \"7720540387\",\n    \"kpp\": \"502401001\",\n    \"amount\": \"500\",\n    \"ndsTypeId\": \"653\",\n    \"commission\": \"Согласно тарифам банка\",\n    \"description\": \"{VO23110} поле \\\"Назначение платежа\\\"\",\n    \"employeeFio\": \"Фиона Дефолтова\",\n    \"employeePhone\": \"+79999999999\",\n    \"urgenttype\": \"5\",\n    \"docNumber\": {{docNumberRub}},\n    \"docDate\": \"{{dataToday}}\",\n    \"corrType\": \"UL\",\n    \"payControlPsNumberCaption\": \"160500021405000011\",\n    \"currCode\": \"840\"\n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": "{{host}}/rest/stateful/corp/document_bp/create/metinv"
-							},
-							"response": []
-						},
-						{
-							"name": "Поле corrAccNumber пустое",
-							"event": [
-								{
-									"listen": "prerequest",
-									"script": {
-										"exec": [
-											"const moment = require('moment');",
-											"",
-											"//Дата для использования в теле запроса - действует только для данного запроса",
-											"pm.variables.set(\"dataToday\", moment().subtract(0, 'day').format(\"YYYY-MM-DD\"))",
-											"",
-											"console.log(pm.variables.get(\"dataToday\"))"
-										],
-										"type": "text/javascript",
-										"id": "c648d9c2-5685-44a0-87c2-16e8beb356f1"
-									}
-								},
-								{
-									"listen": "test",
-									"script": {
-										"exec": [
-											"const response = pm.response.json();",
-											"",
-											"",
-											"pm.test(\"Проверка поля errorCode\", function() {",
-											"  pm.expect(response).to.have.property(\"errorCode\", \"3011\");",
-											"});",
-											"",
-											"pm.test(\"Проверка поля errorText\", function() {",
-											"  pm.expect(response).to.have.property(\"errorText\", \"Не указан счет получателя, что допустимо в случае, если получатель - кредитная организация или в платежном поручении на общую сумму с реестром. Документ не был сохранен. Для сохранения документа нажмите кнопку подтвердить сохранение документа\");",
-											"});"
-										],
-										"type": "text/javascript",
-										"id": "1431a4e8-ff51-4159-82cd-1e747d014f5e"
-									}
-								}
-							],
-							"id": "fdaf9210-822f-4e30-ab91-3060bf84b28c",
-							"protocolProfileBehavior": {
-								"disableBodyPruning": true
-							},
-							"request": {
-								"method": "POST",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "{\n    \"corrFullname\": \"Запросы из Postman (Рудник Д.А) - {{dataToday}}\",\n    \"corrInn\": \"7705148464\",\n    \"corrKpp\": \"770201001\",\n    \"corrBankBik\": \"044525767\",\n    \"corrAccNumber\": \"\",\n    \"bankName\": \"АО \\\"МОСКОМБАНК\\\"\",\n    \"accId\": {{accId}},\n    \"fullname\": \"Общество с ограниченной ответственностью \\\"Радиатор\\\" //РФ,143405,Московская обл,,Красногорск г,,Ильинское ш,1А,,,ЭТ/ПОМ/ОФ 9/9АВ/№18//\",\n    \"inn\": \"7720540387\",\n    \"kpp\": \"502401001\",\n    \"amount\": \"500\",\n    \"ndsTypeId\": \"653\",\n    \"commission\": \"Согласно тарифам банка\",\n    \"description\": \"{VO23110} поле \\\"Назначение платежа\\\"\",\n    \"employeeFio\": \"Фиона Дефолтова\",\n    \"employeePhone\": \"+79999999999\",\n    \"urgenttype\": \"5\",\n    \"docNumber\": {{docNumberRub}},\n    \"docDate\": \"{{dataToday}}\",\n    \"corrType\": \"UL\",\n    \"payControlPsNumberCaption\": \"160500021405000011\",\n    \"currCode\": \"840\"\n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": "{{host}}/rest/stateful/corp/document_bp/create/metinv"
-							},
-							"response": []
-						}
-					],
-					"id": "5937e4ab-be62-4fb8-994f-0696308f75b8"
 				}
 			],
 			"id": "3b4f93ba-93fa-46f9-8a1d-3647015f35f8"
@@ -11712,9 +11712,9 @@
 													"        \"subtype\": \"0\",",
 													"        \"array\": \"deposits\",",
 													"        \"visible\": \"true\",",
-													"        \"number\": \"42102810000000013303\",",
+													"        \"number\": \"42102810000000013374\",",
 													"        \"status\": \"new\",",
-													"        \"info\": \"Депозитный счет **3303\",",
+													"        \"info\": \"Депозитный счет **3374\",",
 													"        \"typeCaption\": \"Депозитный счет\"",
 													"    },",
 													"    //Добавить счит 2-88, сейчас таких счетов в ДБО нет",
