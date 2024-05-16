@@ -71,7 +71,7 @@
 										"method": "PUT",
 										"header": [],
 										"url": {
-											"raw": "{{host}}/rest/stateful/corp/company/change_active/7970250",
+											"raw": "{{host}}/rest/stateful/corp/company/change_active/{{id_radiator}}",
 											"host": [
 												"{{host}}"
 											],
@@ -81,7 +81,7 @@
 												"corp",
 												"company",
 												"change_active",
-												"7970250"
+												"{{id_radiator}}"
 											],
 											"query": [
 												{
@@ -286,7 +286,7 @@
 										"method": "PUT",
 										"header": [],
 										"url": {
-											"raw": "{{host}}/rest/stateful/corp/company/change_active/7970250",
+											"raw": "{{host}}/rest/stateful/corp/company/change_active/{{id_radiator}}",
 											"host": [
 												"{{host}}"
 											],
@@ -296,7 +296,7 @@
 												"corp",
 												"company",
 												"change_active",
-												"7970250"
+												"{{id_radiator}}"
 											],
 											"query": [
 												{
@@ -9309,7 +9309,7 @@
 								"method": "PUT",
 								"header": [],
 								"url": {
-									"raw": "{{host}}/rest/stateful/corp/company/change_active/6905198",
+									"raw": "{{host}}/rest/stateful/corp/company/change_active/{{id_vmz}}",
 									"host": [
 										"{{host}}"
 									],
@@ -9319,7 +9319,7 @@
 										"corp",
 										"company",
 										"change_active",
-										"6905198"
+										"{{id_vmz}}"
 									],
 									"query": [
 										{
@@ -10008,7 +10008,7 @@
 							"request": {
 								"method": "PUT",
 								"header": [],
-								"url": "{{host}}/rest/stateful/corp/company/change_active/7970250"
+								"url": "{{host}}/rest/stateful/corp/company/change_active/{{id_radiator}}"
 							},
 							"response": []
 						},
@@ -10214,7 +10214,7 @@
 								"method": "PUT",
 								"header": [],
 								"url": {
-									"raw": "{{host}}/rest/stateful/corp/company/change_active/7970250",
+									"raw": "{{host}}/rest/stateful/corp/company/change_active/{{id_radiator}}",
 									"host": [
 										"{{host}}"
 									],
@@ -10224,7 +10224,7 @@
 										"corp",
 										"company",
 										"change_active",
-										"7970250"
+										"{{id_radiator}}"
 									],
 									"query": [
 										{
@@ -10463,7 +10463,7 @@
 								"method": "PUT",
 								"header": [],
 								"url": {
-									"raw": "{{host}}/rest/stateful/corp/company/change_active/7970250",
+									"raw": "{{host}}/rest/stateful/corp/company/change_active/{{id_radiator}}",
 									"host": [
 										"{{host}}"
 									],
@@ -10473,7 +10473,7 @@
 										"corp",
 										"company",
 										"change_active",
-										"7970250"
+										"{{id_radiator}}"
 									],
 									"query": [
 										{
@@ -12532,7 +12532,7 @@
 						"method": "PUT",
 						"header": [],
 						"url": {
-							"raw": "{{host}}/rest/stateful/corp/company/change_active/7970250",
+							"raw": "{{host}}/rest/stateful/corp/company/change_active/{{id_radiator}}",
 							"host": [
 								"{{host}}"
 							],
@@ -12542,7 +12542,7 @@
 								"corp",
 								"company",
 								"change_active",
-								"7970250"
+								"{{id_radiator}}"
 							],
 							"query": [
 								{
