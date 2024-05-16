@@ -11445,7 +11445,7 @@
 											"",
 											"let element = response.docSettings.findIndex(x => x.name === searchName);",
 											"",
-											"pm.test(`Проверка ${searchName} настроек доп. фильтров допустимых счетов`, function () {",
+											"pm.test(`Проверка \"${searchName}\" - настроеки доп. фильтров допустимых счетов`, function () {",
 											"    pm.expect(response.docSettings[element]).to.have.property(\"value\", searchValue);",
 											"});"
 										],
