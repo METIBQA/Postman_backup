@@ -11353,6 +11353,106 @@
 						}
 					],
 					"id": "9995de02-68df-43e4-a524-f0899810a689"
+				},
+				{
+					"name": "Доп. фильтр допустимых счетов",
+					"item": [
+						{
+							"name": "0. Авторизация",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "6f80f614-db36-4afd-9f27-d9b49ba2f1c3",
+										"exec": [
+											"// const response = pm.response.json();",
+											"",
+											"",
+											"// console.log(response)"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"id": "b00b56a2-4248-4f9a-b0e3-369551709507",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": {
+										"username": "{{login}}",
+										"password": "{{password}}"
+									}
+								},
+								"method": "POST",
+								"header": [],
+								"url": "{{host}}/rest/stateful/corp/login"
+							},
+							"response": []
+						},
+						{
+							"name": "1. Смена клиента на ООО \"Радиатор\"",
+							"id": "d52e832e-4d45-4dc7-883f-5bbb86f6e0bb",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"url": {
+									"raw": "{{host}}rest/stateful/corp/company/change_active/7970250",
+									"host": [
+										"{{host}}rest"
+									],
+									"path": [
+										"stateful",
+										"corp",
+										"company",
+										"change_active",
+										"7970250"
+									],
+									"query": [
+										{
+											"key": "2037480",
+											"value": "Тест",
+											"disabled": true
+										},
+										{
+											"key": "7970250",
+											"value": "Препрод",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "3. Metinv - запрос настроек",
+							"id": "10554f7e-e9ab-4470-acaa-13df4b59a766",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{host}}/rest/stateful/corp/document_bp/create/metinv"
+							},
+							"response": []
+						}
+					],
+					"id": "45a7b03c-5673-43e1-af91-353f47c14808"
 				}
 			],
 			"id": "3b4f93ba-93fa-46f9-8a1d-3647015f35f8"
