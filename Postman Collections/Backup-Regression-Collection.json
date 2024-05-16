@@ -11440,6 +11440,8 @@
 											"const response = pm.response.json();",
 											"",
 											"pm.test(\"Прокерка доп. фильтра - SELF_ACCOUNT/ACCOUNT_FILTER_EXPRESSION\", function () {",
+											"",
+											"    pm.expect(response.docSettings).to.have.property(\"name\", \"SELF_ACCOUNT/ACCOUNT_FILTER_EXPRESSION\")",
 											"    pm.expect(response.docSettings).to.have.property(\"value\", \"STATUS!='close' \\nAND ((ACC_SUBTYPE='1002' AND NOT '2002' in [ibankfl/dic/acc;ACC_SUBTYPE;ACC_SUBTYPE='2002'])\\n OR (ACC_SUBTYPE='2002' )) \");",
 											"});"
 										],
