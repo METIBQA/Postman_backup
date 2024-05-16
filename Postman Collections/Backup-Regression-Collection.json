@@ -10694,7 +10694,7 @@
 								"method": "PUT",
 								"header": [],
 								"url": {
-									"raw": "{{host}}/rest/stateful/corp/company/change_active/7970250",
+									"raw": "{{host}}/rest/stateful/corp/company/change_active/{{id_radiator}}",
 									"host": [
 										"{{host}}"
 									],
@@ -10704,7 +10704,7 @@
 										"corp",
 										"company",
 										"change_active",
-										"7970250"
+										"{{id_radiator}}"
 									],
 									"query": [
 										{
@@ -11402,7 +11402,7 @@
 								"method": "PUT",
 								"header": [],
 								"url": {
-									"raw": "{{host}}rest/stateful/corp/company/change_active/7970250",
+									"raw": "{{host}}rest/stateful/corp/company/change_active/{{id_radiator}}",
 									"host": [
 										"{{host}}rest"
 									],
@@ -11411,7 +11411,7 @@
 										"corp",
 										"company",
 										"change_active",
-										"7970250"
+										"{{id_radiator}}"
 									],
 									"query": [
 										{
@@ -11430,7 +11430,7 @@
 							"response": []
 						},
 						{
-							"name": "3. Metinv - запрос настроек",
+							"name": "2. Metinv - запрос настроек",
 							"event": [
 								{
 									"listen": "test",
