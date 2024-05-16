@@ -11431,6 +11431,23 @@
 						},
 						{
 							"name": "3. Metinv - запрос настроек",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "a29f6e3b-e6e9-4722-b1e1-93f9a39f84c9",
+										"exec": [
+											"const response = pm.response.json();",
+											"",
+											"pm.test(\"Прокерка доп. фильтра - SELF_ACCOUNT/ACCOUNT_FILTER_EXPRESSION\", function () {",
+											"    pm.expect(response).to.have.property(\"value\", \"STATUS!='close' \\nAND ((ACC_SUBTYPE='1002' AND NOT '2002' in [ibankfl/dic/acc;ACC_SUBTYPE;ACC_SUBTYPE='2002'])\\n OR (ACC_SUBTYPE='2002' )) \");",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
 							"id": "10554f7e-e9ab-4470-acaa-13df4b59a766",
 							"protocolProfileBehavior": {
 								"disableBodyPruning": true
