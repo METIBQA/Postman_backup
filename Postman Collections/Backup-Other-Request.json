@@ -1993,6 +1993,71 @@
 				}
 			],
 			"id": "be7b51e0-592d-433c-94fd-5f5debf99da6"
+		},
+		{
+			"name": "Опросы",
+			"item": [
+				{
+					"name": "Авторизация",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"id": "333e0c0b-9457-4342-9d00-994ee4a0befb"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"const moment = require('moment');",
+									"",
+									"//Дата для использования в теле запроса - действует только для данного запроса",
+									"pm.environment.set(\"dateToday\", moment().subtract(0, 'day').format(\"YYYY-MM-DD\"))",
+									"",
+									"console.log(\"Сегодняшняя дата - \" + pm.variables.get(\"dateToday\"))"
+								],
+								"type": "text/javascript",
+								"id": "1b9de58f-d087-486a-b7dd-1c52749d3a22"
+							}
+						}
+					],
+					"id": "83b24a34-2963-4817-83ad-a6d2857f33f0",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": {
+								"username": "{{login}}",
+								"password": "{{password}}"
+							}
+						},
+						"method": "POST",
+						"header": [],
+						"url": "{{host}}/rest/stateful/corp/login"
+					},
+					"response": []
+				},
+				{
+					"name": "Получение активного опроса",
+					"id": "0f88b850-f770-4a30-b9a0-de5932765672",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				}
+			],
+			"id": "cf9b159b-2299-47b7-9a68-f4f5089f5388"
 		}
 	],
 	"event": [
