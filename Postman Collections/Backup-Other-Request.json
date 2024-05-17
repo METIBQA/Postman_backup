@@ -1588,7 +1588,7 @@
 								"method": "PUT",
 								"header": [],
 								"url": {
-									"raw": "{{host}}rest/stateful/corp/company/change_active/7970250",
+									"raw": "{{host}}rest/stateful/corp/company/change_active/{{id_radiator}}",
 									"host": [
 										"{{host}}rest"
 									],
@@ -1597,7 +1597,7 @@
 										"corp",
 										"company",
 										"change_active",
-										"7970250"
+										"{{id_radiator}}"
 									],
 									"query": [
 										{
@@ -2045,6 +2045,44 @@
 					"response": []
 				},
 				{
+					"name": "Смена клиента на АО \"Калина\"",
+					"id": "aca009d9-fb65-48e5-baa7-261180f93f7e",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/rest/stateful/corp/company/change_active/{{id_kalina}}",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"rest",
+								"stateful",
+								"corp",
+								"company",
+								"change_active",
+								"{{id_kalina}}"
+							],
+							"query": [
+								{
+									"key": "2037480",
+									"value": "Тест",
+									"disabled": true
+								},
+								{
+									"key": "7970250",
+									"value": "Препрод",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "Получение активного опроса",
 					"id": "0f88b850-f770-4a30-b9a0-de5932765672",
 					"protocolProfileBehavior": {
@@ -2052,7 +2090,8 @@
 					},
 					"request": {
 						"method": "GET",
-						"header": []
+						"header": [],
+						"url": "{{host}}/rest/stateful/corp/surveys"
 					},
 					"response": []
 				}
