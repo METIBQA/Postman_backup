@@ -10903,17 +10903,19 @@
 								{
 									"listen": "test",
 									"script": {
+										"id": "caf64f11-0970-400b-bf7b-20b6b1dc5cf6",
 										"exec": [
 											"const response = pm.response.json();",
 											"",
 											"pm.environment.set(\"docNumberRub\",response.docNumber);",
+											"//Счет/карта списания",
 											"pm.environment.set(\"accId\",response.accId);",
 											"",
 											"console.log('docNumberRub= ',pm.environment.get(\"docNumberRub\"))",
 											"console.log('accId= ',pm.environment.get(\"accId\"))"
 										],
 										"type": "text/javascript",
-										"id": "caf64f11-0970-400b-bf7b-20b6b1dc5cf6"
+										"packages": {}
 									}
 								}
 							],
