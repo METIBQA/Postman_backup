@@ -13138,16 +13138,12 @@
 										{
 											"listen": "test",
 											"script": {
+												"id": "7ea7a6c7-2f8b-4c0c-bc7c-1467ddb9f598",
 												"exec": [
-													"// Как работать с этой коллекцией:",
-													"// 1. Необходимо запустить ран папки \"Запускать это\"",
-													"// 2. Включить в ран все запросы, которые есть во вложенных папках",
-													"// 3. Выбрать число иттераций = 1",
-													"",
-													"// Подробное описание того, за что отвечают те или иные переменные, что делает на каждом этапе расписано в запросе \"(+) Common - Общий рейтинг\""
+													"//Проверка задачи 4598"
 												],
 												"type": "text/javascript",
-												"id": "7ea7a6c7-2f8b-4c0c-bc7c-1467ddb9f598"
+												"packages": {}
 											}
 										}
 									],
@@ -13221,7 +13217,28 @@
 									"response": []
 								},
 								{
-									"name": "New Request",
+									"name": "- Поле \"Код ОКТМО\" не заполнено",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "95da7518-ba00-43e0-a9bc-163fba9c6d08",
+												"exec": [
+													"const response = pm.response.json();",
+													"",
+													"pm.test(\"Проверка поля errorCode\", function() {",
+													"  pm.expect(response).to.have.property(\"errorCode\", \"3011\");",
+													"});",
+													"",
+													"pm.test(\"Проверка поля errorText\", function() {",
+													"  pm.expect(response).to.have.property(\"errorText\", \"Поле \\\"ОКТМО\\\" не может быть пустым!\");",
+													"});"
+												],
+												"type": "text/javascript",
+												"packages": {}
+											}
+										}
+									],
 									"id": "61d4f6fc-96ff-4225-b30c-36c47a93a9f5",
 									"protocolProfileBehavior": {
 										"disableBodyPruning": true
@@ -13232,6 +13249,92 @@
 										"body": {
 											"mode": "raw",
 											"raw": "{\n    \"corrFullname\": \"Тест 4598\",\n    \"corrInn\": \"7727406020\",\n    \"corrKpp\": \"770801001\",\n    \"corrBankBik\": \"044030001\",\n    \"corrAccNumber\": \"03100810000000000000\",\n    \"uin\": \"0\",\n    \"accId\": 4103430,\n    \"fullname\": \"Акционерное общество \\\"Выксунский металлургический завод\\\"\",\n    \"inn\": \"5247004695\",\n    \"kpp\": \"997450001\",\n    \"amount\": \"100\",\n    \"ndsTypeId\": \"653\",\n    \"description\": \"Тест задачи 4598\",\n    \"loanAgreementNumber\": null,\n    \"stat\": \"01\",\n    \"kbk\": \"79710212000065000160\",\n    \"okato\": \"\",\n    \"ground\": \"0\",\n    \"tax1\": \"0\",\n    \"taxdocnum\": \"0\",\n    \"taxdocdate\": \"0\",\n    \"corrBankRuAccId\": null,\n    \"payNalogCorr\": false,\n    \"urgenttype\": \"5\",\n    \"docNumber\": \"2232\",\n    \"docDate\": \"2024-05-29\",\n    \"corrType\": \"NALOG\",\n    \"sendtype\": \"\",\n    \"gisGmpRequested\": false\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": "{{host}}/rest/stateful/corp/document/create/metinv"
+									},
+									"response": []
+								},
+								{
+									"name": "- Поле \"Код ОКТМО\" заполнено не корректно",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "f1fe0ca1-573d-45ca-a73b-467a4805341b",
+												"exec": [
+													"const response = pm.response.json();",
+													"",
+													"pm.test(\"Проверка поля errorCode\", function() {",
+													"  pm.expect(response).to.have.property(\"errorCode\", \"3011\");",
+													"});",
+													"",
+													"pm.test(\"Проверка поля errorText\", function() {",
+													"  pm.expect(response).to.have.property(\"errorText\", \"Поле \\\"ОКТМО\\\" должен состоять из 8 цифр(при этом все цифры не могут одновременно принимать значение 0) или же иметь значение 0!\");",
+													"});"
+												],
+												"type": "text/javascript",
+												"packages": {}
+											}
+										}
+									],
+									"id": "64f2af15-566f-4292-ae94-65ec2d84d5a3",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"corrFullname\": \"Тест 4598\",\n    \"corrInn\": \"7727406020\",\n    \"corrKpp\": \"770801001\",\n    \"corrBankBik\": \"044030001\",\n    \"corrAccNumber\": \"03100810000000000000\",\n    \"uin\": \"0\",\n    \"accId\": 4103430,\n    \"fullname\": \"Акционерное общество \\\"Выксунский металлургический завод\\\"\",\n    \"inn\": \"5247004695\",\n    \"kpp\": \"997450001\",\n    \"amount\": \"100\",\n    \"ndsTypeId\": \"653\",\n    \"description\": \"Тест задачи 4598\",\n    \"loanAgreementNumber\": null,\n    \"stat\": \"01\",\n    \"kbk\": \"79710212000065000160\",\n    \"okato\": \"123\",\n    \"ground\": \"0\",\n    \"tax1\": \"0\",\n    \"taxdocnum\": \"0\",\n    \"taxdocdate\": \"0\",\n    \"corrBankRuAccId\": null,\n    \"payNalogCorr\": false,\n    \"urgenttype\": \"5\",\n    \"docNumber\": \"2232\",\n    \"docDate\": \"2024-05-29\",\n    \"corrType\": \"NALOG\",\n    \"sendtype\": \"\",\n    \"gisGmpRequested\": false\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": "{{host}}/rest/stateful/corp/document/create/metinv"
+									},
+									"response": []
+								},
+								{
+									"name": "- Поле \"Код ОКТМО\" заполнено нулями",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "f1fe0ca1-573d-45ca-a73b-467a4805341b",
+												"exec": [
+													"const response = pm.response.json();",
+													"",
+													"pm.test(\"Проверка поля errorCode\", function() {",
+													"  pm.expect(response).to.have.property(\"errorCode\", \"3011\");",
+													"});",
+													"",
+													"pm.test(\"Проверка поля errorText\", function() {",
+													"  pm.expect(response).to.have.property(\"errorText\", \"Поле \\\"ОКТМО\\\" должен состоять из 8 цифр(при этом все цифры не могут одновременно принимать значение 0) или же иметь значение 0!\");",
+													"});"
+												],
+												"type": "text/javascript",
+												"packages": {}
+											}
+										}
+									],
+									"id": "9ab48d44-91da-432a-80c1-6617c1dd3df8",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"corrFullname\": \"Тест 4598\",\n    \"corrInn\": \"7727406020\",\n    \"corrKpp\": \"770801001\",\n    \"corrBankBik\": \"044030001\",\n    \"corrAccNumber\": \"03100810000000000000\",\n    \"uin\": \"0\",\n    \"accId\": 4103430,\n    \"fullname\": \"Акционерное общество \\\"Выксунский металлургический завод\\\"\",\n    \"inn\": \"5247004695\",\n    \"kpp\": \"997450001\",\n    \"amount\": \"100\",\n    \"ndsTypeId\": \"653\",\n    \"description\": \"Тест задачи 4598\",\n    \"loanAgreementNumber\": null,\n    \"stat\": \"01\",\n    \"kbk\": \"79710212000065000160\",\n    \"okato\": \"00000000\",\n    \"ground\": \"0\",\n    \"tax1\": \"0\",\n    \"taxdocnum\": \"0\",\n    \"taxdocdate\": \"0\",\n    \"corrBankRuAccId\": null,\n    \"payNalogCorr\": false,\n    \"urgenttype\": \"5\",\n    \"docNumber\": \"2232\",\n    \"docDate\": \"2024-05-29\",\n    \"corrType\": \"NALOG\",\n    \"sendtype\": \"\",\n    \"gisGmpRequested\": false\n}",
 											"options": {
 												"raw": {
 													"language": "json"
