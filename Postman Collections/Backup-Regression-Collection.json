@@ -13122,6 +13122,98 @@
 				}
 			],
 			"id": "246c8918-8ed6-4e1a-9c7c-ce591bb5e8f8"
+		},
+		{
+			"name": "Новый платеж",
+			"item": [
+				{
+					"name": "Налоговый/Бюджетный",
+					"item": [
+						{
+							"name": "Авторизация",
+							"id": "3dc94c39-7217-47cc-b016-1cb85b32f90e",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": {
+										"password": "{{password}}",
+										"username": "{{login}}"
+									}
+								},
+								"method": "POST",
+								"header": [],
+								"url": "{{host}}/rest/stateful/corp/login"
+							},
+							"response": []
+						},
+						{
+							"name": "New Request",
+							"id": "61d4f6fc-96ff-4225-b30c-36c47a93a9f5",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"corrFullname\": \"Тест 4598\",\n    \"corrInn\": \"7727406020\",\n    \"corrKpp\": \"770801001\",\n    \"corrBankBik\": \"044030001\",\n    \"corrAccNumber\": \"03100810000000000000\",\n    \"uin\": \"0\",\n    \"accId\": 4103430,\n    \"fullname\": \"Акционерное общество \\\"Выксунский металлургический завод\\\"\",\n    \"inn\": \"5247004695\",\n    \"kpp\": \"997450001\",\n    \"amount\": \"100\",\n    \"ndsTypeId\": \"653\",\n    \"description\": \"Тест задачи 4598\",\n    \"loanAgreementNumber\": null,\n    \"stat\": \"01\",\n    \"kbk\": \"79710212000065000160\",\n    \"okato\": \"\",\n    \"ground\": \"0\",\n    \"tax1\": \"0\",\n    \"taxdocnum\": \"0\",\n    \"taxdocdate\": \"0\",\n    \"corrBankRuAccId\": null,\n    \"payNalogCorr\": false,\n    \"urgenttype\": \"5\",\n    \"docNumber\": \"2232\",\n    \"docDate\": \"2024-05-29\",\n    \"corrType\": \"NALOG\",\n    \"sendtype\": \"\",\n    \"gisGmpRequested\": false\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{host}}/rest/stateful/corp/document/create/metinv"
+							},
+							"response": []
+						},
+						{
+							"name": "Смена клиента на ООО \"Радиатор\" Copy",
+							"id": "16ea0af5-d133-40fc-b19c-5e77e01982b9",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"url": {
+									"raw": "{{host}}/rest/stateful/corp/company/change_active/{{id_radiator}}",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"rest",
+										"stateful",
+										"corp",
+										"company",
+										"change_active",
+										"{{id_radiator}}"
+									],
+									"query": [
+										{
+											"key": "2037480",
+											"value": "Тест",
+											"disabled": true
+										},
+										{
+											"key": "7970250",
+											"value": "Препрод",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"id": "aaa7be13-8144-4cbd-9047-272109129ef7"
+				}
+			],
+			"id": "91c36f25-1cad-421b-aa71-fb2a863dcd7e"
 		}
 	],
 	"event": [
