@@ -13226,12 +13226,8 @@
 												"exec": [
 													"const response = pm.response.json();",
 													"",
-													"pm.environment.set(\"docNumberRub\",response.docNumber);",
-													"//Счет/карта списания",
-													"pm.environment.set(\"accId\",response.accId);",
-													"",
-													"console.log('docNumberRub= ',pm.environment.get(\"docNumberRub\"))",
-													"console.log('accId= ',pm.environment.get(\"accId\"))"
+													"pm.environment.set(\"docNumber\",response.docNumber);",
+													"console.log('Номер документа \"docNumber\" = ',pm.environment.get(\"docNumber\"))"
 												],
 												"type": "text/javascript",
 												"packages": {}
@@ -13254,7 +13250,7 @@
 												}
 											}
 										},
-										"url": "{{host}}/rest/stateful/corp/document_bp/create/metinv/prefill"
+										"url": "{{host}}/rest/stateful/corp/document/create/prefill"
 									},
 									"response": []
 								},
@@ -13268,13 +13264,16 @@
 												"exec": [
 													"const response = pm.response.json();",
 													"",
-													"pm.test(\"Проверка поля errorCode\", function() {",
-													"  pm.expect(response).to.have.property(\"errorCode\", \"3011\");",
+													"pm.test(\"Проверка поля docModule\", function() {",
+													"  pm.expect(response).to.have.property(\"docModule\", \"ibankul\");",
 													"});",
 													"",
-													"pm.test(\"Проверка поля errorText\", function() {",
-													"  pm.expect(response).to.have.property(\"errorText\", \"Поле \\\"ОКТМО\\\" не может быть пустым!\");",
-													"});"
+													"pm.test(\"Проверка поля ibankul\", function() {",
+													"  pm.expect(response).to.have.property(\"docType\", \"doc_platpor\");",
+													"});",
+													"",
+													"//Удаление переменных",
+													"postman.clearEnvironmentVariable(\"idRub\")"
 												],
 												"type": "text/javascript",
 												"packages": {}
@@ -13290,7 +13289,7 @@
 										"header": [],
 										"body": {
 											"mode": "raw",
-											"raw": "{\n    \"corrFullname\": \"Тест 4598\",\n    \"corrInn\": \"7727406020\",\n    \"corrKpp\": \"770801001\",\n    \"corrBankBik\": \"044030001\",\n    \"corrAccNumber\": \"03100810000000000000\",\n    \"uin\": \"0\",\n    \"accId\": 4103430,\n    \"fullname\": \"Акционерное общество \\\"Выксунский металлургический завод\\\"\",\n    \"inn\": \"5247004695\",\n    \"kpp\": \"997450001\",\n    \"amount\": \"100\",\n    \"ndsTypeId\": \"653\",\n    \"description\": \"Тест задачи 4598\",\n    \"loanAgreementNumber\": null,\n    \"stat\": \"01\",\n    \"kbk\": \"79710212000065000160\",\n    \"okato\": \"\",\n    \"ground\": \"0\",\n    \"tax1\": \"0\",\n    \"taxdocnum\": \"0\",\n    \"taxdocdate\": \"0\",\n    \"corrBankRuAccId\": null,\n    \"payNalogCorr\": false,\n    \"urgenttype\": \"5\",\n    \"docNumber\": \"2232\",\n    \"docDate\": \"2024-05-29\",\n    \"corrType\": \"NALOG\",\n    \"sendtype\": \"\",\n    \"gisGmpRequested\": false\n}",
+											"raw": "{\n    \"corrFullname\": \"Тест 4598\",\n    \"corrInn\": \"7727406020\",\n    \"corrKpp\": \"770801001\",\n    \"corrBankBik\": \"044030001\",\n    \"corrAccNumber\": \"03100810000000000000\",\n    \"uin\": \"0\",\n    \"accId\": 4103430,\n    \"fullname\": \"Акционерное общество \\\"Выксунский металлургический завод\\\"\",\n    \"inn\": \"5247004695\",\n    \"kpp\": \"997450001\",\n    \"amount\": \"100\",\n    \"ndsTypeId\": \"653\",\n    \"description\": \"Тест задачи 4598\",\n    \"loanAgreementNumber\": null,\n    \"stat\": \"01\",\n    \"kbk\": \"79710212000065000160\",\n    \"okato\": \"0\",\n    \"ground\": \"0\",\n    \"tax1\": \"0\",\n    \"taxdocnum\": \"0\",\n    \"taxdocdate\": \"0\",\n    \"corrBankRuAccId\": null,\n    \"payNalogCorr\": false,\n    \"urgenttype\": \"5\",\n    \"docNumber\": {{docNumberRub}},\n    \"docDate\": \"2024-05-29\",\n    \"corrType\": \"NALOG\",\n    \"sendtype\": \"\",\n    \"gisGmpRequested\": false\n}",
 											"options": {
 												"raw": {
 													"language": "json"
