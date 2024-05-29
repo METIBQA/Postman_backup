@@ -13217,6 +13217,48 @@
 									"response": []
 								},
 								{
+									"name": "Prefill",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "caf64f11-0970-400b-bf7b-20b6b1dc5cf6",
+												"exec": [
+													"const response = pm.response.json();",
+													"",
+													"pm.environment.set(\"docNumberRub\",response.docNumber);",
+													"//Счет/карта списания",
+													"pm.environment.set(\"accId\",response.accId);",
+													"",
+													"console.log('docNumberRub= ',pm.environment.get(\"docNumberRub\"))",
+													"console.log('accId= ',pm.environment.get(\"accId\"))"
+												],
+												"type": "text/javascript",
+												"packages": {}
+											}
+										}
+									],
+									"id": "f4617528-6bac-47b8-907b-57e1426b7050",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": "{{host}}/rest/stateful/corp/document_bp/create/metinv/prefill"
+									},
+									"response": []
+								},
+								{
 									"name": "+ Поле \"Код ОКТМО\" заполнено \"0\"",
 									"event": [
 										{
