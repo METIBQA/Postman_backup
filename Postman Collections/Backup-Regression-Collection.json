@@ -13797,6 +13797,27 @@
 								},
 								{
 									"name": "Смена клиента на ООО \"Русский водочный холдинг\"",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "c0a91764-3948-4251-abda-549043b0a7bb",
+												"exec": [
+													"const response = pm.response.json();",
+													"",
+													"pm.test(\"Проверка поля errorCode\", function() {",
+													"  pm.expect(response).to.have.property(\"errorCode\", \"1101\");",
+													"});",
+													"",
+													"pm.test(\"Проверка поля errorText\", function() {",
+													"  pm.expect(response).to.have.property(\"errorText\", \"Организация с id:2359951 заблокирована\");",
+													"});"
+												],
+												"type": "text/javascript",
+												"packages": {}
+											}
+										}
+									],
 									"id": "6ea23ec0-a6de-49da-8db7-ed767974c90d",
 									"protocolProfileBehavior": {
 										"disableBodyPruning": true
@@ -13830,12 +13851,81 @@
 									"request": {
 										"method": "GET",
 										"header": [],
-										"url": ""
+										"url": "{{host}}"
 									},
 									"response": []
 								}
 							],
 							"id": "7032478e-9d5a-4d2d-9bfd-1fefd800d8bd"
+						},
+						{
+							"name": "OON Copy",
+							"item": [
+								{
+									"name": "Авторизация",
+									"id": "521a8e2a-aa22-4dd3-a9aa-141454e4d3cb",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"auth": {
+											"type": "basic",
+											"basic": {
+												"password": "{{password}}",
+												"username": "{{login}}"
+											}
+										},
+										"method": "POST",
+										"header": [],
+										"url": "{{host}}/rest/stateful/corp/login"
+									},
+									"response": []
+								},
+								{
+									"name": "Смена клиента на ООО \"Тихоокеанская корпорация\"",
+									"id": "ea04841d-06b5-44ae-974e-a932f5be4a2b",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "PUT",
+										"header": [],
+										"url": "{{host}}/rest/stateful/corp/company/change_active/{{id_tihookeanskaya_corp}}"
+									},
+									"response": []
+								},
+								{
+									"name": "Проверка блокировки",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "6790577a-ce4c-447d-9d2c-b5e83925f0b6",
+												"exec": [
+													"const response = pm.response.json();",
+													"",
+													"pm.test(\"Блокировка OON\", function() {",
+													"  pm.expect(response.roles).to.include(\"ROLE_BLOCK_OON\");",
+													"});"
+												],
+												"type": "text/javascript",
+												"packages": {}
+											}
+										}
+									],
+									"id": "55fda33f-d549-4101-ad44-27131978f9d5",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": "{{host}}/rest/stateful/corp/security/user/roles"
+									},
+									"response": []
+								}
+							],
+							"id": "e434f197-e183-48e5-abb3-0e1f82874729"
 						},
 						{
 							"name": "Описание",
@@ -13858,7 +13948,8 @@
 							},
 							"request": {
 								"method": "GET",
-								"header": []
+								"header": [],
+								"url": "{{host}}"
 							},
 							"response": []
 						}
