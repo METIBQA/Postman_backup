@@ -13932,7 +13932,7 @@
 							"id": "e434f197-e183-48e5-abb3-0e1f82874729"
 						},
 						{
-							"name": "EXTREM Copy",
+							"name": "FROM",
 							"item": [
 								{
 									"name": "Авторизация",
@@ -13955,7 +13955,7 @@
 									"response": []
 								},
 								{
-									"name": "Смена клиента на ООО \"Тихоокеанская корпорация\"",
+									"name": "Смена клиента на ООО \"АВЕ КИДС\"",
 									"id": "05f8c2d1-03cf-4f80-8940-9cb377970fe1",
 									"protocolProfileBehavior": {
 										"disableBodyPruning": true
@@ -13963,7 +13963,7 @@
 									"request": {
 										"method": "PUT",
 										"header": [],
-										"url": "{{host}}/rest/stateful/corp/company/change_active/{{id_tihookeanskaya_corp}}"
+										"url": "{{host}}/rest/stateful/corp/company/change_active/{{id_ave_kids}}"
 									},
 									"response": []
 								},
