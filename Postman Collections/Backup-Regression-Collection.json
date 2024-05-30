@@ -13704,6 +13704,144 @@
 							"id": "fec651ce-882e-4052-8f37-d771b0b80791"
 						},
 						{
+							"name": "OAO2",
+							"item": [
+								{
+									"name": "Авторизация",
+									"id": "807bdf15-38b1-4882-a587-ca0b59f09f29",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"auth": {
+											"type": "basic",
+											"basic": {
+												"password": "{{password}}",
+												"username": "{{login}}"
+											}
+										},
+										"method": "POST",
+										"header": [],
+										"url": "{{host}}/rest/stateful/corp/login"
+									},
+									"response": []
+								},
+								{
+									"name": "Смена клиента на ООО \"Риомас-3\"",
+									"id": "4dedfe0e-7a27-44d4-bc3e-f6788765209b",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "PUT",
+										"header": [],
+										"url": "{{host}}/rest/stateful/corp/company/change_active/{{id_riomas3}}"
+									},
+									"response": []
+								},
+								{
+									"name": "Проверка блокировки",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "6790577a-ce4c-447d-9d2c-b5e83925f0b6",
+												"exec": [
+													"const response = pm.response.json();",
+													"",
+													"pm.test(\"Блокировка OAO2\", function() {",
+													"  pm.expect(response.roles).to.include(\"ROLE_BLOCK_OAO2\");",
+													"});"
+												],
+												"type": "text/javascript",
+												"packages": {}
+											}
+										}
+									],
+									"id": "c56bb44c-2db5-45f1-9171-3a6192ae789f",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": "{{host}}/rest/stateful/corp/security/user/roles"
+									},
+									"response": []
+								}
+							],
+							"id": "0c00e16e-5787-4624-8aa7-d3ccff4c0172"
+						},
+						{
+							"name": "OAO3",
+							"item": [
+								{
+									"name": "Авторизация",
+									"id": "36c987d3-d889-4304-8ea6-06772189baf3",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"auth": {
+											"type": "basic",
+											"basic": {
+												"password": "{{password}}",
+												"username": "{{login}}"
+											}
+										},
+										"method": "POST",
+										"header": [],
+										"url": "{{host}}/rest/stateful/corp/login"
+									},
+									"response": []
+								},
+								{
+									"name": "Смена клиента на ООО \"Медиса\"",
+									"id": "6cff3821-c539-45b3-a812-f57d370fcf6e",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "PUT",
+										"header": [],
+										"url": "{{host}}/rest/stateful/corp/company/change_active/{{id_medisa}}"
+									},
+									"response": []
+								},
+								{
+									"name": "Проверка блокировки",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "6790577a-ce4c-447d-9d2c-b5e83925f0b6",
+												"exec": [
+													"const response = pm.response.json();",
+													"",
+													"pm.test(\"Блокировка PARTIAL_UNBLOCK\", function() {",
+													"  pm.expect(response.roles).to.include(\"ROLE_BLOCK_PARTIAL_UNBLOCK\");",
+													"});"
+												],
+												"type": "text/javascript",
+												"packages": {}
+											}
+										}
+									],
+									"id": "6876ccf4-f3b2-425f-899b-8b638a2606ed",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": "{{host}}/rest/stateful/corp/security/user/roles"
+									},
+									"response": []
+								}
+							],
+							"id": "74dec35c-fe93-4a47-b941-5dd544bc4847"
+						},
+						{
 							"name": "OON",
 							"item": [
 								{
@@ -14275,75 +14413,6 @@
 								}
 							],
 							"id": "20d33878-ce30-40fc-b092-cb81cde5b922"
-						},
-						{
-							"name": "OAO3",
-							"item": [
-								{
-									"name": "Авторизация",
-									"id": "36c987d3-d889-4304-8ea6-06772189baf3",
-									"protocolProfileBehavior": {
-										"disableBodyPruning": true
-									},
-									"request": {
-										"auth": {
-											"type": "basic",
-											"basic": {
-												"password": "{{password}}",
-												"username": "{{login}}"
-											}
-										},
-										"method": "POST",
-										"header": [],
-										"url": "{{host}}/rest/stateful/corp/login"
-									},
-									"response": []
-								},
-								{
-									"name": "Смена клиента на ООО \"Медиса\"",
-									"id": "6cff3821-c539-45b3-a812-f57d370fcf6e",
-									"protocolProfileBehavior": {
-										"disableBodyPruning": true
-									},
-									"request": {
-										"method": "PUT",
-										"header": [],
-										"url": "{{host}}/rest/stateful/corp/company/change_active/{{id_medisa}}"
-									},
-									"response": []
-								},
-								{
-									"name": "Проверка блокировки",
-									"event": [
-										{
-											"listen": "test",
-											"script": {
-												"id": "6790577a-ce4c-447d-9d2c-b5e83925f0b6",
-												"exec": [
-													"const response = pm.response.json();",
-													"",
-													"pm.test(\"Блокировка PARTIAL_UNBLOCK\", function() {",
-													"  pm.expect(response.roles).to.include(\"ROLE_BLOCK_PARTIAL_UNBLOCK\");",
-													"});"
-												],
-												"type": "text/javascript",
-												"packages": {}
-											}
-										}
-									],
-									"id": "6876ccf4-f3b2-425f-899b-8b638a2606ed",
-									"protocolProfileBehavior": {
-										"disableBodyPruning": true
-									},
-									"request": {
-										"method": "GET",
-										"header": [],
-										"url": "{{host}}/rest/stateful/corp/security/user/roles"
-									},
-									"response": []
-								}
-							],
-							"id": "74dec35c-fe93-4a47-b941-5dd544bc4847"
 						},
 						{
 							"name": "Описание",
