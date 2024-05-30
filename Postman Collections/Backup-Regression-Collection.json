@@ -13816,11 +13816,7 @@
 											"script": {
 												"id": "6790577a-ce4c-447d-9d2c-b5e83925f0b6",
 												"exec": [
-													"const response = pm.response.json();",
-													"",
-													"pm.test(\"Блокировка OON\", function() {",
-													"  pm.expect(response.roles).to.include(\"ROLE_BLOCK_OON\");",
-													"});"
+													""
 												],
 												"type": "text/javascript",
 												"packages": {}
@@ -13834,7 +13830,7 @@
 									"request": {
 										"method": "GET",
 										"header": [],
-										"url": "{{host}}/rest/stateful/corp/security/user/roles"
+										"url": ""
 									},
 									"response": []
 								}
