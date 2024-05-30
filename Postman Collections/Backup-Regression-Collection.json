@@ -13567,7 +13567,32 @@
 					"item": [
 						{
 							"name": "Описание",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "9267067a-8877-4238-a938-6ba3c9b3b729",
+										"exec": [
+											"//Проверка процедуры, которая каждый день на определенных клиентов устанавливает блокировки. Задача 13266"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
 							"id": "2de83136-39f2-498e-a1e3-0c83ae79fdbd",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": []
+							},
+							"response": []
+						},
+						{
+							"name": "New Request",
+							"id": "580a11e3-49da-43a1-ab2c-583dd283e6aa",
 							"protocolProfileBehavior": {
 								"disableBodyPruning": true
 							},
