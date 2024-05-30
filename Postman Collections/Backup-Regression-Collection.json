@@ -14300,7 +14300,7 @@
 									"response": []
 								},
 								{
-									"name": "Смена клиента на ООО \"А-ФАБРИК\"",
+									"name": "Смена клиента на ООО \"Медиса\"",
 									"id": "6cff3821-c539-45b3-a812-f57d370fcf6e",
 									"protocolProfileBehavior": {
 										"disableBodyPruning": true
@@ -14308,7 +14308,7 @@
 									"request": {
 										"method": "PUT",
 										"header": [],
-										"url": "{{host}}/rest/stateful/corp/company/change_active/{{id_a_fabric}}"
+										"url": "{{host}}/rest/stateful/corp/company/change_active/{{id_medisa}}"
 									},
 									"response": []
 								},
