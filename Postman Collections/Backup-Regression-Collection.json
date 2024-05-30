@@ -14070,7 +14070,7 @@
 							"id": "6b1bfd49-ecb3-4332-87a3-96263256a642"
 						},
 						{
-							"name": "ООО \"ЦСК\"",
+							"name": "DEAD_IP",
 							"item": [
 								{
 									"name": "Авторизация",
@@ -14101,7 +14101,7 @@
 									"request": {
 										"method": "PUT",
 										"header": [],
-										"url": "{{host}}/rest/stateful/corp/company/change_active/{{id_linita_krasoti_l}}"
+										"url": "{{host}}/rest/stateful/corp/company/change_active/{{id_csk}}"
 									},
 									"response": []
 								},
@@ -14137,6 +14137,75 @@
 								}
 							],
 							"id": "ac9e3988-d23f-4058-854d-be99443b06a3"
+						},
+						{
+							"name": "DEAD_IP Copy",
+							"item": [
+								{
+									"name": "Авторизация",
+									"id": "33b10347-2587-4ffb-bdb4-78d474dc7f59",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"auth": {
+											"type": "basic",
+											"basic": {
+												"password": "{{password}}",
+												"username": "{{login}}"
+											}
+										},
+										"method": "POST",
+										"header": [],
+										"url": "{{host}}/rest/stateful/corp/login"
+									},
+									"response": []
+								},
+								{
+									"name": "Смена клиента на ООО \"ЦСК\"",
+									"id": "80af3088-8133-400a-8940-fb2acdade710",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "PUT",
+										"header": [],
+										"url": "{{host}}/rest/stateful/corp/company/change_active/{{id_csk}}"
+									},
+									"response": []
+								},
+								{
+									"name": "Проверка блокировки",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "6790577a-ce4c-447d-9d2c-b5e83925f0b6",
+												"exec": [
+													"const response = pm.response.json();",
+													"",
+													"pm.test(\"Блокировка DEAD_IP\", function() {",
+													"  pm.expect(response.roles).to.include(\"ROLE_BLOCK_DEAD_IP\");",
+													"});"
+												],
+												"type": "text/javascript",
+												"packages": {}
+											}
+										}
+									],
+									"id": "648814ef-b882-49be-8780-6879fd77e89d",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": "{{host}}/rest/stateful/corp/security/user/roles"
+									},
+									"response": []
+								}
+							],
+							"id": "6ecd9711-b754-490a-a832-5063cbb60e13"
 						},
 						{
 							"name": "Описание",
