@@ -13658,7 +13658,7 @@
 									"response": []
 								},
 								{
-									"name": "Смена клиента на ООО \"Легна\"",
+									"name": "Смена клиента на ООО \"Риомас-2\"",
 									"id": "a56296bc-9f7d-417d-a623-8ac955969bbe",
 									"protocolProfileBehavior": {
 										"disableBodyPruning": true
@@ -13666,7 +13666,7 @@
 									"request": {
 										"method": "PUT",
 										"header": [],
-										"url": "{{host}}/rest/stateful/corp/company/change_active/{{id_legna}}"
+										"url": "{{host}}/rest/stateful/corp/company/change_active/{{id_riomas2}}"
 									},
 									"response": []
 								},
