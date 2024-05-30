@@ -13830,14 +13830,18 @@
 									"response": []
 								},
 								{
-									"name": "При этой блокировке ДБО блокируется",
+									"name": "Проверка блокировки",
 									"event": [
 										{
 											"listen": "test",
 											"script": {
 												"id": "6790577a-ce4c-447d-9d2c-b5e83925f0b6",
 												"exec": [
-													""
+													"const response = pm.response.json();",
+													"",
+													"pm.test(\"Блокировка MVK\", function() {",
+													"  pm.expect(response.roles).to.include(\"ROLE_BLOCK_MVK\");",
+													"});"
 												],
 												"type": "text/javascript",
 												"packages": {}
@@ -13851,7 +13855,7 @@
 									"request": {
 										"method": "GET",
 										"header": [],
-										"url": "{{host}}"
+										"url": "{{host}}/rest/stateful/corp/security/user/roles"
 									},
 									"response": []
 								}
@@ -13859,7 +13863,7 @@
 							"id": "7032478e-9d5a-4d2d-9bfd-1fefd800d8bd"
 						},
 						{
-							"name": "OON Copy",
+							"name": "EXTREM",
 							"item": [
 								{
 									"name": "Авторизация",
@@ -13904,8 +13908,8 @@
 												"exec": [
 													"const response = pm.response.json();",
 													"",
-													"pm.test(\"Блокировка OON\", function() {",
-													"  pm.expect(response.roles).to.include(\"ROLE_BLOCK_OON\");",
+													"pm.test(\"Блокировка EXTREM\", function() {",
+													"  pm.expect(response.roles).to.include(\"ROLE_BLOCK_EXTREM\");",
 													"});"
 												],
 												"type": "text/javascript",
