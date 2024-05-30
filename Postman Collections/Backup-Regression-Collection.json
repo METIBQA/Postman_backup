@@ -13566,7 +13566,7 @@
 					"name": "Проверка процедуры установки блокировок",
 					"item": [
 						{
-							"name": "BLOCK_2RED",
+							"name": "2RED",
 							"item": [
 								{
 									"name": "Авторизация",
@@ -13633,6 +13633,75 @@
 								}
 							],
 							"id": "2f73d6e4-cdbe-45f8-9724-e7884eff3891"
+						},
+						{
+							"name": "BLOCK_2RED Copy",
+							"item": [
+								{
+									"name": "Авторизация",
+									"id": "da6bd980-beba-4b24-b45e-ad1a92924c41",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"auth": {
+											"type": "basic",
+											"basic": {
+												"password": "{{password}}",
+												"username": "{{login}}"
+											}
+										},
+										"method": "POST",
+										"header": [],
+										"url": "{{host}}/rest/stateful/corp/login"
+									},
+									"response": []
+								},
+								{
+									"name": "Смена клиента на ООО \"Легна\"",
+									"id": "a56296bc-9f7d-417d-a623-8ac955969bbe",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "PUT",
+										"header": [],
+										"url": "{{host}}/rest/stateful/corp/company/change_active/{{id_legna}}"
+									},
+									"response": []
+								},
+								{
+									"name": "Проверка блокировки",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "6790577a-ce4c-447d-9d2c-b5e83925f0b6",
+												"exec": [
+													"const response = pm.response.json();",
+													"",
+													"pm.test(\"Блокировка BLOCK_2RED\", function() {",
+													"  pm.expect(response.roles).to.include(\"ROLE_BLOCK_2RED\");",
+													"});"
+												],
+												"type": "text/javascript",
+												"packages": {}
+											}
+										}
+									],
+									"id": "e2b27270-20de-487f-b0e5-5311a0d65123",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": "{{host}}/rest/stateful/corp/security/user/roles"
+									},
+									"response": []
+								}
+							],
+							"id": "fec651ce-882e-4052-8f37-d771b0b80791"
 						},
 						{
 							"name": "Описание",
