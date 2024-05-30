@@ -13569,7 +13569,27 @@
 							"name": "New Folder",
 							"item": [
 								{
-									"name": "2. Смена клиента на ООО \"Легна\"",
+									"name": "Авторизация",
+									"id": "3940d084-bd23-478b-bed5-b7799e4e485e",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"auth": {
+											"type": "basic",
+											"basic": {
+												"password": "{{password}}",
+												"username": "{{login}}"
+											}
+										},
+										"method": "POST",
+										"header": [],
+										"url": "{{host}}/rest/stateful/corp/login"
+									},
+									"response": []
+								},
+								{
+									"name": "Смена клиента на ООО \"Легна\"",
 									"id": "1bbaf06a-cb01-41ca-bfe7-c2b350ff423f",
 									"protocolProfileBehavior": {
 										"disableBodyPruning": true
@@ -13577,37 +13597,29 @@
 									"request": {
 										"method": "PUT",
 										"header": [],
-										"url": {
-											"raw": "{{host}}/rest/stateful/corp/company/change_active/{{id_vmz}}",
-											"host": [
-												"{{host}}"
-											],
-											"path": [
-												"rest",
-												"stateful",
-												"corp",
-												"company",
-												"change_active",
-												"{{id_vmz}}"
-											],
-											"query": [
-												{
-													"key": "2037480",
-													"value": "Тест",
-													"disabled": true
-												},
-												{
-													"key": "7970250",
-													"value": "Препрод",
-													"disabled": true
-												}
-											]
-										}
+										"url": "{{host}}/rest/stateful/corp/company/change_active/{{id_legna}}"
 									},
 									"response": []
 								},
 								{
-									"name": "New Request",
+									"name": "Проверка блокировки",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "6790577a-ce4c-447d-9d2c-b5e83925f0b6",
+												"exec": [
+													"const response = pm.response.json();",
+													"",
+													"pm.test(\"Проверка поля docModule\", function() {",
+													"  pm.expect(response.roles).to.include(\"ROLE_BLOCK_2RED\");",
+													"});"
+												],
+												"type": "text/javascript",
+												"packages": {}
+											}
+										}
+									],
 									"id": "580a11e3-49da-43a1-ab2c-583dd283e6aa",
 									"protocolProfileBehavior": {
 										"disableBodyPruning": true
