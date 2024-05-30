@@ -13635,7 +13635,7 @@
 							"id": "2f73d6e4-cdbe-45f8-9724-e7884eff3891"
 						},
 						{
-							"name": "BLOCK_2RED Copy",
+							"name": "OAO1",
 							"item": [
 								{
 									"name": "Авторизация",
@@ -13681,7 +13681,7 @@
 													"const response = pm.response.json();",
 													"",
 													"pm.test(\"Блокировка BLOCK_2RED\", function() {",
-													"  pm.expect(response.roles).to.include(\"ROLE_BLOCK_2RED\");",
+													"  pm.expect(response.roles).to.include(\"ROLE_BLOCK_OAO1\");",
 													"});"
 												],
 												"type": "text/javascript",
@@ -13702,6 +13702,75 @@
 								}
 							],
 							"id": "fec651ce-882e-4052-8f37-d771b0b80791"
+						},
+						{
+							"name": "OAO1 Copy",
+							"item": [
+								{
+									"name": "Авторизация",
+									"id": "6fb56fe2-c1ed-4ec8-a5e8-c44e5c601e54",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"auth": {
+											"type": "basic",
+											"basic": {
+												"password": "{{password}}",
+												"username": "{{login}}"
+											}
+										},
+										"method": "POST",
+										"header": [],
+										"url": "{{host}}/rest/stateful/corp/login"
+									},
+									"response": []
+								},
+								{
+									"name": "Смена клиента на ООО \"Риомас-2\"",
+									"id": "47f3e1d3-ae5d-45e6-8388-ce21277a3a95",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "PUT",
+										"header": [],
+										"url": "{{host}}/rest/stateful/corp/company/change_active/{{id_riomas2}}"
+									},
+									"response": []
+								},
+								{
+									"name": "Проверка блокировки",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "6790577a-ce4c-447d-9d2c-b5e83925f0b6",
+												"exec": [
+													"const response = pm.response.json();",
+													"",
+													"pm.test(\"Блокировка BLOCK_2RED\", function() {",
+													"  pm.expect(response.roles).to.include(\"ROLE_BLOCK_2RED\");",
+													"});"
+												],
+												"type": "text/javascript",
+												"packages": {}
+											}
+										}
+									],
+									"id": "2a17480b-9f54-49c9-99ea-e352295ae452",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": "{{host}}/rest/stateful/corp/security/user/roles"
+									},
+									"response": []
+								}
+							],
+							"id": "766519ad-958a-4bd9-bdc6-147bedfea22c"
 						},
 						{
 							"name": "Описание",
