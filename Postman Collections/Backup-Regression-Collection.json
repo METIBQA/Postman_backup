@@ -13566,7 +13566,7 @@
 					"name": "Проверка процедуры установки блокировок",
 					"item": [
 						{
-							"name": "New Folder",
+							"name": "BLOCK_2RED",
 							"item": [
 								{
 									"name": "Авторизация",
@@ -13611,7 +13611,7 @@
 												"exec": [
 													"const response = pm.response.json();",
 													"",
-													"pm.test(\"Проверка поля docModule\", function() {",
+													"pm.test(\"Блокировка BLOCK_2RED\", function() {",
 													"  pm.expect(response.roles).to.include(\"ROLE_BLOCK_2RED\");",
 													"});"
 												],
