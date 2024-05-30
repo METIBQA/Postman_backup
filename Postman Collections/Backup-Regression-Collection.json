@@ -14115,8 +14115,8 @@
 												"exec": [
 													"const response = pm.response.json();",
 													"",
-													"pm.test(\"Блокировка 167FZ\", function() {",
-													"  pm.expect(response.roles).to.include(\"ROLE_BLOCK_167FZ\");",
+													"pm.test(\"Блокировка DEAD_IP\", function() {",
+													"  pm.expect(response.roles).to.include(\"ROLE_BLOCK_DEAD_IP\");",
 													"});"
 												],
 												"type": "text/javascript",
