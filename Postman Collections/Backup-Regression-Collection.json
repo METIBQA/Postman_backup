@@ -13932,6 +13932,75 @@
 							"id": "e434f197-e183-48e5-abb3-0e1f82874729"
 						},
 						{
+							"name": "EXTREM Copy",
+							"item": [
+								{
+									"name": "Авторизация",
+									"id": "4244d8ea-1923-4b1d-87e8-b9543f8f2606",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"auth": {
+											"type": "basic",
+											"basic": {
+												"password": "{{password}}",
+												"username": "{{login}}"
+											}
+										},
+										"method": "POST",
+										"header": [],
+										"url": "{{host}}/rest/stateful/corp/login"
+									},
+									"response": []
+								},
+								{
+									"name": "Смена клиента на ООО \"Тихоокеанская корпорация\"",
+									"id": "05f8c2d1-03cf-4f80-8940-9cb377970fe1",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "PUT",
+										"header": [],
+										"url": "{{host}}/rest/stateful/corp/company/change_active/{{id_tihookeanskaya_corp}}"
+									},
+									"response": []
+								},
+								{
+									"name": "Проверка блокировки",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "6790577a-ce4c-447d-9d2c-b5e83925f0b6",
+												"exec": [
+													"const response = pm.response.json();",
+													"",
+													"pm.test(\"Блокировка EXTREM\", function() {",
+													"  pm.expect(response.roles).to.include(\"ROLE_BLOCK_EXTREM\");",
+													"});"
+												],
+												"type": "text/javascript",
+												"packages": {}
+											}
+										}
+									],
+									"id": "866e5542-4bca-4b8f-8b67-1423ebc0c602",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": "{{host}}/rest/stateful/corp/security/user/roles"
+									},
+									"response": []
+								}
+							],
+							"id": "85157e5c-ab8e-406c-ac71-065949586b14"
+						},
+						{
 							"name": "Описание",
 							"event": [
 								{
