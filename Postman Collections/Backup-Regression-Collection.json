@@ -13727,7 +13727,7 @@
 									"response": []
 								},
 								{
-									"name": "Смена клиента на ООО \"Риомас-3\"",
+									"name": "Смена клиента на АО \"ЭССП\"",
 									"id": "47f3e1d3-ae5d-45e6-8388-ce21277a3a95",
 									"protocolProfileBehavior": {
 										"disableBodyPruning": true
@@ -13735,7 +13735,7 @@
 									"request": {
 										"method": "PUT",
 										"header": [],
-										"url": "{{host}}/rest/stateful/corp/company/change_active/{{id_riomas3}}"
+										"url": "{{host}}/rest/stateful/corp/company/change_active/{{id_essp}}"
 									},
 									"response": []
 								},
