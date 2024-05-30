@@ -14001,7 +14001,7 @@
 							"id": "85157e5c-ab8e-406c-ac71-065949586b14"
 						},
 						{
-							"name": "FROM Copy",
+							"name": "167FZ",
 							"item": [
 								{
 									"name": "Авторизация",
@@ -14046,8 +14046,8 @@
 												"exec": [
 													"const response = pm.response.json();",
 													"",
-													"pm.test(\"Блокировка FROM\", function() {",
-													"  pm.expect(response.roles).to.include(\"ROLE_BLOCK_FROM\");",
+													"pm.test(\"Блокировка 167FZ\", function() {",
+													"  pm.expect(response.roles).to.include(\"ROLE_BLOCK_167FZ\");",
 													"});"
 												],
 												"type": "text/javascript",
@@ -14068,6 +14068,75 @@
 								}
 							],
 							"id": "6b1bfd49-ecb3-4332-87a3-96263256a642"
+						},
+						{
+							"name": "ООО \"ЦСК\"",
+							"item": [
+								{
+									"name": "Авторизация",
+									"id": "1c95d282-52a8-4011-b548-d690c92bd114",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"auth": {
+											"type": "basic",
+											"basic": {
+												"password": "{{password}}",
+												"username": "{{login}}"
+											}
+										},
+										"method": "POST",
+										"header": [],
+										"url": "{{host}}/rest/stateful/corp/login"
+									},
+									"response": []
+								},
+								{
+									"name": "Смена клиента на ООО \"ЦСК\"",
+									"id": "212f610b-7838-44e4-9fa3-6b45d55ea26f",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "PUT",
+										"header": [],
+										"url": "{{host}}/rest/stateful/corp/company/change_active/{{id_linita_krasoti_l}}"
+									},
+									"response": []
+								},
+								{
+									"name": "Проверка блокировки",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "6790577a-ce4c-447d-9d2c-b5e83925f0b6",
+												"exec": [
+													"const response = pm.response.json();",
+													"",
+													"pm.test(\"Блокировка 167FZ\", function() {",
+													"  pm.expect(response.roles).to.include(\"ROLE_BLOCK_167FZ\");",
+													"});"
+												],
+												"type": "text/javascript",
+												"packages": {}
+											}
+										}
+									],
+									"id": "65f78a3d-4d28-4cc0-808a-ad972526632c",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": "{{host}}/rest/stateful/corp/security/user/roles"
+									},
+									"response": []
+								}
+							],
+							"id": "ac9e3988-d23f-4058-854d-be99443b06a3"
 						},
 						{
 							"name": "Описание",
