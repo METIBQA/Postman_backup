@@ -13611,7 +13611,7 @@
 												"exec": [
 													"const response = pm.response.json();",
 													"",
-													"pm.test(\"Блокировка BLOCK_2RED\", function() {",
+													"pm.test(\"Блокировка 2RED\", function() {",
 													"  pm.expect(response.roles).to.include(\"ROLE_BLOCK_2RED\");",
 													"});"
 												],
@@ -13680,7 +13680,7 @@
 												"exec": [
 													"const response = pm.response.json();",
 													"",
-													"pm.test(\"Блокировка BLOCK_2RED\", function() {",
+													"pm.test(\"Блокировка OAO1\", function() {",
 													"  pm.expect(response.roles).to.include(\"ROLE_BLOCK_OAO1\");",
 													"});"
 												],
@@ -13727,7 +13727,7 @@
 									"response": []
 								},
 								{
-									"name": "Смена клиента на ООО \"Риомас-2\"",
+									"name": "Смена клиента на ООО \"Риомас-3\"",
 									"id": "47f3e1d3-ae5d-45e6-8388-ce21277a3a95",
 									"protocolProfileBehavior": {
 										"disableBodyPruning": true
@@ -13735,7 +13735,7 @@
 									"request": {
 										"method": "PUT",
 										"header": [],
-										"url": "{{host}}/rest/stateful/corp/company/change_active/{{id_riomas2}}"
+										"url": "{{host}}/rest/stateful/corp/company/change_active/{{id_riomas3}}"
 									},
 									"response": []
 								},
@@ -13749,8 +13749,8 @@
 												"exec": [
 													"const response = pm.response.json();",
 													"",
-													"pm.test(\"Блокировка BLOCK_2RED\", function() {",
-													"  pm.expect(response.roles).to.include(\"ROLE_BLOCK_2RED\");",
+													"pm.test(\"Блокировка OAO2\", function() {",
+													"  pm.expect(response.roles).to.include(\"ROLE_BLOCK_OAO2\");",
 													"});"
 												],
 												"type": "text/javascript",
