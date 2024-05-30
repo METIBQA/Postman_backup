@@ -14139,7 +14139,7 @@
 							"id": "ac9e3988-d23f-4058-854d-be99443b06a3"
 						},
 						{
-							"name": "DEAD_IP Copy",
+							"name": "CHANGE_EP",
 							"item": [
 								{
 									"name": "Авторизация",
@@ -14162,7 +14162,7 @@
 									"response": []
 								},
 								{
-									"name": "Смена клиента на ООО \"ЦСК\"",
+									"name": "Смена клиента на ООО \"Илья Муромец\"",
 									"id": "80af3088-8133-400a-8940-fb2acdade710",
 									"protocolProfileBehavior": {
 										"disableBodyPruning": true
@@ -14170,7 +14170,7 @@
 									"request": {
 										"method": "PUT",
 										"header": [],
-										"url": "{{host}}/rest/stateful/corp/company/change_active/{{id_csk}}"
+										"url": "{{host}}/rest/stateful/corp/company/change_active/{{id_ilya_muromec}}"
 									},
 									"response": []
 								},
@@ -14184,8 +14184,8 @@
 												"exec": [
 													"const response = pm.response.json();",
 													"",
-													"pm.test(\"Блокировка DEAD_IP\", function() {",
-													"  pm.expect(response.roles).to.include(\"ROLE_BLOCK_DEAD_IP\");",
+													"pm.test(\"Блокировка CHANGE_EP\", function() {",
+													"  pm.expect(response.roles).to.include(\"ROLE_BLOCK_CHANGE_EP\");",
 													"});"
 												],
 												"type": "text/javascript",
@@ -14206,6 +14206,75 @@
 								}
 							],
 							"id": "6ecd9711-b754-490a-a832-5063cbb60e13"
+						},
+						{
+							"name": "CHANGE_EP Copy",
+							"item": [
+								{
+									"name": "Авторизация",
+									"id": "689b9031-97af-4387-8abf-8c66a5472c20",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"auth": {
+											"type": "basic",
+											"basic": {
+												"password": "{{password}}",
+												"username": "{{login}}"
+											}
+										},
+										"method": "POST",
+										"header": [],
+										"url": "{{host}}/rest/stateful/corp/login"
+									},
+									"response": []
+								},
+								{
+									"name": "Смена клиента на ООО \"Илья Муромец\"",
+									"id": "d6541348-a895-401e-81fc-4bfcfcc4594c",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "PUT",
+										"header": [],
+										"url": "{{host}}/rest/stateful/corp/company/change_active/{{id_ilya_muromec}}"
+									},
+									"response": []
+								},
+								{
+									"name": "Проверка блокировки",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "6790577a-ce4c-447d-9d2c-b5e83925f0b6",
+												"exec": [
+													"const response = pm.response.json();",
+													"",
+													"pm.test(\"Блокировка CHANGE_EP\", function() {",
+													"  pm.expect(response.roles).to.include(\"ROLE_BLOCK_CHANGE_EP\");",
+													"});"
+												],
+												"type": "text/javascript",
+												"packages": {}
+											}
+										}
+									],
+									"id": "5a9636ba-f5a3-4389-848e-f4804a41407e",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": "{{host}}/rest/stateful/corp/security/user/roles"
+									},
+									"response": []
+								}
+							],
+							"id": "20d33878-ce30-40fc-b092-cb81cde5b922"
 						},
 						{
 							"name": "Описание",
