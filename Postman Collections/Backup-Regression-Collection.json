@@ -13566,6 +13566,63 @@
 					"name": "Проверка процедуры установки блокировок",
 					"item": [
 						{
+							"name": "New Folder",
+							"item": [
+								{
+									"name": "2. Смена клиента на ООО \"Легна\"",
+									"id": "1bbaf06a-cb01-41ca-bfe7-c2b350ff423f",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "PUT",
+										"header": [],
+										"url": {
+											"raw": "{{host}}/rest/stateful/corp/company/change_active/{{id_vmz}}",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"rest",
+												"stateful",
+												"corp",
+												"company",
+												"change_active",
+												"{{id_vmz}}"
+											],
+											"query": [
+												{
+													"key": "2037480",
+													"value": "Тест",
+													"disabled": true
+												},
+												{
+													"key": "7970250",
+													"value": "Препрод",
+													"disabled": true
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "New Request",
+									"id": "580a11e3-49da-43a1-ab2c-583dd283e6aa",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": "{{host}}/rest/stateful/corp/security/user/roles"
+									},
+									"response": []
+								}
+							],
+							"id": "2f73d6e4-cdbe-45f8-9724-e7884eff3891"
+						},
+						{
 							"name": "Описание",
 							"event": [
 								{
@@ -13581,18 +13638,6 @@
 								}
 							],
 							"id": "2de83136-39f2-498e-a1e3-0c83ae79fdbd",
-							"protocolProfileBehavior": {
-								"disableBodyPruning": true
-							},
-							"request": {
-								"method": "GET",
-								"header": []
-							},
-							"response": []
-						},
-						{
-							"name": "New Request",
-							"id": "580a11e3-49da-43a1-ab2c-583dd283e6aa",
 							"protocolProfileBehavior": {
 								"disableBodyPruning": true
 							},
