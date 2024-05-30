@@ -13977,8 +13977,8 @@
 												"exec": [
 													"const response = pm.response.json();",
 													"",
-													"pm.test(\"Блокировка EXTREM\", function() {",
-													"  pm.expect(response.roles).to.include(\"ROLE_BLOCK_EXTREM\");",
+													"pm.test(\"Блокировка FROM\", function() {",
+													"  pm.expect(response.roles).to.include(\"ROLE_BLOCK_FROM\");",
 													"});"
 												],
 												"type": "text/javascript",
@@ -13999,6 +13999,75 @@
 								}
 							],
 							"id": "85157e5c-ab8e-406c-ac71-065949586b14"
+						},
+						{
+							"name": "FROM Copy",
+							"item": [
+								{
+									"name": "Авторизация",
+									"id": "b0f11632-b324-400f-b55b-0e3a36822319",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"auth": {
+											"type": "basic",
+											"basic": {
+												"password": "{{password}}",
+												"username": "{{login}}"
+											}
+										},
+										"method": "POST",
+										"header": [],
+										"url": "{{host}}/rest/stateful/corp/login"
+									},
+									"response": []
+								},
+								{
+									"name": "Смена клиента на ООО \"Линия Красоты-Л\"",
+									"id": "6eb13b35-2ec8-47a3-a9f8-9071c53e8e0d",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "PUT",
+										"header": [],
+										"url": "{{host}}/rest/stateful/corp/company/change_active/{{id_linita_krasoti_l}}"
+									},
+									"response": []
+								},
+								{
+									"name": "Проверка блокировки",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "6790577a-ce4c-447d-9d2c-b5e83925f0b6",
+												"exec": [
+													"const response = pm.response.json();",
+													"",
+													"pm.test(\"Блокировка FROM\", function() {",
+													"  pm.expect(response.roles).to.include(\"ROLE_BLOCK_FROM\");",
+													"});"
+												],
+												"type": "text/javascript",
+												"packages": {}
+											}
+										}
+									],
+									"id": "4c1dbb93-81de-4d21-9169-96dd0e38f5ee",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": "{{host}}/rest/stateful/corp/security/user/roles"
+									},
+									"response": []
+								}
+							],
+							"id": "6b1bfd49-ecb3-4332-87a3-96263256a642"
 						},
 						{
 							"name": "Описание",
