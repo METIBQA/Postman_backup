@@ -13704,7 +13704,7 @@
 							"id": "fec651ce-882e-4052-8f37-d771b0b80791"
 						},
 						{
-							"name": "OAO2",
+							"name": "OON",
 							"item": [
 								{
 									"name": "Авторизация",
@@ -13749,8 +13749,8 @@
 												"exec": [
 													"const response = pm.response.json();",
 													"",
-													"pm.test(\"Блокировка OAO2\", function() {",
-													"  pm.expect(response.roles).to.include(\"ROLE_BLOCK_OAO2\");",
+													"pm.test(\"Блокировка OON\", function() {",
+													"  pm.expect(response.roles).to.include(\"ROLE_BLOCK_OON\");",
 													"});"
 												],
 												"type": "text/javascript",
@@ -13771,6 +13771,75 @@
 								}
 							],
 							"id": "766519ad-958a-4bd9-bdc6-147bedfea22c"
+						},
+						{
+							"name": "OON Copy",
+							"item": [
+								{
+									"name": "Авторизация",
+									"id": "a417ea21-ac8d-4399-b822-40451a262417",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"auth": {
+											"type": "basic",
+											"basic": {
+												"password": "{{password}}",
+												"username": "{{login}}"
+											}
+										},
+										"method": "POST",
+										"header": [],
+										"url": "{{host}}/rest/stateful/corp/login"
+									},
+									"response": []
+								},
+								{
+									"name": "Смена клиента на ООО \"Русский водочный холдинг\"",
+									"id": "6ea23ec0-a6de-49da-8db7-ed767974c90d",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "PUT",
+										"header": [],
+										"url": "{{host}}/rest/stateful/corp/company/change_active/{{id_rus_vodochniy_holding}}"
+									},
+									"response": []
+								},
+								{
+									"name": "Проверка блокировки",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "6790577a-ce4c-447d-9d2c-b5e83925f0b6",
+												"exec": [
+													"const response = pm.response.json();",
+													"",
+													"pm.test(\"Блокировка OON\", function() {",
+													"  pm.expect(response.roles).to.include(\"ROLE_BLOCK_OON\");",
+													"});"
+												],
+												"type": "text/javascript",
+												"packages": {}
+											}
+										}
+									],
+									"id": "3b69c59c-aa05-4258-8640-90e7c8e093dd",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": "{{host}}/rest/stateful/corp/security/user/roles"
+									},
+									"response": []
+								}
+							],
+							"id": "7032478e-9d5a-4d2d-9bfd-1fefd800d8bd"
 						},
 						{
 							"name": "Описание",
