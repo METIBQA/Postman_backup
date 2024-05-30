@@ -14208,7 +14208,7 @@
 							"id": "6ecd9711-b754-490a-a832-5063cbb60e13"
 						},
 						{
-							"name": "CHANGE_EP Copy",
+							"name": "PARTIAL_UNBLOCK",
 							"item": [
 								{
 									"name": "Авторизация",
@@ -14231,7 +14231,7 @@
 									"response": []
 								},
 								{
-									"name": "Смена клиента на ООО \"Илья Муромец\"",
+									"name": "Смена клиента на ООО \"Стратон 2000\"",
 									"id": "d6541348-a895-401e-81fc-4bfcfcc4594c",
 									"protocolProfileBehavior": {
 										"disableBodyPruning": true
@@ -14239,7 +14239,7 @@
 									"request": {
 										"method": "PUT",
 										"header": [],
-										"url": "{{host}}/rest/stateful/corp/company/change_active/{{id_ilya_muromec}}"
+										"url": "{{host}}/rest/stateful/corp/company/change_active/{{id_stratan_2000}}"
 									},
 									"response": []
 								},
@@ -14253,8 +14253,8 @@
 												"exec": [
 													"const response = pm.response.json();",
 													"",
-													"pm.test(\"Блокировка CHANGE_EP\", function() {",
-													"  pm.expect(response.roles).to.include(\"ROLE_BLOCK_CHANGE_EP\");",
+													"pm.test(\"Блокировка PARTIAL_UNBLOCK\", function() {",
+													"  pm.expect(response.roles).to.include(\"ROLE_BLOCK_PARTIAL_UNBLOCK\");",
 													"});"
 												],
 												"type": "text/javascript",
@@ -14275,6 +14275,75 @@
 								}
 							],
 							"id": "20d33878-ce30-40fc-b092-cb81cde5b922"
+						},
+						{
+							"name": "PARTIAL_UNBLOCK Copy",
+							"item": [
+								{
+									"name": "Авторизация",
+									"id": "36c987d3-d889-4304-8ea6-06772189baf3",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"auth": {
+											"type": "basic",
+											"basic": {
+												"password": "{{password}}",
+												"username": "{{login}}"
+											}
+										},
+										"method": "POST",
+										"header": [],
+										"url": "{{host}}/rest/stateful/corp/login"
+									},
+									"response": []
+								},
+								{
+									"name": "Смена клиента на ООО \"Стратон 2000\"",
+									"id": "6cff3821-c539-45b3-a812-f57d370fcf6e",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "PUT",
+										"header": [],
+										"url": "{{host}}/rest/stateful/corp/company/change_active/{{id_stratan_2000}}"
+									},
+									"response": []
+								},
+								{
+									"name": "Проверка блокировки",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "6790577a-ce4c-447d-9d2c-b5e83925f0b6",
+												"exec": [
+													"const response = pm.response.json();",
+													"",
+													"pm.test(\"Блокировка PARTIAL_UNBLOCK\", function() {",
+													"  pm.expect(response.roles).to.include(\"ROLE_BLOCK_PARTIAL_UNBLOCK\");",
+													"});"
+												],
+												"type": "text/javascript",
+												"packages": {}
+											}
+										}
+									],
+									"id": "6876ccf4-f3b2-425f-899b-8b638a2606ed",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": "{{host}}/rest/stateful/corp/security/user/roles"
+									},
+									"response": []
+								}
+							],
+							"id": "74dec35c-fe93-4a47-b941-5dd544bc4847"
 						},
 						{
 							"name": "Описание",
