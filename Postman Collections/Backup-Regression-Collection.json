@@ -14121,7 +14121,7 @@
 													"const response = pm.response.json();",
 													"",
 													"pm.test(\"В поле fullname приходит полное название организации\", function() {",
-													"  pm.expect(response).to.have.property(\"fullname\", \"ООО \\\"Радиатор\\\" //РФ,143405,Московская обл,Красногорск г,Ильинское ш,1А, dsd,3,fgh,ЭТ/ПОМ/ОФ 9/9АВ/№18//\");",
+													"  pm.expect(response).to.have.property(\"errorText\", \"Невозможно создать платеж: длина поля Плательщик превышает 40 символов. Свяжитесь с нами в чате или по телефону 8(800)500-8197. \");",
 													"});"
 												],
 												"type": "text/javascript",
@@ -14138,14 +14138,14 @@
 										"header": [],
 										"body": {
 											"mode": "raw",
-											"raw": "{\"corrAccNumber\":\"30111810400000000000\"}",
+											"raw": "{\n    \"corrFullname\": \"Тест задачи 12646\",\n    \"corrInn\": \"5249000858\",\n    \"corrKpp\": \"770000000\",\n    \"corrBankBik\": \"044525767\",\n    \"corrAccNumber\": \"30111810700000000000\",\n    \"accId\": 3805969,\n    \"fullname\": \"ООО \\\"Радиатор\\\" //РФ,143405,Московская обл,Красногорск г,Ильинское ш,1А, dsd,3,fgh,ЭТ/ПОМ/ОФ 9/9АВ/№18//\",\n    \"inn\": \"7720540387\",\n    \"kpp\": \"502401001\",\n    \"amount\": \"100\",\n    \"ndsTypeId\": \"653\",\n    \"description\": \"Тест задачи 12646\",\n    \"loanAgreementNumber\": null,\n    \"urgenttype\": \"5\",\n    \"docNumber\": \"57\",\n    \"docDate\": \"2024-05-31\",\n    \"corrType\": \"UL\",\n    \"sendtype\": \"\",\n    \"gisGmpRequested\": false\n}",
 											"options": {
 												"raw": {
 													"language": "json"
 												}
 											}
 										},
-										"url": "{{host}}/rest/stateful/corp/document/create/prefill"
+										"url": "{{host}}/rest/stateful/corp/document/create/metinv"
 									},
 									"response": []
 								},
