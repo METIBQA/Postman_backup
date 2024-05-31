@@ -14,4 +14,4 @@ jobs:
         run: postman login --with-api-key ${{ secrets.POSTMAN_API_KEY }}
       - name: Run API tests
         run: |
-          postman collection run "${{ github.workspace }}/Postman Collections/Backup-Regression-Collection.json" --integration-id "163906-${{ github.run_id }}"
+          postman collection run "30389425-fe7506c0-c438-4972-83bb-78015c5afd60" -e "30389425-d4690b22-5e33-4b0e-ba23-894a45cea9db"
