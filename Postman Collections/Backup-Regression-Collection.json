@@ -13816,6 +13816,19 @@
 									"response": []
 								},
 								{
+									"name": "New Request",
+									"id": "4cdd9bdb-f0ee-4c87-9ecb-6b762cf6e830",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": "{{host}}/rest/stateful/corp/metinv/client_info/organization"
+									},
+									"response": []
+								},
+								{
 									"name": "Проверка блокировки",
 									"event": [
 										{
