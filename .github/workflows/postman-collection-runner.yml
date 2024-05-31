@@ -10,20 +10,8 @@ jobs:
       - name: Install Postman CLI
         run: |
           curl -o- "https://dl-cli.pstmn.io/install/linux64.sh" | sh
-
-      - name: Setup NodeJS
-        uses: actions/setup-node@v4
-        with:
-          node-version: '18.17.0'
-  
-      - name: Install newman
-        run: |
-            npm install -g newman
-            npm install -g minimist
-            npm install -g @actions/core
-
       - name: Login to Postman CLI
         run: postman login --with-api-key ${{ secrets.POSTMAN_API_KEY }}
       - name: Run API tests
         run: |
-          postman collection run "${{ github.workspace }}/Postman Collections/Backup-Regression-Collection.json" -e "30389425-d4690b22-5e33-4b0e-ba23-894a45cea9db" --integration-id "163906-${{ github.run_id }}"
+          postman collection run "${{ github.workspace }}/Postman Collections/Backup-Regression-Collection.json" -e "30389425-d4690b22-5e33-4b0e-ba23-894a45cea9db"
