@@ -25,4 +25,4 @@ jobs:
       run: npm install -g newman
 
     - name: Run Postman Collection
-      run: newman run Postman Collections/Backup-Regression-Collection.json
+      run: newman run "Postman Collections/Backup-Regression-Collection.json"
