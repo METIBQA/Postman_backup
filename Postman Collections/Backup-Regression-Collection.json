@@ -2616,11 +2616,15 @@
 										{
 											"listen": "test",
 											"script": {
+												"id": "74075782-abeb-4b19-93b8-5c9d35abb07d",
 												"exec": [
+													"var responseBody = pm.response.text();",
+													"",
 													"var body = JSON.parse(responseBody);",
 													"if (body === null){",
 													"    console.log (\"Нет ни одного контрагента!\")",
-													"    postman.setNextRequest(null);",
+													"    // postman.setNextRequest(null);",
+													"    pm.setNextRequest(null)",
 													"    }",
 													"",
 													"else {",
@@ -2633,7 +2637,8 @@
 													"    var arr = json.id //Объявляю переменную как значение из параметра corrDicElementUl.id",
 													"    pm.globals.set(\"array\", arr); // Записываю в переменную array полученные значения",
 													"    console.log(\"Один контрагент, id =\",arr)",
-													"    postman.setNextRequest(\"Удаление контрагента 2\")",
+													"    // postman.setNextRequest(\"Удаление контрагента 2\")",
+													"    pm.setNextRequest(\"Удаление контрагента 2\")",
 													"}",
 													"",
 													"// Иначе выполняется следующее - возвращается массив",
@@ -2645,24 +2650,26 @@
 													"",
 													"    console.log(\"Список id контрагентов\",arr)",
 													"    pm.globals.set(\"array\", arr); // Записываю в переменную array полученные значения",
-													"    postman.setNextRequest(\"Удаление контрагента 2\")",
+													"    // postman.setNextRequest(\"Удаление контрагента 2\")",
+													"    pm.setNextRequest(\"Удаление контрагента 2\")",
 													"",
 													"}",
 													"// arr = arr.filter(n => n)",
 													"}"
 												],
 												"type": "text/javascript",
-												"id": "74075782-abeb-4b19-93b8-5c9d35abb07d"
+												"packages": {}
 											}
 										},
 										{
 											"listen": "prerequest",
 											"script": {
+												"id": "18bd1521-ac48-453c-8ea0-e23569d79a78",
 												"exec": [
 													""
 												],
 												"type": "text/javascript",
-												"id": "18bd1521-ac48-453c-8ea0-e23569d79a78"
+												"packages": {}
 											}
 										}
 									],
