@@ -27,7 +27,7 @@ jobs:
 
       - name: Run API tests
         run: |
-          postman collection run "${{ github.workspace }}/Postman Collections/testCiCd.json" -e "30389425-d4690b22-5e33-4b0e-ba23-894a45cea9db" --integration-id "163906-${{ github.run_id }}" --reporters cli,allure --reporter-allure-export allure-results
+          postman collection run "${{ github.workspace }}/Postman Collections/testCiCd.json" -e "30389425-d4690b22-5e33-4b0e-ba23-894a45cea9db" --integration-id "163906-${{ github.run_id }}"
 
       # - name: Run API tests and generate Allure results
       #   run: |
