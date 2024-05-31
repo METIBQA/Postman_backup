@@ -13567,51 +13567,102 @@
 					"name": "Проверка 12646",
 					"item": [
 						{
-							"name": "Rjynhjkm",
-							"item": [],
-							"id": "3771b75f-bd13-4675-ab19-2fd123c579e5"
-						},
-						{
-							"name": "Авторизация",
-							"id": "a6fbffbe-bfb3-471a-9404-42eb8df1d7a5",
-							"protocolProfileBehavior": {
-								"disableBodyPruning": true
-							},
-							"request": {
-								"auth": {
-									"type": "basic",
-									"basic": {
-										"password": "{{password}}",
-										"username": "{{login}}"
-									}
+							"name": "Контроль \"Длинна поля\" = 160",
+							"item": [
+								{
+									"name": "Описание",
+									"id": "b7813b00-c706-46fb-9841-41ab88d11b52",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "GET",
+										"header": []
+									},
+									"response": []
 								},
-								"method": "POST",
-								"header": [],
-								"url": "{{host}}/rest/stateful/corp/login"
-							},
-							"response": []
-						},
-						{
-							"name": "New Request",
-							"id": "d35ccfde-1899-4770-9a6f-dc8543bda924",
-							"protocolProfileBehavior": {
-								"disableBodyPruning": true
-							},
-							"request": {
-								"method": "POST",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "{\"corrAccNumber\":\"30111810400000000002\"}",
-									"options": {
-										"raw": {
-											"language": "json"
+								{
+									"name": "Авторизация",
+									"id": "a6fbffbe-bfb3-471a-9404-42eb8df1d7a5",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"auth": {
+											"type": "basic",
+											"basic": {
+												"password": "{{password}}",
+												"username": "{{login}}"
+											}
+										},
+										"method": "POST",
+										"header": [],
+										"url": "{{host}}/rest/stateful/corp/login"
+									},
+									"response": []
+								},
+								{
+									"name": "Смена клиента на ООО \"Радиатор\"",
+									"id": "5155bd14-821c-428d-92c5-9d7c7f615919",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "PUT",
+										"header": [],
+										"url": {
+											"raw": "{{host}}/rest/stateful/corp/company/change_active/{{id_radiator}}",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"rest",
+												"stateful",
+												"corp",
+												"company",
+												"change_active",
+												"{{id_radiator}}"
+											],
+											"query": [
+												{
+													"key": "2037480",
+													"value": "Тест",
+													"disabled": true
+												},
+												{
+													"key": "7970250",
+													"value": "Препрод",
+													"disabled": true
+												}
+											]
 										}
-									}
+									},
+									"response": []
 								},
-								"url": "{{host}}//rest/stateful/corp/document/create/prefill"
-							},
-							"response": []
+								{
+									"name": "Рест prefill",
+									"id": "d35ccfde-1899-4770-9a6f-dc8543bda924",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\"corrAccNumber\":\"30111810400000000002\"}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": "{{host}}//rest/stateful/corp/document/create/prefill"
+									},
+									"response": []
+								}
+							],
+							"id": "3771b75f-bd13-4675-ab19-2fd123c579e5"
 						}
 					],
 					"id": "d332963f-bf10-4b6d-b70a-a193f5e6d742"
