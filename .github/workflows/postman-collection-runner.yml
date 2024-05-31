@@ -1,4 +1,4 @@
-name: Automated API tests using Postman CLI
+name: Automated API tests using Newman CLI
 
 on: push
 
@@ -9,20 +9,19 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - name: Install Postman CLI
-        run: |
-          curl -o- "https://dl-cli.pstmn.io/install/linux64.sh" | sh
+      - name: Install Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '16'
 
-      - name: Login to Postman CLI
-        run: postman login --with-api-key ${{ secrets.POSTMAN_API_KEY }}
+      - name: Install Newman and Allure commandline
+        run: |
+          npm install -g newman
+          npm install -g allure-commandline
 
       - name: Run API tests and generate Allure results
         run: |
-          postman collection run "${{ github.workspace }}/Postman Collections/testCiCd.json" -e "30389425-d4690b22-5e33-4b0e-ba23-894a45cea9db" --integration-id "163906-${{ github.run_id }}" --reporters allure
-
-      - name: Install Allure commandline
-        run: |
-          npm install -g allure-commandline
+          newman run "${{ github.workspace }}/Postman Collections/testCiCd.json" -e "30389425-d4690b22-5e33-4b0e-ba23-894a45cea9db" --reporters cli,allure --reporter-allure-export allure-results
 
       - name: Generate Allure Report
         run: |
