@@ -19,6 +19,12 @@ jobs:
           npm install -g newman
           npm install -g allure-commandline
 
+      - name: Install Postman CLI
+        run: |
+          curl -o- "https://dl-cli.pstmn.io/install/linux64.sh" | sh
+      - name: Login to Postman CLI
+        run: postman login --with-api-key ${{ secrets.POSTMAN_API_KEY }}
+
       - name: Run API tests
         run: |
           postman collection run "${{ github.workspace }}/Postman Collections/testCiCd.json" -e "30389425-d4690b22-5e33-4b0e-ba23-894a45cea9db" --integration-id "163906-${{ github.run_id }}" --reporters cli,allure --reporter-allure-export allure-results
