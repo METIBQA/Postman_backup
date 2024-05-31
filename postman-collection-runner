@@ -1,0 +1,34 @@
+name: Run Postman Collection
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  postman-tests:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Install Node.js
+      uses: actions/setup-node@v2
+      with:
+        node-version: '16'
+
+    - name: Install Newman
+      run: npm install -g newman
+
+    - name: Run Postman Collection
+      run: newman run "Postman Collections/Backup-Regression-Collection.json" -r cli,html --reporter-html-export reports/newman-report.html
+
+    - name: Upload report to artifacts
+      uses: actions/upload-artifact@v3
+      with:
+        name: newman-report
+        path: reports/newman-report.html
