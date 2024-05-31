@@ -13842,6 +13842,75 @@
 							"id": "74dec35c-fe93-4a47-b941-5dd544bc4847"
 						},
 						{
+							"name": "OIK",
+							"item": [
+								{
+									"name": "Авторизация",
+									"id": "f7c3f8b7-f332-48e3-a0bf-5e5defc633f6",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"auth": {
+											"type": "basic",
+											"basic": {
+												"password": "{{password}}",
+												"username": "{{login}}"
+											}
+										},
+										"method": "POST",
+										"header": [],
+										"url": "{{host}}/rest/stateful/corp/login"
+									},
+									"response": []
+								},
+								{
+									"name": "Смена клиента на ООО \"Медиса\"",
+									"id": "6322d406-74a6-4ad5-8628-d02ea686ff1a",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "PUT",
+										"header": [],
+										"url": "{{host}}/rest/stateful/corp/company/change_active/{{id_medisa}}"
+									},
+									"response": []
+								},
+								{
+									"name": "Проверка блокировки",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "6790577a-ce4c-447d-9d2c-b5e83925f0b6",
+												"exec": [
+													"const response = pm.response.json();",
+													"",
+													"pm.test(\"Блокировка PARTIAL_UNBLOCK\", function() {",
+													"  pm.expect(response.roles).to.include(\"ROLE_BLOCK_PARTIAL_UNBLOCK\");",
+													"});"
+												],
+												"type": "text/javascript",
+												"packages": {}
+											}
+										}
+									],
+									"id": "fbe6b42c-ba8f-4721-a537-a5517b2af98c",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": "{{host}}/rest/stateful/corp/security/user/roles"
+									},
+									"response": []
+								}
+							],
+							"id": "72793ac4-d41a-4573-85e1-4548b7fe7a4f"
+						},
+						{
 							"name": "OON",
 							"item": [
 								{
@@ -14170,7 +14239,7 @@
 									"request": {
 										"method": "PUT",
 										"header": [],
-										"url": "{{host}}/rest/stateful/corp/company/change_active/{{id_linita_krasoti_l}}"
+										"url": "{{host}}/rest/stateful/corp/company/change_active/{{id_liniya_krasoti_l}}"
 									},
 									"response": []
 								},
