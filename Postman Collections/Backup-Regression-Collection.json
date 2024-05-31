@@ -13567,6 +13567,11 @@
 					"name": "Проверка 12646",
 					"item": [
 						{
+							"name": "Rjynhjkm",
+							"item": [],
+							"id": "3771b75f-bd13-4675-ab19-2fd123c579e5"
+						},
+						{
 							"name": "Авторизация",
 							"id": "a6fbffbe-bfb3-471a-9404-42eb8df1d7a5",
 							"protocolProfileBehavior": {
@@ -13593,8 +13598,18 @@
 								"disableBodyPruning": true
 							},
 							"request": {
-								"method": "GET",
-								"header": []
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\"corrAccNumber\":\"30111810400000000002\"}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{host}}//rest/stateful/corp/document/create/prefill"
 							},
 							"response": []
 						}
