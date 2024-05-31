@@ -13818,8 +13818,8 @@
 												"exec": [
 													"const response = pm.response.json();",
 													"",
-													"pm.test(\"Блокировка PARTIAL_UNBLOCK\", function() {",
-													"  pm.expect(response.roles).to.include(\"ROLE_BLOCK_PARTIAL_UNBLOCK\");",
+													"pm.test(\"Блокировка OAO3\", function() {",
+													"  pm.expect(response.roles).to.include(\"ROLE_BLOCK_OAO3\");",
 													"});"
 												],
 												"type": "text/javascript",
