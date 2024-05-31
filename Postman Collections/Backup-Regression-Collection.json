@@ -13571,6 +13571,21 @@
 							"item": [
 								{
 									"name": "Описание",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "32241655-cb41-41c6-a0c8-241097b3644c",
+												"exec": [
+													"/*",
+													"Контроль \"Проверка длины значения Плательщик\" установлено = _____ символов",
+													"*/"
+												],
+												"type": "text/javascript",
+												"packages": {}
+											}
+										}
+									],
 									"id": "b7813b00-c706-46fb-9841-41ab88d11b52",
 									"protocolProfileBehavior": {
 										"disableBodyPruning": true
