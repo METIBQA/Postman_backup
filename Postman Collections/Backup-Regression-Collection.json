@@ -13747,41 +13747,6 @@
 									"response": []
 								},
 								{
-									"name": "organization",
-									"id": "4cdd9bdb-f0ee-4c87-9ecb-6b762cf6e830",
-									"protocolProfileBehavior": {
-										"disableBodyPruning": true
-									},
-									"request": {
-										"method": "GET",
-										"header": [],
-										"url": "{{host}}/rest/stateful/corp/metinv/client_info/organization"
-									},
-									"response": []
-								},
-								{
-									"name": "sync_roles",
-									"id": "36501a1d-273c-42c9-b6e8-e56814309173",
-									"protocolProfileBehavior": {
-										"disableBodyPruning": true
-									},
-									"request": {
-										"method": "POST",
-										"header": [],
-										"body": {
-											"mode": "raw",
-											"raw": "{}",
-											"options": {
-												"raw": {
-													"language": "json"
-												}
-											}
-										},
-										"url": "{{host}}/rest/stateful/corp/sync_roles"
-									},
-									"response": []
-								},
-								{
 									"name": "Проверка блокировки",
 									"event": [
 										{
