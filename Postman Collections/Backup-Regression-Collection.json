@@ -13796,7 +13796,7 @@
 									"response": []
 								},
 								{
-									"name": "Смена клиента на ООО \"Медиса\"",
+									"name": "Смена клиента на ГМП \"Аспект\"",
 									"id": "6cff3821-c539-45b3-a812-f57d370fcf6e",
 									"protocolProfileBehavior": {
 										"disableBodyPruning": true
@@ -13804,7 +13804,7 @@
 									"request": {
 										"method": "PUT",
 										"header": [],
-										"url": "{{host}}/rest/stateful/corp/company/change_active/{{id_medisa}}"
+										"url": "{{host}}/rest/stateful/corp/company/change_active/{{id_gmp_aspekt}}"
 									},
 									"response": []
 								},
@@ -13887,8 +13887,8 @@
 												"exec": [
 													"const response = pm.response.json();",
 													"",
-													"pm.test(\"Блокировка PARTIAL_UNBLOCK\", function() {",
-													"  pm.expect(response.roles).to.include(\"ROLE_BLOCK_PARTIAL_UNBLOCK\");",
+													"pm.test(\"Блокировка OIK\", function() {",
+													"  pm.expect(response.roles).to.include(\"ROLE_BLOCK_OIK\");",
 													"});"
 												],
 												"type": "text/javascript",
