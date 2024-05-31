@@ -14023,7 +14023,7 @@
 							"id": "4bcf811e-c3af-4ef0-9c3d-0a2d78693706"
 						},
 						{
-							"name": "В fullname короткое название без запятых Copy",
+							"name": "Получаем ошибку",
 							"item": [
 								{
 									"name": "Описание",
@@ -14129,7 +14129,7 @@
 											}
 										}
 									],
-									"id": "4823e5db-3a52-4a42-aa3e-89d9de832e64",
+									"id": "ac383311-26aa-41b8-84a1-0f00973723da",
 									"protocolProfileBehavior": {
 										"disableBodyPruning": true
 									},
