@@ -13567,7 +13567,7 @@
 					"name": "Проверка 12646",
 					"item": [
 						{
-							"name": "Контроль \"Длинна поля\" = 160",
+							"name": "В fullname приходит полное название компании",
 							"item": [
 								{
 									"name": "Описание",
@@ -13655,8 +13655,47 @@
 									"response": []
 								},
 								{
-									"name": "Рест prefill",
+									"name": "Новый платеж",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "fc9edd69-74aa-42ff-9aa5-1a0549ab0603",
+												"exec": [
+													"const response = pm.response.json();",
+													"",
+													"pm.test(\"В поле fullname приходит полное название организации\", function() {",
+													"  pm.expect(response).to.have.property(\"fullname\", \"ООО \\\"Радиатор\\\" //РФ,143405,Московская обл,Красногорск г,Ильинское ш,1А, dsd,3,fgh,ЭТ/ПОМ/ОФ 9/9АВ/№18//\");",
+													"});"
+												],
+												"type": "text/javascript",
+												"packages": {}
+											}
+										}
+									],
 									"id": "d35ccfde-1899-4770-9a6f-dc8543bda924",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\"corrAccNumber\":\"30111810400000000000\"}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": "{{host}}/rest/stateful/corp/document/create/prefill"
+									},
+									"response": []
+								},
+								{
+									"name": "Рублевый платеж с СВО",
+									"id": "d8c7f879-e7ef-449e-8c13-7613a9e22bf1",
 									"protocolProfileBehavior": {
 										"disableBodyPruning": true
 									},
@@ -13672,12 +13711,316 @@
 												}
 											}
 										},
-										"url": "{{host}}//rest/stateful/corp/document/create/prefill"
+										"url": "{{host}}/rest/stateful/corp/document_bp/create/metinv/prefill"
 									},
 									"response": []
 								}
 							],
 							"id": "3771b75f-bd13-4675-ab19-2fd123c579e5"
+						},
+						{
+							"name": "В fullname приходит короткое название компании",
+							"item": [
+								{
+									"name": "Описание",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "32241655-cb41-41c6-a0c8-241097b3644c",
+												"exec": [
+													"/*",
+													"Контроль \"Проверка длины значения Плательщик\" установлено = _____ символов",
+													"*/"
+												],
+												"type": "text/javascript",
+												"packages": {}
+											}
+										}
+									],
+									"id": "024539c1-b76a-4bb3-ae90-d4fc89400fb4",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "GET",
+										"header": []
+									},
+									"response": []
+								},
+								{
+									"name": "Авторизация",
+									"id": "6b77bfb7-fd19-4bab-b5a4-125a4503eba3",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"auth": {
+											"type": "basic",
+											"basic": {
+												"password": "{{password}}",
+												"username": "{{login}}"
+											}
+										},
+										"method": "POST",
+										"header": [],
+										"url": "{{host}}/rest/stateful/corp/login"
+									},
+									"response": []
+								},
+								{
+									"name": "Смена клиента на ООО \"Радиатор\"",
+									"id": "e9842e50-aeee-405c-aa50-c445ef53b982",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "PUT",
+										"header": [],
+										"url": {
+											"raw": "{{host}}/rest/stateful/corp/company/change_active/{{id_radiator}}",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"rest",
+												"stateful",
+												"corp",
+												"company",
+												"change_active",
+												"{{id_radiator}}"
+											],
+											"query": [
+												{
+													"key": "2037480",
+													"value": "Тест",
+													"disabled": true
+												},
+												{
+													"key": "7970250",
+													"value": "Препрод",
+													"disabled": true
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Новый платеж",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "fc9edd69-74aa-42ff-9aa5-1a0549ab0603",
+												"exec": [
+													"const response = pm.response.json();",
+													"",
+													"pm.test(\"В поле fullname приходит полное название организации\", function() {",
+													"  pm.expect(response).to.have.property(\"fullname\", \"ООО \\\"Радиатор\\\" //РФ,143405,Московская обл,Красногорск г,Ильинское ш,1А, dsd,3,fgh,ЭТ/ПОМ/ОФ 9/9АВ/№18//\");",
+													"});"
+												],
+												"type": "text/javascript",
+												"packages": {}
+											}
+										}
+									],
+									"id": "d94eb0cf-4674-4de8-85c3-b3352fb15e85",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\"corrAccNumber\":\"30111810400000000000\"}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": "{{host}}/rest/stateful/corp/document/create/prefill"
+									},
+									"response": []
+								},
+								{
+									"name": "Рублевый платеж с СВО",
+									"id": "535fb47a-dea5-4b56-97ab-83f973dcd0c6",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\"corrAccNumber\":\"30111810400000000002\"}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": "{{host}}/rest/stateful/corp/document_bp/create/metinv/prefill"
+									},
+									"response": []
+								}
+							],
+							"id": "1b5c3202-7791-4bfb-a33d-d6839895d504"
+						},
+						{
+							"name": "Короткое название без запятых",
+							"item": [
+								{
+									"name": "Описание",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "32241655-cb41-41c6-a0c8-241097b3644c",
+												"exec": [
+													"/*",
+													"Контроль \"Проверка длины значения Плательщик\" установлено = _____ символов",
+													"*/"
+												],
+												"type": "text/javascript",
+												"packages": {}
+											}
+										}
+									],
+									"id": "39bfc80d-616d-47c4-b3b3-7a539c6dd5d8",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "GET",
+										"header": []
+									},
+									"response": []
+								},
+								{
+									"name": "Авторизация",
+									"id": "beca6278-302e-422f-b07d-5398b09d2e90",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"auth": {
+											"type": "basic",
+											"basic": {
+												"password": "{{password}}",
+												"username": "{{login}}"
+											}
+										},
+										"method": "POST",
+										"header": [],
+										"url": "{{host}}/rest/stateful/corp/login"
+									},
+									"response": []
+								},
+								{
+									"name": "Смена клиента на ООО \"Радиатор\"",
+									"id": "2631dba5-93dc-439b-bf8f-d2be1c09d5d3",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "PUT",
+										"header": [],
+										"url": {
+											"raw": "{{host}}/rest/stateful/corp/company/change_active/{{id_radiator}}",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"rest",
+												"stateful",
+												"corp",
+												"company",
+												"change_active",
+												"{{id_radiator}}"
+											],
+											"query": [
+												{
+													"key": "2037480",
+													"value": "Тест",
+													"disabled": true
+												},
+												{
+													"key": "7970250",
+													"value": "Препрод",
+													"disabled": true
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Новый платеж",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "fc9edd69-74aa-42ff-9aa5-1a0549ab0603",
+												"exec": [
+													"const response = pm.response.json();",
+													"",
+													"pm.test(\"В поле fullname приходит полное название организации\", function() {",
+													"  pm.expect(response).to.have.property(\"fullname\", \"ООО \\\"Радиатор\\\" //РФ,143405,Московская обл,Красногорск г,Ильинское ш,1А, dsd,3,fgh,ЭТ/ПОМ/ОФ 9/9АВ/№18//\");",
+													"});"
+												],
+												"type": "text/javascript",
+												"packages": {}
+											}
+										}
+									],
+									"id": "09f30434-bdf7-4898-9093-f971119b4ec2",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\"corrAccNumber\":\"30111810400000000000\"}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": "{{host}}/rest/stateful/corp/document/create/prefill"
+									},
+									"response": []
+								},
+								{
+									"name": "Рублевый платеж с СВО",
+									"id": "eb49d6eb-0a8e-4858-bb97-194fad88d8de",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\"corrAccNumber\":\"30111810400000000002\"}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": "{{host}}/rest/stateful/corp/document_bp/create/metinv/prefill"
+									},
+									"response": []
+								}
+							],
+							"id": "4bcf811e-c3af-4ef0-9c3d-0a2d78693706"
 						}
 					],
 					"id": "d332963f-bf10-4b6d-b70a-a193f5e6d742"
