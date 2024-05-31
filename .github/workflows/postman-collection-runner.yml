@@ -10,8 +10,27 @@ jobs:
       - name: Install Postman CLI
         run: |
           curl -o- "https://dl-cli.pstmn.io/install/linux64.sh" | sh
-      - name: Login to Postman CLI
-        run: postman login --with-api-key ${{ secrets.POSTMAN_API_KEY }}
-      - name: Run API tests
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '16'
+
+      - name: Install newman and allure-commandline
         run: |
-          postman collection run "${{ github.workspace }}/Postman Collections/testCiCd.json" -e "30389425-d4690b22-5e33-4b0e-ba23-894a45cea9db"
+          npm install -g newman
+          npm install -g allure-commandline
+
+      - name: Run Postman Collection
+        run: |
+          newman run "/Postman Collections/testCiCd.json" -e "30389425-d4690b22-5e33-4b0e-ba23-894a45cea9db" -r allure
+
+      - name: Generate Allure Report
+        run: |
+          allure generate allure-results --clean -o allure-report
+
+      - name: Upload Allure Report
+        uses: actions/upload-artifact@v2
+        with:
+          name: allure-report
+          path: allure-report
