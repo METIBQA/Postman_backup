@@ -13565,7 +13565,40 @@
 				},
 				{
 					"name": "Проверка 12646",
-					"item": [],
+					"item": [
+						{
+							"name": "Авторизация",
+							"id": "a6fbffbe-bfb3-471a-9404-42eb8df1d7a5",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": {
+										"password": "{{password}}",
+										"username": "{{login}}"
+									}
+								},
+								"method": "POST",
+								"header": [],
+								"url": "{{host}}/rest/stateful/corp/login"
+							},
+							"response": []
+						},
+						{
+							"name": "New Request",
+							"id": "d35ccfde-1899-4770-9a6f-dc8543bda924",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": []
+							},
+							"response": []
+						}
+					],
 					"id": "d332963f-bf10-4b6d-b70a-a193f5e6d742"
 				}
 			],
