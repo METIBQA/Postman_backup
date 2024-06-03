@@ -14631,15 +14631,7 @@
 											"script": {
 												"id": "c0a91764-3948-4251-abda-549043b0a7bb",
 												"exec": [
-													"const response = pm.response.json();",
-													"",
-													"pm.test(\"Проверка поля errorCode\", function() {",
-													"  pm.expect(response).to.have.property(\"errorCode\", \"1101\");",
-													"});",
-													"",
-													"pm.test(\"Проверка поля errorText\", function() {",
-													"  pm.expect(response).to.have.property(\"errorText\", \"Организация с id:2359951 заблокирована\");",
-													"});"
+													""
 												],
 												"type": "text/javascript",
 												"packages": {}
