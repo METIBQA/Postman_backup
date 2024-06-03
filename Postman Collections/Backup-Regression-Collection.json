@@ -15132,14 +15132,37 @@
 			"name": "Опросы",
 			"item": [
 				{
-					"name": "{host]]/rest/stateful/corp/document_action/execute?actionName=download_results&docid=4081963",
+					"name": "Запрос результатов",
 					"id": "d54d1239-2ee0-480c-bac8-6fae205bfd57",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
 					"request": {
 						"method": "GET",
-						"header": []
+						"header": [],
+						"url": {
+							"raw": "{{host}}/rest/stateful/corp/document_action/execute?actionName=download_results&docid=408196",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"rest",
+								"stateful",
+								"corp",
+								"document_action",
+								"execute"
+							],
+							"query": [
+								{
+									"key": "actionName",
+									"value": "download_results"
+								},
+								{
+									"key": "docid",
+									"value": "408196"
+								}
+							]
+						}
 					},
 					"response": []
 				}
