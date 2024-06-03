@@ -15127,6 +15127,24 @@
 				}
 			],
 			"id": "d3f0a200-b4ae-4fd3-a6e4-9efc81b849bd"
+		},
+		{
+			"name": "Опросы",
+			"item": [
+				{
+					"name": "{host]]/rest/stateful/corp/document_action/execute?actionName=download_results&docid=4081963",
+					"id": "d54d1239-2ee0-480c-bac8-6fae205bfd57",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				}
+			],
+			"id": "042575b1-8399-4ac1-9212-2387876f0683"
 		}
 	],
 	"event": [
