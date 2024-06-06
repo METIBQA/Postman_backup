@@ -13578,7 +13578,7 @@
 												"id": "32241655-cb41-41c6-a0c8-241097b3644c",
 												"exec": [
 													"/*",
-													"Контроль \"Проверка длины значения Плательщик\" установлено = _____ символов",
+													"Контроль \"Проверка длины значения Плательщик\" установлено = 160 символов",
 													"*/"
 												],
 												"type": "text/javascript",
@@ -13617,7 +13617,7 @@
 									"response": []
 								},
 								{
-									"name": "Смена клиента на ООО \"Радиатор\"",
+									"name": "Смена клиента на ООО \"ГЕНЕРЕНТ\"",
 									"id": "5155bd14-821c-428d-92c5-9d7c7f615919",
 									"protocolProfileBehavior": {
 										"disableBodyPruning": true
@@ -13626,7 +13626,7 @@
 										"method": "PUT",
 										"header": [],
 										"url": {
-											"raw": "{{host}}/rest/stateful/corp/company/change_active/{{id_radiator}}",
+											"raw": "{{host}}/rest/stateful/corp/company/change_active/{{id_generent}}",
 											"host": [
 												"{{host}}"
 											],
@@ -13636,7 +13636,7 @@
 												"corp",
 												"company",
 												"change_active",
-												"{{id_radiator}}"
+												"{{id_generent}}"
 											],
 											"query": [
 												{
@@ -13665,7 +13665,7 @@
 													"const response = pm.response.json();",
 													"",
 													"pm.test(\"В поле fullname приходит полное название организации\", function() {",
-													"  pm.expect(response).to.have.property(\"fullname\", \"ООО \\\"Радиатор\\\" //РФ,143405,Московская обл,Красногорск г,Ильинское ш,1А, dsd,3,fgh,ЭТ/ПОМ/ОФ 9/9АВ/№18//\");",
+													"  pm.expect(response).to.have.property(\"fullname\", \"ОБЩЕСТВО С ОГРАНИЧЕННОЙ ОТВЕТСТВЕННОСТЬЮ \\\"ГЕНЕРЕНТ\\\" //РФ,141400,Московская обл,,Химки г,,Клязьма кв-л,,,,//\");",
 													"});"
 												],
 												"type": "text/javascript",
@@ -13695,6 +13695,23 @@
 								},
 								{
 									"name": "Рублевый платеж с СВО",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "31a72630-0f15-4576-8382-8150416fa56c",
+												"exec": [
+													"const response = pm.response.json();",
+													"",
+													"pm.test(\"В поле fullname приходит полное название организации\", function() {",
+													"  pm.expect(response).to.have.property(\"fullname\", \"ОБЩЕСТВО С ОГРАНИЧЕННОЙ ОТВЕТСТВЕННОСТЬЮ \\\"ГЕНЕРЕНТ\\\" //РФ,141400,Московская обл,,Химки г,,Клязьма кв-л,,,,//\");",
+													"});"
+												],
+												"type": "text/javascript",
+												"packages": {}
+											}
+										}
+									],
 									"id": "d8c7f879-e7ef-449e-8c13-7613a9e22bf1",
 									"protocolProfileBehavior": {
 										"disableBodyPruning": true
