@@ -13722,7 +13722,7 @@
 												"id": "32241655-cb41-41c6-a0c8-241097b3644c",
 												"exec": [
 													"/*",
-													"Контроль \"Проверка длины значения Плательщик\" установлено = _____ символов",
+													"Контроль \"Проверка длины значения Плательщик\" установлено = 100 символов",
 													"*/"
 												],
 												"type": "text/javascript",
@@ -13905,7 +13905,7 @@
 									"response": []
 								},
 								{
-									"name": "Смена клиента на ООО \"Радиатор\"",
+									"name": "Смена клиента на ООО \"ИНТУРМ\"",
 									"id": "2631dba5-93dc-439b-bf8f-d2be1c09d5d3",
 									"protocolProfileBehavior": {
 										"disableBodyPruning": true
@@ -13914,7 +13914,7 @@
 										"method": "PUT",
 										"header": [],
 										"url": {
-											"raw": "{{host}}/rest/stateful/corp/company/change_active/{{id_radiator}}",
+											"raw": "{{host}}/rest/stateful/corp/company/change_active/{{id_inturm}}",
 											"host": [
 												"{{host}}"
 											],
@@ -13924,7 +13924,7 @@
 												"corp",
 												"company",
 												"change_active",
-												"{{id_radiator}}"
+												"{{id_inturm}}"
 											],
 											"query": [
 												{
@@ -13953,7 +13953,7 @@
 													"const response = pm.response.json();",
 													"",
 													"pm.test(\"В поле fullname приходит полное название организации\", function() {",
-													"  pm.expect(response).to.have.property(\"fullname\", \"ООО \\\"Радиатор\\\" //РФ,143405,Московская обл,Красногорск г,Ильинское ш,1А, dsd,3,fgh,ЭТ/ПОМ/ОФ 9/9АВ/№18//\");",
+													"  pm.expect(response).to.have.property(\"fullname\", \"ООО \\\"ИНТУРМ\\\" //РФ,119602,Москва г,Тропаревская ул.,4,//\");",
 													"});"
 												],
 												"type": "text/javascript",
@@ -13983,6 +13983,23 @@
 								},
 								{
 									"name": "Рублевый платеж с СВО",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "2c0e68fc-88cd-4049-8f15-afc9f14c07e5",
+												"exec": [
+													"const response = pm.response.json();",
+													"",
+													"pm.test(\"В поле fullname приходит полное название организации\", function() {",
+													"  pm.expect(response).to.have.property(\"fullname\", \"ООО \\\"ИНТУРМ\\\" //РФ,119602,Москва г,Тропаревская ул.,4,//\");",
+													"});"
+												],
+												"type": "text/javascript",
+												"packages": {}
+											}
+										}
+									],
 									"id": "eb49d6eb-0a8e-4858-bb97-194fad88d8de",
 									"protocolProfileBehavior": {
 										"disableBodyPruning": true
