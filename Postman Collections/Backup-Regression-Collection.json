@@ -15135,13 +15135,14 @@
 					"name": "Запрос результатов",
 					"id": "d54d1239-2ee0-480c-bac8-6fae205bfd57",
 					"protocolProfileBehavior": {
-						"disableBodyPruning": true
+						"disableBodyPruning": true,
+						"disabledSystemHeaders": {}
 					},
 					"request": {
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{host}}/rest/stateful/corp/document_action/execute?actionName=download_results&docid=408196",
+							"raw": "{{host}}/rest/stateful/corp/document_action/execute?actionName=download_results&docid=4121017",
 							"host": [
 								"{{host}}"
 							],
@@ -15159,7 +15160,7 @@
 								},
 								{
 									"key": "docid",
-									"value": "408196"
+									"value": "4121017"
 								}
 							]
 						}
