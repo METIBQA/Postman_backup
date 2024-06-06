@@ -14074,7 +14074,7 @@
 									"response": []
 								},
 								{
-									"name": "Смена клиента на ООО \"Радиатор\"",
+									"name": "Смена клиента на ООО \"Аламед\"",
 									"id": "778fb233-fb80-4c56-9530-ad41884ef33a",
 									"protocolProfileBehavior": {
 										"disableBodyPruning": true
@@ -14082,7 +14082,7 @@
 									"request": {
 										"method": "PUT",
 										"header": [],
-										"url": "{{host}}/rest/stateful/corp/company/change_active/{{id_radiator}}"
+										"url": "{{host}}/rest/stateful/corp/company/change_active/{{id_alamed}}"
 									},
 									"response": []
 								},
