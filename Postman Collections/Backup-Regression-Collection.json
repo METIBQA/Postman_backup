@@ -14087,6 +14087,44 @@
 									"response": []
 								},
 								{
+									"name": "3.0 + Prefill Copy",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "caf64f11-0970-400b-bf7b-20b6b1dc5cf6",
+												"exec": [
+													"const response = pm.response.json();",
+													"",
+													"pm.environment.set(\"docNumber\",response.docNumber);",
+													"console.log('Номер документа \"docNumber\" = ',pm.environment.get(\"docNumber\"))"
+												],
+												"type": "text/javascript",
+												"packages": {}
+											}
+										}
+									],
+									"id": "362a0038-ab6c-4467-825f-b1c09ff06c97",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": "{{host}}/rest/stateful/corp/document/create/prefill"
+									},
+									"response": []
+								},
+								{
 									"name": "Новый платеж",
 									"event": [
 										{
