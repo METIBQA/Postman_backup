@@ -14082,32 +14082,7 @@
 									"request": {
 										"method": "PUT",
 										"header": [],
-										"url": {
-											"raw": "{{host}}/rest/stateful/corp/company/change_active/{{id_radiator}}",
-											"host": [
-												"{{host}}"
-											],
-											"path": [
-												"rest",
-												"stateful",
-												"corp",
-												"company",
-												"change_active",
-												"{{id_radiator}}"
-											],
-											"query": [
-												{
-													"key": "2037480",
-													"value": "Тест",
-													"disabled": true
-												},
-												{
-													"key": "7970250",
-													"value": "Препрод",
-													"disabled": true
-												}
-											]
-										}
+										"url": "{{host}}/rest/stateful/corp/company/change_active/{{id_radiator}}"
 									},
 									"response": []
 								},
