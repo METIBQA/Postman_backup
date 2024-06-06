@@ -14203,6 +14203,23 @@
 								},
 								{
 									"name": "Рублевый платеж с СВО",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "3cf933c3-c1b6-47c4-a1c1-6641241cb818",
+												"exec": [
+													"const response = pm.response.json();",
+													"",
+													"pm.test(\"В поле fullname приходит полное название организации\", function() {",
+													"  pm.expect(response).to.have.property(\"errorText\", \"Невозможно создать платеж: длина поля Плательщик превышает 40 символов. Свяжитесь с нами в чате или по телефону 8(800)500-8197. \");",
+													"});"
+												],
+												"type": "text/javascript",
+												"packages": {}
+											}
+										}
+									],
 									"id": "2d91e80b-f863-462d-bc8f-379303cccd11",
 									"protocolProfileBehavior": {
 										"disableBodyPruning": true
@@ -14212,14 +14229,14 @@
 										"header": [],
 										"body": {
 											"mode": "raw",
-											"raw": "{\"corrAccNumber\":\"30111810400000000002\"}",
+											"raw": "{\n    \"corrFullname\": \"Рублевый с СВО\",\n    \"corrInn\": \"7705148464\",\n    \"corrKpp\": \"770000000\",\n    \"corrBankBik\": \"044525767\",\n    \"corrAccNumber\": \"30111810400010009964\",\n    \"bankName\": \"АО \\\"МОСКОМБАНК\\\"\",\n    \"accId\": 8814900,\n    \"fullname\": \"ООО \\\"Аламед\\\" //РФ,125167,Москва г,Красноармейская ул,2,4,//\",\n    \"inn\": \"7714849385\",\n    \"kpp\": \"771401001\",\n    \"amount\": \"100\",\n    \"ndsTypeId\": \"653\",\n    \"commission\": \"Согласно тарифам банка\",\n    \"description\": \"{VO10800} тест \",\n    \"employeeFio\": \"Defoltova Fiona\",\n    \"employeePhone\": \"+76666666666\",\n    \"urgenttype\": \"5\",\n    \"docNumber\": \"1\",\n    \"docDate\": \"2024-06-06\",\n    \"corrType\": \"UL\",\n    \"payControlPsNumberCaption\": \"\",\n    \"currCode\": \"810\"\n}",
 											"options": {
 												"raw": {
 													"language": "json"
 												}
 											}
 										},
-										"url": "{{host}}/rest/stateful/corp/document_bp/create/metinv/prefill"
+										"url": "{{host}}/rest/stateful/corp/document_bp/create/metinv"
 									},
 									"response": []
 								}
