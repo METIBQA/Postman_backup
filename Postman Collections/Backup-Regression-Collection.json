@@ -13784,7 +13784,7 @@
 													"const response = pm.response.json();",
 													"",
 													"pm.test(\"В поле fullname приходит полное название организации\", function() {",
-													"  pm.expect(response).to.have.property(\"fullname\", \"ООО \\\"Радиатор\\\" //РФ,143405,Московская обл,Красногорск г,Ильинское ш,1А, dsd,3,fgh,ЭТ/ПОМ/ОФ 9/9АВ/№18//\");",
+													"  pm.expect(response).to.have.property(\"fullname\", \"ООО  \\\"Хай-Тек Медиа\\\" //РФ,107023,Москва г,,,,Малая Семёновская ул,9,,3,ПОМ XVI//\");",
 													"});"
 												],
 												"type": "text/javascript",
@@ -13814,6 +13814,23 @@
 								},
 								{
 									"name": "Рублевый платеж с СВО",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "7681a6e2-9c13-495b-94b3-46bd0fae3335",
+												"exec": [
+													"const response = pm.response.json();",
+													"",
+													"pm.test(\"В поле fullname приходит полное название организации\", function() {",
+													"  pm.expect(response).to.have.property(\"fullname\", \"ООО  \\\"Хай-Тек Медиа\\\" //РФ,107023,Москва г,,,,Малая Семёновская ул,9,,3,ПОМ XVI//\");",
+													"});"
+												],
+												"type": "text/javascript",
+												"packages": {}
+											}
+										}
+									],
 									"id": "535fb47a-dea5-4b56-97ab-83f973dcd0c6",
 									"protocolProfileBehavior": {
 										"disableBodyPruning": true
