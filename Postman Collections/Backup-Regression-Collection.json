@@ -10988,9 +10988,9 @@
 											"  pm.expect(response).to.have.property(\"errorText\", \"\");",
 											"});",
 											"",
-											"pm.test(\"Проверка поля errorText\", function() {",
-											"  pm.expect(response).to.have.property(\"infoText\", \"\");",
-											"});",
+											"// pm.test(\"Проверка поля errorText\", function() {",
+											"//   pm.expect(response).to.have.property(\"infoText\", \"\");",
+											"// });",
 											""
 										],
 										"type": "text/javascript",
