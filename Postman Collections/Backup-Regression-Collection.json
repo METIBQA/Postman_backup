@@ -392,7 +392,7 @@
 							"response": []
 						},
 						{
-							"name": "New Request",
+							"name": "7014. Проверка фильтрации в ресте last",
 							"event": [
 								{
 									"listen": "prerequest",
@@ -415,8 +415,8 @@
 										"exec": [
 											"const response = pm.response.json();",
 											"",
-											"pm.test(\"Кейс 3063 работает корректно\", function() {",
-											"  pm.expect(response).to.have.property(\"errorText\", \"Укажите дату не позднее \" + pm.variables.get(\"data_error\") + \" и не раньше 23.08.1993.\");",
+											"pm.test(\"Кейс 3063 работает корректно\", function () {",
+											"    pm.expect(response).not.have.property(\"transactions\");",
 											"});",
 											""
 										],
@@ -434,7 +434,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    // \"context\": \"*\",\n    \"beginDate\": \"2024-01-01\",\n    \"endDate\": \"{{dateToday}}\",\n    \"maxNumber\": \"20\"\n}",
+									"raw": "{\n    \"context\": \"*\", //Не валидное значение для строки поиска\n    \"beginDate\": \"2024-01-01\",\n    \"endDate\": \"{{dateToday}}\",\n    \"maxNumber\": \"20\"\n}",
 									"options": {
 										"raw": {
 											"language": "json"
