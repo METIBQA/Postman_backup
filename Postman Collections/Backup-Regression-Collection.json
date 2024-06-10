@@ -370,7 +370,50 @@
 				},
 				{
 					"name": "Вкладка \"Исполненные\"",
-					"item": [],
+					"item": [
+						{
+							"name": "Авторизация",
+							"id": "81067d1d-30b8-4c95-af21-5f6f4d4b1a0b",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": {
+										"password": "{{password}}",
+										"username": "{{login}}"
+									}
+								},
+								"method": "POST",
+								"header": [],
+								"url": "{{host}}/rest/stateful/corp/login"
+							},
+							"response": []
+						},
+						{
+							"name": "New Request",
+							"id": "4a1fe1f7-7e34-4a15-9cb5-53230584d2b3",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \n    \"beginDate\": \"2024-01-01\",\n    \"endDate\": \"2024-06-10\",\n    \"maxNumber\": \"20\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{host}}/rest/stateful/corp/metall-invest/statement/operation/last"
+							},
+							"response": []
+						}
+					],
 					"id": "d4b57f00-a5dd-410e-8db6-ad43421a27f8"
 				}
 			],
