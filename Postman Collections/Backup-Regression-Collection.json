@@ -399,6 +399,8 @@
 									"script": {
 										"id": "ed60e91f-9c72-4748-adc8-fd11261f77dc",
 										"exec": [
+											"// Кейс по задаче https://redmine.hq.metib.ru/issues/10231",
+											"",
 											"const moment = require('moment');",
 											"",
 											"//Дата для использования в теле запроса - действует только для данного запроса",
