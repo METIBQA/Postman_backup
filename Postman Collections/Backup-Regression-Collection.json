@@ -393,6 +393,38 @@
 						},
 						{
 							"name": "New Request",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "ed60e91f-9c72-4748-adc8-fd11261f77dc",
+										"exec": [
+											"const moment = require('moment');",
+											"",
+											"//Дата для использования в теле запроса - действует только для данного запроса",
+											"pm.variables.set(\"dateToday\", moment().subtract(0, 'day').format(\"YYYY-MM-DD\"))"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"id": "d6ded4ee-515a-4ce5-8423-49f8679dd6bc",
+										"exec": [
+											"const response = pm.response.json();",
+											"",
+											"pm.test(\"Кейс 3063 работает корректно\", function() {",
+											"  pm.expect(response).to.have.property(\"errorText\", \"Укажите дату не позднее \" + pm.variables.get(\"data_error\") + \" и не раньше 23.08.1993.\");",
+											"});",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
 							"id": "4a1fe1f7-7e34-4a15-9cb5-53230584d2b3",
 							"protocolProfileBehavior": {
 								"disableBodyPruning": true
@@ -402,7 +434,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \n    \"beginDate\": \"2024-01-01\",\n    \"endDate\": \"2024-06-10\",\n    \"maxNumber\": \"20\"\n}",
+									"raw": "{\n    // \"context\": \"*\",\n    \"beginDate\": \"2024-01-01\",\n    \"endDate\": \"{{dateToday}}\",\n    \"maxNumber\": \"20\"\n}",
 									"options": {
 										"raw": {
 											"language": "json"
