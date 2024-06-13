@@ -1086,6 +1086,7 @@
 								{
 									"listen": "test",
 									"script": {
+										"id": "3ae523a0-6330-49e3-a874-68aee825b8eb",
 										"exec": [
 											"const response = pm.response.json();",
 											"",
@@ -1094,7 +1095,18 @@
 											"});"
 										],
 										"type": "text/javascript",
-										"id": "3ae523a0-6330-49e3-a874-68aee825b8eb"
+										"packages": {}
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "90878d37-9f93-48b2-8e28-39dbdd66482d",
+										"exec": [
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
 									}
 								}
 							],
@@ -1124,15 +1136,18 @@
 								{
 									"listen": "test",
 									"script": {
+										"id": "eaeedf5b-078c-4ec4-bbd2-62d14c70e0f6",
 										"exec": [
 											"const response = pm.response.json();",
 											"",
 											"pm.test(\"Кейс 3005 работает корректно\", function() {",
 											"  pm.expect(response).to.have.property(\"id\");",
-											"});"
+											"});",
+											"",
+											"postman.setNextRequest('Не валидная дата')"
 										],
 										"type": "text/javascript",
-										"id": "eaeedf5b-078c-4ec4-bbd2-62d14c70e0f6"
+										"packages": {}
 									}
 								}
 							],
