@@ -1,0 +1,85 @@
+name: CI Pipeline
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  postman_test:
+    runs-on: ubuntu-latest
+    container:
+      image: postman/newman
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '14'
+
+      - name: Install Newman and Allure reporter
+        run: npm install -g newman newman-reporter-allure
+
+      - name: Run Postman tests
+        run: newman run "Postman Collections/testcicd.postman_collection.json" -e "env/2. Preprod - Единое Окно.postman_environment.json" --insecure -r allure --reporter-allure-export allure-results
+
+      - name: Upload Allure results
+        uses: actions/upload-artifact@v3
+        with:
+          name: allure-results
+          path: allure-results
+
+  create_allure_report:
+    runs-on: ubuntu-latest
+    needs: postman_test
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Download Allure results
+        uses: actions/download-artifact@v3
+        with:
+          name: allure-results
+          path: allure-results
+
+      - name: Set up Java
+        uses: actions/setup-java@v3
+        with:
+          distribution: 'adopt'
+          java-version: '11'
+
+      - name: Install Allure CLI
+        run: npm install -g allure-commandline
+
+      - name: Generate Allure report
+        run: allure generate --clean -o allure-report allure-results
+
+      - name: Upload Allure report
+        uses: actions/upload-artifact@v3
+        with:
+          name: allure-report
+          path: allure-report
+
+  create_pages:
+    runs-on: ubuntu-latest
+    needs: create_allure_report
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Download Allure report
+        uses: actions/download-artifact@v3
+        with:
+          name: allure-report
+          path: allure-report
+
+      - name: Prepare Pages folder
+        run: mkdir -p public && cp -r allure-report/* public
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.FOR_GITHUB }}
+          publish_dir: public
