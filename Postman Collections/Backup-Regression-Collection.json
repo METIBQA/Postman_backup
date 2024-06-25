@@ -14887,7 +14887,7 @@
 					"name": "Проверка процедуры установки блокировок",
 					"item": [
 						{
-							"name": "2RED",
+							"name": "ROLE_BLOCK_2RED",
 							"item": [
 								{
 									"name": "Авторизация",
@@ -15097,7 +15097,7 @@
 												"exec": [
 													"const response = pm.response.json();",
 													"",
-													"pm.test(\"Блокировка OAO1\", function() {",
+													"pm.test(\"Блокировка OAO1.  Проверка наличия роли ROLE_BLOCK_OAO1\", function() {",
 													"  pm.expect(response.roles).to.include(\"ROLE_BLOCK_OAO1\");",
 													"});"
 												],
@@ -15114,6 +15114,102 @@
 										"method": "GET",
 										"header": [],
 										"url": "{{host}}/rest/stateful/corp/security/user/roles"
+									},
+									"response": []
+								},
+								{
+									"name": "Разрешенные севисы (общие)",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "6790577a-ce4c-447d-9d2c-b5e83925f0b6",
+												"exec": [
+													"const response = pm.response.json();",
+													"",
+													"pm.test(\"Отображение карточки компании с контактами 167ФЗ\", function() {",
+													"  pm.expect(response).to.have.property(\"CONTACT_167\", 0);",
+													"});"
+												],
+												"type": "text/javascript",
+												"packages": {}
+											}
+										}
+									],
+									"id": "c573266d-117c-464d-b26c-36e49ad0aece",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{host}}/rest/stateful/corp/system/property?resource=SERVICES/COMMON",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"rest",
+												"stateful",
+												"corp",
+												"system",
+												"property"
+											],
+											"query": [
+												{
+													"key": "resource",
+													"value": "SERVICES/COMMON"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Разрешенные севисы (юл. лица) Copy",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "9200a2e5-1a49-4026-afc5-2c264f016d9c",
+												"exec": [
+													"const response = pm.response.json();",
+													"",
+													"pm.test(`Заявление на смену контакта 167ФЗ`, function () {",
+													"    pm.expect(response).to.have.property(\"REQUEST\\/CONTACT_167_CHANGE_AGREEMENT\", 0);",
+													"});"
+												],
+												"type": "text/javascript",
+												"packages": {}
+											}
+										}
+									],
+									"id": "304197fb-2e41-44fb-95f8-bf9d4544a0c7",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{host}}/rest/stateful/corp/system/property?resource=SERVICES/UL",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"rest",
+												"stateful",
+												"corp",
+												"system",
+												"property"
+											],
+											"query": [
+												{
+													"key": "resource",
+													"value": "SERVICES/UL"
+												}
+											]
+										}
 									},
 									"response": []
 								}
@@ -15893,6 +15989,102 @@
 							"id": "20d33878-ce30-40fc-b092-cb81cde5b922"
 						},
 						{
+							"name": "Разрешенные севисы (юл. лица) Copy",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "9200a2e5-1a49-4026-afc5-2c264f016d9c",
+										"exec": [
+											"const response = pm.response.json();",
+											"",
+											"pm.test(`Заявление на смену контакта 167ФЗ`, function () {",
+											"    pm.expect(response).to.have.property(\"REQUEST\\/CONTACT_167_CHANGE_AGREEMENT\", 0);",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"id": "c5e6050c-a941-4bf0-b538-02ca19bbc626",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{host}}/rest/stateful/corp/system/property?resource=SERVICES/UL",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"rest",
+										"stateful",
+										"corp",
+										"system",
+										"property"
+									],
+									"query": [
+										{
+											"key": "resource",
+											"value": "SERVICES/UL"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Разрешенные севисы (общие) Copy",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "6790577a-ce4c-447d-9d2c-b5e83925f0b6",
+										"exec": [
+											"const response = pm.response.json();",
+											"",
+											"pm.test(\"Отображение карточки компании с контактами 167ФЗ\", function() {",
+											"  pm.expect(response).to.have.property(\"CONTACT_167\", 0);",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"id": "3a4d021a-c110-47fc-9adb-c30c9219e241",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{host}}/rest/stateful/corp/system/property?resource=SERVICES/COMMON",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"rest",
+										"stateful",
+										"corp",
+										"system",
+										"property"
+									],
+									"query": [
+										{
+											"key": "resource",
+											"value": "SERVICES/COMMON"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
 							"name": "Описание",
 							"event": [
 								{
@@ -16007,7 +16199,7 @@
 											"request": {
 												"method": "PUT",
 												"header": [],
-												"url": "{{host}}/rest/stateful/corp/company/change_active/{{id_legna}}"
+												"url": "{{host}}/rest/stateful/corp/company/change_active/{{id_vmz}}"
 											},
 											"response": []
 										},
