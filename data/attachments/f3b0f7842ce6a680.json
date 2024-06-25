@@ -1,13 +1,13 @@
 {
     "Accept-CH": "Sec-CH-UA-Platform-Version, Sec-CH-UA-Mobile, Sec-CH-UA-Model, Sec-CH-UA, Sec-CH-UA-Full-Version-List, Sec-CH-UA-WoW64, Sec-CH-UA-Arch, Sec-CH-UA-Bitness, Sec-CH-UA-Platform, Sec-CH-UA-Full-Version, Viewport-Width, DPR, Device-Memory, RTT, Downlink, ECT",
     "Access-Control-Allow-Origin": "yastatic.net",
-    "Content-Length": "13435",
+    "Content-Length": "13427",
     "Content-Type": "text/html",
     "NEL": "{\"report_to\": \"network-errors\", \"max_age\": 100, \"success_fraction\": 0.001, \"failure_fraction\": 0.1}",
     "Report-To": "{ \"group\": \"network-errors\", \"max_age\": 100, \"endpoints\": [{\"url\": \"https://dr.yandex.net/nel\", \"priority\": 1}, {\"url\": \"https://dr2.yandex.net/nel\", \"priority\": 2}]}",
-    "Set-Cookie": "_yasc=sB8JiXKvv8Tkn0SB9MXdP8tzVmPWmcydNf0//XkvLr+g+V9kfsmQWPhIvNESqetT3K+K1A==; domain=.ya.ru; path=/; expires=Fri, 23 Jun 2034 09:34:41 GMT; secure",
+    "Set-Cookie": "_yasc=3g6dkIBVPzVeSeqKZ+Jn9+0sL0D1bn8Grpg1hY5oaXtx8FQ86/5UujW2Y3rgmILc6pbtlXc=; domain=.ya.ru; path=/; expires=Fri, 23 Jun 2034 10:21:14 GMT; secure",
     "X-Content-Type-Options": "nosniff",
     "X-Yandex-Captcha": "captcha",
     "X-Yandex-EU-Request": "0",
-    "X-Yandex-Req-Id": "1719308081557641-17072897342196197014-balancer-l7leveler-kubr-yp-klg-266-BAL"
+    "X-Yandex-Req-Id": "1719310874865115-17738948503419596972-balancer-l7leveler-kubr-yp-sas-109-BAL"
 }
