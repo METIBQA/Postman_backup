@@ -15026,6 +15026,55 @@
 									"response": []
 								},
 								{
+									"name": "Отображение карточки компании с контактами 167ФЗ",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "6790577a-ce4c-447d-9d2c-b5e83925f0b6",
+												"exec": [
+													"const response = pm.response.json();",
+													"",
+													"pm.test(\"Изменение контактов 167ФЗ (Задача Redmine 13318)\", function() {",
+													"  pm.expect(response).to.have.property(\"CONTACT_167\", 1);",
+													"});",
+													""
+												],
+												"type": "text/javascript",
+												"packages": {}
+											}
+										}
+									],
+									"id": "fd41e57f-52d1-4032-a928-fb406406bd6a",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{host}}/rest/stateful/corp/system/property?resource=SERVICES/COMMON",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"rest",
+												"stateful",
+												"corp",
+												"system",
+												"property"
+											],
+											"query": [
+												{
+													"key": "resource",
+													"value": "SERVICES/COMMON"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
 									"name": "Проверка общего разрешенного сервиса",
 									"id": "0ebcbb5f-c838-45b5-8d0a-0016c680de0c",
 									"protocolProfileBehavior": {
