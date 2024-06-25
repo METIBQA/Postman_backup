@@ -15887,7 +15887,7 @@
 									"name": "ROLE_CLIENTUL_HEAD_EMPLOYEE",
 									"item": [
 										{
-											"name": "Отображение карточки компании с контактами 167ФЗ",
+											"name": "Разрешенные севисы (общие)",
 											"event": [
 												{
 													"listen": "test",
@@ -15936,7 +15936,7 @@
 											"response": []
 										},
 										{
-											"name": "Проверка общего разрешенного сервиса",
+											"name": "Разрешенные севисы (юл. лица)",
 											"id": "0ebcbb5f-c838-45b5-8d0a-0016c680de0c",
 											"protocolProfileBehavior": {
 												"disableBodyPruning": true
