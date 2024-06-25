@@ -15024,67 +15024,6 @@
 										"url": "{{host}}/rest/stateful/corp/security/user/roles"
 									},
 									"response": []
-								},
-								{
-									"name": "Отображение карточки компании с контактами 167ФЗ",
-									"event": [
-										{
-											"listen": "test",
-											"script": {
-												"id": "6790577a-ce4c-447d-9d2c-b5e83925f0b6",
-												"exec": [
-													"const response = pm.response.json();",
-													"",
-													"pm.test(\"Изменение контактов 167ФЗ (Задача Redmine 13318)\", function() {",
-													"  pm.expect(response).to.have.property(\"CONTACT_167\", 1);",
-													"});",
-													""
-												],
-												"type": "text/javascript",
-												"packages": {}
-											}
-										}
-									],
-									"id": "fd41e57f-52d1-4032-a928-fb406406bd6a",
-									"protocolProfileBehavior": {
-										"disableBodyPruning": true
-									},
-									"request": {
-										"method": "GET",
-										"header": [],
-										"url": {
-											"raw": "{{host}}/rest/stateful/corp/system/property?resource=SERVICES/COMMON",
-											"host": [
-												"{{host}}"
-											],
-											"path": [
-												"rest",
-												"stateful",
-												"corp",
-												"system",
-												"property"
-											],
-											"query": [
-												{
-													"key": "resource",
-													"value": "SERVICES/COMMON"
-												}
-											]
-										}
-									},
-									"response": []
-								},
-								{
-									"name": "Проверка общего разрешенного сервиса",
-									"id": "0ebcbb5f-c838-45b5-8d0a-0016c680de0c",
-									"protocolProfileBehavior": {
-										"disableBodyPruning": true
-									},
-									"request": {
-										"method": "GET",
-										"header": []
-									},
-									"response": []
 								}
 							],
 							"id": "fec651ce-882e-4052-8f37-d771b0b80791"
@@ -15943,7 +15882,75 @@
 					"item": [
 						{
 							"name": "Проверка настроек",
-							"item": [],
+							"item": [
+								{
+									"name": "ROLE_CLIENTUL_HEAD_EMPLOYEE",
+									"item": [
+										{
+											"name": "Отображение карточки компании с контактами 167ФЗ",
+											"event": [
+												{
+													"listen": "test",
+													"script": {
+														"id": "6790577a-ce4c-447d-9d2c-b5e83925f0b6",
+														"exec": [
+															"const response = pm.response.json();",
+															"",
+															"pm.test(\"Изменение контактов 167ФЗ (Задача Redmine 13318)\", function() {",
+															"  pm.expect(response).to.have.property(\"CONTACT_167\", 1);",
+															"});",
+															""
+														],
+														"type": "text/javascript",
+														"packages": {}
+													}
+												}
+											],
+											"id": "fd41e57f-52d1-4032-a928-fb406406bd6a",
+											"protocolProfileBehavior": {
+												"disableBodyPruning": true
+											},
+											"request": {
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "{{host}}/rest/stateful/corp/system/property?resource=SERVICES/COMMON",
+													"host": [
+														"{{host}}"
+													],
+													"path": [
+														"rest",
+														"stateful",
+														"corp",
+														"system",
+														"property"
+													],
+													"query": [
+														{
+															"key": "resource",
+															"value": "SERVICES/COMMON"
+														}
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "Проверка общего разрешенного сервиса",
+											"id": "0ebcbb5f-c838-45b5-8d0a-0016c680de0c",
+											"protocolProfileBehavior": {
+												"disableBodyPruning": true
+											},
+											"request": {
+												"method": "GET",
+												"header": []
+											},
+											"response": []
+										}
+									],
+									"id": "8eae3b79-3178-4b47-96d1-bdc4fe67eb1c"
+								}
+							],
 							"id": "be664481-5e09-4258-8b38-b33393ebedb4"
 						}
 					],
