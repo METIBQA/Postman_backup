@@ -14923,7 +14923,7 @@
 									"response": []
 								},
 								{
-									"name": "Проверка блокировки",
+									"name": "Проверка наличия роли",
 									"event": [
 										{
 											"listen": "test",
@@ -14932,11 +14932,7 @@
 												"exec": [
 													"const response = pm.response.json();",
 													"",
-													"pm.test(\"Блокировка 2RED\", function() {",
-													"  pm.expect(response.roles).to.include(\"ROLE_BLOCK_2RED\");",
-													"});",
-													"",
-													"pm.test(\"Изменение контактов 167ФЗ (Задача Redmine 13318)\", function() {",
+													"pm.test(\"Блокировка 2RED. Проверка наличия роли ROLE_BLOCK_2RED\", function() {",
 													"  pm.expect(response.roles).to.include(\"ROLE_BLOCK_2RED\");",
 													"});"
 												],
@@ -14953,6 +14949,102 @@
 										"method": "GET",
 										"header": [],
 										"url": "{{host}}/rest/stateful/corp/security/user/roles"
+									},
+									"response": []
+								},
+								{
+									"name": "Разрешенные севисы (общие)",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "6790577a-ce4c-447d-9d2c-b5e83925f0b6",
+												"exec": [
+													"const response = pm.response.json();",
+													"",
+													"pm.test(\"Отображение карточки компании с контактами 167ФЗ\", function() {",
+													"  pm.expect(response).to.have.property(\"CONTACT_167\", 0);",
+													"});"
+												],
+												"type": "text/javascript",
+												"packages": {}
+											}
+										}
+									],
+									"id": "b89ffb19-5d50-4a7f-8166-bdc91990dbfd",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{host}}/rest/stateful/corp/system/property?resource=SERVICES/COMMON",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"rest",
+												"stateful",
+												"corp",
+												"system",
+												"property"
+											],
+											"query": [
+												{
+													"key": "resource",
+													"value": "SERVICES/COMMON"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Разрешенные севисы (юл. лица)",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "9200a2e5-1a49-4026-afc5-2c264f016d9c",
+												"exec": [
+													"const response = pm.response.json();",
+													"",
+													"pm.test(`Заявление на смену контакта 167ФЗ`, function () {",
+													"    pm.expect(response).to.have.property(\"REQUEST\\/CONTACT_167_CHANGE_AGREEMENT\", 0);",
+													"});"
+												],
+												"type": "text/javascript",
+												"packages": {}
+											}
+										}
+									],
+									"id": "538515fa-eb0e-4d8b-852b-eb6b0e847fe2",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{host}}/rest/stateful/corp/system/property?resource=SERVICES/UL",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"rest",
+												"stateful",
+												"corp",
+												"system",
+												"property"
+											],
+											"query": [
+												{
+													"key": "resource",
+													"value": "SERVICES/UL"
+												}
+											]
+										}
 									},
 									"response": []
 								}
@@ -15999,13 +16091,49 @@
 										},
 										{
 											"name": "Разрешенные севисы (юл. лица)",
+											"event": [
+												{
+													"listen": "test",
+													"script": {
+														"id": "36b8853b-724d-42c2-a223-555f15138922",
+														"exec": [
+															"const response = pm.response.json();",
+															"",
+															"pm.test(`Заявление на смену контакта 167ФЗ`, function () {",
+															"    pm.expect(response).to.have.property(\"REQUEST\\/CONTACT_167_CHANGE_AGREEMENT\", 1);",
+															"});"
+														],
+														"type": "text/javascript",
+														"packages": {}
+													}
+												}
+											],
 											"id": "0ebcbb5f-c838-45b5-8d0a-0016c680de0c",
 											"protocolProfileBehavior": {
 												"disableBodyPruning": true
 											},
 											"request": {
 												"method": "GET",
-												"header": []
+												"header": [],
+												"url": {
+													"raw": "{{host}}/rest/stateful/corp/system/property?resource=SERVICES/UL",
+													"host": [
+														"{{host}}"
+													],
+													"path": [
+														"rest",
+														"stateful",
+														"corp",
+														"system",
+														"property"
+													],
+													"query": [
+														{
+															"key": "resource",
+															"value": "SERVICES/UL"
+														}
+													]
+												}
 											},
 											"response": []
 										}
