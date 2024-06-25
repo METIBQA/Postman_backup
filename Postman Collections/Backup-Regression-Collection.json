@@ -15920,6 +15920,36 @@
 											"response": []
 										},
 										{
+											"name": "Проверка наличия роли",
+											"event": [
+												{
+													"listen": "test",
+													"script": {
+														"id": "6790577a-ce4c-447d-9d2c-b5e83925f0b6",
+														"exec": [
+															"const response = pm.response.json();",
+															"",
+															"pm.test(\"Проверка наличия роли ROLE_CLIENTUL_HEAD_EMPLOYEE\", function() {",
+															"  pm.expect(response.roles).to.include(\"ROLE_CLIENTUL_HEAD_EMPLOYEE\");",
+															"});"
+														],
+														"type": "text/javascript",
+														"packages": {}
+													}
+												}
+											],
+											"id": "ba94c294-183a-49ae-95f6-820180c5e060",
+											"protocolProfileBehavior": {
+												"disableBodyPruning": true
+											},
+											"request": {
+												"method": "GET",
+												"header": [],
+												"url": "{{host}}/rest/stateful/corp/security/user/roles"
+											},
+											"response": []
+										},
+										{
 											"name": "Разрешенные севисы (общие)",
 											"event": [
 												{
@@ -15929,10 +15959,9 @@
 														"exec": [
 															"const response = pm.response.json();",
 															"",
-															"pm.test(\"Изменение контактов 167ФЗ (Задача Redmine 13318)\", function() {",
+															"pm.test(\"Отображение карточки компании с контактами 167ФЗ\", function() {",
 															"  pm.expect(response).to.have.property(\"CONTACT_167\", 1);",
-															"});",
-															""
+															"});"
 														],
 														"type": "text/javascript",
 														"packages": {}
