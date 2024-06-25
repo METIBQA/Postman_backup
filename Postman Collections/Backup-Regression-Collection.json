@@ -14887,6 +14887,171 @@
 					"name": "Проверка процедуры установки блокировок",
 					"item": [
 						{
+							"name": "ROLE_CLIENTUL_HEAD_EMPLOYEE",
+							"item": [
+								{
+									"name": "Авторизация",
+									"id": "5b292be7-ee67-4dff-996b-eb3417ae66ad",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"auth": {
+											"type": "basic",
+											"basic": {
+												"password": "{{password}}",
+												"username": "{{login}}"
+											}
+										},
+										"method": "POST",
+										"header": [],
+										"url": "{{host}}/rest/stateful/corp/login"
+									},
+									"response": []
+								},
+								{
+									"name": "Смена клиента на АО \"ВМЗ\"",
+									"id": "8fb184f1-8224-45ea-b82e-59d01dabd0f8",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "PUT",
+										"header": [],
+										"url": "{{host}}/rest/stateful/corp/company/change_active/{{id_vmz}}"
+									},
+									"response": []
+								},
+								{
+									"name": "Проверка наличия роли",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "6790577a-ce4c-447d-9d2c-b5e83925f0b6",
+												"exec": [
+													"const response = pm.response.json();",
+													"",
+													"pm.test(\"Проверка наличия роли ROLE_CLIENTUL_HEAD_EMPLOYEE\", function() {",
+													"  pm.expect(response.roles).to.include(\"ROLE_CLIENTUL_HEAD_EMPLOYEE\");",
+													"});"
+												],
+												"type": "text/javascript",
+												"packages": {}
+											}
+										}
+									],
+									"id": "ba94c294-183a-49ae-95f6-820180c5e060",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": "{{host}}/rest/stateful/corp/security/user/roles"
+									},
+									"response": []
+								},
+								{
+									"name": "Разрешенные севисы (общие)",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "6790577a-ce4c-447d-9d2c-b5e83925f0b6",
+												"exec": [
+													"const response = pm.response.json();",
+													"",
+													"pm.test(\"Отображение карточки компании с контактами 167ФЗ\", function() {",
+													"  pm.expect(response).to.have.property(\"CONTACT_167\", 1);",
+													"});"
+												],
+												"type": "text/javascript",
+												"packages": {}
+											}
+										}
+									],
+									"id": "fd41e57f-52d1-4032-a928-fb406406bd6a",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{host}}/rest/stateful/corp/system/property?resource=SERVICES/COMMON",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"rest",
+												"stateful",
+												"corp",
+												"system",
+												"property"
+											],
+											"query": [
+												{
+													"key": "resource",
+													"value": "SERVICES/COMMON"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Разрешенные севисы (юл. лица)",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "36b8853b-724d-42c2-a223-555f15138922",
+												"exec": [
+													"const response = pm.response.json();",
+													"",
+													"pm.test(`Заявление на смену контакта 167ФЗ`, function () {",
+													"    pm.expect(response).to.have.property(\"REQUEST\\/CONTACT_167_CHANGE_AGREEMENT\", 1);",
+													"});"
+												],
+												"type": "text/javascript",
+												"packages": {}
+											}
+										}
+									],
+									"id": "0ebcbb5f-c838-45b5-8d0a-0016c680de0c",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{host}}/rest/stateful/corp/system/property?resource=SERVICES/UL",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"rest",
+												"stateful",
+												"corp",
+												"system",
+												"property"
+											],
+											"query": [
+												{
+													"key": "resource",
+													"value": "SERVICES/UL"
+												}
+											]
+										}
+									},
+									"response": []
+								}
+							],
+							"id": "8eae3b79-3178-4b47-96d1-bdc4fe67eb1c"
+						},
+						{
 							"name": "ROLE_BLOCK_2RED",
 							"item": [
 								{
@@ -16259,179 +16424,7 @@
 			"item": [
 				{
 					"name": "Смена контактов 167ФЗ",
-					"item": [
-						{
-							"name": "Проверка настроек",
-							"item": [
-								{
-									"name": "ROLE_CLIENTUL_HEAD_EMPLOYEE",
-									"item": [
-										{
-											"name": "Авторизация",
-											"id": "5b292be7-ee67-4dff-996b-eb3417ae66ad",
-											"protocolProfileBehavior": {
-												"disableBodyPruning": true
-											},
-											"request": {
-												"auth": {
-													"type": "basic",
-													"basic": {
-														"password": "{{password}}",
-														"username": "{{login}}"
-													}
-												},
-												"method": "POST",
-												"header": [],
-												"url": "{{host}}/rest/stateful/corp/login"
-											},
-											"response": []
-										},
-										{
-											"name": "Смена клиента на АО \"ВМЗ\"",
-											"id": "8fb184f1-8224-45ea-b82e-59d01dabd0f8",
-											"protocolProfileBehavior": {
-												"disableBodyPruning": true
-											},
-											"request": {
-												"method": "PUT",
-												"header": [],
-												"url": "{{host}}/rest/stateful/corp/company/change_active/{{id_vmz}}"
-											},
-											"response": []
-										},
-										{
-											"name": "Проверка наличия роли",
-											"event": [
-												{
-													"listen": "test",
-													"script": {
-														"id": "6790577a-ce4c-447d-9d2c-b5e83925f0b6",
-														"exec": [
-															"const response = pm.response.json();",
-															"",
-															"pm.test(\"Проверка наличия роли ROLE_CLIENTUL_HEAD_EMPLOYEE\", function() {",
-															"  pm.expect(response.roles).to.include(\"ROLE_CLIENTUL_HEAD_EMPLOYEE\");",
-															"});"
-														],
-														"type": "text/javascript",
-														"packages": {}
-													}
-												}
-											],
-											"id": "ba94c294-183a-49ae-95f6-820180c5e060",
-											"protocolProfileBehavior": {
-												"disableBodyPruning": true
-											},
-											"request": {
-												"method": "GET",
-												"header": [],
-												"url": "{{host}}/rest/stateful/corp/security/user/roles"
-											},
-											"response": []
-										},
-										{
-											"name": "Разрешенные севисы (общие)",
-											"event": [
-												{
-													"listen": "test",
-													"script": {
-														"id": "6790577a-ce4c-447d-9d2c-b5e83925f0b6",
-														"exec": [
-															"const response = pm.response.json();",
-															"",
-															"pm.test(\"Отображение карточки компании с контактами 167ФЗ\", function() {",
-															"  pm.expect(response).to.have.property(\"CONTACT_167\", 1);",
-															"});"
-														],
-														"type": "text/javascript",
-														"packages": {}
-													}
-												}
-											],
-											"id": "fd41e57f-52d1-4032-a928-fb406406bd6a",
-											"protocolProfileBehavior": {
-												"disableBodyPruning": true
-											},
-											"request": {
-												"method": "GET",
-												"header": [],
-												"url": {
-													"raw": "{{host}}/rest/stateful/corp/system/property?resource=SERVICES/COMMON",
-													"host": [
-														"{{host}}"
-													],
-													"path": [
-														"rest",
-														"stateful",
-														"corp",
-														"system",
-														"property"
-													],
-													"query": [
-														{
-															"key": "resource",
-															"value": "SERVICES/COMMON"
-														}
-													]
-												}
-											},
-											"response": []
-										},
-										{
-											"name": "Разрешенные севисы (юл. лица)",
-											"event": [
-												{
-													"listen": "test",
-													"script": {
-														"id": "36b8853b-724d-42c2-a223-555f15138922",
-														"exec": [
-															"const response = pm.response.json();",
-															"",
-															"pm.test(`Заявление на смену контакта 167ФЗ`, function () {",
-															"    pm.expect(response).to.have.property(\"REQUEST\\/CONTACT_167_CHANGE_AGREEMENT\", 1);",
-															"});"
-														],
-														"type": "text/javascript",
-														"packages": {}
-													}
-												}
-											],
-											"id": "0ebcbb5f-c838-45b5-8d0a-0016c680de0c",
-											"protocolProfileBehavior": {
-												"disableBodyPruning": true
-											},
-											"request": {
-												"method": "GET",
-												"header": [],
-												"url": {
-													"raw": "{{host}}/rest/stateful/corp/system/property?resource=SERVICES/UL",
-													"host": [
-														"{{host}}"
-													],
-													"path": [
-														"rest",
-														"stateful",
-														"corp",
-														"system",
-														"property"
-													],
-													"query": [
-														{
-															"key": "resource",
-															"value": "SERVICES/UL"
-														}
-													]
-												}
-											},
-											"response": []
-										}
-									],
-									"id": "8eae3b79-3178-4b47-96d1-bdc4fe67eb1c"
-								}
-							],
-							"id": "be664481-5e09-4258-8b38-b33393ebedb4"
-						}
-					],
+					"item": [],
 					"id": "c49705fc-530d-424d-8f56-f2432b5b30f5"
 				}
 			],
