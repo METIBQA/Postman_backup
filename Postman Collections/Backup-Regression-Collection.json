@@ -15024,6 +15024,18 @@
 										"url": "{{host}}/rest/stateful/corp/security/user/roles"
 									},
 									"response": []
+								},
+								{
+									"name": "Проверка общего разрешенного сервиса",
+									"id": "0ebcbb5f-c838-45b5-8d0a-0016c680de0c",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "GET",
+										"header": []
+									},
+									"response": []
 								}
 							],
 							"id": "fec651ce-882e-4052-8f37-d771b0b80791"
