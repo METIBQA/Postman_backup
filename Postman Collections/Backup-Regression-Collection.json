@@ -15887,6 +15887,39 @@
 									"name": "ROLE_CLIENTUL_HEAD_EMPLOYEE",
 									"item": [
 										{
+											"name": "Авторизация",
+											"id": "5b292be7-ee67-4dff-996b-eb3417ae66ad",
+											"protocolProfileBehavior": {
+												"disableBodyPruning": true
+											},
+											"request": {
+												"auth": {
+													"type": "basic",
+													"basic": {
+														"password": "{{password}}",
+														"username": "{{login}}"
+													}
+												},
+												"method": "POST",
+												"header": [],
+												"url": "{{host}}/rest/stateful/corp/login"
+											},
+											"response": []
+										},
+										{
+											"name": "Смена клиента на АО \"ВМЗ\"",
+											"id": "8fb184f1-8224-45ea-b82e-59d01dabd0f8",
+											"protocolProfileBehavior": {
+												"disableBodyPruning": true
+											},
+											"request": {
+												"method": "PUT",
+												"header": [],
+												"url": "{{host}}/rest/stateful/corp/company/change_active/{{id_legna}}"
+											},
+											"response": []
+										},
+										{
 											"name": "Разрешенные севисы (общие)",
 											"event": [
 												{
