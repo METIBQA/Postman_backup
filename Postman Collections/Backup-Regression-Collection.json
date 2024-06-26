@@ -16430,7 +16430,7 @@
 												"exec": [
 													"const response = pm.response.json();",
 													"",
-													"pm.test(\"Блокировка FROM\", function() {",
+													"pm.test(\"Блокировка FROM. Проверка наличия роли ROLE_BLOCK_FROM\", function() {",
 													"  pm.expect(response.roles).to.include(\"ROLE_BLOCK_FROM\");",
 													"});"
 												],
@@ -16595,7 +16595,7 @@
 												"exec": [
 													"const response = pm.response.json();",
 													"",
-													"pm.test(\"Блокировка 167FZ\", function() {",
+													"pm.test(\"Блокировка 167FZ. Проверка наличия роли ROLE_BLOCK_167FZ\", function() {",
 													"  pm.expect(response.roles).to.include(\"ROLE_BLOCK_167FZ\");",
 													"});"
 												],
@@ -16880,7 +16880,7 @@
 							"id": "ac9e3988-d23f-4058-854d-be99443b06a3"
 						},
 						{
-							"name": "CHANGE_EP",
+							"name": "ROLE_BLOCK_CHANGE_EP",
 							"item": [
 								{
 									"name": "Авторизация",
@@ -16916,7 +16916,7 @@
 									"response": []
 								},
 								{
-									"name": "Проверка блокировки",
+									"name": "Проверка наличия роли",
 									"event": [
 										{
 											"listen": "test",
@@ -16925,7 +16925,7 @@
 												"exec": [
 													"const response = pm.response.json();",
 													"",
-													"pm.test(\"Блокировка CHANGE_EP\", function() {",
+													"pm.test(\"Блокировка CHANGE_EP. Проверка наличия роли ROLE_BLOCK_CHANGE_EP\", function() {",
 													"  pm.expect(response.roles).to.include(\"ROLE_BLOCK_CHANGE_EP\");",
 													"});"
 												],
@@ -16942,6 +16942,102 @@
 										"method": "GET",
 										"header": [],
 										"url": "{{host}}/rest/stateful/corp/security/user/roles"
+									},
+									"response": []
+								},
+								{
+									"name": "Разрешенные сервисы (общие)",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "6790577a-ce4c-447d-9d2c-b5e83925f0b6",
+												"exec": [
+													"const response = pm.response.json();",
+													"",
+													"pm.test(\"Отображение карточки компании с контактами 167ФЗ\", function () {",
+													"    pm.expect(response).to.have.property(\"CONTACT_167\", 0);",
+													"});"
+												],
+												"type": "text/javascript",
+												"packages": {}
+											}
+										}
+									],
+									"id": "4769cce5-f223-4037-9c82-c6666767306d",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{host}}/rest/stateful/corp/system/property?resource=SERVICES/COMMON",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"rest",
+												"stateful",
+												"corp",
+												"system",
+												"property"
+											],
+											"query": [
+												{
+													"key": "resource",
+													"value": "SERVICES/COMMON"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Разрешенные сервисы (юл. лица)",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "9200a2e5-1a49-4026-afc5-2c264f016d9c",
+												"exec": [
+													"const response = pm.response.json();",
+													"",
+													"pm.test(`Заявление на смену контакта 167ФЗ`, function () {",
+													"    pm.expect(response).to.have.property(\"REQUEST\\/CONTACT_167_CHANGE_AGREEMENT\", 0);",
+													"});"
+												],
+												"type": "text/javascript",
+												"packages": {}
+											}
+										}
+									],
+									"id": "586d4726-4d59-4675-9dae-5626fb0f3870",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{host}}/rest/stateful/corp/system/property?resource=SERVICES/UL",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"rest",
+												"stateful",
+												"corp",
+												"system",
+												"property"
+											],
+											"query": [
+												{
+													"key": "resource",
+													"value": "SERVICES/UL"
+												}
+											]
+										}
 									},
 									"response": []
 								}
