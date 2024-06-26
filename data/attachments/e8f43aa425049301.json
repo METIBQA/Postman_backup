@@ -5,8 +5,9 @@
     "Content-Type": "text/html",
     "NEL": "{\"report_to\": \"network-errors\", \"max_age\": 100, \"success_fraction\": 0.001, \"failure_fraction\": 0.1}",
     "Report-To": "{ \"group\": \"network-errors\", \"max_age\": 100, \"endpoints\": [{\"url\": \"https://dr.yandex.net/nel\", \"priority\": 1}, {\"url\": \"https://dr2.yandex.net/nel\", \"priority\": 2}]}",
+    "Set-Cookie": "_yasc=3DIolLDLo9NotUrbv+Ubdn4p/uh+OkKBQ99tn2Pe5GJD6qjm5kdVcIQSdaFbAnDuGgGG2ng=; domain=.ya.ru; path=/; expires=Sat, 24 Jun 2034 08:35:48 GMT; secure",
     "X-Content-Type-Options": "nosniff",
     "X-Yandex-Captcha": "captcha",
     "X-Yandex-EU-Request": "0",
-    "X-Yandex-Req-Id": "1719389981699209-10192489002511866436-balancer-l7leveler-kubr-yp-vla-168-BAL"
+    "X-Yandex-Req-Id": "1719390948092215-16614868043293156062-balancer-l7leveler-kubr-yp-klg-69-BAL"
 }

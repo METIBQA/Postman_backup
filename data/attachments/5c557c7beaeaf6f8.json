@@ -1,0 +1,20 @@
+{
+    "Accept-CH": "Sec-CH-UA-Platform-Version, Sec-CH-UA-Mobile, Sec-CH-UA-Model, Sec-CH-UA, Sec-CH-UA-Full-Version-List, Sec-CH-UA-WoW64, Sec-CH-UA-Arch, Sec-CH-UA-Bitness, Sec-CH-UA-Platform, Sec-CH-UA-Full-Version, Viewport-Width, DPR, Device-Memory, RTT, Downlink, ECT",
+    "Cache-Control": "no-cache,no-store,max-age=0,must-revalidate",
+    "Content-Encoding": "br",
+    "Content-Security-Policy": "connect-src https://*.strm.yandex.net https://mc.yandex.com https://ya.ru https://yastatic.net https://yastat.net https://mc.yandex.ru https://*.mc.yandex.ru https://adstat.yandex.ru https://mc.admetrica.ru;img-src https://*.verify.yandex.ru https://*.ya.ru https://*.yandex.ru https://ya.ru https://yabs.yandex.by https://yabs.yandex.kz https://yabs.yandex.ru https://yabs.yandex.uz https://yandex.ru 'self' https://yastatic.net data: https://mc.admetrica.ru https://mc.yandex.com https://*.mc.yandex.ru https://adstat.yandex.ru https://mc.yandex.ru https://favicon.yandex.net https://avatars.mds.yandex.net blob:;frame-src https://*.ya.ru https://*.yandex.ru https://ya.ru https://yandex.ru https://yastatic.net https://mc.yandex.ru https://mc.yandex.md https://*.ya.ru https://*.yandex.ru https://ya.ru https://yandex.ru;style-src 'unsafe-inline' https://yastatic.net;report-uri https://csp.yandex.net/csp?project=morda&from=morda.big.ru&showid=1719390947371573-2538886399402586853-balancer-l7leveler-kubr-yp-klg-69-BAL&h=stable-portal-mordago-243.sas.yp-c.yandex.net&yandexuid=8353688391719390947&&version=2024-06-24-587&adb=0;script-src 'unsafe-inline' https://*.ya.ru https://mc.yandex.com https://yastatic.net https://yandex.ru https://mc.yandex.ru https://*.mc.yandex.ru https://adstat.yandex.ru https://ya.ru;media-src https://yastatic.net;default-src 'self' https://yastatic.net https://yastat.net;font-src https://yastatic.net",
+    "Content-Type": "text/html; charset=UTF-8",
+    "Date": "Wed, 26 Jun 2024 08:35:47 GMT",
+    "Expires": "Wed, 26 Jun 2024 08:35:47 GMT",
+    "Last-Modified": "Wed, 26 Jun 2024 08:35:47 GMT",
+    "Link": "<https://yastatic.net/s3/home-static/_/nova/503ed213c335f2d27341ddb8313a667910b88d6c82da8c400cb392a393b5669d.js>;  rel=\"preload\"; as=\"script\"; crossorigin=\"anonymous\";",
+    "NEL": "{\"report_to\": \"network-errors\", \"max_age\": 100, \"success_fraction\": 0.001, \"failure_fraction\": 0.1}",
+    "P3P": "policyref=\"/w3c/p3p.xml\", CP=\"NON DSP ADM DEV PSD IVDo OUR IND STP PHY PRE NAV UNI\"",
+    "Report-To": "{ \"group\": \"network-errors\", \"max_age\": 100, \"endpoints\": [{\"url\": \"https://dr.yandex.net/nel\", \"priority\": 1}, {\"url\": \"https://dr2.yandex.net/nel\", \"priority\": 2}]}",
+    "Set-Cookie": "yp=4294967295.skin.s#1721982947.ygu.1; Path=/; Domain=ya.ru; Expires=Sat, 24 Jun 2034 08:35:47 GMT",
+    "Transfer-Encoding": "chunked",
+    "Vary": "Cookie,Accept-Language,Accept-Encoding",
+    "X-Content-Type-Options": "nosniff",
+    "X-Frame-Options": "DENY",
+    "X-Yandex-Req-Id": "1719390947371573-2538886399402586853-balancer-l7leveler-kubr-yp-klg-69-BAL"
+}
