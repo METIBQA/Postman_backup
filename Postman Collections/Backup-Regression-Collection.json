@@ -16042,7 +16042,7 @@
 							"id": "766519ad-958a-4bd9-bdc6-147bedfea22c"
 						},
 						{
-							"name": "MVK",
+							"name": "ROLE_BLOCK_MVK",
 							"item": [
 								{
 									"name": "Авторизация",
@@ -16091,7 +16091,7 @@
 									"response": []
 								},
 								{
-									"name": "Проверка блокировки",
+									"name": "Проверка наличия роли",
 									"event": [
 										{
 											"listen": "test",
@@ -16100,7 +16100,7 @@
 												"exec": [
 													"const response = pm.response.json();",
 													"",
-													"pm.test(\"Блокировка MVK\", function() {",
+													"pm.test(\"Блокировка MVK. Проверка наличия роли ROLE_BLOCK_MVK\", function() {",
 													"  pm.expect(response.roles).to.include(\"ROLE_BLOCK_MVK\");",
 													"});"
 												],
@@ -16117,6 +16117,102 @@
 										"method": "GET",
 										"header": [],
 										"url": "{{host}}/rest/stateful/corp/security/user/roles"
+									},
+									"response": []
+								},
+								{
+									"name": "Разрешенные сервисы (общие)",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "6790577a-ce4c-447d-9d2c-b5e83925f0b6",
+												"exec": [
+													"const response = pm.response.json();",
+													"",
+													"pm.test(\"Отображение карточки компании с контактами 167ФЗ\", function () {",
+													"    pm.expect(response).to.have.property(\"CONTACT_167\", 1);",
+													"});"
+												],
+												"type": "text/javascript",
+												"packages": {}
+											}
+										}
+									],
+									"id": "31ffc18e-55a1-4a3b-979a-ce199ce24e69",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{host}}/rest/stateful/corp/system/property?resource=SERVICES/COMMON",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"rest",
+												"stateful",
+												"corp",
+												"system",
+												"property"
+											],
+											"query": [
+												{
+													"key": "resource",
+													"value": "SERVICES/COMMON"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Разрешенные сервисы (юл. лица)",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "9200a2e5-1a49-4026-afc5-2c264f016d9c",
+												"exec": [
+													"const response = pm.response.json();",
+													"",
+													"pm.test(`Заявление на смену контакта 167ФЗ`, function () {",
+													"    pm.expect(response).to.have.property(\"REQUEST\\/CONTACT_167_CHANGE_AGREEMENT\", 1);",
+													"});"
+												],
+												"type": "text/javascript",
+												"packages": {}
+											}
+										}
+									],
+									"id": "d6b74bab-288e-46cb-be54-490366c0b8e2",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{host}}/rest/stateful/corp/system/property?resource=SERVICES/UL",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"rest",
+												"stateful",
+												"corp",
+												"system",
+												"property"
+											],
+											"query": [
+												{
+													"key": "resource",
+													"value": "SERVICES/UL"
+												}
+											]
+										}
 									},
 									"response": []
 								}
@@ -16160,7 +16256,7 @@
 									"response": []
 								},
 								{
-									"name": "Проверка блокировки",
+									"name": "Проверка наличия роли",
 									"event": [
 										{
 											"listen": "test",
@@ -16169,7 +16265,7 @@
 												"exec": [
 													"const response = pm.response.json();",
 													"",
-													"pm.test(\"Блокировка EXTREM\", function() {",
+													"pm.test(\"Блокировка EXTREM. Проверка наличия роли ROLE_BLOCK_EXTREM\", function() {",
 													"  pm.expect(response.roles).to.include(\"ROLE_BLOCK_EXTREM\");",
 													"});"
 												],
@@ -16186,6 +16282,102 @@
 										"method": "GET",
 										"header": [],
 										"url": "{{host}}/rest/stateful/corp/security/user/roles"
+									},
+									"response": []
+								},
+								{
+									"name": "Разрешенные сервисы (общие)",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "6790577a-ce4c-447d-9d2c-b5e83925f0b6",
+												"exec": [
+													"const response = pm.response.json();",
+													"",
+													"pm.test(\"Отображение карточки компании с контактами 167ФЗ\", function () {",
+													"    pm.expect(response).to.have.property(\"CONTACT_167\", 1);",
+													"});"
+												],
+												"type": "text/javascript",
+												"packages": {}
+											}
+										}
+									],
+									"id": "f1512599-ad65-4748-ae4b-6525eff5ca0f",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{host}}/rest/stateful/corp/system/property?resource=SERVICES/COMMON",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"rest",
+												"stateful",
+												"corp",
+												"system",
+												"property"
+											],
+											"query": [
+												{
+													"key": "resource",
+													"value": "SERVICES/COMMON"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Разрешенные сервисы (юл. лица)",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "9200a2e5-1a49-4026-afc5-2c264f016d9c",
+												"exec": [
+													"const response = pm.response.json();",
+													"",
+													"pm.test(`Заявление на смену контакта 167ФЗ`, function () {",
+													"    pm.expect(response).to.have.property(\"REQUEST\\/CONTACT_167_CHANGE_AGREEMENT\", 1);",
+													"});"
+												],
+												"type": "text/javascript",
+												"packages": {}
+											}
+										}
+									],
+									"id": "9b6fd350-05bd-44c1-9168-d9b08c153b64",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{host}}/rest/stateful/corp/system/property?resource=SERVICES/UL",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"rest",
+												"stateful",
+												"corp",
+												"system",
+												"property"
+											],
+											"query": [
+												{
+													"key": "resource",
+													"value": "SERVICES/UL"
+												}
+											]
+										}
 									},
 									"response": []
 								}
