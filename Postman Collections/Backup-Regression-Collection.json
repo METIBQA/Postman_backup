@@ -17109,105 +17109,105 @@
 										"url": "{{host}}/rest/stateful/corp/security/user/roles"
 									},
 									"response": []
+								},
+								{
+									"name": "Разрешенные сервисы (общие)",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "6790577a-ce4c-447d-9d2c-b5e83925f0b6",
+												"exec": [
+													"const response = pm.response.json();",
+													"",
+													"pm.test(\"Отображение карточки компании с контактами 167ФЗ\", function() {",
+													"  pm.expect(response).to.have.property(\"CONTACT_167\", 0);",
+													"});"
+												],
+												"type": "text/javascript",
+												"packages": {}
+											}
+										}
+									],
+									"id": "baae463e-c621-483d-8f3d-8d7ac2907129",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{host}}/rest/stateful/corp/system/property?resource=SERVICES/COMMON",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"rest",
+												"stateful",
+												"corp",
+												"system",
+												"property"
+											],
+											"query": [
+												{
+													"key": "resource",
+													"value": "SERVICES/COMMON"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Разрешенные сервисы (юл. лица)",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "9200a2e5-1a49-4026-afc5-2c264f016d9c",
+												"exec": [
+													"const response = pm.response.json();",
+													"",
+													"pm.test(`Заявление на смену контакта 167ФЗ`, function () {",
+													"    pm.expect(response).to.have.property(\"REQUEST\\/CONTACT_167_CHANGE_AGREEMENT\", 1);",
+													"});"
+												],
+												"type": "text/javascript",
+												"packages": {}
+											}
+										}
+									],
+									"id": "0a842d26-325d-49bd-b07a-0825283520af",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{host}}/rest/stateful/corp/system/property?resource=SERVICES/UL",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"rest",
+												"stateful",
+												"corp",
+												"system",
+												"property"
+											],
+											"query": [
+												{
+													"key": "resource",
+													"value": "SERVICES/UL"
+												}
+											]
+										}
+									},
+									"response": []
 								}
 							],
 							"id": "20d33878-ce30-40fc-b092-cb81cde5b922"
-						},
-						{
-							"name": "Разрешенные сервисы (юл. лица) Copy",
-							"event": [
-								{
-									"listen": "test",
-									"script": {
-										"id": "9200a2e5-1a49-4026-afc5-2c264f016d9c",
-										"exec": [
-											"const response = pm.response.json();",
-											"",
-											"pm.test(`Заявление на смену контакта 167ФЗ`, function () {",
-											"    pm.expect(response).to.have.property(\"REQUEST\\/CONTACT_167_CHANGE_AGREEMENT\", 1);",
-											"});"
-										],
-										"type": "text/javascript",
-										"packages": {}
-									}
-								}
-							],
-							"id": "0a842d26-325d-49bd-b07a-0825283520af",
-							"protocolProfileBehavior": {
-								"disableBodyPruning": true
-							},
-							"request": {
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "{{host}}/rest/stateful/corp/system/property?resource=SERVICES/UL",
-									"host": [
-										"{{host}}"
-									],
-									"path": [
-										"rest",
-										"stateful",
-										"corp",
-										"system",
-										"property"
-									],
-									"query": [
-										{
-											"key": "resource",
-											"value": "SERVICES/UL"
-										}
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Разрешенные сервисы (общие) Copy",
-							"event": [
-								{
-									"listen": "test",
-									"script": {
-										"id": "6790577a-ce4c-447d-9d2c-b5e83925f0b6",
-										"exec": [
-											"const response = pm.response.json();",
-											"",
-											"pm.test(\"Отображение карточки компании с контактами 167ФЗ\", function() {",
-											"  pm.expect(response).to.have.property(\"CONTACT_167\", 1);",
-											"});"
-										],
-										"type": "text/javascript",
-										"packages": {}
-									}
-								}
-							],
-							"id": "baae463e-c621-483d-8f3d-8d7ac2907129",
-							"protocolProfileBehavior": {
-								"disableBodyPruning": true
-							},
-							"request": {
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "{{host}}/rest/stateful/corp/system/property?resource=SERVICES/COMMON",
-									"host": [
-										"{{host}}"
-									],
-									"path": [
-										"rest",
-										"stateful",
-										"corp",
-										"system",
-										"property"
-									],
-									"query": [
-										{
-											"key": "resource",
-											"value": "SERVICES/COMMON"
-										}
-									]
-								}
-							},
-							"response": []
 						},
 						{
 							"name": "Описание",
