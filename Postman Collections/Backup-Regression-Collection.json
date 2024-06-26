@@ -15128,7 +15128,7 @@
 													"const response = pm.response.json();",
 													"",
 													"pm.test(\"Отображение карточки компании с контактами 167ФЗ\", function() {",
-													"  pm.expect(response).to.have.property(\"CONTACT_167\", 0);",
+													"  pm.expect(response).to.have.property(\"CONTACT_167\", 1);",
 													"});"
 												],
 												"type": "text/javascript",
@@ -15166,7 +15166,7 @@
 									"response": []
 								},
 								{
-									"name": "сервисы",
+									"name": "Разрешенные сервисы (юл. лица)",
 									"event": [
 										{
 											"listen": "test",
@@ -15176,7 +15176,7 @@
 													"const response = pm.response.json();",
 													"",
 													"pm.test(`Заявление на смену контакта 167ФЗ`, function () {",
-													"    pm.expect(response).to.have.property(\"REQUEST\\/CONTACT_167_CHANGE_AGREEMENT\", 0);",
+													"    pm.expect(response).to.have.property(\"REQUEST\\/CONTACT_167_CHANGE_AGREEMENT\", 1);",
 													"});"
 												],
 												"type": "text/javascript",
@@ -16322,7 +16322,7 @@
 												"exec": [
 													"const response = pm.response.json();",
 													"",
-													"pm.test(\"Блокировка PARTIAL_UNBLOCK\", function() {",
+													"pm.test(\"Блокировка PARTIAL_UNBLOCK. Проверка наличия роли ROLE_BLOCK_PARTIAL_UNBLOCK\", function() {",
 													"  pm.expect(response.roles).to.include(\"ROLE_BLOCK_PARTIAL_UNBLOCK\");",
 													"});"
 												],
