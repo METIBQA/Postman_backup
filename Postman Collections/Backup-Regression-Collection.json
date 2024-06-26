@@ -15131,8 +15131,12 @@
 												"exec": [
 													"const response = pm.response.json();",
 													"",
-													"pm.test(\"Отображение карточки компании с контактами 167ФЗ\", function() {",
-													"  pm.expect(response).to.have.property(\"CONTACT_167\", 0);",
+													"pm.test(\"Отображение карточки компании с контактами 167ФЗ\", function () {",
+													"    pm.expect(response).to.have.property(\"CONTACT_167\", 0);",
+													"});",
+													"",
+													"pm.test(\"Отображение заявление на смену номера\", function () {",
+													"    pm.expect(response).to.have.property(\"PHONE_CHANGE_STATEMENT\", 0);",
 													"});"
 												],
 												"type": "text/javascript",
@@ -15465,8 +15469,12 @@
 												"exec": [
 													"const response = pm.response.json();",
 													"",
-													"pm.test(\"Отображение карточки компании с контактами 167ФЗ\", function() {",
-													"  pm.expect(response).to.have.property(\"CONTACT_167\", 1);",
+													"pm.test(\"Отображение карточки компании с контактами 167ФЗ\", function () {",
+													"    pm.expect(response).to.have.property(\"CONTACT_167\", 1);",
+													"});",
+													"",
+													"pm.test(\"Отображение заявление на смену номера\", function () {",
+													"    pm.expect(response).to.have.property(\"PHONE_CHANGE_STATEMENT\", 1);",
 													"});"
 												],
 												"type": "text/javascript",
@@ -15632,6 +15640,10 @@
 													"",
 													"pm.test(\"Отображение карточки компании с контактами 167ФЗ\", function () {",
 													"    pm.expect(response).to.have.property(\"CONTACT_167\", 1);",
+													"});",
+													"",
+													"pm.test(\"Отображение заявление на смену номера\", function () {",
+													"    pm.expect(response).to.have.property(\"PHONE_CHANGE_STATEMENT\", 1);",
 													"});"
 												],
 												"type": "text/javascript",
