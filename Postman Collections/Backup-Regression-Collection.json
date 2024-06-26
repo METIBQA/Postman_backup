@@ -15877,7 +15877,7 @@
 							"id": "72793ac4-d41a-4573-85e1-4548b7fe7a4f"
 						},
 						{
-							"name": "OON",
+							"name": "ROLE_BLOCK_OON",
 							"item": [
 								{
 									"name": "Авторизация",
