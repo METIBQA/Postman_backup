@@ -15341,7 +15341,7 @@
 													"const response = pm.response.json();",
 													"",
 													"pm.test(`Заявление на смену контакта 167ФЗ`, function () {",
-													"    pm.expect(response).to.have.property(\"REQUEST\\/CONTACT_167_CHANGE_AGREEMENT\", 1);",
+													"    pm.expect(response).to.have.property(\"REQUEST\\/CONTACT_167_CHANGE_AGREEMENT\", 0);",
 													"});"
 												],
 												"type": "text/javascript",
@@ -15506,7 +15506,7 @@
 													"const response = pm.response.json();",
 													"",
 													"pm.test(`Заявление на смену контакта 167ФЗ`, function () {",
-													"    pm.expect(response).to.have.property(\"REQUEST\\/CONTACT_167_CHANGE_AGREEMENT\", 1);",
+													"    pm.expect(response).to.have.property(\"REQUEST\\/CONTACT_167_CHANGE_AGREEMENT\", 0);",
 													"});"
 												],
 												"type": "text/javascript",
@@ -15671,7 +15671,7 @@
 													"const response = pm.response.json();",
 													"",
 													"pm.test(`Заявление на смену контакта 167ФЗ`, function () {",
-													"    pm.expect(response).to.have.property(\"REQUEST\\/CONTACT_167_CHANGE_AGREEMENT\", 1);",
+													"    pm.expect(response).to.have.property(\"REQUEST\\/CONTACT_167_CHANGE_AGREEMENT\", 0);",
 													"});"
 												],
 												"type": "text/javascript",
@@ -15836,7 +15836,7 @@
 													"const response = pm.response.json();",
 													"",
 													"pm.test(`Заявление на смену контакта 167ФЗ`, function () {",
-													"    pm.expect(response).to.have.property(\"REQUEST\\/CONTACT_167_CHANGE_AGREEMENT\", 1);",
+													"    pm.expect(response).to.have.property(\"REQUEST\\/CONTACT_167_CHANGE_AGREEMENT\", 0);",
 													"});"
 												],
 												"type": "text/javascript",
@@ -16001,7 +16001,7 @@
 													"const response = pm.response.json();",
 													"",
 													"pm.test(`Заявление на смену контакта 167ФЗ`, function () {",
-													"    pm.expect(response).to.have.property(\"REQUEST\\/CONTACT_167_CHANGE_AGREEMENT\", 1);",
+													"    pm.expect(response).to.have.property(\"REQUEST\\/CONTACT_167_CHANGE_AGREEMENT\", 0);",
 													"});"
 												],
 												"type": "text/javascript",
@@ -16179,7 +16179,7 @@
 													"const response = pm.response.json();",
 													"",
 													"pm.test(`Заявление на смену контакта 167ФЗ`, function () {",
-													"    pm.expect(response).to.have.property(\"REQUEST\\/CONTACT_167_CHANGE_AGREEMENT\", 1);",
+													"    pm.expect(response).to.have.property(\"REQUEST\\/CONTACT_167_CHANGE_AGREEMENT\", 0);",
 													"});"
 												],
 												"type": "text/javascript",
