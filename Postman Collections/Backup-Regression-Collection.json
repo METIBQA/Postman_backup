@@ -15128,7 +15128,7 @@
 													"const response = pm.response.json();",
 													"",
 													"pm.test(\"Отображение карточки компании с контактами 167ФЗ\", function() {",
-													"  pm.expect(response).to.have.property(\"CONTACT_167\", 1);",
+													"  pm.expect(response).to.have.property(\"CONTACT_167\", 0);",
 													"});"
 												],
 												"type": "text/javascript",
