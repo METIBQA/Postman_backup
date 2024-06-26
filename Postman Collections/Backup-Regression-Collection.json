@@ -16220,7 +16220,7 @@
 							"id": "7032478e-9d5a-4d2d-9bfd-1fefd800d8bd"
 						},
 						{
-							"name": "EXTREM",
+							"name": "ROLE_BLOCK_EXTREM",
 							"item": [
 								{
 									"name": "Авторизация",
@@ -16421,7 +16421,7 @@
 									"response": []
 								},
 								{
-									"name": "Проверка блокировки",
+									"name": "Проверка наличия роли",
 									"event": [
 										{
 											"listen": "test",
