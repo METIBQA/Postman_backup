@@ -1,12 +1,13 @@
 {
     "Accept-CH": "Sec-CH-UA-Platform-Version, Sec-CH-UA-Mobile, Sec-CH-UA-Model, Sec-CH-UA, Sec-CH-UA-Full-Version-List, Sec-CH-UA-WoW64, Sec-CH-UA-Arch, Sec-CH-UA-Bitness, Sec-CH-UA-Platform, Sec-CH-UA-Full-Version, Viewport-Width, DPR, Device-Memory, RTT, Downlink, ECT",
     "Access-Control-Allow-Origin": "yastatic.net",
-    "Content-Length": "13435",
+    "Content-Length": "13430",
     "Content-Type": "text/html",
     "NEL": "{\"report_to\": \"network-errors\", \"max_age\": 100, \"success_fraction\": 0.001, \"failure_fraction\": 0.1}",
     "Report-To": "{ \"group\": \"network-errors\", \"max_age\": 100, \"endpoints\": [{\"url\": \"https://dr.yandex.net/nel\", \"priority\": 1}, {\"url\": \"https://dr2.yandex.net/nel\", \"priority\": 2}]}",
+    "Set-Cookie": "_yasc=mz6HlStgbKJc8DdIiPN9Zf4Rz5uvgkm2OSdR2ayCAwUHKvesB4Nza5OCPk6LKK03xPYIzw==; domain=.ya.ru; path=/; expires=Sat, 24 Jun 2034 07:31:32 GMT; secure",
     "X-Content-Type-Options": "nosniff",
     "X-Yandex-Captcha": "captcha",
     "X-Yandex-EU-Request": "0",
-    "X-Yandex-Req-Id": "1719386918629826-14788222249667047404-balancer-l7leveler-kubr-yp-klg-162-BAL"
+    "X-Yandex-Req-Id": "1719387092684372-1236751956314450016-balancer-l7leveler-kubr-yp-klg-110-BAL"
 }
