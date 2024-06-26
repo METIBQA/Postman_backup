@@ -16710,7 +16710,7 @@
 													"});",
 													"",
 													"pm.test(\"Отображение заявление на смену номера\", function () {",
-													"    pm.expect(response).to.have.property(\"PHONE_CHANGE_STATEMENT\", 0);",
+													"    pm.expect(response).to.have.property(\"PHONE_CHANGE_STATEMENT\", 1);",
 													"});"
 												],
 												"type": "text/javascript",
@@ -17322,7 +17322,7 @@
 							"id": "20d33878-ce30-40fc-b092-cb81cde5b922"
 						},
 						{
-							"name": "Описание",
+							"name": "Описание. Читай раздел \"Test\"",
 							"event": [
 								{
 									"listen": "test",
