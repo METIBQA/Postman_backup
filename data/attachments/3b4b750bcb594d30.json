@@ -1,12 +1,12 @@
 {
     "Accept-CH": "Sec-CH-UA-Platform-Version, Sec-CH-UA-Mobile, Sec-CH-UA-Model, Sec-CH-UA, Sec-CH-UA-Full-Version-List, Sec-CH-UA-WoW64, Sec-CH-UA-Arch, Sec-CH-UA-Bitness, Sec-CH-UA-Platform, Sec-CH-UA-Full-Version, Viewport-Width, DPR, Device-Memory, RTT, Downlink, ECT",
     "Access-Control-Allow-Origin": "yastatic.net",
-    "Content-Length": "13429",
+    "Content-Length": "13427",
     "Content-Type": "text/html",
     "NEL": "{\"report_to\": \"network-errors\", \"max_age\": 100, \"success_fraction\": 0.001, \"failure_fraction\": 0.1}",
     "Report-To": "{ \"group\": \"network-errors\", \"max_age\": 100, \"endpoints\": [{\"url\": \"https://dr.yandex.net/nel\", \"priority\": 1}, {\"url\": \"https://dr2.yandex.net/nel\", \"priority\": 2}]}",
     "X-Content-Type-Options": "nosniff",
     "X-Yandex-Captcha": "captcha",
     "X-Yandex-EU-Request": "0",
-    "X-Yandex-Req-Id": "1719392099294355-9616087112143076217-balancer-l7leveler-kubr-yp-vla-156-BAL"
+    "X-Yandex-Req-Id": "1719392319974671-2973381927196218463-balancer-l7leveler-kubr-yp-vla-23-BAL"
 }
