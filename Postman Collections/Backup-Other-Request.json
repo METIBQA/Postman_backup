@@ -2684,8 +2684,18 @@
 						"disableBodyPruning": true
 					},
 					"request": {
-						"method": "GET",
-						"header": []
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"acceptImmediately\": \"Исполнение=ПО СОГЛАСОВАНИЮ\",\r\n  \"amountCredit\": \"444.00\",\r\n  \"chargeType\": \"1\",\r\n  \"clientRequestRate\": \"10.00\",\r\n  \"creditAccId\": \"7968637\",\r\n  \"creditType\": false,\r\n  \"currCode\": \"RUR\",\r\n  \"dealType\": \"FromBank\",\r\n  \"debitAccId\": \"7968630\",\r\n  \"debitCurr\": \"CNY\",\r\n  \"docDate\": \"2025-06-04\",\r\n  \"docNumber\": \"79\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "https://test-ul.metib.online/rest/stateful/corp/curr/sell_metinv"
 					},
 					"response": []
 				}
