@@ -2642,8 +2642,16 @@
 						"disableBodyPruning": true
 					},
 					"request": {
-						"method": "GET",
-						"header": []
+						"auth": {
+							"type": "basic",
+							"basic": {
+								"password": "123QWEqwe!",
+								"username": "qa_amarkin"
+							}
+						},
+						"method": "POST",
+						"header": [],
+						"url": "{{host}}/rest/stateful/corp/login"
 					},
 					"response": []
 				}
