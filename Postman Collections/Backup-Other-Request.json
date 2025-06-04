@@ -2654,6 +2654,18 @@
 						"url": "{{host}}/rest/stateful/corp/login"
 					},
 					"response": []
+				},
+				{
+					"name": "New Request",
+					"id": "0ecf64c0-549d-4ebd-880d-51e2aec5228e",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
 				}
 			],
 			"id": "1287aa9a-c1f9-46c7-9a7e-b6920e95026c"
