@@ -2698,6 +2698,28 @@
 						"url": "https://test-ul.metib.online/rest/stateful/corp/curr/sell_metinv"
 					},
 					"response": []
+				},
+				{
+					"name": "New Request",
+					"id": "3cbf0024-577b-4b8a-a5d7-5dd855849a7c",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"creditAmount\": \"1\",\r\n  \"creditCurrCodeIso\": \"CNY\",\r\n  \"debitCurrCodeIso\": \"RUR\",\r\n  \"mode\": \"BY_BANK\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "https://test-ul.metib.online/rest/stateful/corp/fxts/conversion/exchange"
+					},
+					"response": []
 				}
 			],
 			"id": "1287aa9a-c1f9-46c7-9a7e-b6920e95026c"
