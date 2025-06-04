@@ -2676,6 +2676,18 @@
 						"url": "https://test-ul.metib.online/rest/stateful/corp/curr/buy_metinv"
 					},
 					"response": []
+				},
+				{
+					"name": "New Request",
+					"id": "6e11df3e-426e-4cdb-b32c-29d63c94e6f4",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
 				}
 			],
 			"id": "1287aa9a-c1f9-46c7-9a7e-b6920e95026c"
