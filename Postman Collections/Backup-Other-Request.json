@@ -2645,13 +2645,13 @@
 						"auth": {
 							"type": "basic",
 							"basic": {
-								"password": "123QWEqwe!",
+								"password": "123321",
 								"username": "qa_amarkin"
 							}
 						},
 						"method": "POST",
 						"header": [],
-						"url": "{{host}}/rest/stateful/corp/login"
+						"url": "https://test-ul.metib.online/rest/stateful/corp/login"
 					},
 					"response": []
 				},
@@ -2666,7 +2666,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n  \"acceptImmediately\": \"Исполнение=ПО СОГЛАСОВАНИЮ\",\r\n  \"amountCredit\": \"777.00\",\r\n  \"amountDebit\": \"10101\",\r\n  \"chargeType\": \"1\",\r\n  \"clientRequestRate\": \"13.00\",\r\n  \"creditAccId\": \"7968630\",\r\n  \"creditType\": false,\r\n  \"currCode\": \"CNY\",\r\n  \"dealType\": \"FromBank\",\r\n  \"debitAccId\": \"7968637\",\r\n  \"debitCurr\": \"RUR\",\r\n  \"docDate\": \"2025-06-04\",\r\n  \"docNumber\": \"71\",\r\n  \"draftDealId\": null,\r\n  \"employee\": \"Металлинвестбанк\",\r\n  \"employeePhone\": \"88002509797\",\r\n  \"isAuto\": \"true\",\r\n  \"necessaryInfo\": \"\",\r\n  \"requestRate\": null,\r\n  \"requestRateType\": \"1\",\r\n  \"supplyConditionType\": \"EMPTY\"\r\n}",
+							"raw": "{\r\n  \"acceptImmediately\": \"Исполнение=ПО СОГЛАСОВАНИЮ\",\r\n  \"amountDebit\": \"444.00\",\r\n  \"chargeType\": \"1\",\r\n  \"clientRequestRate\": \"14.00\",\r\n  \"creditAccId\": \"7968630\",\r\n  \"creditType\": false,\r\n  \"currCode\": \"CNY\",\r\n  \"dealType\": \"FromBank\",\r\n  \"debitAccId\": \"7968637\",\r\n  \"debitCurr\": \"RUR\",\r\n  \"docDate\": \"2025-06-04\",\r\n  \"draftDealId\": null,\r\n  \"employee\": \"Металлинвестбанк\",\r\n  \"employeePhone\": \"88002509797\",\r\n  \"isAuto\": \"true\",\r\n  \"necessaryInfo\": \"\",\r\n  \"requestRate\": null,\r\n  \"requestRateType\": \"1\",\r\n  \"supplyConditionType\": \"EMPTY\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
