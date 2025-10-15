@@ -8619,6 +8619,7 @@
 								{
 									"listen": "test",
 									"script": {
+										"id": "3f32697c-a196-45cc-88bf-c124863c92af",
 										"exec": [
 											"// Загоняю ответ в переменную",
 											"var jsonData = pm.response.json();",
@@ -8642,7 +8643,7 @@
 											"        pm.expect(jsonData.data[id_CNY].caption).to.eql('Китайский юань');",
 											"    });",
 											"    pm.test('Поле description - CNY', () => {",
-											"        pm.expect(jsonData.data[id_CNY].description).to.eql('{\\\"OpenValACC\\\":\\\"true\\\",\\\"MultiValPay\\\":\\\"true\\\"}');",
+											"        pm.expect(jsonData.data[id_CNY].description).to.eql('{\\\"OpenValACC\":\"true\",\"MultiValPay\":\"true\",\"OpenBPXValACC\":\"true\"}');",
 											"    });",
 											"}",
 											"",
@@ -9255,7 +9256,8 @@
 											"}"
 										],
 										"type": "text/javascript",
-										"id": "3f32697c-a196-45cc-88bf-c124863c92af"
+										"packages": {},
+										"requests": {}
 									}
 								}
 							],
