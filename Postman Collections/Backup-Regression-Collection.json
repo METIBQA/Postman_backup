@@ -8662,7 +8662,7 @@
 											"        pm.expect(jsonData.data[id_TRY].caption).to.eql('Турецкая лира');",
 											"    });",
 											"    pm.test('Поле description - TRY', () => {",
-											"        pm.expect(jsonData.data[id_TRY].description).to.eql('{\\\"OpenValACC\\\":\\\"true\\\",\\\"MultiValPay\\\":\\\"true\\\"}');",
+											"        pm.expect(jsonData.data[id_TRY].description).to.eql('{\\\"OpenValACC\\\":\\\"true\\\",\\\"MultiValPay\\\":\\\"true\\\",\\\"OpenBPXValACC\\\":\\\"true\\\"}');",
 											"    });",
 											"}",
 											"",
