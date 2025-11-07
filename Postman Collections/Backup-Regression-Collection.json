@@ -17527,6 +17527,38 @@
 						"url": "https://test-ul.metib.online/rest/stateful/corp/external_statement/service/sync/print"
 					},
 					"response": []
+				},
+				{
+					"name": "Авторизация 1",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"id": "1bdc7dd5-54d4-48fa-8ab4-0929ae4c01f3"
+							}
+						}
+					],
+					"id": "623dd5b1-928c-43ab-b54f-8e8efacd40d5",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": {
+								"password": "{{password}}",
+								"username": "{{login}}"
+							}
+						},
+						"method": "POST",
+						"header": [],
+						"url": "{{host}}/rest/stateful/corp/login"
+					},
+					"response": []
 				}
 			],
 			"id": "bd25507d-ead7-4741-916f-2e94e1e985ab"
