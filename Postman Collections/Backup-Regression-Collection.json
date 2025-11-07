@@ -17409,7 +17409,7 @@
 			"id": "5155cf6e-d522-4ade-bb65-d1fc7975750e"
 		},
 		{
-			"name": "Авторизация",
+			"name": "New Request",
 			"id": "006ae898-af93-4f2d-b922-168c06fbd380",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
