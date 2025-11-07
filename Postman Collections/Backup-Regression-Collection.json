@@ -17468,6 +17468,18 @@
 						"url": "https://test-ul.metib.online/rest/stateful/corp/login"
 					},
 					"response": []
+				},
+				{
+					"name": "New Request",
+					"id": "98fe5399-6074-401a-98d8-b4a0bb023043",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
 				}
 			],
 			"id": "bd25507d-ead7-4741-916f-2e94e1e985ab"
