@@ -17410,18 +17410,6 @@
 		},
 		{
 			"name": "New Request",
-			"id": "5006fc66-95d1-4f1a-9cc6-9ee1c8a9c8b2",
-			"protocolProfileBehavior": {
-				"disableBodyPruning": true
-			},
-			"request": {
-				"method": "GET",
-				"header": []
-			},
-			"response": []
-		},
-		{
-			"name": "New Request",
 			"id": "006ae898-af93-4f2d-b922-168c06fbd380",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
