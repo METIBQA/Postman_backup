@@ -17407,6 +17407,18 @@
 				}
 			],
 			"id": "5155cf6e-d522-4ade-bb65-d1fc7975750e"
+		},
+		{
+			"name": "New Request",
+			"id": "5006fc66-95d1-4f1a-9cc6-9ee1c8a9c8b2",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
 		}
 	],
 	"event": [
