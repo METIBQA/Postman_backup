@@ -17476,8 +17476,55 @@
 						"disableBodyPruning": true
 					},
 					"request": {
-						"method": "GET",
-						"header": []
+						"method": "POST",
+						"header": [
+							{
+								"key": "sec-ch-ua-platform",
+								"value": "\"Windows\""
+							},
+							{
+								"key": "Referer",
+								"value": "https://test-ul.metib.online/desktop"
+							},
+							{
+								"key": "sec-ch-ua",
+								"value": "\"Not(A:Brand\";v=\"99\", \"Google Chrome\";v=\"133\", \"Chromium\";v=\"133\""
+							},
+							{
+								"key": "sec-ch-ua-mobile",
+								"value": "?0"
+							},
+							{
+								"key": "baggage",
+								"value": "sentry-environment=production,sentry-public_key=b50d72a3af8f97a444ab56666087cb2e,sentry-trace_id=fd8991d3936b448c85d0388fd7ce30e9,sentry-sample_rate=0,sentry-transaction=%2Fdesktop%2F,sentry-sampled=false"
+							},
+							{
+								"key": "sentry-trace",
+								"value": "fd8991d3936b448c85d0388fd7ce30e9-a8244e2175e70d3b-0"
+							},
+							{
+								"key": "User-Agent",
+								"value": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Safari/537.36"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json, text/plain, */*"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"clientId\":4462573,\"accountNumbers\":[\"40702156200990161292\"],\"includeCurrencyDocuments\":false,\"printFormats\":[\"PDF\"],\"statementComposition\":\"STATEMENT_ONLY\",\"dateFrom\":\"2025-01-01\",\"dateTo\":\"2025-11-07\"}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "https://test-ul.metib.online/rest/stateful/corp/external_statement/service/sync/print"
 					},
 					"response": []
 				}
