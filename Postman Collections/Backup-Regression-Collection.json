@@ -17409,7 +17409,12 @@
 			"id": "5155cf6e-d522-4ade-bb65-d1fc7975750e"
 		},
 		{
-			"name": "New Request",
+			"name": "New Folder",
+			"item": [],
+			"id": "bd25507d-ead7-4741-916f-2e94e1e985ab"
+		},
+		{
+			"name": "Авторизация",
 			"id": "006ae898-af93-4f2d-b922-168c06fbd380",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
