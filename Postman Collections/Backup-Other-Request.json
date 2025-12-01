@@ -2656,6 +2656,26 @@
 					"response": []
 				},
 				{
+					"name": "New Request Copy",
+					"id": "4454d192-939b-45af-a6cc-49abd7f24f0d",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": {
+								"password": "123321",
+								"username": "qa_amarkin"
+							}
+						},
+						"method": "POST",
+						"header": [],
+						"url": "https://test-ul.metib.online/rest/stateful/corp/login"
+					},
+					"response": []
+				},
+				{
 					"name": "New Request",
 					"id": "0ecf64c0-549d-4ebd-880d-51e2aec5228e",
 					"protocolProfileBehavior": {
