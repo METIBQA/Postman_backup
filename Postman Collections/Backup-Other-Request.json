@@ -2763,12 +2763,17 @@
 			"id": "c274e392-3fb6-465a-b948-5713a65dc862"
 		}
 	],
+	"auth": {
+		"type": "basic",
+		"basic": {}
+	},
 	"event": [
 		{
 			"listen": "prerequest",
 			"script": {
-				"id": "1c2cb82b-42e5-4fe8-b904-63d833ec5ab4",
+				"id": "d2700dd1-ac63-4daf-aa67-9bcbe15d2e8f",
 				"type": "text/javascript",
+				"requests": {},
 				"exec": [
 					""
 				]
@@ -2777,8 +2782,9 @@
 		{
 			"listen": "test",
 			"script": {
-				"id": "aa9d6a77-6178-4a65-a18a-ba104d6344b5",
+				"id": "414e69bc-473d-444d-bb2d-b226f2125444",
 				"type": "text/javascript",
+				"requests": {},
 				"exec": [
 					"pm.test(\"Status code is 200\", function () {",
 					"    pm.response.to.have.status(200);",
