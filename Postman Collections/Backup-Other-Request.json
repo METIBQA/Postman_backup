@@ -2740,16 +2740,10 @@
 						"url": "https://test-ul.metib.online/rest/stateful/corp/fxts/conversion/exchange"
 					},
 					"response": []
-				}
-			],
-			"id": "1287aa9a-c1f9-46c7-9a7e-b6920e95026c"
-		},
-		{
-			"name": "Страница смены пароля",
-			"item": [
+				},
 				{
 					"name": "New Request",
-					"id": "eee8fe2d-7906-4135-927d-30c46e1c4b5b",
+					"id": "6d621e4b-bf19-4619-bb34-4d496f340a12",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
@@ -2760,7 +2754,7 @@
 					"response": []
 				}
 			],
-			"id": "c274e392-3fb6-465a-b948-5713a65dc862"
+			"id": "1287aa9a-c1f9-46c7-9a7e-b6920e95026c"
 		}
 	],
 	"auth": {
