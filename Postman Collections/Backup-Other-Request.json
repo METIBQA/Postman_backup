@@ -2764,6 +2764,28 @@
 					"response": []
 				},
 				{
+					"name": "New Request Copy",
+					"id": "8a1d69cc-a247-4dd9-812c-34d54650b70e",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"docModule\": \"ibankul\",\r\n    \"docType\": \"doc_platpor\",\r\n    \"ignoreWarnings\": \"false\",\r\n    \"signStatus\": \"0\",\r\n    \"signStatusCaption\": \"Не подписан\",\r\n    \"status\": \"new\",\r\n    \"statusCaption\": \"новый\",\r\n    \"docDate\": \"2018-12-25\",\r\n    \"docNumber\": \"26\",\r\n    \"clientId\": \"721344\",\r\n    \"clientRef\": \"560\",\r\n    \"fullname\": \"ОАО \\\"Капитолий\\\"\",\r\n    \"inn\": \"7701058541\",\r\n    \"kpp\": \"770001001\",\r\n    \"accId\": \"124679\",\r\n    \"accNumber\": \"40702810600001003846\",\r\n    \"agreeRules\": \"false\",\r\n    \"amount\": \"509999959650.00\",\r\n    \"corrAccNumber\": \"40717810900000005333\",\r\n    \"corrBankBik\": \"044525225\",\r\n    \"corrBankCorrAccount\": \"30101810400000000225\",\r\n    \"corrFullname\": \"ОАО Капитолий\",\r\n    \"corrInn\": \"1234567890\",\r\n    \"corrKpp\": \"123456789\",\r\n    \"description\": \"dfdfdfdfd\",\r\n    \"corrType\": \"UL\",\r\n    \"withCreditFunds\": \"true\",\r\n    \"ndsTypeId\": \"4319\",\r\n    \"notifyReceiverEnabled\": \"false\",\r\n    \"opertype\": \"01\",\r\n    \"payNalogCorr\": \"false\",\r\n    \"sendtype\": \"01\",\r\n    \"uin\": \"0\",\r\n    \"urgenttype\": \"5\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://dbo-ul-back-test01:8080/rest/stateful/corp/document/create"
+					},
+					"response": []
+				},
+				{
 					"name": "New Request",
 					"id": "fad00271-a217-4a54-b504-00bbb7b2c42a",
 					"protocolProfileBehavior": {
