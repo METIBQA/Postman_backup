@@ -2793,7 +2793,8 @@
 					},
 					"request": {
 						"method": "GET",
-						"header": []
+						"header": [],
+						"url": "https://test-ul.metib.online/rest/corp/mail2client/unread"
 					},
 					"response": []
 				},
