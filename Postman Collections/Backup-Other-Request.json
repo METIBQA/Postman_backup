@@ -2784,17 +2784,22 @@
 						"url": "http://dbo-ul-back-test01:8080/rest/stateful/corp/document/create"
 					},
 					"response": []
-				},
+				}
+			],
+			"id": "1287aa9a-c1f9-46c7-9a7e-b6920e95026c"
+		},
+		{
+			"name": "Разное",
+			"item": [
 				{
-					"name": "Date to",
-					"id": "fad00271-a217-4a54-b504-00bbb7b2c42a",
+					"name": "date",
+					"id": "c3139402-0899-44c0-80ec-e7411edd53f9",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
 					"request": {
 						"method": "GET",
-						"header": [],
-						"url": "https://test-ul.metib.online/rest/corp/mail2client/unread"
+						"header": []
 					},
 					"response": []
 				},
@@ -2811,19 +2816,40 @@
 					"response": []
 				},
 				{
-					"name": "date",
-					"id": "c3139402-0899-44c0-80ec-e7411edd53f9",
+					"name": "Date to",
+					"id": "fad00271-a217-4a54-b504-00bbb7b2c42a",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
 					"request": {
 						"method": "GET",
-						"header": []
+						"header": [],
+						"url": "https://test-ul.metib.online/rest/corp/mail2client/unread"
+					},
+					"response": []
+				},
+				{
+					"name": "New Request Copy",
+					"id": "80b6e7ab-74ff-436a-b602-3fd072250c6b",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": {
+								"password": "123321",
+								"username": "qa_amarkin"
+							}
+						},
+						"method": "POST",
+						"header": [],
+						"url": "https://test-ul.metib.online/rest/stateful/corp/login"
 					},
 					"response": []
 				}
 			],
-			"id": "1287aa9a-c1f9-46c7-9a7e-b6920e95026c"
+			"id": "5e5951c6-d01c-4a82-a147-9cc4c8f877b7"
 		}
 	],
 	"auth": {
