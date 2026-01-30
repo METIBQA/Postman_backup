@@ -2829,7 +2829,7 @@
 					"response": []
 				},
 				{
-					"name": "New Request Copy",
+					"name": "autorization",
 					"id": "80b6e7ab-74ff-436a-b602-3fd072250c6b",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
@@ -2838,13 +2838,25 @@
 						"auth": {
 							"type": "basic",
 							"basic": {
-								"password": "123321",
-								"username": "qa_amarkin"
+								"password": "Zx12345678",
+								"username": "sotrpaao_test"
 							}
 						},
 						"method": "POST",
 						"header": [],
 						"url": "https://test-ul.metib.online/rest/stateful/corp/login"
+					},
+					"response": []
+				},
+				{
+					"name": "New Request",
+					"id": "b426d092-559c-443b-a4b9-dcafedde284e",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": []
 					},
 					"response": []
 				}
