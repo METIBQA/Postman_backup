@@ -2856,7 +2856,8 @@
 					},
 					"request": {
 						"method": "GET",
-						"header": []
+						"header": [],
+						"url": "{{host}}rest/public/atms/yandex_map"
 					},
 					"response": []
 				}
