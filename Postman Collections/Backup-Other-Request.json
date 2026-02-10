@@ -2860,6 +2860,19 @@
 						"url": "{{host}}rest/public/atms/yandex_map"
 					},
 					"response": []
+				},
+				{
+					"name": "security-officer",
+					"id": "318c89d9-f27a-40ca-a3da-4ce33b8de159",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "{{host}}/security-officer/control/get/document/{{document_id}}"
+					},
+					"response": []
 				}
 			],
 			"id": "5e5951c6-d01c-4a82-a147-9cc4c8f877b7"
