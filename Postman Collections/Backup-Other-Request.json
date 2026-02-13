@@ -2636,7 +2636,7 @@
 			"name": "Онлайн конверсия Ордер",
 			"item": [
 				{
-					"name": "New Request",
+					"name": "Залогирование на фронте",
 					"id": "974192f7-eba1-46ae-ac83-94393249cb61",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
@@ -2676,7 +2676,7 @@
 					"response": []
 				},
 				{
-					"name": "New Request",
+					"name": "Ордер Покупка валюты создание дока",
 					"id": "0ecf64c0-549d-4ebd-880d-51e2aec5228e",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
