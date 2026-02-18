@@ -2656,6 +2656,26 @@
 					"response": []
 				},
 				{
+					"name": "Авторизация препрод",
+					"id": "af109c36-4ab1-496e-b0ea-5a68f8ab44be",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": {
+								"password": "123321",
+								"username": "qa_amarkin"
+							}
+						},
+						"method": "POST",
+						"header": [],
+						"url": "https://test-ul.metib.online/rest/stateful/corp/login"
+					},
+					"response": []
+				},
+				{
 					"name": "New Request Copy",
 					"id": "4454d192-939b-45af-a6cc-49abd7f24f0d",
 					"protocolProfileBehavior": {
@@ -2678,6 +2698,28 @@
 				{
 					"name": "Ордер Покупка валюты создание дока",
 					"id": "0ecf64c0-549d-4ebd-880d-51e2aec5228e",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"acceptImmediately\": \"Исполнение=ПО СОГЛАСОВАНИЮ\",\r\n  \"amountDebit\": \"444.00\",\r\n  \"chargeType\": \"1\",\r\n  \"clientRequestRate\": \"14.00\",\r\n  \"creditAccId\": \"7968630\",\r\n  \"creditType\": false,\r\n  \"currCode\": \"CNY\",\r\n  \"dealType\": \"FromBank\",\r\n  \"debitAccId\": \"7968637\",\r\n  \"debitCurr\": \"RUR\",\r\n  \"docDate\": \"2025-06-04\",\r\n  \"draftDealId\": null,\r\n  \"employee\": \"Металлинвестбанк\",\r\n  \"employeePhone\": \"88002509797\",\r\n  \"isAuto\": \"true\",\r\n  \"necessaryInfo\": \"\",\r\n  \"requestRate\": null,\r\n  \"requestRateType\": \"1\",\r\n  \"supplyConditionType\": \"EMPTY\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "https://test-ul.metib.online/rest/stateful/corp/curr/buy_metinv"
+					},
+					"response": []
+				},
+				{
+					"name": "Ордер Покупка валюты создание дока Copy",
+					"id": "14011809-6233-43da-8480-2d390c19e937",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
