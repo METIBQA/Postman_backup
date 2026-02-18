@@ -2718,7 +2718,7 @@
 					"response": []
 				},
 				{
-					"name": "Ордер Покупка валюты создание дока Copy",
+					"name": "Ордер Покупка валюты создание дока Препрод",
 					"id": "14011809-6233-43da-8480-2d390c19e937",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
