@@ -2762,6 +2762,28 @@
 					"response": []
 				},
 				{
+					"name": "Продажа валюты препрод",
+					"id": "2c7af45d-b354-43d5-997d-139b19b772db",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"acceptImmediately\": \"Исполнение=ПО СОГЛАСОВАНИЮ\",\r\n  \"amountDebit\": \"444.00\",\r\n  \"chargeType\": \"1\",\r\n  \"clientRequestRate\": \"14.00\",\r\n  \"creditAccId\": \"7968630\",\r\n  \"creditType\": false,\r\n  \"currCode\": \"CNY\",\r\n  \"dealType\": \"FromBank\",\r\n  \"debitAccId\": \"7968637\",\r\n  \"debitCurr\": \"RUR\",\r\n  \"docDate\": \"2025-06-04\",\r\n  \"draftDealId\": null,\r\n  \"employee\": \"Металлинвестбанк\",\r\n  \"employeePhone\": \"88002509797\",\r\n  \"isAuto\": \"true\",\r\n  \"necessaryInfo\": \"\",\r\n  \"requestRate\": null,\r\n  \"requestRateType\": \"1\",\r\n  \"supplyConditionType\": \"EMPTY\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "https://test-ul.metib.online/rest/stateful/corp/curr/buy_metinv"
+					},
+					"response": []
+				},
+				{
 					"name": "New Request",
 					"id": "6e11df3e-426e-4cdb-b32c-29d63c94e6f4",
 					"protocolProfileBehavior": {
