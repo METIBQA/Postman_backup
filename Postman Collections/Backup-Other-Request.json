@@ -2965,7 +2965,40 @@
 		},
 		{
 			"name": "НСО",
-			"item": [],
+			"item": [
+				{
+					"name": "Авторизация на фронте",
+					"id": "7cd4f0f8-ba6e-46f2-bb08-1de5510756fb",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": {
+								"username": "qa_amarkin",
+								"password": "12345678"
+							}
+						},
+						"method": "POST",
+						"header": [],
+						"url": "https://test-ul.metib.online/rest/stateful/corp/login"
+					},
+					"response": []
+				},
+				{
+					"name": "Создание НСО",
+					"id": "89486c50-187f-41cb-9bd8-1bd1e80fd859",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				}
+			],
 			"id": "5bd13794-dea3-44cf-b625-b553af324e3f"
 		}
 	],
