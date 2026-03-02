@@ -2997,6 +2997,18 @@
 						"header": []
 					},
 					"response": []
+				},
+				{
+					"name": "Создание НСО Препрод",
+					"id": "22515c05-70fc-4057-a73c-1d56765c4d78",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
 				}
 			],
 			"id": "5bd13794-dea3-44cf-b625-b553af324e3f"
