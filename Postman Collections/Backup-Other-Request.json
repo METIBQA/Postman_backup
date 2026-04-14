@@ -3065,28 +3065,51 @@
 		},
 		{
 			"name": "Получение наличных",
-			"item": [],
-			"id": "2f5c5220-f964-4337-a52b-5c12f6e08160"
-		},
-		{
-			"name": "Авторизация",
-			"id": "dcce7bb3-8748-404e-9f8d-13498202376e",
-			"protocolProfileBehavior": {
-				"disableBodyPruning": true
-			},
-			"request": {
-				"auth": {
-					"type": "basic",
-					"basic": {
-						"username": "amarkin",
-						"password": "12345678"
-					}
+			"item": [
+				{
+					"name": "New Request",
+					"id": "7fd65a6d-0db7-4575-a601-99ce39474978",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": {
+								"username": "amarkin",
+								"password": "12345678"
+							}
+						},
+						"method": "POST",
+						"header": [],
+						"url": "https://pred-ul.metib.online/rest/stateful/corp/login"
+					},
+					"response": []
 				},
-				"method": "POST",
-				"header": [],
-				"url": "https://pred-ul.metib.online/rest/stateful/corp/login"
-			},
-			"response": []
+				{
+					"name": "New Request",
+					"id": "8e18d048-bd4f-43a3-9a82-d5ddd97b2555",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"draft\": false,\r\n    \"docModule\": \"ibankul\",\r\n    \"docType\": \"request_receive_cash\",\r\n    \"docNumber\": \"ЗН 0001872\",\r\n    \"docDate\": \"2026-04-14\",\r\n    \"accNumber\": \"40702810914000000558\",\r\n    \"totalAmount\": \"70000.00\",\r\n    \"currCode\": \"810\",\r\n    \"requiredBanknoteSelection\": \"false\",\r\n    \"sourcesOfIncome\": [\r\n        {\r\n            \"symbol\": \"40\",\r\n            \"sourcesIncome\": \"тестовая цель\",\r\n            \"amount\": \"70000.00\"\r\n        }\r\n    ],\r\n    \"receiverEmployeeId\": \"10651417\",\r\n    \"branchCode\": \"10015656755\",\r\n    \"receiveDate\": \"2026-04-25\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "https://pred-ul.metib.online/rest/stateful/corp/receive/cash/create"
+					},
+					"response": []
+				}
+			],
+			"id": "2f5c5220-f964-4337-a52b-5c12f6e08160"
 		}
 	],
 	"auth": {
