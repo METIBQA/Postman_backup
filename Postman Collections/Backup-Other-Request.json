@@ -2982,7 +2982,7 @@
 						},
 						"method": "POST",
 						"header": [],
-						"url": "https://test-ul.metib.online/rest/stateful/corp/login"
+						"url": "https://pred-ul.metib.online/rest/stateful/corp/login"
 					},
 					"response": []
 				},
@@ -3005,8 +3005,18 @@
 						"disableBodyPruning": true
 					},
 					"request": {
-						"method": "GET",
-						"header": []
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"employee\": null,\r\n    \"employeePhone\": null,\r\n    \"endDate\": \"2026-04-20\",\r\n    \"startDate\": \"2026-04-17\",\r\n    \"accNumber\": \"40702810914000000558\",\r\n    \"amount\": 5000,\r\n    \"currCode\": \"RUR\",\r\n    \"id\": null\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "https://pred-ul.metib.online/rest/stateful/corp/dealing/create_nso"
 					},
 					"response": []
 				}
