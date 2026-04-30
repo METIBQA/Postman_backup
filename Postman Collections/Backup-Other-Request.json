@@ -2750,7 +2750,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"docNumber\": \"358\",\r\n    \"docDate\": \"2026-04-16\",\r\n    \"creditAccId\": \"17816608\",\r\n    \"debitAccId\": \"17816612\",\r\n    \"currCode\": \"CNY\",\r\n    \"amountCredit\": \"777.77\",\r\n    \"amountDebit\": null,\r\n    \"dealType\": \"FromBank\",\r\n    \"creditType\": false,\r\n    \"chargeType\": \"1\",\r\n    \"supplyConditionType\": \"EMPTY\",\r\n    \"acceptImmediately\": \"Исполнение=ПО СОГЛАСОВАНИЮ\",\r\n    \"requestRateType\": \"1\",\r\n    \"draftDealId\": null,\r\n    \"requestRate\": null,\r\n    \"debitCurr\": \"RUR\",\r\n    \"necessaryInfo\": \"\",\r\n    \"clientRequestRate\": \"80.1111\",\r\n    \"isAuto\": \"true\"\r\n}",
+							"raw": "{\r\n    \"docNumber\": \"426\",\r\n    \"docDate\": \"2026-04-30\",\r\n    \"creditAccId\": \"18011546\",\r\n    \"debitAccId\": \"18011550\",\r\n    \"currCode\": \"CNY\",\r\n    \"amountCredit\": null,\r\n    \"amountDebit\": null,\r\n    \"dealType\": \"FromBank\",\r\n    \"creditType\": false,\r\n    \"chargeType\": \"1\",\r\n    \"supplyConditionType\": \"EMPTY\",\r\n    \"acceptImmediately\": \"Исполнение=ПО СОГЛАСОВАНИЮ\",\r\n    \"requestRateType\": \"1\",\r\n    \"draftDealId\": null,\r\n    \"requestRate\": null,\r\n    \"debitCurr\": \"RUR\",\r\n    \"necessaryInfo\": \"\",\r\n    \"clientRequestRate\": \"0\",\r\n    \"isAuto\": \"true\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -2772,7 +2772,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"docNumber\": \"359\",\r\n    \"docDate\": \"2026-04-16\",\r\n    \"creditAccId\": \"17816612\",\r\n    \"debitAccId\": \"17816608\",\r\n    \"currCode\": \"RUR\",\r\n    \"amountCredit\": \"333.33\",\r\n    \"amountDebit\": null,\r\n    \"dealType\": \"FromBank\",\r\n    \"creditType\": false,\r\n    \"chargeType\": \"1\",\r\n    \"supplyConditionType\": \"EMPTY\",\r\n    \"acceptImmediately\": \"Исполнение=ПО СОГЛАСОВАНИЮ\",\r\n    \"requestRateType\": \"1\",\r\n    \"draftDealId\": null,\r\n    \"requestRate\": null,\r\n    \"debitCurr\": \"CNY\",\r\n    \"necessaryInfo\": \"\",\r\n    \"clientRequestRate\": \"78.3333\",\r\n    \"isAuto\": \"true\"\r\n}",
+							"raw": "{\r\n    \"docNumber\": \"427\",\r\n    \"docDate\": \"2026-04-30\",\r\n    \"creditAccId\": \"18011550\",\r\n    \"debitAccId\": \"18011546\",\r\n    \"currCode\": \"RUR\",\r\n    \"amountCredit\": null,\r\n    \"amountDebit\": null,\r\n    \"dealType\": \"FromBank\",\r\n    \"creditType\": false,\r\n    \"chargeType\": \"1\",\r\n    \"supplyConditionType\": \"EMPTY\",\r\n    \"acceptImmediately\": \"Исполнение=ПО СОГЛАСОВАНИЮ\",\r\n    \"requestRateType\": \"1\",\r\n    \"draftDealId\": null,\r\n    \"requestRate\": null,\r\n    \"debitCurr\": \"CNY\",\r\n    \"necessaryInfo\": \"\",\r\n    \"clientRequestRate\": \"0\",\r\n    \"isAuto\": \"true\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -2976,7 +2976,7 @@
 						"auth": {
 							"type": "basic",
 							"basic": {
-								"username": "qa_amarkin",
+								"username": "amarkin",
 								"password": "12345678"
 							}
 						},
@@ -3009,7 +3009,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"employee\": null,\r\n    \"employeePhone\": null,\r\n    \"endDate\": \"2026-04-20\",\r\n    \"startDate\": \"2026-04-17\",\r\n    \"accNumber\": \"40702810914000000558\",\r\n    \"amount\": 5000,\r\n    \"currCode\": \"RUR\",\r\n    \"id\": null\r\n}",
+							"raw": "{\r\n    \"employee\": null,\r\n    \"employeePhone\": null,\r\n    \"endDate\": \"2026-05-04\",\r\n    \"startDate\": \"2026-05-07\",\r\n    \"accNumber\": \"40702810914000000558\",\r\n    \"amount\": 5000,\r\n    \"currCode\": \"RUR\",\r\n    \"id\": null\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
