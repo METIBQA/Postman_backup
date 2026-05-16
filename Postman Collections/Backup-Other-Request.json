@@ -2750,7 +2750,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"docNumber\": \"426\",\r\n    \"docDate\": \"2026-04-30\",\r\n    \"creditAccId\": \"18011546\",\r\n    \"debitAccId\": \"18011550\",\r\n    \"currCode\": \"CNY\",\r\n    \"amountCredit\": null,\r\n    \"amountDebit\": null,\r\n    \"dealType\": \"FromBank\",\r\n    \"creditType\": false,\r\n    \"chargeType\": \"1\",\r\n    \"supplyConditionType\": \"EMPTY\",\r\n    \"acceptImmediately\": \"Исполнение=ПО СОГЛАСОВАНИЮ\",\r\n    \"requestRateType\": \"1\",\r\n    \"draftDealId\": null,\r\n    \"requestRate\": null,\r\n    \"debitCurr\": \"RUR\",\r\n    \"necessaryInfo\": \"\",\r\n    \"clientRequestRate\": \"0\",\r\n    \"isAuto\": \"true\"\r\n}",
+							"raw": "{\r\n    \"docNumber\": \"486\",\r\n    \"docDate\": \"2026-05-15\",\r\n    \"creditAccId\": \"18239211\",\r\n    \"debitAccId\": \"18239215\",\r\n    \"currCode\": \"CNY\",\r\n    \"amountCredit\": \"123.33\",\r\n    \"amountDebit\": null,\r\n    \"dealType\": \"FromBank\",\r\n    \"creditType\": false,\r\n    \"chargeType\": \"1\",\r\n    \"supplyConditionType\": \"EMPTY\",\r\n    \"acceptImmediately\": \"Исполнение=ПО СОГЛАСОВАНИЮ\",\r\n    \"requestRateType\": \"1\",\r\n    \"draftDealId\": null,\r\n    \"requestRate\": null,\r\n    \"debitCurr\": \"RUR\",\r\n    \"necessaryInfo\": \"\",\r\n    \"clientRequestRate\": \"0.0000\",\r\n    \"isAuto\": \"true\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -3009,7 +3009,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"employee\": null,\r\n    \"employeePhone\": null,\r\n    \"endDate\": \"2026-05-04\",\r\n    \"startDate\": \"2026-05-07\",\r\n    \"accNumber\": \"40702810914000000558\",\r\n    \"amount\": 5000,\r\n    \"currCode\": \"RUR\",\r\n    \"id\": null\r\n}",
+							"raw": "{\r\n    \"employee\": null,\r\n    \"employeePhone\": null,\r\n    \"endDate\": \"2026-05-15\",\r\n    \"startDate\": \"2026-05-29\",\r\n    \"accNumber\": \"40702810914000000558\",\r\n    \"amount\": 5000,\r\n    \"currCode\": \"RUR\",\r\n    \"id\": null\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -3037,7 +3037,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"employee\": null,\r\n    \"employeePhone\": null,\r\n    \"endDate\": \"2026-04-14\",\r\n    \"startDate\": \"2026-05-03\",\r\n    \"accNumber\": \"40702810914000000558\",\r\n    \"amount\": 20000,\r\n    \"currCode\": \"RUR\",\r\n    \"id\": null,\r\n    \"earlyReturnType\": \"0\"\r\n}",
+							"raw": "{\r\n    \"employee\": null,\r\n    \"employeePhone\": null,\r\n    \"endDate\": \"2026-05-29\",\r\n    \"startDate\": \"2026-05-10\",\r\n    \"accNumber\": \"40702810914000000558\",\r\n    \"amount\": 20000,\r\n    \"currCode\": \"RUR\",\r\n    \"id\": null,\r\n    \"earlyReturnType\": \"0\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
