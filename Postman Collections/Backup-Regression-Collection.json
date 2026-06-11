@@ -2264,6 +2264,18 @@
 						}
 					],
 					"id": "7583fe92-fab3-4ec9-b2a7-9f256418bf11"
+				},
+				{
+					"name": "New Request",
+					"id": "3f13e075-495b-4ee4-bda2-67df7460fbe1",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
 				}
 			],
 			"id": "cec69ded-fb17-4d50-b13f-8f843d74bfdd"
