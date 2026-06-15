@@ -342,7 +342,7 @@
 							"response": []
 						},
 						{
-							"name": "New Request",
+							"name": "Сохранение контрагента тест - проверка контроля",
 							"id": "b2999281-36e1-4f2e-8eea-10b6f4292a89",
 							"protocolProfileBehavior": {
 								"disableBodyPruning": true
@@ -360,6 +360,18 @@
 									}
 								},
 								"url": "https://test-ul.metib.online/rest/stateful/corp/dic/corr_metinv/v2"
+							},
+							"response": []
+						},
+						{
+							"name": "New Request",
+							"id": "b198d669-a561-4aae-8e13-d87421ebf2bb",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": []
 							},
 							"response": []
 						}
