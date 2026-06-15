@@ -348,8 +348,18 @@
 								"disableBodyPruning": true
 							},
 							"request": {
-								"method": "GET",
-								"header": []
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"corrType\": \"UL\",\r\n    \"fullname\": \"\",\r\n    \"inn\": \"3662270117\",\r\n    \"kpp\": \"366201001\",\r\n    \"accList\": [\r\n        {\r\n            \"id\": null,\r\n            \"bankBik\": \"045004778\",\r\n            \"accNumber\": \"40812810300000011111\"\r\n        }\r\n    ],\r\n    \"description\": \"\",\r\n    \"phone\": \"\",\r\n    \"email\": \"\",\r\n    \"comments\": \"\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "https://test-ul.metib.online/rest/stateful/corp/dic/corr_metinv/v2"
 							},
 							"response": []
 						}
