@@ -251,7 +251,7 @@
 									"response": []
 								},
 								{
-									"name": "Сохранение контрагента тест - проверка контроля на непустату",
+									"name": "Сохранение контрагента тест - проверка контроля на непустоту",
 									"id": "b2999281-36e1-4f2e-8eea-10b6f4292a89",
 									"protocolProfileBehavior": {
 										"disableBodyPruning": true
@@ -295,7 +295,7 @@
 									"response": []
 								},
 								{
-									"name": "New Request",
+									"name": "Сохранение контрагента тест - проверка на длину поля наименование",
 									"id": "55d201e9-99bd-4ee7-9642-c11379f5bf43",
 									"protocolProfileBehavior": {
 										"disableBodyPruning": true
@@ -346,7 +346,7 @@
 									"response": []
 								},
 								{
-									"name": "Сохранение контрагента - проверка контроля на непустоту",
+									"name": "Сохранение контрагента дев - проверка контроля на непустоту",
 									"id": "3924a7a6-ad32-4b6a-acb1-69c672b5b113",
 									"protocolProfileBehavior": {
 										"disableBodyPruning": true
