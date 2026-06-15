@@ -370,8 +370,18 @@
 								"disableBodyPruning": true
 							},
 							"request": {
-								"method": "GET",
-								"header": []
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"corrType\": \"UL\",\r\n    \"fullname\": \"Облачная платформа для сбора, обработки и визуализации данных IoT устройств с поддержкой машинного обучения и предиктивной аналитики все возможных процессов ком\",\r\n    \"inn\": \"4444444444\",\r\n    \"kpp\": \"777777777\",\r\n    \"accList\": [\r\n        {\r\n            \"id\": null,\r\n            \"bankBik\": \"045004719\",\r\n            \"accNumber\": \"40810810344444444444\"\r\n        }\r\n    ],\r\n    \"description\": \"\",\r\n    \"phone\": \"\",\r\n    \"email\": \"\",\r\n    \"comments\": \"\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "https://dev-ul.metib.online/rest/stateful/corp/dic/corr_metinv/v2"
 							},
 							"response": []
 						}
