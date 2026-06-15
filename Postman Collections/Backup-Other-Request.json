@@ -295,6 +295,18 @@
 						}
 					],
 					"id": "16e51a52-c023-44ac-9c40-994ced241582"
+				},
+				{
+					"name": "Авторизация дев стенд",
+					"id": "51b6397b-653f-4cab-b252-72112a7cc81e",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
 				}
 			],
 			"id": "def975aa-6c72-477a-9300-13cf93f50c0d"
