@@ -226,6 +226,149 @@
 									}
 								}
 							]
+						},
+						{
+							"name": "Создание контрагентов - проверка контролей",
+							"item": [
+								{
+									"name": "Авторизация тест",
+									"id": "f98953f6-a15c-43ad-b2ea-cda8e9982356",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"auth": {
+											"type": "basic",
+											"basic": {
+												"password": "123456Ww",
+												"username": "KVAL"
+											}
+										},
+										"method": "POST",
+										"header": [],
+										"url": "https://test-ul.metib.online/rest/stateful/corp/login"
+									},
+									"response": []
+								},
+								{
+									"name": "Сохранение контрагента тест - проверка контроля на непустату",
+									"id": "b2999281-36e1-4f2e-8eea-10b6f4292a89",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"corrType\": \"UL\",\r\n    \"fullname\": \"\",\r\n    \"inn\": \"3662270117\",\r\n    \"kpp\": \"366201001\",\r\n    \"accList\": [\r\n        {\r\n            \"id\": null,\r\n            \"bankBik\": \"045004778\",\r\n            \"accNumber\": \"40812810300000011111\"\r\n        }\r\n    ],\r\n    \"description\": \"\",\r\n    \"phone\": \"\",\r\n    \"email\": \"\",\r\n    \"comments\": \"\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": "https://test-ul.metib.online/rest/stateful/corp/dic/corr_metinv/v2"
+									},
+									"response": []
+								},
+								{
+									"name": "Сохранение контрагента дев - проверка на длину поля наименование",
+									"id": "b198d669-a561-4aae-8e13-d87421ebf2bb",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"corrType\": \"UL\",\r\n    \"fullname\": \"Облачная платформа для сбора, обработки и визуализации данных IoT устройств с поддержкой машинного обучения и предиктивной аналитики все возможных процессов ком\",\r\n    \"inn\": \"4444444444\",\r\n    \"kpp\": \"777777777\",\r\n    \"accList\": [\r\n        {\r\n            \"id\": null,\r\n            \"bankBik\": \"045004719\",\r\n            \"accNumber\": \"40810810344444444444\"\r\n        }\r\n    ],\r\n    \"description\": \"\",\r\n    \"phone\": \"\",\r\n    \"email\": \"\",\r\n    \"comments\": \"\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": "https://dev-ul.metib.online/rest/stateful/corp/dic/corr_metinv/v2"
+									},
+									"response": []
+								},
+								{
+									"name": "New Request",
+									"id": "55d201e9-99bd-4ee7-9642-c11379f5bf43",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"corrType\": \"UL\",\r\n    \"fullname\": \"Облачная платформа для сбора, обработки и визуализации данных IoT‑устройств с поддержкой машинного обучения и предиктивной аналитики все возможных процессов ком\",\r\n    \"inn\": \"4444444444\",\r\n    \"kpp\": \"444444444\",\r\n    \"accList\": [\r\n        {\r\n            \"id\": null,\r\n            \"bankBik\": \"045004051\",\r\n            \"accNumber\": \"40702810214000003110\"\r\n        }\r\n    ],\r\n    \"description\": \"\",\r\n    \"phone\": \"\",\r\n    \"email\": \"\",\r\n    \"comments\": \"\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": "https://test-ul.metib.online/rest/stateful/corp/dic/corr_metinv/v2"
+									},
+									"response": []
+								},
+								{
+									"name": "Авторизация дев стенд",
+									"id": "51b6397b-653f-4cab-b252-72112a7cc81e",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"auth": {
+											"type": "basic",
+											"basic": {
+												"password": "123456Ww",
+												"username": "KVAL"
+											}
+										},
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": "https://dev-ul.metib.online/rest/stateful/corp/login"
+									},
+									"response": []
+								},
+								{
+									"name": "Сохранение контрагента - проверка контроля на непустоту",
+									"id": "3924a7a6-ad32-4b6a-acb1-69c672b5b113",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"corrType\": \"UL\",\r\n    \"fullname\": \"\",\r\n    \"inn\": \"4909128502\",\r\n    \"kpp\": \"490901001\",\r\n    \"accList\": [\r\n        {\r\n            \"id\": null,\r\n            \"bankBik\": \"045004051\",\r\n            \"accNumber\": \"40819222022222222222\"\r\n        }\r\n    ],\r\n    \"description\": \"\",\r\n    \"phone\": \"\",\r\n    \"email\": \"\",\r\n    \"comments\": \"\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": "https://dev-ul.metib.online/rest/stateful/corp/dic/corr_metinv/v2"
+									},
+									"response": []
+								}
+							],
+							"id": "6764f3b0-72df-4d2c-b91c-4dd15d3309da"
 						}
 					],
 					"id": "59120ebd-3782-46c0-a4e2-0acc74bea282"
@@ -289,155 +432,12 @@
 										"url": "{{host}}/rest/stateful/corp/dic/beneficiary"
 									},
 									"response": []
-								},
-								{
-									"name": "Сохранение контрагента - проверка контроля на непустоту",
-									"id": "3924a7a6-ad32-4b6a-acb1-69c672b5b113",
-									"protocolProfileBehavior": {
-										"disableBodyPruning": true
-									},
-									"request": {
-										"method": "POST",
-										"header": [],
-										"body": {
-											"mode": "raw",
-											"raw": "{\r\n    \"corrType\": \"UL\",\r\n    \"fullname\": \"\",\r\n    \"inn\": \"4909128502\",\r\n    \"kpp\": \"490901001\",\r\n    \"accList\": [\r\n        {\r\n            \"id\": null,\r\n            \"bankBik\": \"045004051\",\r\n            \"accNumber\": \"40819222022222222222\"\r\n        }\r\n    ],\r\n    \"description\": \"\",\r\n    \"phone\": \"\",\r\n    \"email\": \"\",\r\n    \"comments\": \"\"\r\n}",
-											"options": {
-												"raw": {
-													"language": "json"
-												}
-											}
-										},
-										"url": "https://dev-ul.metib.online/rest/stateful/corp/dic/corr_metinv/v2"
-									},
-									"response": []
 								}
 							],
 							"id": "62d34c43-4767-453a-a687-71ec0c90d197"
 						}
 					],
 					"id": "16e51a52-c023-44ac-9c40-994ced241582"
-				},
-				{
-					"name": "New Folder",
-					"item": [
-						{
-							"name": "Авторизация тест",
-							"id": "f98953f6-a15c-43ad-b2ea-cda8e9982356",
-							"protocolProfileBehavior": {
-								"disableBodyPruning": true
-							},
-							"request": {
-								"auth": {
-									"type": "basic",
-									"basic": {
-										"password": "123456Ww",
-										"username": "KVAL"
-									}
-								},
-								"method": "POST",
-								"header": [],
-								"url": "https://test-ul.metib.online/rest/stateful/corp/login"
-							},
-							"response": []
-						},
-						{
-							"name": "Сохранение контрагента тест - проверка контроля",
-							"id": "b2999281-36e1-4f2e-8eea-10b6f4292a89",
-							"protocolProfileBehavior": {
-								"disableBodyPruning": true
-							},
-							"request": {
-								"method": "POST",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "{\r\n    \"corrType\": \"UL\",\r\n    \"fullname\": \"\",\r\n    \"inn\": \"3662270117\",\r\n    \"kpp\": \"366201001\",\r\n    \"accList\": [\r\n        {\r\n            \"id\": null,\r\n            \"bankBik\": \"045004778\",\r\n            \"accNumber\": \"40812810300000011111\"\r\n        }\r\n    ],\r\n    \"description\": \"\",\r\n    \"phone\": \"\",\r\n    \"email\": \"\",\r\n    \"comments\": \"\"\r\n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": "https://test-ul.metib.online/rest/stateful/corp/dic/corr_metinv/v2"
-							},
-							"response": []
-						},
-						{
-							"name": "Сохранение контрагента дев - проверка на длину поля наименование",
-							"id": "b198d669-a561-4aae-8e13-d87421ebf2bb",
-							"protocolProfileBehavior": {
-								"disableBodyPruning": true
-							},
-							"request": {
-								"method": "POST",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "{\r\n    \"corrType\": \"UL\",\r\n    \"fullname\": \"Облачная платформа для сбора, обработки и визуализации данных IoT устройств с поддержкой машинного обучения и предиктивной аналитики все возможных процессов ком\",\r\n    \"inn\": \"4444444444\",\r\n    \"kpp\": \"777777777\",\r\n    \"accList\": [\r\n        {\r\n            \"id\": null,\r\n            \"bankBik\": \"045004719\",\r\n            \"accNumber\": \"40810810344444444444\"\r\n        }\r\n    ],\r\n    \"description\": \"\",\r\n    \"phone\": \"\",\r\n    \"email\": \"\",\r\n    \"comments\": \"\"\r\n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": "https://dev-ul.metib.online/rest/stateful/corp/dic/corr_metinv/v2"
-							},
-							"response": []
-						},
-						{
-							"name": "New Request",
-							"id": "55d201e9-99bd-4ee7-9642-c11379f5bf43",
-							"protocolProfileBehavior": {
-								"disableBodyPruning": true
-							},
-							"request": {
-								"method": "POST",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "{\r\n    \"corrType\": \"UL\",\r\n    \"fullname\": \"Облачная платформа для сбора, обработки и визуализации данных IoT‑устройств с поддержкой машинного обучения и предиктивной аналитики все возможных процессов ком\",\r\n    \"inn\": \"4444444444\",\r\n    \"kpp\": \"444444444\",\r\n    \"accList\": [\r\n        {\r\n            \"id\": null,\r\n            \"bankBik\": \"045004051\",\r\n            \"accNumber\": \"40702810214000003110\"\r\n        }\r\n    ],\r\n    \"description\": \"\",\r\n    \"phone\": \"\",\r\n    \"email\": \"\",\r\n    \"comments\": \"\"\r\n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": "https://test-ul.metib.online/rest/stateful/corp/dic/corr_metinv/v2"
-							},
-							"response": []
-						}
-					],
-					"id": "6764f3b0-72df-4d2c-b91c-4dd15d3309da"
-				},
-				{
-					"name": "Авторизация дев стенд",
-					"id": "51b6397b-653f-4cab-b252-72112a7cc81e",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"auth": {
-							"type": "basic",
-							"basic": {
-								"password": "123456Ww",
-								"username": "KVAL"
-							}
-						},
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": "https://dev-ul.metib.online/rest/stateful/corp/login"
-					},
-					"response": []
 				}
 			],
 			"id": "def975aa-6c72-477a-9300-13cf93f50c0d"
