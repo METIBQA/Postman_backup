@@ -386,6 +386,28 @@
 										"url": "https://pred-ul.metib.online/rest/stateful/corp/login"
 									},
 									"response": []
+								},
+								{
+									"name": "Сохранение контрагента ПРЕПРОД - проверка контроля на непустоту",
+									"id": "0df390e0-1352-4a7a-a172-05013f1a4ad6",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"corrType\": \"UL\",\r\n    \"fullname\": \"\",\r\n    \"inn\": \"9727107049\",\r\n    \"kpp\": \"772701001\",\r\n    \"accList\": [\r\n        {\r\n            \"id\": null,\r\n            \"bankBik\": \"047003608\",\r\n            \"accNumber\": \"40818810600000000011\"\r\n        }\r\n    ],\r\n    \"description\": \"\",\r\n    \"phone\": \"\",\r\n    \"email\": \"\",\r\n    \"comments\": \"\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": "https://pred-ul.metib.online/rest/stateful/corp/dic/corr_metinv/v2"
+									},
+									"response": []
 								}
 							],
 							"id": "6764f3b0-72df-4d2c-b91c-4dd15d3309da"
