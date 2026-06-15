@@ -291,14 +291,24 @@
 									"response": []
 								},
 								{
-									"name": "New Request",
+									"name": "Сохранение контрагента - проверка контроля на непустоту",
 									"id": "3924a7a6-ad32-4b6a-acb1-69c672b5b113",
 									"protocolProfileBehavior": {
 										"disableBodyPruning": true
 									},
 									"request": {
-										"method": "GET",
-										"header": []
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"corrType\": \"UL\",\r\n    \"fullname\": \"\",\r\n    \"inn\": \"4909128502\",\r\n    \"kpp\": \"490901001\",\r\n    \"accList\": [\r\n        {\r\n            \"id\": null,\r\n            \"bankBik\": \"045004051\",\r\n            \"accNumber\": \"40819222022222222222\"\r\n        }\r\n    ],\r\n    \"description\": \"\",\r\n    \"phone\": \"\",\r\n    \"email\": \"\",\r\n    \"comments\": \"\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": "https://dev-ul.metib.online/rest/stateful/corp/dic/corr_metinv/v2"
 									},
 									"response": []
 								}
@@ -307,6 +317,24 @@
 						}
 					],
 					"id": "16e51a52-c023-44ac-9c40-994ced241582"
+				},
+				{
+					"name": "New Folder",
+					"item": [
+						{
+							"name": "New Request",
+							"id": "f98953f6-a15c-43ad-b2ea-cda8e9982356",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": []
+							},
+							"response": []
+						}
+					],
+					"id": "6764f3b0-72df-4d2c-b91c-4dd15d3309da"
 				},
 				{
 					"name": "Авторизация дев стенд",
