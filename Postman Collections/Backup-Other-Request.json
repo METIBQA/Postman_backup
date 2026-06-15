@@ -322,8 +322,28 @@
 					"name": "New Folder",
 					"item": [
 						{
-							"name": "New Request",
+							"name": "Авторизация тест",
 							"id": "f98953f6-a15c-43ad-b2ea-cda8e9982356",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": {
+										"password": "123456Ww",
+										"username": "KVAL"
+									}
+								},
+								"method": "POST",
+								"header": [],
+								"url": "https://test-ul.metib.online/rest/stateful/corp/login"
+							},
+							"response": []
+						},
+						{
+							"name": "New Request",
+							"id": "b2999281-36e1-4f2e-8eea-10b6f4292a89",
 							"protocolProfileBehavior": {
 								"disableBodyPruning": true
 							},
