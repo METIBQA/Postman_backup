@@ -3337,6 +3337,44 @@
 				}
 			],
 			"id": "2f5c5220-f964-4337-a52b-5c12f6e08160"
+		},
+		{
+			"name": "Цифровой рубль",
+			"item": [
+				{
+					"name": "Авторизация ООО ЦИТАДЕЛЬ",
+					"id": "4310be52-077b-4395-b0bd-a823b7140d70",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": {
+								"username": "clntsalt_SHIP",
+								"password": "123456Ww"
+							}
+						},
+						"method": "POST",
+						"header": [],
+						"url": "https://test-ul.metib.online/rest/stateful/corp/login"
+					},
+					"response": []
+				},
+				{
+					"name": "New Request",
+					"id": "c7cc9d08-1ccf-42e9-8667-28cd7278f860",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				}
+			],
+			"id": "c1cbc26e-f8b6-4aff-9e76-9588803cf6f2"
 		}
 	],
 	"auth": {
