@@ -3360,18 +3360,6 @@
 						"url": "https://test-ul.metib.online/rest/stateful/corp/login"
 					},
 					"response": []
-				},
-				{
-					"name": "Пополнение СЦР",
-					"id": "c7cc9d08-1ccf-42e9-8667-28cd7278f860",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"method": "GET",
-						"header": []
-					},
-					"response": []
 				}
 			],
 			"id": "c1cbc26e-f8b6-4aff-9e76-9588803cf6f2"
