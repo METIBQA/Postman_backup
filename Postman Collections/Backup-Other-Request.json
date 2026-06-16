@@ -3362,7 +3362,7 @@
 					"response": []
 				},
 				{
-					"name": "New Request",
+					"name": "Пополнение СЦР",
 					"id": "c7cc9d08-1ccf-42e9-8667-28cd7278f860",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
